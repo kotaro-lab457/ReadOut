@@ -1,126 +1,165 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { type } from 'os';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { type } from "os";
 
-const name="hello";
-let nameChange = 'hello'
-nameChange = 'hello2'
+const name = "hello";
+let nameChange = "hello";
+nameChange = "hello2";
 
-let username = 'Hello' // string型
+let username = "Hello"; // string型
 let dummyNum = 2; // number型
 let bool = true; // boolean型
 
 // 配列
-let array1 = [true,false,true] //boolean
-let array2 = [0,1,"hello"] // (string | number)[]
+let array1 = [true, false, true]; //boolean
+let array2 = [0, 1, "hello"]; // (string | number)[]
 
 interface NAME {
-  first: string,
-  last?: string | null // ? でオプション
+  first: string;
+  last?: string | null; // ? でオプション
 }
 
-let nameObj: NAME = {first: "Yamada",last: null} // NAME型（オブジェクト）
+let nameObj: NAME = { first: "Yamada", last: null }; // NAME型（オブジェクト）
 
-const func1 = (x:number, y:number): number => {
+const func1 = (x: number, y: number): number => {
   return x + y;
-}
+};
 
 // Intersection Types(インターセクションタイプ)
 type PROFILE = {
-  age: number
-  city: string
-}
+  age: number;
+  city: string;
+};
 
 type LOGIN = {
-  username:string
-  password:string
-}
+  username: string;
+  password: string;
+};
 
-type USER = PROFILE & LOGIN
+type USER = PROFILE & LOGIN;
 
 const userA: USER = {
-  age:23,
-  city:'Tokyo',
-  username:'Taro',
-  password:'userA'
-}
-console.log(userA)
+  age: 23,
+  city: "Tokyo",
+  username: "Taro",
+  password: "userA",
+};
+console.log(userA);
 
 // Union Types
-let value: boolean | number //論理和
-value = true
+let value: boolean | number; //論理和
+value = true;
 //value = 'true' No string
-value = 23
+value = 23;
 
 // 配列（Union Types）
-let arrayUni : (number | string)[]
-arrayUni = [1,2,3,'1','2','3']
-console.log(arrayUni)
+let arrayUni: (number | string)[];
+arrayUni = [1, 2, 3, "1", "2", "3"];
+console.log(arrayUni);
 
 // リテラル
-let company: 'Facebook' | 'Google' | 'Amazon'
-company = 'Amazon'
+let company: "Facebook" | "Google" | "Amazon";
+company = "Amazon";
 //company = 'Apple' 代入不可
 
-
 //typeof
-let msg: string = 'Hi'
-let msg2: typeof msg // string型
-msg2 = 'Hello'
-
+let msg: string = "Hi";
+let msg2: typeof msg; // string型
+msg2 = "Hello";
 
 // keyOf
 type KEYS = {
-  primary: string
-  secondary:string
-}
-let key: keyof KEYS // Union型 primary | secondary
-key = 'secondary'
+  primary: string;
+  secondary: string;
+};
+let key: keyof KEYS; // Union型 primary | secondary
+key = "secondary";
 
 // typeof + keyof
 const SPORT = {
-  tennis: 'Tennis',
-  baseball: 'Baseball' // string でよくね？
-}
+  tennis: "Tennis",
+  baseball: "Baseball", // string でよくね？
+};
 
-let sports: keyof typeof SPORT //Union型 
-sports = 'tennis'
+let sports: keyof typeof SPORT; //Union型
+sports = "tennis";
 
 // enum(列挙型) 連番をつけてくれる
 enum OS {
   Windows, // 0番
   Mac, // 1番
-  Linux // 2番
+  Linux, // 2番
 }
 
-interface PC { // オブジェクト作成
-  id: number
-  OSType: OS
+interface PC {
+  // オブジェクト作成
+  id: number;
+  OSType: OS;
 }
 
-const PC1: PC = { // オブジェクト作成 PC型
+const PC1: PC = {
+  // オブジェクト作成 PC型
   id: 1,
-  OSType: OS.Windows // 0番
-}
+  OSType: OS.Windows, // 0番
+};
 
 const PC2: PC = {
   id: 2,
-  OSType: OS.Mac // 1番
+  OSType: OS.Mac, // 1番
+};
+
+// Generics ジェネリックス
+interface GEN<T> {
+  // テンプレート 型が決まっていない、、
+  item: T;
 }
 
+const gen0: GEN<string> = { item: "hello" };
+//const gen1: GEN = {item: 'hello'} 型が決めたいないのでエラー
+const gen2: GEN<number> = { item: 12 };
 
+interface GEN1<T = string> {
+  // 型を事前に決めてOK
+  item: T;
+}
+const gen3: GEN1 = { item: "world" };
 
+interface GEN2<T extends string | number> {
+  item: T;
+}
+const gem4: GEN2<string> = { item: "banana" }; // booleanを指定するとエラー（ないから）
 
+function funcGen<T>(props: T) {
+  // 関数
+  return { item: props };
+}
 
+const gen6 = funcGen("app"); // string = 'app'
+const gen7 = funcGen<string | null>(null); // string | null 型
 
+function funcGen1<T extends string | null>(props: T) {
+  // 関数に論理和（OR）
+  return { text: props };
+}
 
+const gen8 = funcGen1("grep");
+//const gen9 = funcGen1(2) number型はないからエラー
+
+interface Props {
+  price: number;
+}
+
+function funcGen2<T extends Props>(props: T) {
+  return { value: props.price };
+}
+
+const gen10 = funcGen2({ price: 10 });
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
+      <header className="App-header"></header>
     </div>
   );
 }
