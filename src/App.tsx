@@ -1,22 +1,23 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from "./pages/Login";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
 import Room from "./pages/Room";
-import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
     <div>
       <header></header>
-      <Router>
-        <Switch>
-          <main>
-            <Route exact path="/signUp" component={SignUp} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/room" component={Room} />
-          </main>
-        </Switch>
-      </Router>
+      <main>
+        <BrowserRouter>
+          <Route exact path="/logins" component={Login} />
+          <Route exact path="/" component={Room} />
+        </BrowserRouter>
+      </main>
       <footer></footer>
     </div>
   );
