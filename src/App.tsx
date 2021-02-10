@@ -8,6 +8,7 @@ import {
 import Room from "./pages/Room";
 import Login from "./pages/Login";
 import firebase from "./config/Firebase";
+import BooksSearch from "./pages/BooksSearch";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
         <BrowserRouter>
           <Route exact path="/login" component={Login} />
           <Route exact path="/" component={Room} />
+          <Route exact path="/books" component={BooksSearch} />
         </BrowserRouter>
       </main>
       <footer></footer>

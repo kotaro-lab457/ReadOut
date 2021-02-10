@@ -76,6 +76,7 @@ const Login: React.FC = (props: any) => {
         <span
           onClick={() => {
             setInLogin(!inLogin);
+            props.history.push("/login");
           }}
         >
           {inLogin ? "Loginへ" : "SignUpへ"}
