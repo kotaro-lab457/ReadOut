@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import firebase from "../config/Firebase";
 
+import { Redirect } from "react-router-dom";
+
+import { AuthContext } from "../AuthService";
 const Login: React.FC = (props: any) => {
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [inLogin, setInLogin] = useState<boolean>(true);
 
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      user && props.history.push("/");
-    });
-  }, [props.history]);
+  const user = useContext(AuthContext);
+
+  if (user) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>

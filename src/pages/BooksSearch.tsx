@@ -5,7 +5,7 @@ const BooksSearch: React.FC = () => {
   const [searchString, setSearchString] = useState("");
   const [searchResult, setSearchResult] = useState<any>(null);
 
-  // promise（非同期処理）
+  //async await（非同期処理）
   const searchGoogleBooks = async (searchString: string) => {
     const url = "https://www.googleapis.com/books/v1/volumes";
     const params = { q: searchString };
@@ -45,7 +45,7 @@ const BooksSearch: React.FC = () => {
         {searchResult && (
           <div>
             {searchResult.items.map((item: any) => {
-              return <h1 key={item.id}>{item.volumeInfo.title}</h1>;
+              return <p key={item.id}>{item.volumeInfo.title}</p>;
             })}
           </div>
         )}
