@@ -5,13 +5,14 @@ import {
   Route,
   BrowserRouter,
 } from "react-router-dom";
-import Room from "./pages/Room";
+import Make from "./pages/Make";
 import Login from "./pages/Login";
 import BooksSearch from "./pages/BooksSearch";
 
 import firebase from "./config/Firebase";
 
 import { AuthService } from "./AuthService";
+import Room from "./pages/Room";
 
 const App: React.FC = () => {
   const handleGuestLogin = () => {
@@ -29,8 +30,9 @@ const App: React.FC = () => {
         <AuthService>
           <BrowserRouter>
             <Route exact path="/login" component={Login} />
-            <Route exact path="/" component={Room} />
+            <Route exact path="/make" component={Make} />
             <Route exact path="/books" component={BooksSearch} />
+            <Route exact path="/" component={Room} />
           </BrowserRouter>
         </AuthService>
       </main>
