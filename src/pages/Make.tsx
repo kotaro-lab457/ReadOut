@@ -19,9 +19,9 @@ const Make: React.FC = () => {
       pages: page,
       date: new Date(),
     });
-    setComment(comment);
-    setTitle(title);
-    setPage(page);
+    setComment("");
+    setTitle("");
+    setPage("");
     console.log(title + comment);
   };
   return (
@@ -31,6 +31,7 @@ const Make: React.FC = () => {
         <div>
           <p>読んだ本は？</p>
           <input
+            id="add"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -39,6 +40,7 @@ const Make: React.FC = () => {
           <label>
             P:
             <input
+              id="add"
               type="text"
               value={page}
               onChange={(e) => setPage(e.target.value)}
@@ -46,6 +48,7 @@ const Make: React.FC = () => {
           </label>
           <p>感想＆要約</p>
           <textarea
+            id="add"
             placeholder="コメント入力"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
