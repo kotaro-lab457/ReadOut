@@ -54,7 +54,12 @@ const Login: React.FC = (props: any) => {
                 try {
                   await firebase
                     .auth()
-                    .createUserWithEmailAndPassword(email, password);
+                    .createUserWithEmailAndPassword(email, password)
+                    .then(({ user }) => {
+                      user?.updateProfile({
+                        displayName: name,
+                      });
+                    });
                   props.history.push("/");
                 } catch (error) {
                   alert(error.message);

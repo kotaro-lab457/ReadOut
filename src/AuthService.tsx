@@ -1,11 +1,15 @@
-import React, { useState, useEffect, Children } from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "./config/Firebase";
 
 interface userContext {
   user: any;
+  displayName: any;
 }
 
-const AuthContext = React.createContext<userContext>({ user: "" });
+const AuthContext = React.createContext<userContext>({
+  user: "",
+  displayName: "",
+});
 
 const AuthService: React.FC = ({ children }) => {
   const [user, setUser] = useState<any>(null);

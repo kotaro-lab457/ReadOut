@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import firebase from "../config/Firebase";
+
+import { AuthContext } from "../AuthService";
 
 const Make: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [comment, setComment] = useState<string>("");
   const [page, setPage] = useState<string>("");
 
+  const user = useContext(AuthContext);
+
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
     firebase.firestore().collection("comments").add({
-      name: title,
+      user: user.displayName,
+      books: title,
       content: comment,
       pages: page,
       date: new Date(),
