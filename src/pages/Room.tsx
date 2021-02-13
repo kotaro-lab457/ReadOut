@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import firebase from "../config/Firebase";
 
 interface PostText {
-  name: string;
+  user: string;
+  books: string;
   content: string;
   pages: string;
 }
@@ -19,10 +20,9 @@ const Room: React.FC = () => {
         const posts: any = snapshot.docs.map((doc) => {
           return doc.data();
         });
-        console.log(posts);
         setPost(posts);
+        console.log("post", posts);
       });
-    //console.log(post);
   }, []);
   return (
     <>
@@ -32,10 +32,10 @@ const Room: React.FC = () => {
           {post.map((list, id) => (
             <li key={id}>
               <div>
-                <p>タイトル：{list.name}</p>
+                <p>ユーザー：{list.user}</p>
+                <p>タイトル：{list.books}</p>
                 <p>ページ：{list.pages}</p>
-                <p>感想</p>
-                <p>{list.content}</p>
+                <p>感想：{list.content}</p>
               </div>
             </li>
           ))}
