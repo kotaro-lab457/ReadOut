@@ -54,7 +54,7 @@ const BooksSearch: React.FC = () => {
               return (
                 <div key={item.id}>
                   <img
-                    src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api`}
+                    src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
                     alt=""
                   />
                   <p>{item.volumeInfo.title}</p>
