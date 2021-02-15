@@ -18,6 +18,7 @@ const Make: React.FC = () => {
       content: comment,
       pages: page,
       date: new Date(),
+      uid: user.uid,
     });
     setComment("");
     setTitle("");
