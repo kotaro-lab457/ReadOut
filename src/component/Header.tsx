@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import firebase from "../config/Firebase";
 
 import { AuthContext } from "../AuthService";
 
-const Header: React.FC = () => {
+const Header: React.FC = (props: any) => {
   const user = useContext(AuthContext);
   const handleGuestLogin = () => {
     firebase
@@ -20,6 +20,7 @@ const Header: React.FC = () => {
 
   const handleSignOut = () => {
     firebase.auth().signOut();
+    props.history.push("/");
   };
   return (
     <header>
@@ -35,4 +36,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
