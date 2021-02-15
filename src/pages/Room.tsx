@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../config/Firebase";
 
-interface PostText {
-  user: string;
-  books: string;
-  content: string;
-  pages: string;
-}
+import { PostText } from "./Post.module";
 
 const Room: React.FC = () => {
   const [post, setPost] = useState<PostText[]>([]);
@@ -15,15 +10,15 @@ const Room: React.FC = () => {
     firebase
       .firestore()
       .collection("comments")
-      .orderBy("date")
+      .orderBy("date", "desc")
       .onSnapshot((snapshot) => {
         const posts: any = snapshot.docs.map((doc) => {
           return doc.data();
         });
         setPost(posts);
-        console.log("post", posts);
       });
   }, []);
+  console.log("post", post);
   return (
     <>
       <div>
