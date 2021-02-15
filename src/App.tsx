@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, BrowserRouter, Link } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Make from "./pages/Make";
 import Login from "./pages/Login";
 import Room from "./pages/Room";
@@ -12,20 +12,22 @@ import { AuthService } from "./AuthService";
 const App: React.FC = () => {
   return (
     <div>
-      <AuthService>
-        <BrowserRouter>
-          <main>
-            <Header />
-            <Switch>
+      <BrowserRouter>
+        <AuthService>
+          <Header />
+        </AuthService>
+        <main>
+          <Switch>
+            <AuthService>
               <Route exact path="/login" component={Login} />
               <Route exact path="/make" component={Make} />
               <Route exact path="/books" component={BooksSearch} />
               <Route exact path="/" component={Room} />
-            </Switch>
-          </main>
-          <footer></footer>
-        </BrowserRouter>
-      </AuthService>
+            </AuthService>
+          </Switch>
+        </main>
+      </BrowserRouter>
+      <footer></footer>
     </div>
   );
 };

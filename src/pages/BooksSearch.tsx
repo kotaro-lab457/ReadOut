@@ -8,15 +8,20 @@ const BooksSearch: React.FC = () => {
   //async await（非同期処理）
   const searchGoogleBooks = async (searchString: string) => {
     const url = "https://www.googleapis.com/books/v1/volumes";
+
+    // q: 全文文字列
     const params = { q: searchString };
+    console.log(params);
     try {
+      // axios.get()でHTTPリクエストを送ることができる。
       const response = await axios.get(url, { params });
-      console.log("url", url);
+      console.log(response);
       return { isSuccess: true, data: response.data, error: null };
     } catch (error) {
       return { isSuccess: false, date: null, error };
     }
   };
+
   const handleSearchClick = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -31,6 +36,7 @@ const BooksSearch: React.FC = () => {
   return (
     <>
       <h1>googleBooks</h1>
+
       <input
         type="text"
         onChange={(event) => setSearchString(event.target.value)}
@@ -45,7 +51,16 @@ const BooksSearch: React.FC = () => {
         {searchResult && (
           <div>
             {searchResult.items.map((item: any) => {
-              return <p key={item.id}>{item.volumeInfo.title}</p>;
+              return (
+                <div key={item.id}>
+                  <img
+                    src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api`}
+                    alt=""
+                  />
+                  <p>{item.volumeInfo.title}</p>
+                  <p>{item.volumeInfo.authors}</p>
+                </div>
+              );
             })}
           </div>
         )}
