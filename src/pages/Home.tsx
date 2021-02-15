@@ -11,18 +11,20 @@ const Home: React.FC = () => {
 
   //console.log(user);
   useEffect(() => {
-    firebase
-      .firestore()
-      .collection("comments")
-      .orderBy("date", "desc")
-      .onSnapshot((snapshot) => {
-        const homes: any = snapshot.docs.map((doc) => {
-          return doc.data();
+    if (user) {
+      firebase
+        .firestore()
+        .collection("comments")
+        .orderBy("date", "desc")
+        .onSnapshot((snapshot) => {
+          const homes: any = snapshot.docs.map((doc) => {
+            return doc.data();
+          });
+          setHome(homes);
+          console.log(home);
         });
-        setHome(homes);
-        console.log(home);
-      });
-  }, []);
+    }
+  }, [user]);
   return (
     <>
       <h1>Home</h1>
