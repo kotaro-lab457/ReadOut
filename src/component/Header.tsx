@@ -14,13 +14,17 @@ const Header: React.FC = () => {
         });
       });
   };
+
+  const handleSignOut = () => {
+    firebase.auth().signOut();
+  };
   return (
     <header>
       <p>My Portfolio</p>
       <Link to="/">Room</Link>
       <Link to="/books">検索</Link>
       <Link to="/make">作成</Link>
-      <button onClick={() => firebase.auth().signOut()}>Log out</button>
+      <button onClick={handleSignOut}>Log out</button>
       <button onClick={handleGuestLogin}>ゲストログイン</button>
     </header>
   );
