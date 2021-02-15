@@ -3,8 +3,8 @@ import firebase from "./config/Firebase";
 
 interface userContext {
   user: any;
-  displayName: any;
-  uid: any;
+  displayName: string;
+  uid: string;
 }
 
 const AuthContext = React.createContext<userContext>({

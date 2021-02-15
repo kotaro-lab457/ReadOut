@@ -22,7 +22,7 @@ const Room: React.FC = () => {
   return (
     <>
       <div>
-        <h1>投稿一覧</h1>
+        <h1>Home</h1>
         <ul>
           {post.map((list, id) => (
             <li key={id}>

@@ -12,6 +12,7 @@ const BooksSearch: React.FC = () => {
     // q: 全文文字列
     const params = { q: searchString };
     console.log(params);
+    // 例外が発生することを考慮（try〜catch構文）
     try {
       // axios.get()でHTTPリクエストを送ることができる。
       const response = await axios.get(url, { params });

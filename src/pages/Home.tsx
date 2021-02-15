@@ -9,7 +9,6 @@ const Home: React.FC = () => {
   const [home, setHome] = useState<PostText[]>([]);
   const user = useContext(AuthContext);
 
-  //console.log(user);
   useEffect(() => {
     if (user) {
       firebase
@@ -21,14 +20,16 @@ const Home: React.FC = () => {
             return doc.data();
           });
           setHome(homes);
-          console.log(home);
         });
     }
   }, [user]);
+  const userName = firebase.auth().currentUser;
   return (
     <>
-      <h1>Home</h1>
+      <h1>プロフィール</h1>
+      <p>※ゲストログインの場合は、投稿の履歴が残りません</p>
       <div>
+        <p>ユーザー名：{userName?.displayName}</p>
         <ul>
           {home.map((list, id) => (
             <li key={id}>
