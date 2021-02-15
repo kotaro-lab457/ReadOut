@@ -25,10 +25,10 @@ const Header: React.FC = (props: any) => {
   return (
     <header>
       <p>My Portfolio</p>
-      {user && <Link to="/home">ホーム</Link>}
-      <Link to="/">Room</Link>
+      {user && <Link to="/home">プロフィール</Link>}
+      <Link to="/">ホーム</Link>
       <Link to="/books">検索</Link>
-      <Link to="/make">作成</Link>
+      {user && <Link to="/make">作成</Link>}
       <Link to="/login">ログイン</Link>
       <button onClick={handleSignOut}>Log out</button>
       <button onClick={handleGuestLogin}>ゲストログイン</button>
