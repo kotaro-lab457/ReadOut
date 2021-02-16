@@ -3,7 +3,7 @@ import firebase from "../config/Firebase";
 
 import { AuthContext } from "../AuthService";
 
-const Make: React.FC = () => {
+const SetUp: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [comment, setComment] = useState<string>("");
   const [page, setPage] = useState<string>("");
@@ -12,7 +12,7 @@ const Make: React.FC = () => {
 
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
-    firebase.firestore().collection("comments").add({
+    firebase.firestore().collection("comments").doc().set({
       user: user.displayName,
       books: title,
       content: comment,
@@ -23,7 +23,7 @@ const Make: React.FC = () => {
     setComment("");
     setTitle("");
     setPage("");
-    console.log(title + comment);
+    console.log(title + ":" + page + "." + comment);
   };
   return (
     <>
@@ -61,4 +61,4 @@ const Make: React.FC = () => {
   );
 };
 
-export default Make;
+export default SetUp;

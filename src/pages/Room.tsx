@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../config/Firebase";
 
-import { PostText } from "./Post.module";
+import { PostText } from "../module.TS/Post.module";
 
 const Room: React.FC = () => {
-  const [post, setPost] = useState<PostText[]>([]);
+  const [postText, setPostText] = useState<PostText[]>([]);
 
   useEffect(() => {
     firebase
@@ -15,16 +15,16 @@ const Room: React.FC = () => {
         const posts: any = snapshot.docs.map((doc) => {
           return doc.data();
         });
-        setPost(posts);
+        setPostText(posts);
       });
   }, []);
-  console.log("post", post);
+  console.log("postText", postText);
   return (
     <>
       <div>
         <h1>Home</h1>
         <ul>
-          {post.map((list, id) => (
+          {postText.map((list, id) => (
             <li key={id}>
               <div>
                 <p>ユーザー：{list.user}</p>
