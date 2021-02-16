@@ -3,11 +3,15 @@ import React, { useState, useContext, useEffect } from "react";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 
-import { PostText } from "./Post.module";
+import { PostText } from "../module.TS/Post.module";
 
 const Home: React.FC = () => {
-  const [home, setHome] = useState<PostText[]>([]);
+  const [homeText, setHomeText] = useState<PostText[]>([]);
+
+  // 編集用のStateを作る
+  // firebase updateを作る
   const user = useContext(AuthContext);
+  const userName = firebase.auth().currentUser;
 
   useEffect(() => {
     if (user) {
@@ -19,11 +23,18 @@ const Home: React.FC = () => {
           const homes: any = snapshot.docs.map((doc) => {
             return doc.data();
           });
-          setHome(homes);
+          setHomeText(homes);
         });
     }
   }, [user]);
-  const userName = firebase.auth().currentUser;
+
+  // querySnapshot 複数のドキュメントのデータを持っている
+
+  // add でドキュメントIDを自動生成
+  const handleDelete = () => {
+    firebase.firestore().collection("comments").doc().delete();
+  };
+
   return (
     <>
       <h1>プロフィール</h1>
@@ -31,13 +42,16 @@ const Home: React.FC = () => {
       <div>
         <p>ユーザー名：{userName?.displayName}</p>
         <ul>
-          {home.map((list, id) => (
+          {homeText.map((list, id) => (
             <li key={id}>
               {list.uid === user.uid && (
+                // 編集（Edit）タグで囲んであげる
                 <div>
                   <p>タイトル：{list.books}</p>
                   <p>ページ：{list.pages}</p>
                   <p>感想：{list.content}</p>
+                  <button>編集</button>
+                  <button onClick={handleDelete}>削除</button>
                 </div>
               )}
             </li>
