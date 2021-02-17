@@ -21,6 +21,7 @@ const Home: React.FC = () => {
         .orderBy("date", "desc")
         .onSnapshot((snapshot) => {
           const homes: any = snapshot.docs.map((doc) => {
+            // ドキュメント取得
             return doc.data();
           });
           setHomeText(homes);
@@ -31,9 +32,6 @@ const Home: React.FC = () => {
   // querySnapshot 複数のドキュメントのデータを持っている
 
   // add でドキュメントIDを自動生成
-  const handleDelete = () => {
-    firebase.firestore().collection("comments").doc().delete();
-  };
 
   return (
     <>
@@ -45,13 +43,24 @@ const Home: React.FC = () => {
           {homeText.map((list, id) => (
             <li key={id}>
               {list.uid === user.uid && (
+                // ドキュメントのuser.uidとuserのuidを
                 // 編集（Edit）タグで囲んであげる
                 <div>
                   <p>タイトル：{list.books}</p>
                   <p>ページ：{list.pages}</p>
                   <p>感想：{list.content}</p>
                   <button>編集</button>
-                  <button onClick={handleDelete}>削除</button>
+                  <button
+                    onClick={() => {
+                      firebase
+                        .firestore()
+                        .collection("comments")
+                        .doc(`${list.id}`)
+                        .delete();
+                    }}
+                  >
+                    削除
+                  </button>
                 </div>
               )}
             </li>
