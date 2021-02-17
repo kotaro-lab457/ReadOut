@@ -13,19 +13,16 @@ const Home: React.FC = () => {
   const user = useContext(AuthContext);
   const userName = firebase.auth().currentUser;
 
+  const FS = firebase.firestore().collection("text");
   useEffect(() => {
     if (user) {
-      firebase
-        .firestore()
-        .collection("comments")
-        .orderBy("date", "desc")
-        .onSnapshot((snapshot) => {
-          const homes: any = snapshot.docs.map((doc) => {
-            // ドキュメント取得
-            return doc.data();
-          });
-          setHomeText(homes);
+      FS.orderBy("date", "desc").onSnapshot((snapshot) => {
+        const homes: any = snapshot.docs.map((doc) => {
+          // ドキュメント取得
+          return doc.data();
         });
+        setHomeText(homes);
+      });
     }
   }, [user]);
 
@@ -52,11 +49,7 @@ const Home: React.FC = () => {
                   <button>編集</button>
                   <button
                     onClick={() => {
-                      firebase
-                        .firestore()
-                        .collection("comments")
-                        .doc(`${list.id}`)
-                        .delete();
+                      FS.doc(`${list.id}`).delete();
                     }}
                   >
                     削除

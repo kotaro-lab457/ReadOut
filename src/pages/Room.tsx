@@ -6,19 +6,17 @@ import { PostText } from "../module.TS/Post.module";
 const Room: React.FC = () => {
   const [postText, setPostText] = useState<PostText[]>([]);
 
+  const FS = firebase.firestore().collection("text");
+
   useEffect(() => {
-    firebase
-      .firestore()
-      .collection("comments")
-      .orderBy("date", "desc")
-      .onSnapshot((snapshot) => {
-        const posts: any = snapshot.docs.map((doc) => {
-          return doc.data();
-        });
-        setPostText(posts);
+    FS.orderBy("date", "desc").onSnapshot((snapshot) => {
+      const posts: any = snapshot.docs.map((doc) => {
+        return doc.data();
       });
+      setPostText(posts);
+    });
   }, []);
-  console.log("postText", postText);
+
   return (
     <>
       <div>

@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Room from "./pages/Room";
 import Home from "./pages/Home";
 import BooksSearch from "./pages/BooksSearch";
+import Editing from "./pages/Editing";
 
 import Header from "./component/Header";
 
@@ -25,6 +26,7 @@ const App: React.FC = () => {
               <Route exact path="/books" component={BooksSearch} />
               <Route exact path="/" component={Room} />
               <Route exact path="/home" component={Home} />
+              <Route exact path="/edit" component={Editing} />
             </AuthService>
           </Switch>
         </main>
