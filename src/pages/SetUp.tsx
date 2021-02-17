@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import firebase from "../config/Firebase";
 
 import { AuthContext } from "../AuthService";
@@ -7,23 +7,27 @@ const SetUp: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [comment, setComment] = useState<string>("");
   const [page, setPage] = useState<string>("");
+  const [count, setCount] = useState<number>(0);
 
   const user = useContext(AuthContext);
 
+  //let currentID = 0;
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
-    firebase.firestore().collection("comments").doc().set({
+    firebase.firestore().collection("comments").doc(`${count}`).set({
       user: user.displayName,
       books: title,
       content: comment,
       pages: page,
       date: new Date(),
       uid: user.uid,
+      id: count,
     });
     setComment("");
     setTitle("");
     setPage("");
-    console.log(title + ":" + page + "." + comment);
+    setCount(count + 1);
+    console.log(count);
   };
   return (
     <>

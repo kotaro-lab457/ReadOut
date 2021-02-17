@@ -5,4 +5,5 @@ export interface PostText {
     pages: string;
     uid: string;
     editing:boolean
+    id:any
   }
