@@ -5,7 +5,7 @@ import { AuthContext } from "../AuthService";
 
 const SetUp: React.FC = () => {
   const [title, setTitle] = useState<string>("");
-  const [comment, setComment] = useState<string>("");
+  const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
   const [count, setCount] = useState<number>(0);
 
@@ -18,17 +18,18 @@ const SetUp: React.FC = () => {
     e.preventDefault();
     FS.doc(`${count}`).set({
       user: user.displayName,
-      books: title,
-      content: comment,
-      pages: page,
+      title: title,
+      text: text,
+      page: page,
       date: new Date(),
       uid: user.uid,
       id: count,
+      editing: false,
     });
-    setComment("");
+    setText("");
     setTitle("");
     setPage("");
-    setCount(count + 1);
+    setCount(count + 1); //ランダムにする
     console.log(count);
   };
   return (
@@ -57,8 +58,8 @@ const SetUp: React.FC = () => {
           <textarea
             id="add"
             placeholder="コメント入力"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
         </div>
         <button>投稿</button>

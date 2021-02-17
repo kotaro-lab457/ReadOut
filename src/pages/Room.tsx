@@ -16,6 +16,7 @@ const Room: React.FC = () => {
       setPostText(posts);
     });
   }, []);
+  console.log(postText);
 
   return (
     <>
@@ -26,9 +27,9 @@ const Room: React.FC = () => {
             <li key={id}>
               <div>
                 <p>ユーザー：{list.user}</p>
-                <p>タイトル：{list.books}</p>
-                <p>ページ：{list.pages}</p>
-                <p>感想：{list.content}</p>
+                <p>タイトル：{list.title}</p>
+                <p>ページ：{list.page}</p>
+                <p>感想：{list.text}</p>
               </div>
             </li>
           ))}
