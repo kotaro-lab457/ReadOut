@@ -11,10 +11,12 @@ const SetUp: React.FC = () => {
 
   const user = useContext(AuthContext);
 
+  const FS = firebase.firestore().collection("text");
+
   //let currentID = 0;
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
-    firebase.firestore().collection("comments").doc(`${count}`).set({
+    FS.doc(`${count}`).set({
       user: user.displayName,
       books: title,
       content: comment,
