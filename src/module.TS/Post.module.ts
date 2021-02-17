@@ -1,8 +1,8 @@
 export interface PostText {
     user: string;
-    books: string;
-    content: string;
-    pages: string;
+    title: string;
+    text: string;
+    page: string;
     uid: string;
     editing:boolean
     id:any

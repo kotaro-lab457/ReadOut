@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
-
+import Editing from "./Editing";
+import List from "./List";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 
@@ -26,9 +27,27 @@ const Home: React.FC = () => {
     }
   }, [user]);
 
-  // querySnapshot 複数のドキュメントのデータを持っている
-
-  // add でドキュメントIDを自動生成
+  const textUpdate = (
+    id: number,
+    title: string,
+    page: string,
+    text: string
+  ) => {
+    setHomeText(
+      homeText.map((texts) => {
+        if (texts.id === id) {
+          return {
+            ...texts,
+            title,
+            page,
+            text,
+            editing: false,
+          };
+        }
+        return texts;
+      })
+    );
+  };
 
   return (
     <>
@@ -42,19 +61,13 @@ const Home: React.FC = () => {
               {list.uid === user.uid && (
                 // ドキュメントのuser.uidとuserのuidを
                 // 編集（Edit）タグで囲んであげる
-                <div>
-                  <p>タイトル：{list.books}</p>
-                  <p>ページ：{list.pages}</p>
-                  <p>感想：{list.content}</p>
-                  <button>編集</button>
-                  <button
-                    onClick={() => {
-                      FS.doc(`${list.id}`).delete();
-                    }}
-                  >
-                    削除
-                  </button>
-                </div>
+                <>
+                  {list.editing ? (
+                    <Editing key={id} list={list} textUpdate={textUpdate} />
+                  ) : (
+                    <List list={list} key={id} />
+                  )}
+                </>
               )}
             </li>
           ))}

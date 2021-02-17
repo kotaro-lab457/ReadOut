@@ -2,11 +2,20 @@ import React, { useState, useEffect } from "react";
 
 import firebase from "../config/Firebase";
 
-const Editing: React.FC = () => {
+interface homeProps {
+  list: { id: number; title: string; page: string; text: string };
+  textUpdate: (id: number, title: string, page: string, text: string) => void;
+}
+
+const Editing: React.FC<homeProps> = (props) => {
   const [title, setTitle] = useState<string>("");
-  const [comment, setComment] = useState<string>("");
+  const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
   const FS = firebase.firestore().collection("text");
+
+  const editTextChange = () => {
+    props.textUpdate(props.list.id, title, page, text);
+  };
 
   // useEffect(() => {
   //     FS.orderBy("date", "desc").onSnapshot((snapshot) => {
@@ -21,7 +30,6 @@ const Editing: React.FC = () => {
 
   return (
     <>
-      <h1>編集画面</h1>
       <div>
         <p>読んだ本は？</p>
         <input
@@ -44,12 +52,12 @@ const Editing: React.FC = () => {
         <textarea
           id="add"
           placeholder="コメント入力"
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
         />
       </div>
       <button>キャンセル</button>
-      <button>更新</button>
+      <button onClick={editTextChange}>更新</button>
     </>
   );
 };
