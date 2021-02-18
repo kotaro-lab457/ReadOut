@@ -9,9 +9,8 @@ import { PostText } from "../module.TS/Post.module";
 const Home: React.FC = () => {
   const [homeText, setHomeText] = useState<PostText[]>([]);
 
-  // 編集用のStateを作る
-  // firebase updateを作る
   const user = useContext(AuthContext);
+  // ユーザー名の取得
   const userName = firebase.auth().currentUser;
 
   const FS = firebase.firestore().collection("text");
@@ -27,21 +26,14 @@ const Home: React.FC = () => {
     }
   }, [user]);
 
-  const textUpdate = (
-    id: number,
-    title: string,
-    page: string,
-    text: string
-  ) => {
+  // 配列で管理されたhomeTextのそれぞれのIDとEdit（編集）を結びつけ、LISTとEditを反転させる
+  const editChange = (id: number, editing: boolean) => {
     setHomeText(
       homeText.map((texts) => {
         if (texts.id === id) {
           return {
             ...texts,
-            title,
-            page,
-            text,
-            editing: false,
+            editing,
           };
         }
         return texts;
@@ -63,9 +55,9 @@ const Home: React.FC = () => {
                 // 編集（Edit）タグで囲んであげる
                 <>
                   {list.editing ? (
-                    <Editing key={id} list={list} textUpdate={textUpdate} />
+                    <Editing key={id} list={list} editChange={editChange} />
                   ) : (
-                    <List list={list} key={id} />
+                    <List key={id} list={list} editChange={editChange} />
                   )}
                 </>
               )}
