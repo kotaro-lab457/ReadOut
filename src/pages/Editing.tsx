@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import firebase from "../config/Firebase";
 
@@ -16,17 +16,6 @@ const Editing: React.FC<homeProps> = (props) => {
   const editTextChange = () => {
     props.textUpdate(props.list.id, title, page, text);
   };
-
-  // useEffect(() => {
-  //     FS.orderBy("date", "desc").onSnapshot((snapshot) => {
-  //       const homes: any = snapshot.docs.map((doc) => {
-  //         // ドキュメント取得
-  //         return doc.data();
-  //       });
-  //       setHomeText(homes);
-  //     });
-  //   }
-  // }, []);
 
   return (
     <>
