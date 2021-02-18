@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import firebase from "../config/Firebase";
 
 import { AuthContext } from "../AuthService";
@@ -13,6 +13,7 @@ const SetUp: React.FC = () => {
 
   const FS = firebase.firestore().collection("text");
 
+  let createId = Math.random() * 100;
   //let currentID = 0;
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +30,7 @@ const SetUp: React.FC = () => {
     setText("");
     setTitle("");
     setPage("");
-    setCount(count + 1); //ランダムにする
+    setCount(count + createId); //ランダムにする
     console.log(count);
   };
   return (
