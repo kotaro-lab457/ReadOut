@@ -3,18 +3,17 @@ import firebase from "../config/Firebase";
 
 import { AuthContext } from "../AuthService";
 
+let createId = Math.random() * 10;
 const SetUp: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
-  const [count, setCount] = useState<number>(0);
+  const [count, setCount] = useState<number>(createId);
 
   const user = useContext(AuthContext);
 
   const FS = firebase.firestore().collection("text");
 
-  let createId = Math.random() * 100;
-  //let currentID = 0;
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
     FS.doc(`${count}`).set({
@@ -30,7 +29,7 @@ const SetUp: React.FC = () => {
     setText("");
     setTitle("");
     setPage("");
-    setCount(count + createId); //ランダムにする
+    setCount(count + createId);
     console.log(count);
   };
   return (
@@ -40,7 +39,7 @@ const SetUp: React.FC = () => {
         <div>
           <p>読んだ本は？</p>
           <input
-            id="add"
+            id="title"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -49,7 +48,7 @@ const SetUp: React.FC = () => {
           <label>
             P:
             <input
-              id="add"
+              id="page"
               type="text"
               value={page}
               onChange={(e) => setPage(e.target.value)}
@@ -57,7 +56,7 @@ const SetUp: React.FC = () => {
           </label>
           <p>感想＆要約</p>
           <textarea
-            id="add"
+            id="text"
             placeholder="コメント入力"
             value={text}
             onChange={(e) => setText(e.target.value)}
