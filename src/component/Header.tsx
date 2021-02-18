@@ -29,9 +29,9 @@ const Header: React.FC = (props: any) => {
       <Link to="/">ホーム</Link>
       <Link to="/books">検索</Link>
       {user && <Link to="/setup">作成</Link>}
-      <Link to="/login">ログイン</Link>
-      <button onClick={handleSignOut}>Log out</button>
-      <button onClick={handleGuestLogin}>ゲストログイン</button>
+      {!user && <Link to="/login">ログイン</Link>}
+      {!user && <button onClick={handleGuestLogin}>ゲストログイン</button>}
+      {user && <button onClick={handleSignOut}>Log out</button>}
     </header>
   );
 };
