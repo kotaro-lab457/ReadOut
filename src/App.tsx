@@ -18,19 +18,17 @@ const App: React.FC = () => {
         <AuthService>
           <Header />
         </AuthService>
-        <main>
-          <Table>
-            <Switch>
-              <AuthService>
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/setup" component={SetUp} />
-                <Route exact path="/books" component={BooksSearch} />
-                <Route exact path="/" component={Room} />
-                <Route exact path="/home" component={Home} />
-              </AuthService>
-            </Switch>
-          </Table>
-        </main>
+        <Table>
+          <Switch>
+            <AuthService>
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/setup" component={SetUp} />
+              <Route exact path="/books" component={BooksSearch} />
+              <Route exact path="/" component={Room} />
+              <Route exact path="/home" component={Home} />
+            </AuthService>
+          </Switch>
+        </Table>
       </BrowserRouter>
       <footer></footer>
     </>

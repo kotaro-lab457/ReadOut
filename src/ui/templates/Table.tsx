@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Table = styled.div`
-  background-color: #e4f9f5;
+  background-color: #fbfad3;
 `;
 
 export default Table;
