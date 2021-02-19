@@ -47,9 +47,9 @@ const Home: React.FC = () => {
       <p>※ゲストログインの場合は、投稿の履歴が残りません</p>
       <div>
         <p>ユーザー名：{userName?.displayName}</p>
-        <ul>
+        <div>
           {homeText.map((list, id) => (
-            <li key={id}>
+            <div key={id}>
               {list.uid === user.uid && (
                 // ドキュメントのuser.uidとuserのuidを
                 // 編集（Edit）タグで囲んであげる
@@ -61,9 +61,9 @@ const Home: React.FC = () => {
                   )}
                 </>
               )}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </>
   );
