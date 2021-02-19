@@ -4,9 +4,11 @@ import { Link, withRouter } from "react-router-dom";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 
-import Title from "../ui/atoms/title";
+import { Title } from "../ui/atoms/title";
 import Button from "../ui/atoms/button";
-import HeaderTable from "../ui/organisms/header";
+import LinkTag from "../ui/atoms/Link";
+import TableHeader from "../ui/molecules/TableHeader";
+import MainHeader from "../ui/organisms/MainHeader";
 
 import {
   faHome,
@@ -34,50 +36,48 @@ const Header: React.FC = (props: any) => {
     props.history.push("/");
   };
   return (
-    <HeaderTable>
-      <div style={{ display: "flex" }}>
-        <Title>Reading Output</Title>
-        <div style={{ display: "flex" }}>
-          <p>
-            <Link to="/">
-              <FontAwesomeIcon icon={faHome} />
-              ホーム
+    <MainHeader>
+      <Title>Reading Output</Title>
+      <TableHeader>
+        <LinkTag>
+          <Link to="/">
+            <FontAwesomeIcon icon={faHome} />
+            Home
+          </Link>
+        </LinkTag>
+        {user && (
+          <LinkTag>
+            <Link to="/home">
+              <FontAwesomeIcon icon={faUser} />
+              Profile
             </Link>
-          </p>
-          {user && (
-            <p>
-              <Link to="/home">
-                <FontAwesomeIcon icon={faUser} />
-                プロフィール
-              </Link>
-            </p>
-          )}
-          <p>
-            <Link to="/books">
-              <FontAwesomeIcon icon={faSearch} />
-              検索
-            </Link>
-          </p>
-          {user && (
-            <p>
-              <Link to="/setup">作成</Link>
-            </p>
-          )}
-          {!user && (
-            <p>
-              <Link to="/login">ログイン</Link>
-            </p>
-          )}
-          {!user && <button onClick={handleGuestLogin}>ゲストログイン</button>}
-          {user && (
-            <Button onClick={handleSignOut}>
-              <FontAwesomeIcon icon={faSignOutAlt} />
-              Log out
-            </Button>
-          )}
-        </div>
-      </div>
-    </HeaderTable>
+          </LinkTag>
+        )}
+        <LinkTag>
+          <Link to="/books">
+            <FontAwesomeIcon icon={faSearch} />
+            Search
+          </Link>
+        </LinkTag>
+        {user && (
+          <LinkTag>
+            <Link to="/setup">作成</Link>
+          </LinkTag>
+        )}
+        {!user && (
+          <LinkTag>
+            <Link to="/login">Login</Link>
+          </LinkTag>
+        )}
+        {!user && <Button onClick={handleGuestLogin}>ゲストログイン</Button>}
+        {user && (
+          <Button onClick={handleSignOut}>
+            <FontAwesomeIcon icon={faSignOutAlt} />
+            Log out
+          </Button>
+        )}
+      </TableHeader>
+    </MainHeader>
   );
 };
 
