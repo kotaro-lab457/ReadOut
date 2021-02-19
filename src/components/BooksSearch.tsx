@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { TitleName } from "../ui/atoms/title";
 
 const BooksSearch: React.FC = () => {
   const [searchString, setSearchString] = useState("");
@@ -36,35 +37,32 @@ const BooksSearch: React.FC = () => {
   };
   return (
     <>
-      <h1>googleBooks</h1>
-
-      <input
-        type="text"
-        onChange={(event) => setSearchString(event.target.value)}
-      />
-      <button
-        disabled={!searchString}
-        onClick={(event) => handleSearchClick(event)}
-      >
-        検索
-      </button>
+      <TitleName>BOOKS検索</TitleName>
       <div>
-        {searchResult && (
-          <div>
-            {searchResult.items.map((item: any) => {
-              return (
-                <div key={item.id}>
-                  <img
-                    src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
-                    alt=""
-                  />
-                  <p>{item.volumeInfo.title}</p>
-                  <p>{item.volumeInfo.authors}</p>
-                </div>
-              );
-            })}
-          </div>
-        )}
+        <input
+          type="text"
+          placeholder="キーワードを入力"
+          onChange={(event) => setSearchString(event.target.value)}
+        />
+        <button onClick={(event) => handleSearchClick(event)}>検索</button>
+        <div>
+          {searchResult && (
+            <div>
+              {searchResult.items.map((item: any) => {
+                return (
+                  <div key={item.id}>
+                    <img
+                      src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
+                      alt=""
+                    />
+                    <p>{item.volumeInfo.title}</p>
+                    <p>{item.volumeInfo.authors}</p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

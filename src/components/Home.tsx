@@ -6,7 +6,7 @@ import { AuthContext } from "../AuthService";
 
 import { PostText } from "../module.TS/Post.module";
 
-import { TitlePage } from "../ui/atoms/title";
+import { TitleName } from "../ui/atoms/title";
 
 const Home: React.FC = () => {
   const [homeText, setHomeText] = useState<PostText[]>([]);
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <TitlePage>プロフィール</TitlePage>
+      <TitleName>プロフィール</TitleName>
       <p>※ゲストログインの場合は、投稿の履歴が残りません</p>
       <div>
         <p>ユーザー名：{userName?.displayName}</p>

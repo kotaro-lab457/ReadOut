@@ -5,7 +5,7 @@ import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 
 import { Title } from "../ui/atoms/title";
-import Button from "../ui/atoms/button";
+import { Button } from "../ui/atoms/button";
 import LinkTag from "../ui/atoms/Link";
 import TableHeader from "../ui/molecules/TableHeader";
 import MainHeader from "../ui/organisms/MainHeader";
@@ -66,10 +66,18 @@ const Header: React.FC = (props: any) => {
         )}
         {!user && (
           <LinkTag>
-            <Link to="/login">Login</Link>
+            <Link to="/login">
+              <FontAwesomeIcon icon={faSignOutAlt} />
+              Login
+            </Link>
           </LinkTag>
         )}
-        {!user && <Button onClick={handleGuestLogin}>ゲストログイン</Button>}
+        {!user && (
+          <Button onClick={handleGuestLogin}>
+            <FontAwesomeIcon icon={faUser} />
+            Guest
+          </Button>
+        )}
         {user && (
           <Button onClick={handleSignOut}>
             <FontAwesomeIcon icon={faSignOutAlt} />
