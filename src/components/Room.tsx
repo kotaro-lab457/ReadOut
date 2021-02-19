@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../config/Firebase";
 
-import { TitlePage } from "../ui/atoms/title";
+import { TitleName } from "../ui/atoms/title";
 import { PostText } from "../module.TS/Post.module";
 
 const Room: React.FC = () => {
@@ -22,7 +22,7 @@ const Room: React.FC = () => {
   return (
     <>
       <div>
-        <TitlePage>Home</TitlePage>
+        <TitleName>Home</TitleName>
         <ul>
           {postText.map((list, id) => (
             <li key={id}>
