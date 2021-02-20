@@ -36,9 +36,7 @@ const BooksSearch: React.FC = () => {
     }
   };
 
-  const handleSearchClick = async (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const handleSearchSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const result = await searchGoogleBooks(searchString);
     if (result.isSuccess) {
@@ -53,14 +51,16 @@ const BooksSearch: React.FC = () => {
         <TableSearch>
           <SubTableSearch>
             <TitleName>Books Search</TitleName>
-            <SearchInput
-              type="text"
-              placeholder="キーワードを入力"
-              onChange={(event) => setSearchString(event.target.value)}
-            />
-            <SearchButton onClick={(event) => handleSearchClick(event)}>
-              <FontAwesomeIcon icon={faSearch} />
-            </SearchButton>
+            <form onSubmit={handleSearchSubmit}>
+              <SearchInput
+                type="text"
+                placeholder="キーワードを入力"
+                onChange={(event) => setSearchString(event.target.value)}
+              />
+              <SearchButton>
+                <FontAwesomeIcon icon={faSearch} />
+              </SearchButton>
+            </form>
           </SubTableSearch>
           <div>
             {searchResult && (

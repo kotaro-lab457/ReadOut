@@ -4,6 +4,7 @@ export interface PostText {
     text: string;
     page: string;
     uid: string;
-    editing:boolean
-    id:any
+    editing:boolean;
+    id:number;
+    createAt:number;
   }

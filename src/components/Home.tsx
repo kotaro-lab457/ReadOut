@@ -7,6 +7,8 @@ import { AuthContext } from "../AuthService";
 import { PostText } from "../module.TS/Post.module";
 
 import { TitleName } from "../ui/atoms/title";
+import { TableHome, SubTableHome } from "../ui/molecules/TableHome";
+import MainHome from "../ui/organisms/MainHome";
 
 const Home: React.FC = () => {
   const [homeText, setHomeText] = useState<PostText[]>([]);
@@ -45,28 +47,28 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <TitleName>プロフィール</TitleName>
-      <p>※ゲストログインの場合は、投稿の履歴が残りません</p>
-      <div>
-        <p>ユーザー名：{userName?.displayName}</p>
-        <div>
+      <MainHome>
+        <TableHome>
+          <TitleName>Profile</TitleName>
+          <p>※ゲストログインの場合は、投稿の履歴が残りません</p>
+          <p>ユーザー名：{userName?.displayName}</p>
           {homeText.map((list, id) => (
             <div key={id}>
               {list.uid === user.uid && (
                 // ドキュメントのuser.uidとuserのuidを
                 // 編集（Edit）タグで囲んであげる
-                <>
+                <SubTableHome>
                   {list.editing ? (
                     <Editing key={id} list={list} editChange={editChange} />
                   ) : (
                     <List key={id} list={list} editChange={editChange} />
                   )}
-                </>
+                </SubTableHome>
               )}
             </div>
           ))}
-        </div>
-      </div>
+        </TableHome>
+      </MainHome>
     </>
   );
 };

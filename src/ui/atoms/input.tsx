@@ -16,5 +16,6 @@ const SearchInput = styled.input`
   padding: 10px 20px;
   width: 500px;
   outline: none;
+  margin: 20px 0 10px;
 `;
 export { LoginInput, SearchInput };
