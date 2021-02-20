@@ -36,16 +36,17 @@ const Editing: React.FC<homeProps> = (props) => {
   return (
     <>
       <div>
-        <p>読んだ本は？</p>
-        <input
-          id="title"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <p>何ページ読んだか？</p>
         <p>
-          P:
+          タイトル：
+          <input
+            id="title"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </p>
+        <p>
+          ページ：
           <input
             id="page"
             type="text"
@@ -54,7 +55,7 @@ const Editing: React.FC<homeProps> = (props) => {
           />
         </p>
         <p>
-          感想＆要約
+          感想：
           <input
             id="text"
             type="text"

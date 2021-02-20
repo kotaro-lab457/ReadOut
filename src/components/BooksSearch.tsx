@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { TitleName } from "../ui/atoms/title";
 import { SearchInput } from "../ui/atoms/input";

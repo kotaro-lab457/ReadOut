@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const TableSearch = styled.div`
+  padding: 2rem;
   margin: 0 auto;
   width: 60%;
 `;

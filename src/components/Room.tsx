@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import firebase from "../config/Firebase";
 
 import { TitleName } from "../ui/atoms/title";
+import MainRoom from "../ui/organisms/MainRoom";
+import { TableRoom, SubTableRoom } from "../ui/molecules/TableRoom";
+
 import { PostText } from "../module.TS/Post.module";
 
 const Room: React.FC = () => {
@@ -21,21 +24,19 @@ const Room: React.FC = () => {
 
   return (
     <>
-      <div>
-        <TitleName>Home</TitleName>
-        <ul>
+      <MainRoom>
+        <TableRoom>
+          <TitleName>Home</TitleName>
           {postText.map((list, id) => (
-            <li key={id}>
-              <div>
-                <p>ユーザー：{list.user}</p>
-                <p>タイトル：{list.title}</p>
-                <p>ページ：{list.page}</p>
-                <p>感想：{list.text}</p>
-              </div>
-            </li>
+            <SubTableRoom key={id}>
+              <p>ユーザー：{list.user}</p>
+              <p>タイトル：{list.title}</p>
+              <p>ページ：{list.page}</p>
+              <p>感想：{list.text}</p>
+            </SubTableRoom>
           ))}
-        </ul>
-      </div>
+        </TableRoom>
+      </MainRoom>
     </>
   );
 };

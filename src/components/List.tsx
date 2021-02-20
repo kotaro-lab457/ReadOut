@@ -1,6 +1,8 @@
 import React from "react";
-
 import firebase from "../config/Firebase";
+
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface listProps {
   list: {
@@ -29,12 +31,16 @@ const List: React.FC<listProps> = (props) => {
   return (
     <>
       <div>
-        <p>読んだ本：{props.list.title}</p>
-        <p>P:{props.list.page}</p>
+        <p>タイトル：{props.list.title}</p>
+        <p>ページ:{props.list.page}</p>
         <p>感想：{props.list.text}</p>
       </div>
-      <button onClick={handleEditChange}>編集</button>
-      <button onClick={handleDelete}>削除</button>
+      <button onClick={handleEditChange}>
+        <FontAwesomeIcon icon={faEdit} />
+      </button>
+      <button onClick={handleDelete}>
+        <FontAwesomeIcon icon={faTrashAlt} />
+      </button>
     </>
   );
 };
