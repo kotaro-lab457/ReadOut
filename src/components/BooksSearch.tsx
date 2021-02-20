@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { TitleName } from "../ui/atoms/title";
+import { SearchInput } from "../ui/atoms/input";
+import { SearchButton } from "../ui/atoms/button";
+import MainSearch from "../ui/organisms/MainSearch";
+import {
+  TableSearch,
+  SubTableSearch,
+  ItemSearch,
+  TextSearch,
+} from "../ui/molecules/TableSearch";
+
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const BooksSearch: React.FC = () => {
   const [searchString, setSearchString] = useState("");
@@ -37,33 +49,43 @@ const BooksSearch: React.FC = () => {
   };
   return (
     <>
-      <TitleName>BOOKS検索</TitleName>
-      <div>
-        <input
-          type="text"
-          placeholder="キーワードを入力"
-          onChange={(event) => setSearchString(event.target.value)}
-        />
-        <button onClick={(event) => handleSearchClick(event)}>検索</button>
-        <div>
-          {searchResult && (
-            <div>
-              {searchResult.items.map((item: any) => {
-                return (
-                  <div key={item.id}>
-                    <img
-                      src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
-                      alt=""
-                    />
-                    <p>{item.volumeInfo.title}</p>
-                    <p>{item.volumeInfo.authors}</p>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </div>
+      <MainSearch>
+        <TableSearch>
+          <SubTableSearch>
+            <TitleName>Books Search</TitleName>
+            <SearchInput
+              type="text"
+              placeholder="キーワードを入力"
+              onChange={(event) => setSearchString(event.target.value)}
+            />
+            <SearchButton onClick={(event) => handleSearchClick(event)}>
+              <FontAwesomeIcon icon={faSearch} />
+            </SearchButton>
+          </SubTableSearch>
+          <div>
+            {searchResult && (
+              <div>
+                {searchResult.items.map((item: any) => {
+                  return (
+                    <ItemSearch key={item.id}>
+                      <img
+                        src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
+                        alt=""
+                      />
+                      <TextSearch>
+                        <p>タイトル名：{item.volumeInfo.title}</p>
+                        <p>著者名：{item.volumeInfo.authors}</p>
+                        <p>発行日：{item.volumeInfo.publishedDate}</p>
+                        <p>ページ数：{item.volumeInfo.pageCount}</p>
+                      </TextSearch>
+                    </ItemSearch>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </TableSearch>
+      </MainSearch>
     </>
   );
 };
