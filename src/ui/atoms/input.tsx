@@ -6,6 +6,15 @@ const LoginInput = styled.input`
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
   width: 400px;
+  outline: none;
   position: relative;
 `;
-export { LoginInput };
+
+const SearchInput = styled.input`
+  font-size: 1.2rem;
+  border-radius: 20px 0 0 20px;
+  padding: 10px 20px;
+  width: 500px;
+  outline: none;
+`;
+export { LoginInput, SearchInput };

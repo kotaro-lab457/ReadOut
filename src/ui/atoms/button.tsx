@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+const HeaderButton = styled.button`
   padding: 10px;
   height: 50px;
   margin: 20px 0;
@@ -8,6 +8,7 @@ const Button = styled.button`
   font-weight: bold;
   background-color: #16c79a;
   border-radius: 20px;
+  outline: none;
   opacity: 0.9;
   &:hover {
     opacity: 1;
@@ -22,9 +23,19 @@ const LoginButton = styled.button`
   border-radius: 20px;
   background-color: #16c79a;
   opacity: 0.9;
+  outline: none;
   &:hover {
     opacity: 1;
   }
 `;
 
-export { Button, LoginButton };
+const SearchButton = styled.button`
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 0 20px 20px 0;
+  color: #fff;
+  background-color: #3879d9;
+  outline: none;
+`;
+
+export { HeaderButton, LoginButton, SearchButton };

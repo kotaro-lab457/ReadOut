@@ -6,8 +6,13 @@ const Title = styled.h1`
   margin 20px 0
 `;
 
-const TitleName = styled.h1`
+const TitleLogin = styled.h2`
   font-size: 3rem;
   margin: 2rem 0;
 `;
-export { Title, TitleName };
+
+const TitleName = styled.h2`
+  font-size: 3rem;
+  margin: 0;
+`;
+export { Title, TitleLogin, TitleName };
