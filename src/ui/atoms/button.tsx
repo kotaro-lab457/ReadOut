@@ -32,6 +32,7 @@ const LoginButton = styled.button`
 const SearchButton = styled.button`
   font-size: 1.2rem;
   padding: 10px 20px;
+  margin: 20px 0 10px;
   border-radius: 0 20px 20px 0;
   color: #fff;
   background-color: #3879d9;
