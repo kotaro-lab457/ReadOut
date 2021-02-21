@@ -1,12 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import Editing from "./Editing";
 import List from "./List";
+import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
-
 import { PostText } from "../module.TS/Post.module";
 
 import { TitleName } from "../ui/atoms/title";
+import { LinkSetUp } from "../ui/atoms/Link";
 import { TableHome, SubTableHome } from "../ui/molecules/TableHome";
 import MainHome from "../ui/organisms/MainHome";
 
@@ -67,6 +68,11 @@ const Home: React.FC = () => {
               )}
             </div>
           ))}
+          {user && (
+            <Link to="/setup">
+              <LinkSetUp></LinkSetUp>
+            </Link>
+          )}
         </TableHome>
       </MainHome>
     </>
