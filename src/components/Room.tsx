@@ -4,8 +4,9 @@ import firebase from "../config/Firebase";
 import { TitleName } from "../ui/atoms/title";
 import MainRoom from "../ui/organisms/MainRoom";
 import { TableRoom, SubTableRoom } from "../ui/molecules/TableRoom";
-
 import { PostText } from "../module.TS/Post.module";
+
+import moment from "moment";
 
 const Room: React.FC = () => {
   const [postText, setPostText] = useState<PostText[]>([]);
@@ -33,6 +34,7 @@ const Room: React.FC = () => {
               <p>タイトル：{list.title}</p>
               <p>ページ：{list.page}</p>
               <p>感想：{list.text}</p>
+              <span>{moment(list.createAt).format("A HH:mm YYYY/MM/DD")}</span>
             </SubTableRoom>
           ))}
         </TableRoom>

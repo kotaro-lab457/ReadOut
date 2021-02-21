@@ -25,7 +25,7 @@ const SetUp: React.FC = () => {
       uid: user.uid,
       id: count,
       editing: false,
-      createAt: new Date().getDay(),
+      createAt: new Date().getTime(),
     });
     setText("");
     setTitle("");

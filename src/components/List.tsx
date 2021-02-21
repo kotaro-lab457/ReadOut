@@ -1,5 +1,6 @@
 import React from "react";
 import firebase from "../config/Firebase";
+import moment from "moment";
 
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +12,7 @@ interface listProps {
     page: string;
     text: string;
     editing: boolean;
+    createAt: number;
   };
   editChange: (id: number, editing: boolean) => void;
 }
@@ -41,6 +43,7 @@ const List: React.FC<listProps> = (props) => {
       <button onClick={handleDelete}>
         <FontAwesomeIcon icon={faTrashAlt} />
       </button>
+      <span>{moment(props.list.createAt).format("A HH:mm YYYY/MM/DD")}</span>
     </>
   );
 };
