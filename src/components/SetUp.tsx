@@ -3,6 +3,8 @@ import firebase from "../config/Firebase";
 
 import { AuthContext } from "../AuthService";
 
+import { TitleName } from "../ui/atoms/title";
+
 let createId = Math.random() * 10;
 const SetUp: React.FC = () => {
   const [title, setTitle] = useState<string>("");
@@ -35,7 +37,7 @@ const SetUp: React.FC = () => {
   };
   return (
     <>
-      <h1>アウトプット 作成ページ</h1>
+      <TitleName>作成ページ</TitleName>
       <form onSubmit={handleComment}>
         <div>
           <p>読んだ本は？</p>
@@ -63,7 +65,7 @@ const SetUp: React.FC = () => {
             onChange={(e) => setText(e.target.value)}
           />
         </div>
-        <button>投稿</button>
+        <button disabled={!text}>投稿</button>
       </form>
     </>
   );

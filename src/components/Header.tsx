@@ -6,7 +6,7 @@ import { AuthContext } from "../AuthService";
 
 import { Title } from "../ui/atoms/title";
 import { HeaderButton } from "../ui/atoms/button";
-import LinkTag from "../ui/atoms/Link";
+import { LinkTag } from "../ui/atoms/Link";
 import TableHeader from "../ui/molecules/TableHeader";
 import MainHeader from "../ui/organisms/MainHeader";
 
@@ -59,11 +59,6 @@ const Header: React.FC = (props: any) => {
             Search
           </Link>
         </LinkTag>
-        {user && (
-          <LinkTag>
-            <Link to="/setup">作成</Link>
-          </LinkTag>
-        )}
         {!user && (
           <LinkTag>
             <Link to="/login">
