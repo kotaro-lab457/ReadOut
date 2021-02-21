@@ -9,6 +9,7 @@ const MainLogin = styled.div`
   padding: 2rem;
   position: relative;
   height: 100%;
+  min-height: 700px;
   width: 100%;
   &:before {
     content: "";
