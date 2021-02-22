@@ -23,7 +23,7 @@ const BooksSearch: React.FC = () => {
     const url = "https://www.googleapis.com/books/v1/volumes";
 
     // q: 全文文字列
-    const params = { q: searchString };
+    const params = { q: searchString, maxResults: 20 };
     console.log(params);
     // 例外が発生することを考慮（try〜catch構文）
     try {
@@ -77,6 +77,7 @@ const BooksSearch: React.FC = () => {
                         <p>著者名：{item.volumeInfo.authors}</p>
                         <p>発行日：{item.volumeInfo.publishedDate}</p>
                         <p>ページ数：{item.volumeInfo.pageCount}</p>
+                        <a href={`${item.saleInfo.buyLink}`}>リンク</a>
                       </TextSearch>
                     </ItemSearch>
                   );

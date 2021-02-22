@@ -56,9 +56,8 @@ const Editing: React.FC<homeProps> = (props) => {
         </p>
         <p>
           感想：
-          <input
+          <textarea
             id="text"
-            type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
