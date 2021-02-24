@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Input = styled.input`
   font-size: 1.2rem;
   outline: none;
+  width: 300px;
 `;
 
 const LoginInput = styled(Input)`
@@ -20,4 +21,14 @@ const SearchInput = styled(Input)`
   margin: 20px 0 10px;
 `;
 
-export { LoginInput, SearchInput };
+const InputSetUp = styled(Input)`
+  font-size: 1rem;
+`;
+
+const TextArea = styled.textarea`
+  font-size: 1.2rem;
+  height: 100px;
+  width: 300px;
+`;
+
+export { Input, InputSetUp, LoginInput, SearchInput, TextArea };

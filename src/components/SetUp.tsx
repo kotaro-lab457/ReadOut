@@ -4,6 +4,10 @@ import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 
 import { Title } from "../ui/atoms/title";
+import { Button } from "../ui/atoms/button";
+import { InputSetUp, TextArea } from "../ui/atoms/input";
+import TablePage from "../ui/molecules/TablePages";
+import { TableSetUp } from "../ui/molecules/TableSetUp";
 import { MainPage } from "../ui/organisms/MainPages";
 
 let createId = Math.random() * 10;
@@ -39,36 +43,41 @@ const SetUp: React.FC = () => {
   return (
     <>
       <MainPage>
-        <Title>作成ページ</Title>
-        <form onSubmit={handleComment}>
-          <div>
-            <p>読んだ本は？</p>
-            <input
-              id="title"
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <p>何ページ読んだか？</p>
-            <label>
-              P:
-              <input
-                id="page"
-                type="text"
-                value={page}
-                onChange={(e) => setPage(e.target.value)}
-              />
-            </label>
-            <p>感想＆要約</p>
-            <textarea
-              id="text"
-              placeholder="コメント入力"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-          </div>
-          <button disabled={!text}>投稿</button>
-        </form>
+        <TablePage>
+          <Title>作成ページ</Title>
+          <TableSetUp>
+            <form onSubmit={handleComment}>
+              <div>
+                <p>読んだ本は？</p>
+                <InputSetUp
+                  id="title"
+                  type="text"
+                  placeholder="タイトル名"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+                <p>何ページ読んだか？</p>
+                <label>
+                  <InputSetUp
+                    id="page"
+                    type="text"
+                    placeholder="ページ数"
+                    value={page}
+                    onChange={(e) => setPage(e.target.value)}
+                  />
+                </label>
+                <p>感想＆要約</p>
+                <TextArea
+                  id="text"
+                  placeholder="コメント入力"
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                />
+              </div>
+              <Button disabled={!text}>投稿</Button>
+            </form>
+          </TableSetUp>
+        </TablePage>
       </MainPage>
     </>
   );

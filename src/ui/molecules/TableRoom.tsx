@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const TableRoom = styled.div`
+  text-align: left;
   padding: 20px;
   margin: 20px;
   background-color: #fff;

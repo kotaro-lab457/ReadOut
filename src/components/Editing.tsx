@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Input, TextArea } from "../ui/atoms/input";
 
 import firebase from "../config/Firebase";
 
@@ -38,7 +39,7 @@ const Editing: React.FC<homeProps> = (props) => {
       <div>
         <p>
           タイトル：
-          <input
+          <Input
             id="title"
             type="text"
             value={title}
@@ -47,7 +48,7 @@ const Editing: React.FC<homeProps> = (props) => {
         </p>
         <p>
           ページ：
-          <input
+          <Input
             id="page"
             type="text"
             value={page}
@@ -56,7 +57,7 @@ const Editing: React.FC<homeProps> = (props) => {
         </p>
         <p>
           感想：
-          <textarea
+          <TextArea
             id="text"
             value={text}
             onChange={(e) => setText(e.target.value)}

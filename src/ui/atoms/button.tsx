@@ -6,12 +6,12 @@ const Button = styled.button`
   margin: 20px 0;
   border-radius: 20px;
   outline: none;
+  background-color: #16c79a;
+  font-weight: bold;
 `;
 
 const HeaderButton = styled(Button)`
   height: 50px;
-  font-weight: bold;
-  background-color: #16c79a;
   opacity: 0.9;
   &:hover {
     opacity: 1;
@@ -23,7 +23,6 @@ const LoginButton = styled(Button)`
   width: 445px;
   padding: 15px 20px;
   margin: 2rem 0;
-  background-color: #16c79a;
   opacity: 0.9;
   &:hover {
     opacity: 1;
@@ -67,4 +66,4 @@ const SetUpButton = styled.div`
   }
 `;
 
-export { HeaderButton, LoginButton, SearchButton, SetUpButton };
+export { Button, HeaderButton, LoginButton, SearchButton, SetUpButton };

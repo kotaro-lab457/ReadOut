@@ -6,6 +6,7 @@ import { AuthContext } from "../AuthService";
 import { Title } from "../ui/atoms/title";
 import { SetUpButton } from "../ui/atoms/button";
 import TablePage from "../ui/molecules/TablePages";
+import { TableTagSetUp } from "../ui/molecules/TableSetUp";
 import TableRoom from "../ui/molecules/TableRoom";
 import { MainPage } from "../ui/organisms/MainPages";
 import { PostText } from "../module.TS/Post.module";
@@ -43,9 +44,11 @@ const Room: React.FC = () => {
             </TableRoom>
           ))}
           {user && (
-            <Link to="/setup">
-              <SetUpButton></SetUpButton>
-            </Link>
+            <TableTagSetUp>
+              <Link to="/setup">
+                <SetUpButton></SetUpButton>
+              </Link>
+            </TableTagSetUp>
           )}
         </TablePage>
       </MainPage>
