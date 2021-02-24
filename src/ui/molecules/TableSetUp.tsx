@@ -9,8 +9,9 @@ const TableSetUp = styled.div`
 `;
 
 const TableTagSetUp = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  position: fixed;
+  bottom: 10%;
+  right: 15%;
 `;
 
 export { TableSetUp, TableTagSetUp };
