@@ -6,10 +6,11 @@ import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 import { PostText } from "../module.TS/Post.module";
 
-import { TitleName } from "../ui/atoms/title";
-import { LinkSetUp } from "../ui/atoms/Link";
-import { TableHome, SubTableHome } from "../ui/molecules/TableHome";
-import MainHome from "../ui/organisms/MainHome";
+import { Title } from "../ui/atoms/title";
+import { SetUpButton } from "../ui/atoms/button";
+import TablePage from "../ui/molecules/TablePages";
+import TableHome from "../ui/molecules/TableHome";
+import { MainPage } from "../ui/organisms/MainPages";
 
 const Home: React.FC = () => {
   const [homeText, setHomeText] = useState<PostText[]>([]);
@@ -48,9 +49,9 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <MainHome>
-        <TableHome>
-          <TitleName>Profile</TitleName>
+      <MainPage>
+        <TablePage>
+          <Title>Profile</Title>
           <p>※ゲストログインの場合は、投稿の履歴が残りません</p>
           <p>ユーザー名：{userName?.displayName}</p>
           {homeText.map((list, id) => (
@@ -58,23 +59,23 @@ const Home: React.FC = () => {
               {list.uid === user.uid && (
                 // ドキュメントのuser.uidとuserのuidを
                 // 編集（Edit）タグで囲んであげる
-                <SubTableHome>
+                <TableHome>
                   {list.editing ? (
                     <Editing key={id} list={list} editChange={editChange} />
                   ) : (
                     <List key={id} list={list} editChange={editChange} />
                   )}
-                </SubTableHome>
+                </TableHome>
               )}
             </div>
           ))}
           {user && (
             <Link to="/setup">
-              <LinkSetUp></LinkSetUp>
+              <SetUpButton></SetUpButton>
             </Link>
           )}
-        </TableHome>
-      </MainHome>
+        </TablePage>
+      </MainPage>
     </>
   );
 };

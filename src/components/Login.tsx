@@ -3,11 +3,11 @@ import firebase from "../config/Firebase";
 import { Redirect } from "react-router-dom";
 
 import { LoginFont } from "../ui/atoms/font";
-import { TitleLogin } from "../ui/atoms/title";
+import { LoginTitle } from "../ui/atoms/title";
 import { LoginButton } from "../ui/atoms/button";
 import { LoginInput } from "../ui/atoms/input";
 import { TableLogin, SubTableLogin } from "../ui/molecules/TableLogin";
-import MainLogin from "../ui/organisms/MainLogin";
+import { MainLogin } from "../ui/organisms/MainPages";
 
 import { AuthContext } from "../AuthService";
 
@@ -27,8 +27,8 @@ const Login: React.FC = (props: any) => {
     <>
       <MainLogin>
         <TableLogin>
-          <SubTableLogin style={{ textAlign: "center" }}>
-            <TitleLogin>{inLogin ? "Login" : "Sign In"}</TitleLogin>
+          <SubTableLogin>
+            <LoginTitle>{inLogin ? "Login" : "Sign In"}</LoginTitle>
             <div style={{ display: inLogin ? "none" : "block" }}>
               <LoginFont>UserName</LoginFont>
               <LoginInput
@@ -52,7 +52,7 @@ const Login: React.FC = (props: any) => {
             />
             <LoginFont>Password</LoginFont>
             <LoginInput
-              placeholder="password"
+              placeholder="８文字以上の入力"
               value={password}
               type="password"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

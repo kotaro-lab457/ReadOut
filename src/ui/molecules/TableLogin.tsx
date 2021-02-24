@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 const TableLogin = styled.div`
   position: absolute;
-  right: 40%;
+  right: 39%;
 `;
 
 const SubTableLogin = styled.div`
-  text-aline: center;
+  text-align: center;
 `;
 
 export { TableLogin, SubTableLogin };
