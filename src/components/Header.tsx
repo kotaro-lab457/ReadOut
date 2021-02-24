@@ -4,7 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 
-import { Title } from "../ui/atoms/title";
+import { HeaderTitle } from "../ui/atoms/title";
 import { HeaderButton } from "../ui/atoms/button";
 import { LinkTag } from "../ui/atoms/Link";
 import TableHeader from "../ui/molecules/TableHeader";
@@ -37,7 +37,7 @@ const Header: React.FC = (props: any) => {
   };
   return (
     <MainHeader>
-      <Title>Reading Output</Title>
+      <HeaderTitle>Read Out</HeaderTitle>
       <TableHeader>
         <LinkTag>
           <Link to="/">

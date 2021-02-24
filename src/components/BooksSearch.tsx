@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { TitleName } from "../ui/atoms/title";
+import { Title } from "../ui/atoms/title";
 import { SearchInput } from "../ui/atoms/input";
 import { SearchButton } from "../ui/atoms/button";
-import MainSearch from "../ui/organisms/MainSearch";
+import TablePage from "../ui/molecules/TablePages";
 import {
   TableSearch,
-  SubTableSearch,
   ItemSearch,
   TextSearch,
 } from "../ui/molecules/TableSearch";
+import { MainPage } from "../ui/organisms/MainPages";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -47,10 +47,10 @@ const BooksSearch: React.FC = () => {
   };
   return (
     <>
-      <MainSearch>
-        <TableSearch>
-          <SubTableSearch>
-            <TitleName>Books Search</TitleName>
+      <MainPage>
+        <TablePage>
+          <TableSearch>
+            <Title>Books Search</Title>
             <form onSubmit={handleSearchSubmit}>
               <SearchInput
                 type="text"
@@ -61,7 +61,7 @@ const BooksSearch: React.FC = () => {
                 <FontAwesomeIcon icon={faSearch} />
               </SearchButton>
             </form>
-          </SubTableSearch>
+          </TableSearch>
           <div>
             {searchResult && (
               <div>
@@ -85,8 +85,8 @@ const BooksSearch: React.FC = () => {
               </div>
             )}
           </div>
-        </TableSearch>
-      </MainSearch>
+        </TablePage>
+      </MainPage>
     </>
   );
 };

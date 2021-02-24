@@ -1,13 +1,7 @@
 import styled from "styled-components";
 
 const TableSearch = styled.div`
-  padding: 2rem;
-  margin: 0 auto;
-  width: 60%;
-`;
-
-const SubTableSearch = styled.div`
-  margin: 0 20px;
+  text-align: center;
 `;
 
 const ItemSearch = styled.div`
@@ -23,4 +17,4 @@ const TextSearch = styled.div`
   margin-left: 20px;
 `;
 
-export { TableSearch, SubTableSearch, ItemSearch, TextSearch };
+export { TableSearch, ItemSearch, TextSearch };

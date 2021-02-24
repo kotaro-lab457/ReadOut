@@ -3,7 +3,8 @@ import firebase from "../config/Firebase";
 
 import { AuthContext } from "../AuthService";
 
-import { TitleName } from "../ui/atoms/title";
+import { Title } from "../ui/atoms/title";
+import { MainPage } from "../ui/organisms/MainPages";
 
 let createId = Math.random() * 10;
 const SetUp: React.FC = () => {
@@ -37,36 +38,38 @@ const SetUp: React.FC = () => {
   };
   return (
     <>
-      <TitleName>作成ページ</TitleName>
-      <form onSubmit={handleComment}>
-        <div>
-          <p>読んだ本は？</p>
-          <input
-            id="title"
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <p>何ページ読んだか？</p>
-          <label>
-            P:
+      <MainPage>
+        <Title>作成ページ</Title>
+        <form onSubmit={handleComment}>
+          <div>
+            <p>読んだ本は？</p>
             <input
-              id="page"
+              id="title"
               type="text"
-              value={page}
-              onChange={(e) => setPage(e.target.value)}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
-          </label>
-          <p>感想＆要約</p>
-          <textarea
-            id="text"
-            placeholder="コメント入力"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-        </div>
-        <button disabled={!text}>投稿</button>
-      </form>
+            <p>何ページ読んだか？</p>
+            <label>
+              P:
+              <input
+                id="page"
+                type="text"
+                value={page}
+                onChange={(e) => setPage(e.target.value)}
+              />
+            </label>
+            <p>感想＆要約</p>
+            <textarea
+              id="text"
+              placeholder="コメント入力"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+          </div>
+          <button disabled={!text}>投稿</button>
+        </form>
+      </MainPage>
     </>
   );
 };

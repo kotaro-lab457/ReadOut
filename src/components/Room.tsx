@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
-import { AuthContext, AuthService } from "../AuthService";
+import { AuthContext } from "../AuthService";
 
-import { TitleName } from "../ui/atoms/title";
-import { LinkSetUp } from "../ui/atoms/Link";
-import MainRoom from "../ui/organisms/MainRoom";
-import { TableRoom, SubTableRoom } from "../ui/molecules/TableRoom";
+import { Title } from "../ui/atoms/title";
+import { SetUpButton } from "../ui/atoms/button";
+import TablePage from "../ui/molecules/TablePages";
+import TableRoom from "../ui/molecules/TableRoom";
+import { MainPage } from "../ui/organisms/MainPages";
 import { PostText } from "../module.TS/Post.module";
 
 import moment from "moment";
@@ -29,25 +30,25 @@ const Room: React.FC = () => {
 
   return (
     <>
-      <MainRoom>
-        <TableRoom>
-          <TitleName>Home</TitleName>
+      <MainPage>
+        <TablePage>
+          <Title>Home</Title>
           {postText.map((list, id) => (
-            <SubTableRoom key={id}>
+            <TableRoom key={id}>
               <p>ユーザー：{list.user}</p>
               <p>タイトル：{list.title}</p>
               <p>ページ：{list.page}</p>
               <p>感想：{list.text}</p>
               <span>{moment(list.createAt).format("A HH:mm YYYY/MM/DD")}</span>
-            </SubTableRoom>
+            </TableRoom>
           ))}
           {user && (
             <Link to="/setup">
-              <LinkSetUp></LinkSetUp>
+              <SetUpButton></SetUpButton>
             </Link>
           )}
-        </TableRoom>
-      </MainRoom>
+        </TablePage>
+      </MainPage>
     </>
   );
 };

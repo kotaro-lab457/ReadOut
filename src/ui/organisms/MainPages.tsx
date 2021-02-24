@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import img from "../images/Book.img.jpeg";
 
-const MainLogin = styled.div`
+const MainPage = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+
+const MainLogin = styled(MainPage)`
   color: #fff;
   background-image: url(${img});
   background-size: cover;
   background-position: center;
   padding: 2rem;
   position: relative;
-  height: 100%;
   min-height: 700px;
-  width: 100%;
   &:before {
     content: "";
     background-color: rgba(0, 0, 0, 0.3);
@@ -21,4 +24,4 @@ const MainLogin = styled.div`
     width: 100%;
   }
 `;
-export default MainLogin;
+export { MainLogin, MainPage };
