@@ -5,6 +5,7 @@ const TablePage = styled.div`
   padding: 2rem;
   width: 60%;
   text-align: center;
+  position: relative;
 `;
 
 export default TablePage;

@@ -40,28 +40,31 @@ const Header: React.FC = (props: any) => {
       <HeaderTitle>Read Out</HeaderTitle>
       <TableHeader>
         <LinkTag>
-          <Link to="/">
+          <Link to="/" style={{ textDecoration: "none", color: "blue" }}>
             <FontAwesomeIcon icon={faHome} />
             Home
           </Link>
         </LinkTag>
         {user && (
           <LinkTag>
-            <Link to="/home">
+            <Link
+              to="/profile"
+              style={{ textDecoration: "none", color: "blue" }}
+            >
               <FontAwesomeIcon icon={faUser} />
               Profile
             </Link>
           </LinkTag>
         )}
         <LinkTag>
-          <Link to="/books">
+          <Link to="/books" style={{ textDecoration: "none", color: "blue" }}>
             <FontAwesomeIcon icon={faSearch} />
             Search
           </Link>
         </LinkTag>
         {!user && (
           <LinkTag>
-            <Link to="/login">
+            <Link to="/login" style={{ textDecoration: "none", color: "blue" }}>
               <FontAwesomeIcon icon={faSignOutAlt} />
               Login
             </Link>

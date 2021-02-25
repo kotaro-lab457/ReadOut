@@ -38,31 +38,39 @@ const SearchButton = styled(Button)`
 
 const SetUpButton = styled.div`
   position: relative;
-  width: 50px;
-  height: 50px;
-  background: #ccc;
+  width: 60px;
+  height: 60px;
+  background-color: #16c79a;
   border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
   &::after {
     position: absolute;
-    top: 22px;
+    top: 26px;
     left: 50%;
     content: "";
     display: inline-block;
-    width: 21px;
+    width: 25px;
     height: 13px;
-    border-top: 4px solid #fff;
+    border-top: 5px solid;
     transform: translateX(-50%);
   }
   &::before {
     position: absolute;
     content: "";
-    top: 16px;
-    left: 8px;
+    top: 20px;
+    left: 11px;
     display: inline-block;
-    width: 21px;
+    width: 25px;
     height: 13px;
-    border-top: 4px solid #fff;
+    border-top: 5px solid;
     transform: rotate(90deg);
+    &::hover {
+      border-top: 4px solid #fff;
+    }
+  }
+  &:hover {
+    opacity: 1;
   }
 `;
 
