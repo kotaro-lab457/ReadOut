@@ -3,7 +3,7 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 import SetUp from "./components/SetUp";
 import Login from "./components/Login";
 import Room from "./components/Room";
-import Home from "./components/Home";
+import Profile from "./components/Profile";
 import BooksSearch from "./components/BooksSearch";
 import Table from "./ui/templates/Table";
 
@@ -25,7 +25,7 @@ const App: React.FC = () => {
               <Route exact path="/setup" component={SetUp} />
               <Route exact path="/books" component={BooksSearch} />
               <Route exact path="/" component={Room} />
-              <Route exact path="/home" component={Home} />
+              <Route exact path="/profile" component={Profile} />
             </AuthService>
           </Switch>
         </Table>

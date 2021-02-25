@@ -10,7 +10,7 @@ import { Title } from "../ui/atoms/title";
 import { SetUpButton } from "../ui/atoms/button";
 import TablePage from "../ui/molecules/TablePages";
 import { TableTagSetUp } from "../ui/molecules/TableSetUp";
-import TableHome from "../ui/molecules/TableHome";
+import TableProfile from "../ui/molecules/TableProfile";
 import { MainPage } from "../ui/organisms/MainPages";
 
 const Home: React.FC = () => {
@@ -60,13 +60,13 @@ const Home: React.FC = () => {
               {list.uid === user.uid && (
                 // ドキュメントのuser.uidとuserのuidを
                 // 編集（Edit）タグで囲んであげる
-                <TableHome>
+                <TableProfile>
                   {list.editing ? (
                     <Editing key={id} list={list} editChange={editChange} />
                   ) : (
                     <List key={id} list={list} editChange={editChange} />
                   )}
-                </TableHome>
+                </TableProfile>
               )}
             </div>
           ))}

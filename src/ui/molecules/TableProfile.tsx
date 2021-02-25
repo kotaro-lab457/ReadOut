@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const TableHome = styled.div`
+const TableProfile = styled.div`
   text-align: left;
   padding: 20px;
   margin: 20px;
@@ -9,4 +9,4 @@ const TableHome = styled.div`
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 `;
 
-export default TableHome;
+export default TableProfile;
