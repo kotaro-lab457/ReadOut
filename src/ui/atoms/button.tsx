@@ -32,8 +32,6 @@ const LoginButton = styled(Button)`
 const SearchButton = styled(Button)`
   padding: 10px 20px;
   border-radius: 0 20px 20px 0;
-  color: #fff;
-  background-color: #3879d9;
 `;
 
 const SetUpButton = styled.div`

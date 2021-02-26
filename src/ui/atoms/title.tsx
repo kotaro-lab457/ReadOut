@@ -11,7 +11,7 @@ const HeaderTitle = styled(Title)`
 `;
 
 const LoginTitle = styled(Title)`
-  margin: 2rem 0;
+  margin: 2rem 0 1rem;
 `;
 
 export { HeaderTitle, LoginTitle, Title };

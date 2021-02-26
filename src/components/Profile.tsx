@@ -53,7 +53,11 @@ const Home: React.FC = () => {
       <MainPage>
         <TablePage>
           <Title>Profile</Title>
-          <p>※ゲストログインの場合は、投稿の履歴が残りません</p>
+          <p>
+            ※ゲストユーザーの場合は、投稿の履歴が残りません
+            <br />
+            本登録する場合は、こちらへ。
+          </p>
           <p>ユーザー名：{userName?.displayName}</p>
           {homeText.map((list, id) => (
             <div key={id}>

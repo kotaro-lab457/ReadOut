@@ -7,4 +7,9 @@ const LoginFont = styled.p`
   margin: 0;
 `;
 
-export { LoginFont };
+const LinkFont = styled.span`
+  cursor: pointer;
+  color: #fbfad3;
+`;
+
+export { LoginFont, LinkFont };
