@@ -45,7 +45,7 @@ const ResetPassword: React.FC = () => {
               >
                 Login
               </Link>
-              ページへ
+              へ
             </span>
           </SubTableReset>
         </TableReset>
