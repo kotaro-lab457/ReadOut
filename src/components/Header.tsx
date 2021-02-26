@@ -40,7 +40,7 @@ const Header: React.FC = (props: any) => {
       <HeaderTitle>Read Out</HeaderTitle>
       <TableHeader>
         <LinkTag>
-          <Link to="/" style={{ textDecoration: "none", color: "blue" }}>
+          <Link to="/" style={{ textDecoration: "none", color: "#36622b" }}>
             <FontAwesomeIcon icon={faHome} />
             Home
           </Link>
@@ -49,7 +49,7 @@ const Header: React.FC = (props: any) => {
           <LinkTag>
             <Link
               to="/profile"
-              style={{ textDecoration: "none", color: "blue" }}
+              style={{ textDecoration: "none", color: "#36622b" }}
             >
               <FontAwesomeIcon icon={faUser} />
               Profile
@@ -57,14 +57,20 @@ const Header: React.FC = (props: any) => {
           </LinkTag>
         )}
         <LinkTag>
-          <Link to="/books" style={{ textDecoration: "none", color: "blue" }}>
+          <Link
+            to="/books"
+            style={{ textDecoration: "none", color: "#36622b" }}
+          >
             <FontAwesomeIcon icon={faSearch} />
             Search
           </Link>
         </LinkTag>
         {!user && (
           <LinkTag>
-            <Link to="/login" style={{ textDecoration: "none", color: "blue" }}>
+            <Link
+              to="/login"
+              style={{ textDecoration: "none", color: "#36622b" }}
+            >
               <FontAwesomeIcon icon={faSignOutAlt} />
               Login
             </Link>

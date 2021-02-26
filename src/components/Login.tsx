@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import firebase from "../config/Firebase";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
-import { LoginFont } from "../ui/atoms/font";
+import { LoginFont, LinkFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
 import { LoginButton } from "../ui/atoms/button";
 import { LoginInput } from "../ui/atoms/input";
@@ -93,15 +93,25 @@ const Login: React.FC = (props: any) => {
               {inLogin ? "Login" : "Sign In"}
             </LoginButton>
             <br />
-            <a>
-              <span
-                onClick={() => {
-                  setInLogin(!inLogin);
-                }}
+            <span>
+              パスワードを忘れてしまった場合は
+              <Link
+                to="/reset"
+                style={{ textDecoration: "none", color: "#fbfad3" }}
               >
-                {inLogin ? "Sign Inへ" : "Loginへ"}
-              </span>
-            </a>
+                こちら
+              </Link>
+              へ
+            </span>
+            <br />
+            <LinkFont
+              onClick={() => {
+                setInLogin(!inLogin);
+              }}
+            >
+              {inLogin ? "Sign In" : "Login"}
+            </LinkFont>
+            へ
           </SubTableLogin>
         </TableLogin>
       </MainLogin>
