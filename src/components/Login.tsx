@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import firebase from "../config/Firebase";
 import { Link, Redirect } from "react-router-dom";
+import { AuthContext } from "../AuthService";
 
 import { LoginFont, LinkFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
@@ -8,8 +9,6 @@ import { LoginButton } from "../ui/atoms/button";
 import { LoginInput } from "../ui/atoms/input";
 import { TableLogin, SubTableLogin } from "../ui/molecules/TableLogin";
 import { MainLogin } from "../ui/organisms/MainPages";
-
-import { AuthContext } from "../AuthService";
 
 const Login: React.FC = (props: any) => {
   const [password, setPassword] = useState<string>("");
