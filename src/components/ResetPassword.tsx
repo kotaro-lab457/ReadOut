@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
 
-import { Button } from "../ui/atoms/button";
+import { ResetButton } from "../ui/atoms/button";
 import { LoginFont } from "../ui/atoms/font";
 import { LoginInput } from "../ui/atoms/input";
 import { TableReset, SubTableReset } from "../ui/molecules/TableReset";
 import { MainLogin } from "../ui/organisms/MainPages";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ResetPassword: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +37,10 @@ const ResetPassword: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <br />
-              <Button>送信</Button>
+              <ResetButton>
+                <FontAwesomeIcon icon={faPaperPlane} />
+                Submit
+              </ResetButton>
             </form>
             <br />
             <span>

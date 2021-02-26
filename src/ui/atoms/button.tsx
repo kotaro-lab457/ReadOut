@@ -72,4 +72,18 @@ const SetUpButton = styled.div`
   }
 `;
 
-export { Button, HeaderButton, LoginButton, SearchButton, SetUpButton };
+const ResetButton = styled(Button)`
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+export {
+  Button,
+  HeaderButton,
+  LoginButton,
+  SearchButton,
+  SetUpButton,
+  ResetButton,
+};
