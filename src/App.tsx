@@ -6,7 +6,7 @@ import Room from "./components/Room";
 import Profile from "./components/Profile";
 import BooksSearch from "./components/BooksSearch";
 import ResetPassword from "./components/ResetPassword";
-import Credential from "./components/Credential";
+import update from "./components/update";
 
 import Table from "./ui/templates/Table";
 
@@ -30,7 +30,7 @@ const App: React.FC = () => {
               <Route exact path="/" component={Room} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/reset" component={ResetPassword} />
-              <Route exact path="/credential" component={Credential} />
+              <Route exact path="/update" component={update} />
             </AuthService>
           </Switch>
         </Table>
