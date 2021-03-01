@@ -56,7 +56,8 @@ const Home: React.FC = () => {
           <p>
             ※ゲストユーザーの場合は、投稿の履歴が残りません
             <br />
-            本登録する場合は、こちらへ。
+            本登録する場合は、
+            <Link to="/editProfile">こちらへ。</Link>
           </p>
           <p>ユーザー名：{userName?.displayName}</p>
           {homeText.map((list, id) => (
