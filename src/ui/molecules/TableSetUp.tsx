@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const TableSetUp = styled.div`
-  padding: 20px;
+  padding: 20px 70px;
   margin: 20px;
   background-color: #fff;
   border-radius: 20px;

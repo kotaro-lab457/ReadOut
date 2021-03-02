@@ -25,10 +25,15 @@ const InputSetUp = styled(Input)`
   font-size: 1rem;
 `;
 
+const EditInput = styled(Input)`
+  font-size: 1rem;
+  width: 70%;
+`;
+
 const TextArea = styled.textarea`
   font-size: 1.2rem;
   height: 100px;
-  width: 300px;
+  width: 100%;
 `;
 
-export { Input, InputSetUp, LoginInput, SearchInput, TextArea };
+export { Input, InputSetUp, LoginInput, SearchInput, EditInput, TextArea };

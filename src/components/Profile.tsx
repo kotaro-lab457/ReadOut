@@ -10,7 +10,7 @@ import { Title } from "../ui/atoms/title";
 import { SetUpButton } from "../ui/atoms/button";
 import TablePage from "../ui/molecules/TablePages";
 import { TableTagSetUp } from "../ui/molecules/TableSetUp";
-import TableProfile from "../ui/molecules/TableProfile";
+import { TableProfile } from "../ui/molecules/TableProfile";
 import { MainPage } from "../ui/organisms/MainPages";
 
 const Home: React.FC = () => {
@@ -56,8 +56,8 @@ const Home: React.FC = () => {
           <p>
             ※ゲストユーザーの場合は、投稿の履歴が残りません
             <br />
-            本登録する場合は、
-            <Link to="/editProfile">こちらへ。</Link>
+            {/* 本登録する場合は、
+            <Link to="/editProfile">こちらへ。</Link> */}
           </p>
           <p>ユーザー名：{userName?.displayName}</p>
           {homeText.map((list, id) => (
