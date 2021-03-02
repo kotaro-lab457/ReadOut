@@ -7,9 +7,21 @@ const LoginFont = styled.p`
   margin: 0;
 `;
 
+const TimeFont = styled.span`
+  font-size: 0.8rem;
+  text-align: right;
+  display: block;
+`;
+
 const LinkFont = styled.span`
   cursor: pointer;
   color: #fbfad3;
 `;
 
-export { LoginFont, LinkFont };
+const SetUpFont = styled.span`
+  font-size: 0.8rem;
+  margin-right: 1.2rem;
+  display: inline-block;
+`;
+
+export { LoginFont, LinkFont, SetUpFont, TimeFont };

@@ -5,10 +5,12 @@ import { AuthContext } from "../AuthService";
 
 import { Title } from "../ui/atoms/title";
 import { Button } from "../ui/atoms/button";
+import { SetUpFont } from "../ui/atoms/font";
 import { InputSetUp, TextArea } from "../ui/atoms/input";
 import TablePage from "../ui/molecules/TablePages";
 import { TableSetUp } from "../ui/molecules/TableSetUp";
 import { MainPage } from "../ui/organisms/MainPages";
+import { Link } from "react-router-dom";
 
 let createId = Math.random() * 10;
 const SetUp: React.FC = () => {
@@ -44,7 +46,7 @@ const SetUp: React.FC = () => {
     <>
       <MainPage>
         <TablePage>
-          <Title>作成ページ</Title>
+          <Title>Set UP</Title>
           <TableSetUp>
             <form onSubmit={handleComment}>
               <div>
@@ -74,6 +76,14 @@ const SetUp: React.FC = () => {
                   onChange={(e) => setText(e.target.value)}
                 />
               </div>
+              <SetUpFont>
+                <Link
+                  to="/profile"
+                  style={{ textDecoration: "none", color: "#36622b" }}
+                >
+                  キャンセル
+                </Link>
+              </SetUpFont>
               <Button disabled={!text}>投稿</Button>
             </form>
           </TableSetUp>

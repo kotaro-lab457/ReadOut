@@ -2,8 +2,11 @@ import React from "react";
 import firebase from "../config/Firebase";
 import moment from "moment";
 
-import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TimeFont } from "../ui/atoms/font";
+import { IconButton } from "../ui/atoms/button";
+import { TableIcon } from "../ui/molecules/TableProfile";
 
 interface listProps {
   list: {
@@ -25,25 +28,22 @@ const List: React.FC<listProps> = (props) => {
     props.editChange(props.list.id, !props.list.editing);
   };
 
-  // FireStoreのTextコレクションの各々の doc.id を取得し、削除
-  const handleDelete = () => {
-    FS.doc(`${props.list.id}`).delete();
-  };
   console.log("list", props.list.id);
   return (
     <>
       <div>
         <p>タイトル：{props.list.title}</p>
-        <p>ページ:{props.list.page}</p>
+        <p>ページ：{props.list.page}</p>
         <p>感想：{props.list.text}</p>
       </div>
-      <button onClick={handleEditChange}>
-        <FontAwesomeIcon icon={faEdit} />
-      </button>
-      <button onClick={handleDelete}>
-        <FontAwesomeIcon icon={faTrashAlt} />
-      </button>
-      <span>{moment(props.list.createAt).format("A HH:mm YYYY/MM/DD")}</span>
+      <TableIcon>
+        <IconButton onClick={handleEditChange}>
+          <FontAwesomeIcon icon={faPen} />
+        </IconButton>
+      </TableIcon>
+      <TimeFont>
+        {moment(props.list.createAt).format("A HH:mm YYYY/MM/DD")}
+      </TimeFont>
     </>
   );
 };

@@ -1,15 +1,20 @@
 import React, { useContext, useState } from "react";
 import firebase from "firebase";
-import { AuthContext } from "../AuthService";
 
-const EditProfile = () => {
+const EditProfile = (props: any) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const user = firebase.auth().currentUser;
 
+  //console.log("credential", credential);
+
   const handleUpdate = (e: React.FormEvent) => {
+    let credential = firebase.auth.EmailAuthProvider.credential(
+      email,
+      password
+    );
     e.preventDefault();
     user
       ?.updateProfile({
@@ -20,7 +25,14 @@ const EditProfile = () => {
       })
       .then(() => {
         user.updatePassword(password);
+      })
+      .then(() => {
+        user?.linkWithCredential(credential);
       });
+    props.history.push("/");
+    setName("");
+    setEmail("");
+    setPassword("");
   };
   console.log(user?.uid);
 

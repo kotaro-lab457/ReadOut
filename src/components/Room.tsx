@@ -4,6 +4,7 @@ import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 
 import { Title } from "../ui/atoms/title";
+import { TimeFont } from "../ui/atoms/font";
 import { SetUpButton } from "../ui/atoms/button";
 import TablePage from "../ui/molecules/TablePages";
 import { TableTagSetUp } from "../ui/molecules/TableSetUp";
@@ -40,7 +41,9 @@ const Room: React.FC = () => {
               <p>タイトル：{list.title}</p>
               <p>ページ：{list.page}</p>
               <p>感想：{list.text}</p>
-              <span>{moment(list.createAt).format("A HH:mm YYYY/MM/DD")}</span>
+              <TimeFont>
+                {moment(list.createAt).format("A HH:mm YYYY/MM/DD")}
+              </TimeFont>
             </TableRoom>
           ))}
           {user && (

@@ -8,14 +8,15 @@ const Button = styled.button`
   outline: none;
   background-color: #16c79a;
   font-weight: bold;
+  opacity: 0.8;
+  transition: 0.3s;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const HeaderButton = styled(Button)`
   height: 50px;
-  opacity: 0.9;
-  &:hover {
-    opacity: 1;
-  }
 `;
 
 const LoginButton = styled(Button)`
@@ -23,15 +24,35 @@ const LoginButton = styled(Button)`
   width: 445px;
   padding: 15px 20px;
   margin: 2rem 0;
-  opacity: 0.9;
-  &:hover {
-    opacity: 1;
-  }
 `;
 
 const SearchButton = styled(Button)`
   padding: 10px 20px;
   border-radius: 0 20px 20px 0;
+  opacity: 1;
+`;
+
+const UpdateButton = styled(Button)`
+  font-size: 0.8rem;
+  border-radius: 0px;
+  padding: 5px 30px;
+  margin: 0;
+  border: 1px solid #16c79a;
+`;
+
+const CancelButton = styled.button`
+  padding: 5px 17px;
+  font-size: 0.8rem;
+  opacity: 1;
+  border: 1px solid #fff;
+`;
+
+const IconButton = styled(Button)`
+  font-size: 0.8rem;
+  padding: 15px;
+  border-radius: 50%;
+  border: 1px solid #16c79a;
+  margin: 0;
 `;
 
 const SetUpButton = styled.div`
@@ -41,7 +62,7 @@ const SetUpButton = styled.div`
   background-color: #16c79a;
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  opacity: 0.9;
+  opacity: 0.8;
   &::after {
     position: absolute;
     top: 26px;
@@ -86,4 +107,7 @@ export {
   SearchButton,
   SetUpButton,
   ResetButton,
+  UpdateButton,
+  CancelButton,
+  IconButton,
 };
