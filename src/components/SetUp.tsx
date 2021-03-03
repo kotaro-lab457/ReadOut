@@ -6,14 +6,14 @@ import { AuthContext } from "../AuthService";
 import { Title } from "../ui/atoms/title";
 import { Button } from "../ui/atoms/button";
 import { SetUpFont } from "../ui/atoms/font";
-import { InputSetUp, TextArea } from "../ui/atoms/input";
+import { SetUpInput, TextArea } from "../ui/atoms/input";
 import TablePage from "../ui/molecules/TablePages";
 import { TableSetUp } from "../ui/molecules/TableSetUp";
 import { MainPage } from "../ui/organisms/MainPages";
 import { Link } from "react-router-dom";
 
-let createId = Math.random() * 10;
-const SetUp: React.FC = () => {
+const createId = Math.random() * 10;
+const SetUp: React.FC = (props: any) => {
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
@@ -40,6 +40,7 @@ const SetUp: React.FC = () => {
     setTitle("");
     setPage("");
     setCount(count + createId);
+    props.history.push("/");
     console.log(count);
   };
   return (
@@ -51,7 +52,7 @@ const SetUp: React.FC = () => {
             <form onSubmit={handleComment}>
               <div>
                 <p>読んだ本は？</p>
-                <InputSetUp
+                <SetUpInput
                   id="title"
                   type="text"
                   placeholder="タイトル名"
@@ -60,7 +61,7 @@ const SetUp: React.FC = () => {
                 />
                 <p>何ページ読んだか？</p>
                 <label>
-                  <InputSetUp
+                  <SetUpInput
                     id="page"
                     type="text"
                     placeholder="ページ数"

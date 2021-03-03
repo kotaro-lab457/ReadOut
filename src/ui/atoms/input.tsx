@@ -21,7 +21,8 @@ const SearchInput = styled(Input)`
   margin: 20px 0 10px;
 `;
 
-const InputSetUp = styled(Input)`
+const SetUpInput = styled(Input)`
+  text-align: center;
   font-size: 1rem;
 `;
 
@@ -36,4 +37,4 @@ const TextArea = styled.textarea`
   width: 100%;
 `;
 
-export { Input, InputSetUp, LoginInput, SearchInput, EditInput, TextArea };
+export { Input, SetUpInput, LoginInput, SearchInput, EditInput, TextArea };
