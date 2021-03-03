@@ -13,6 +13,7 @@ import MainHeader from "../ui/organisms/MainHeader";
 import {
   faHome,
   faUser,
+  faBook,
   faSearch,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
@@ -35,6 +36,7 @@ const Header: React.FC = (props: any) => {
     firebase.auth().signOut();
     props.history.push("/");
   };
+
   return (
     <MainHeader>
       <HeaderTitle>Read Out</HeaderTitle>
@@ -61,8 +63,8 @@ const Header: React.FC = (props: any) => {
             to="/books"
             style={{ textDecoration: "none", color: "#36622b" }}
           >
-            <FontAwesomeIcon icon={faSearch} />
-            Search
+            <FontAwesomeIcon icon={faBook} />
+            BooksSearch
           </Link>
         </LinkTag>
         {!user && (

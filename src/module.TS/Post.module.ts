@@ -7,4 +7,6 @@ export interface PostText {
     editing:boolean;
     id:number;
     createAt:number;
+    product: any;
+    price: any;
   }
