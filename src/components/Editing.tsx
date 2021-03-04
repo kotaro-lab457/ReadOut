@@ -5,7 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { EditInput, TextArea } from "../ui/atoms/input";
 import { UpdateButton, CancelButton, IconButton } from "../ui/atoms/button";
-import { TableButton, TableIcon } from "../ui/molecules/TableProfile";
+import {
+  TableButton,
+  TableIcon,
+  TableDelete,
+} from "../ui/molecules/TableProfile";
 
 interface homeProps {
   list: {
@@ -71,11 +75,11 @@ const Editing: React.FC<homeProps> = (props) => {
           onChange={(e) => setText(e.target.value)}
         />
       </div>
-      <TableIcon>
+      <TableDelete>
         <IconButton onClick={handleDelete}>
           <FontAwesomeIcon icon={faTrashAlt} />
         </IconButton>
-      </TableIcon>
+      </TableDelete>
       <TableButton>
         <CancelButton onClick={editTextCancel}>キャンセル</CancelButton>
         <UpdateButton onClick={editTextChange}>更新</UpdateButton>
