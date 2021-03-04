@@ -20,4 +20,15 @@ const TableIcon = styled.div`
   top: 20px;
 `;
 
-export { TableProfile, TableIcon, TableButton };
+const TableDelete = styled.div`
+  position: absolute;
+  bottom: 18px;
+  right: 20px;
+`;
+
+const TableText = styled.div`
+  text-align: left;
+  margin: 0 20px;
+`;
+
+export { TableText, TableProfile, TableIcon, TableButton, TableDelete };

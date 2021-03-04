@@ -2,17 +2,21 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
+import moment from "moment";
 
 import { Title } from "../ui/atoms/title";
 import { TimeFont } from "../ui/atoms/font";
-import { SetUpButton } from "../ui/atoms/button";
+import { SetUpButton, RoomSearchButton } from "../ui/atoms/button";
+import { Input } from "../ui/atoms/input";
 import TablePage from "../ui/molecules/TablePages";
 import { TableTagSetUp } from "../ui/molecules/TableSetUp";
+import { TableText } from "../ui/molecules/TableProfile";
 import TableRoom from "../ui/molecules/TableRoom";
 import { MainPage } from "../ui/organisms/MainPages";
 import { PostText } from "../module.TS/Post.module";
 
-import moment from "moment";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Room: React.FC = () => {
   const [postText, setPostText] = useState<PostText[]>([]);
@@ -35,7 +39,9 @@ const Room: React.FC = () => {
 
   const handleFilter = (e: React.FormEvent) => {
     e.preventDefault();
-    setPostText(postText.filter((list) => list.title === value));
+    setPostText(
+      postText.filter((list) => list.title === value || list.user === value)
+    );
     setIsDone(!isDone);
     setValue("");
   };
@@ -48,26 +54,33 @@ const Room: React.FC = () => {
       });
       setPostText(posts); //collectionのデータを取得してる
       setIsDone(!isDone);
+      console.log("反転");
     });
   };
+
   return (
     <>
       <MainPage>
         <TablePage>
           <Title>Home</Title>
-          {isDone ? (
-            <button onClick={handleRender}>再表示</button>
-          ) : (
-            <form onSubmit={handleFilter}>
-              絞り込み検索
-              <input
-                type="text"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-              />
-              <button>検索</button>
-            </form>
-          )}
+          <TableText>
+            {isDone ? (
+              <button onClick={handleRender}>再表示</button>
+            ) : (
+              <form onSubmit={handleFilter}>
+                絞り込み：
+                <Input
+                  type="text"
+                  placeholder="タイトル or ユーザー名"
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                />
+                <RoomSearchButton>
+                  <FontAwesomeIcon icon={faSearch} />
+                </RoomSearchButton>
+              </form>
+            )}
+          </TableText>
           {postText.map((list, id) => (
             <TableRoom key={id}>
               <p>ユーザー：{list.user}</p>

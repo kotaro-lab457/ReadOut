@@ -6,21 +6,31 @@ import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 import { PostText } from "../module.TS/Post.module";
 
+import { Input } from "../ui/atoms/input";
 import { Title } from "../ui/atoms/title";
-import { SetUpButton } from "../ui/atoms/button";
+import {
+  SetUpButton,
+  RoomSearchButton,
+  UpdateButton,
+} from "../ui/atoms/button";
 import TablePage from "../ui/molecules/TablePages";
 import { TableTagSetUp } from "../ui/molecules/TableSetUp";
-import { TableProfile } from "../ui/molecules/TableProfile";
+import { TableProfile, TableText } from "../ui/molecules/TableProfile";
 import { MainPage } from "../ui/organisms/MainPages";
+
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Home: React.FC = () => {
   const [homeText, setHomeText] = useState<PostText[]>([]);
+  const [isDone, setIsDone] = useState<boolean>(false);
+  const [value, setValue] = useState<string>("");
 
   const user = useContext(AuthContext);
   // ユーザー名の取得
   const userName = firebase.auth().currentUser;
-
   const FS = firebase.firestore().collection("text");
+
   useEffect(() => {
     if (user) {
       FS.orderBy("date", "desc").onSnapshot((snapshot) => {
@@ -33,6 +43,24 @@ const Home: React.FC = () => {
     }
   }, [user]);
 
+  const handleFilter = (e: React.FormEvent) => {
+    e.preventDefault();
+    setHomeText(homeText.filter((list) => list.title === value));
+    setIsDone(!isDone);
+    setValue("");
+  };
+
+  const handleRender = (e: React.FormEvent) => {
+    e.preventDefault();
+    FS.orderBy("date", "desc").onSnapshot((snapshot) => {
+      const posts: any = snapshot.docs.map((doc) => {
+        return doc.data();
+      });
+      setHomeText(posts); //collectionのデータを取得してる
+      setIsDone(!isDone);
+      console.log("反転");
+    });
+  };
   // 配列で管理されたhomeTextのそれぞれのIDとEdit（編集）を結びつけ、LISTとEditを反転させる
   const editChange = (id: number, editing: boolean) => {
     setHomeText(
@@ -53,13 +81,31 @@ const Home: React.FC = () => {
       <MainPage>
         <TablePage>
           <Title>Profile</Title>
-          <p>
-            ※ゲストユーザーの場合は、投稿の履歴が残りません
-            <br />
-            {/* 本登録する場合は、
+          <TableText>
+            <p>
+              ※ゲストユーザーの場合は、投稿の履歴が残りません
+              <br />
+              {/* 本登録する場合は、
             <Link to="/editProfile">こちらへ。</Link> */}
-          </p>
-          <p>ユーザー名：{userName?.displayName}</p>
+            </p>
+            <p>ユーザー名：{userName?.displayName}</p>
+            {isDone ? (
+              <UpdateButton onClick={handleRender}>再表示</UpdateButton>
+            ) : (
+              <form onSubmit={handleFilter}>
+                絞り込み：
+                <Input
+                  type="text"
+                  placeholder="タイトル名"
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                />
+                <RoomSearchButton>
+                  <FontAwesomeIcon icon={faSearch} />
+                </RoomSearchButton>
+              </form>
+            )}
+          </TableText>
           {homeText.map((list, id) => (
             <div key={id}>
               {list.uid === user.uid && (
@@ -78,7 +124,7 @@ const Home: React.FC = () => {
           {user && (
             <TableTagSetUp>
               <Link to="/setup">
-                <SetUpButton></SetUpButton>
+                <SetUpButton />
               </Link>
             </TableTagSetUp>
           )}

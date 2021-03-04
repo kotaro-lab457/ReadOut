@@ -31,6 +31,9 @@ const SearchButton = styled(Button)`
   border-radius: 0 20px 20px 0;
   opacity: 1;
 `;
+const RoomSearchButton = styled(SearchButton)`
+  padding: 1.5px 10px;
+`;
 
 const UpdateButton = styled(Button)`
   font-size: 0.8rem;
@@ -110,4 +113,5 @@ export {
   UpdateButton,
   CancelButton,
   IconButton,
+  RoomSearchButton,
 };
