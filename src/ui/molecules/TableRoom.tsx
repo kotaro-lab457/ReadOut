@@ -9,10 +9,17 @@ const TableRoom = styled.div`
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 `;
 
-const TableRoomForm = styled.form`
+const TableForm = styled.form`
   @media (max-width: 420px) {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
   }
 `;
 
-export { TableRoom, TableRoomForm };
+const TableList = styled.div`
+  @media (max-width: 420px) {
+    overflow-y: scroll;
+    height: 460px;
+  }
+`;
+
+export { TableList, TableRoom, TableForm };

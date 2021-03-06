@@ -6,6 +6,7 @@ import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 import { PostText } from "../module.TS/Post.module";
 
+import { SubFont } from "../ui/atoms/font";
 import { Input } from "../ui/atoms/input";
 import { Title } from "../ui/atoms/title";
 import {
@@ -15,7 +16,12 @@ import {
 } from "../ui/atoms/button";
 import TablePage from "../ui/molecules/TablePages";
 import { TableTagSetUp } from "../ui/molecules/TableSetUp";
-import { TableProfile, TableText } from "../ui/molecules/TableProfile";
+import { TableForm, TableList } from "../ui/molecules/TableRoom";
+import {
+  TableProfile,
+  TableText,
+  TableListProfile,
+} from "../ui/molecules/TableProfile";
 import { MainPage } from "../ui/organisms/MainPages";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -88,18 +94,18 @@ const Home: React.FC = () => {
         <TablePage>
           <Title>Profile</Title>
           <TableText>
-            <p>
+            <SubFont>
               ※ゲストユーザーの場合は、投稿の履歴が残りません
               <br />
               {/* 本登録する場合は、
             <Link to="/editProfile">こちらへ。</Link> */}
-            </p>
-            <p>ユーザー名：{userName?.displayName}</p>
+            </SubFont>
+            <SubFont>ユーザー名：{userName?.displayName}</SubFont>
             {isDone ? (
               <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (
-              <form onSubmit={handleFilter}>
-                絞り込み：
+              <TableForm onSubmit={handleFilter}>
+                <SubFont>絞り込み</SubFont>
                 <Input
                   type="text"
                   placeholder="タイトル名"
@@ -109,24 +115,26 @@ const Home: React.FC = () => {
                 <RoomSearchButton>
                   <FontAwesomeIcon icon={faSearch} />
                 </RoomSearchButton>
-              </form>
+              </TableForm>
             )}
           </TableText>
-          {homeText.map((list, id) => (
-            <div key={id}>
-              {list.uid === user.uid && (
-                // ドキュメントのuser.uidとuserのuidを
-                // 編集（Edit）タグで囲んであげる
-                <TableProfile>
-                  {list.editing ? (
-                    <Editing key={id} list={list} editChange={editChange} />
-                  ) : (
-                    <List key={id} list={list} editChange={editChange} />
-                  )}
-                </TableProfile>
-              )}
-            </div>
-          ))}
+          <TableListProfile>
+            {homeText.map((list, id) => (
+              <div key={id}>
+                {list.uid === user.uid && (
+                  // ドキュメントのuser.uidとuserのuidを
+                  // 編集（Edit）タグで囲んであげる
+                  <TableProfile>
+                    {list.editing ? (
+                      <Editing key={id} list={list} editChange={editChange} />
+                    ) : (
+                      <List key={id} list={list} editChange={editChange} />
+                    )}
+                  </TableProfile>
+                )}
+              </div>
+            ))}
+          </TableListProfile>
           {user && (
             <TableTagSetUp>
               <Link to="/setup">

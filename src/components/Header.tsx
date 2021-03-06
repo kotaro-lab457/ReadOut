@@ -6,7 +6,7 @@ import { AuthContext } from "../AuthService";
 
 import { HeaderTitle } from "../ui/atoms/title";
 import { HeaderButton } from "../ui/atoms/button";
-import { LinkTag } from "../ui/atoms/Link";
+import { LinkTag, IconLinkTag } from "../ui/atoms/Link";
 import TableHeader from "../ui/molecules/TableHeader";
 import MainHeader from "../ui/organisms/MainHeader";
 
@@ -43,7 +43,9 @@ const Header: React.FC = (props: any) => {
       <TableHeader>
         <LinkTag>
           <Link to="/" style={{ textDecoration: "none", color: "#36622b" }}>
-            <FontAwesomeIcon icon={faHome} />
+            <IconLinkTag>
+              <FontAwesomeIcon icon={faHome} />
+            </IconLinkTag>
             Home
           </Link>
         </LinkTag>
@@ -52,8 +54,10 @@ const Header: React.FC = (props: any) => {
             to="/books"
             style={{ textDecoration: "none", color: "#36622b" }}
           >
-            <FontAwesomeIcon icon={faBook} />
-            BooksSearch
+            <IconLinkTag>
+              <FontAwesomeIcon icon={faBook} />
+            </IconLinkTag>
+            Books
           </Link>
         </LinkTag>
         {user && (
@@ -62,7 +66,9 @@ const Header: React.FC = (props: any) => {
               to="/profile"
               style={{ textDecoration: "none", color: "#36622b" }}
             >
-              <FontAwesomeIcon icon={faUser} />
+              <IconLinkTag>
+                <FontAwesomeIcon icon={faUser} />
+              </IconLinkTag>
               Profile
             </Link>
           </LinkTag>
@@ -73,7 +79,9 @@ const Header: React.FC = (props: any) => {
               to="/login"
               style={{ textDecoration: "none", color: "#36622b" }}
             >
-              <FontAwesomeIcon icon={faSignOutAlt} />
+              <IconLinkTag>
+                <FontAwesomeIcon icon={faSignOutAlt} />
+              </IconLinkTag>
               Login
             </Link>
           </LinkTag>

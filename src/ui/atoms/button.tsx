@@ -15,11 +15,16 @@ const Button = styled.button`
   }
   @media (max-width: 420px) {
     font-size: 1.1rem;
+    padding: 0 10px;
   }
 `;
 
 const HeaderButton = styled(Button)`
   height: 50px;
+  @media (max-width: 420px) {
+    height: 40px;
+    margin-left: 10px;
+  }
 `;
 
 const LoginButton = styled(Button)`
@@ -79,6 +84,9 @@ const SetUpButton = styled.div`
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
   &::after {
     position: absolute;
     top: 26px;
@@ -104,11 +112,23 @@ const SetUpButton = styled.div`
       border-top: 4px solid #fff;
     }
   }
-  &:hover {
-    opacity: 1;
-  }
   &:active {
     color: #000;
+  }
+  @media (max-width: 420px) {
+    opacity: 0.5;
+    width: 50px;
+    height: 50px;
+    &:hover {
+      opacity: 1;
+    }
+    &::after {
+      top: 22px;
+    }
+    &::before {
+      top: 16px;
+      left: 6px;
+    }
   }
 `;
 

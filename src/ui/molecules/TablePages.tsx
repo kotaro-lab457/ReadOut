@@ -7,8 +7,8 @@ const TablePage = styled.div`
   text-align: center;
   position: relative;
   @media (max-width: 420px) {
-    width: 90%;
-    padding: 1rem;
+    width: 100%;
+    padding: 10px 0;
   }
 `;
 

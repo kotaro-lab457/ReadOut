@@ -37,12 +37,20 @@ const SetUpInput = styled(Input)`
 const EditInput = styled(Input)`
   font-size: 1rem;
   width: 70%;
+  @media (max-width: 420px) {
+    font-size: 0.8rem;
+    width: 100%;
+  }
 `;
 
 const TextArea = styled.textarea`
   font-size: 1.2rem;
   height: 100px;
   width: 100%;
+  @media (max-width: 420px) {
+    font-size: 0.9rem;
+    height: 70px;
+  }
 `;
 
 export { Input, SetUpInput, LoginInput, SearchInput, EditInput, TextArea };

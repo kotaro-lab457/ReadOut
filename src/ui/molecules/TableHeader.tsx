@@ -10,6 +10,7 @@ const TableHeader = styled.div`
     background-color: #c6e377;
     width: 100%;
     justify-content: center;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 `;
 
