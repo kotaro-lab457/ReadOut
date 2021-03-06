@@ -22,5 +22,8 @@ const MainLogin = styled(MainPage)`
     height: 100%;
     width: 100%;
   }
+  @media (max-width: 420px) {
+    min-height: 570px;
+  }
 `;
 export { MainLogin, MainPage };

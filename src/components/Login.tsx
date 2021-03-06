@@ -3,7 +3,7 @@ import firebase from "../config/Firebase";
 import { Link, Redirect } from "react-router-dom";
 import { AuthContext } from "../AuthService";
 
-import { LoginFont, LinkFont } from "../ui/atoms/font";
+import { Font, LoginFont, LinkFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
 import { LoginButton } from "../ui/atoms/button";
 import { LoginInput } from "../ui/atoms/input";
@@ -92,7 +92,7 @@ const Login: React.FC = (props: any) => {
               {inLogin ? "Login" : "Sign In"}
             </LoginButton>
             <br />
-            <span>
+            <Font>
               パスワードを忘れてしまった場合は
               <Link
                 to="/reset"
@@ -101,7 +101,7 @@ const Login: React.FC = (props: any) => {
                 こちら
               </Link>
               へ
-            </span>
+            </Font>
             <br />
             <LinkFont
               onClick={() => {

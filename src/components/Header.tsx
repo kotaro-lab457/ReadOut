@@ -41,17 +41,6 @@ const Header: React.FC = (props: any) => {
     <MainHeader>
       <HeaderTitle>Read Out</HeaderTitle>
       <TableHeader>
-        {user && (
-          <LinkTag>
-            <Link
-              to="/profile"
-              style={{ textDecoration: "none", color: "#36622b" }}
-            >
-              <FontAwesomeIcon icon={faUser} />
-              Profile
-            </Link>
-          </LinkTag>
-        )}
         <LinkTag>
           <Link to="/" style={{ textDecoration: "none", color: "#36622b" }}>
             <FontAwesomeIcon icon={faHome} />
@@ -67,6 +56,17 @@ const Header: React.FC = (props: any) => {
             BooksSearch
           </Link>
         </LinkTag>
+        {user && (
+          <LinkTag>
+            <Link
+              to="/profile"
+              style={{ textDecoration: "none", color: "#36622b" }}
+            >
+              <FontAwesomeIcon icon={faUser} />
+              Profile
+            </Link>
+          </LinkTag>
+        )}
         {!user && (
           <LinkTag>
             <Link
