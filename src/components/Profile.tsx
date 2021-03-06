@@ -33,13 +33,19 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     if (user) {
+      let isMounted = true;
       FS.orderBy("date", "desc").onSnapshot((snapshot) => {
         const homes: any = snapshot.docs.map((doc) => {
           // ドキュメント取得
           return doc.data();
         });
-        setHomeText(homes);
+        if (isMounted) {
+          setHomeText(homes);
+        }
       });
+      return (): void => {
+        isMounted = false;
+      };
     }
   }, [user]);
 
