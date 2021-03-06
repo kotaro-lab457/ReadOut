@@ -1,13 +1,29 @@
 import styled from "styled-components";
 
-const LoginFont = styled.p`
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 30px 0 10px;
+const Font = styled.p`
   margin: 0;
+  font-size: 1.2rem;
+  @media (max-width: 420px) {
+    font-size: 0.9rem;
+  }
 `;
 
-const TimeFont = styled.span`
+const SubFont = styled.span`
+  @media (max-width: 420px) {
+    font-size: 0.8rem;
+  }
+`;
+
+const LoginFont = styled(Font)`
+  font-weight: bold;
+  padding: 30px 0 10px;
+  @media (max-width: 420px) {
+    padding: 10px;
+    font-size: 1.1rem;
+  }
+`;
+
+const TimeFont = styled(Font)`
   font-size: 0.8rem;
   text-align: right;
   display: block;
@@ -18,10 +34,10 @@ const LinkFont = styled.span`
   color: #fbfad3;
 `;
 
-const SetUpFont = styled.span`
+const SetUpFont = styled(Font)`
   font-size: 0.8rem;
   margin-right: 1.2rem;
   display: inline-block;
 `;
 
-export { LoginFont, LinkFont, SetUpFont, TimeFont };
+export { Font, SubFont, LoginFont, LinkFont, SetUpFont, TimeFont };

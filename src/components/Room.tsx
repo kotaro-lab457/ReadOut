@@ -5,7 +5,8 @@ import { AuthContext } from "../AuthService";
 import moment from "moment";
 
 import { Title } from "../ui/atoms/title";
-import { TimeFont } from "../ui/atoms/font";
+import { Font } from "../ui/atoms/font";
+import { TimeFont, SubFont } from "../ui/atoms/font";
 import {
   SetUpButton,
   RoomSearchButton,
@@ -15,13 +16,12 @@ import { Input } from "../ui/atoms/input";
 import TablePage from "../ui/molecules/TablePages";
 import { TableTagSetUp } from "../ui/molecules/TableSetUp";
 import { TableText } from "../ui/molecules/TableProfile";
-import TableRoom from "../ui/molecules/TableRoom";
+import { TableRoom, TableRoomForm } from "../ui/molecules/TableRoom";
 import { MainPage } from "../ui/organisms/MainPages";
 import { PostText } from "../module.TS/Post.module";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { text } from "@fortawesome/fontawesome-svg-core";
 
 const Room: React.FC = () => {
   const [postText, setPostText] = useState<PostText[]>([]);
@@ -78,8 +78,8 @@ const Room: React.FC = () => {
             {isDone ? (
               <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (
-              <form onSubmit={handleFilter}>
-                絞り込み：
+              <TableRoomForm onSubmit={handleFilter}>
+                <SubFont>絞り込み：</SubFont>
                 <Input
                   type="text"
                   placeholder="タイトル or ユーザー名"
@@ -89,20 +89,22 @@ const Room: React.FC = () => {
                 <RoomSearchButton>
                   <FontAwesomeIcon icon={faSearch} />
                 </RoomSearchButton>
-              </form>
+              </TableRoomForm>
             )}
           </TableText>
-          {postText.map((list, id) => (
-            <TableRoom key={id}>
-              <p>ユーザー：{list.user}</p>
-              <p>タイトル：{list.title}</p>
-              <p>ページ：{list.page}</p>
-              <p>感想：{list.text}</p>
-              <TimeFont>
-                {moment(list.createAt).format("A HH:mm YYYY/MM/DD")}
-              </TimeFont>
-            </TableRoom>
-          ))}
+          <div style={{ overflowY: "scroll", height: "500px" }}>
+            {postText.map((list, id) => (
+              <TableRoom key={id}>
+                <Font>ユーザー：{list.user}</Font>
+                <Font>タイトル：{list.title}</Font>
+                <Font>ページ：{list.page}</Font>
+                <Font>感想：{list.text}</Font>
+                <TimeFont>
+                  {moment(list.createAt).format("A HH:mm YYYY/MM/DD")}
+                </TimeFont>
+              </TableRoom>
+            ))}
+          </div>
           {user && (
             <TableTagSetUp>
               <Link to="/setup">

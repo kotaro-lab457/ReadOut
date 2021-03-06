@@ -4,6 +4,10 @@ const Input = styled.input`
   font-size: 1.2rem;
   outline: none;
   width: 300px;
+  @media (max-width: 420px) {
+    font-size: 1rem;
+    width: 200px;
+  }
 `;
 
 const LoginInput = styled(Input)`
@@ -12,6 +16,10 @@ const LoginInput = styled(Input)`
   background-color: rgba(255, 255, 255, 0.8);
   width: 400px;
   position: relative;
+  @media (max-width: 420px) {
+    width: 300px;
+    padding: 10px;
+  }
 `;
 
 const SearchInput = styled(Input)`

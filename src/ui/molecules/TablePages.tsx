@@ -6,6 +6,10 @@ const TablePage = styled.div`
   width: 60%;
   text-align: center;
   position: relative;
+  @media (max-width: 420px) {
+    width: 90%;
+    padding: 1rem;
+  }
 `;
 
 export default TablePage;

@@ -9,4 +9,10 @@ const TableRoom = styled.div`
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 `;
 
-export default TableRoom;
+const TableRoomForm = styled.form`
+  @media (max-width: 420px) {
+    margin: 1rem 0;
+  }
+`;
+
+export { TableRoom, TableRoomForm };

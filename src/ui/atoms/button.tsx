@@ -13,6 +13,9 @@ const Button = styled.button`
   &:hover {
     opacity: 1;
   }
+  @media (max-width: 420px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const HeaderButton = styled(Button)`
@@ -24,6 +27,11 @@ const LoginButton = styled(Button)`
   width: 445px;
   padding: 15px 20px;
   margin: 2rem 0;
+  @media (max-width: 420px) {
+    width: 325px;
+    padding: 10px;
+    margin: 1.5rem 0 1rem;
+  }
 `;
 
 const SearchButton = styled(Button)`
@@ -33,6 +41,11 @@ const SearchButton = styled(Button)`
 `;
 const RoomSearchButton = styled(SearchButton)`
   padding: 1.5px 10px;
+  @media (max-width: 420px) {
+    padding: 2px 10px;
+    font-size: 1rem;
+    margin: 0;
+  }
 `;
 
 const UpdateButton = styled(Button)`
