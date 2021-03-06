@@ -94,6 +94,9 @@ const SetUpButton = styled.div`
   &:hover {
     opacity: 1;
   }
+  &:active {
+    color: #000;
+  }
 `;
 
 const ResetButton = styled(Button)`

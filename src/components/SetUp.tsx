@@ -12,12 +12,13 @@ import { TableSetUp } from "../ui/molecules/TableSetUp";
 import { MainPage } from "../ui/organisms/MainPages";
 import { Link } from "react-router-dom";
 
-const createId = Math.random() * 10;
 const SetUp: React.FC = (props: any) => {
+  const initialState = Math.random() * 10;
+
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
-  const [count, setCount] = useState<number>(createId);
+  const [count, setCount] = useState<number>(initialState);
 
   const user = useContext(AuthContext);
 
@@ -39,7 +40,7 @@ const SetUp: React.FC = (props: any) => {
     setText("");
     setTitle("");
     setPage("");
-    setCount(count + createId);
+    setCount(count + 1);
     props.history.push("/");
     console.log(count);
   };

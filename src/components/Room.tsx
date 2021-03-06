@@ -6,7 +6,11 @@ import moment from "moment";
 
 import { Title } from "../ui/atoms/title";
 import { TimeFont } from "../ui/atoms/font";
-import { SetUpButton, RoomSearchButton } from "../ui/atoms/button";
+import {
+  SetUpButton,
+  RoomSearchButton,
+  UpdateButton,
+} from "../ui/atoms/button";
 import { Input } from "../ui/atoms/input";
 import TablePage from "../ui/molecules/TablePages";
 import { TableTagSetUp } from "../ui/molecules/TableSetUp";
@@ -17,6 +21,7 @@ import { PostText } from "../module.TS/Post.module";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 const Room: React.FC = () => {
   const [postText, setPostText] = useState<PostText[]>([]);
@@ -27,18 +32,25 @@ const Room: React.FC = () => {
   const user = useContext(AuthContext);
 
   useEffect(() => {
+    let isMounted = true;
     FS.orderBy("date", "desc").onSnapshot((snapshot) => {
       const posts: any = snapshot.docs.map((doc) => {
         return doc.data();
       });
-      setPostText(posts); //collectionのデータを取得してる
+      if (isMounted) {
+        setPostText(posts); //collectionのデータを取得してる
+      }
     });
     console.log(postText);
+    return (): void => {
+      isMounted = false;
+    };
   }, []);
   // setPostTextが受け取る配列の中身を絞り込みする
 
   const handleFilter = (e: React.FormEvent) => {
     e.preventDefault();
+    if (value === "") return;
     setPostText(
       postText.filter((list) => list.title === value || list.user === value)
     );
@@ -54,7 +66,6 @@ const Room: React.FC = () => {
       });
       setPostText(posts); //collectionのデータを取得してる
       setIsDone(!isDone);
-      console.log("反転");
     });
   };
 
@@ -65,7 +76,7 @@ const Room: React.FC = () => {
           <Title>Home</Title>
           <TableText>
             {isDone ? (
-              <button onClick={handleRender}>再表示</button>
+              <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (
               <form onSubmit={handleFilter}>
                 絞り込み：
