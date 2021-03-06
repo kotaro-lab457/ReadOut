@@ -1,29 +1,38 @@
 import styled from "styled-components";
+import { TableRoom, TableList } from "../molecules/TableRoom";
 
-const TableProfile = styled.div`
-  text-align: left;
+const TableProfile = styled(TableRoom)`
   padding: 20px 90px;
-  margin: 20px;
-  background-color: #fff;
-  border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   position: relative;
+  @media (max-width: 420px) {
+    padding: 20px;
+  }
 `;
 
 const TableButton = styled.div`
   text-align: right;
+  @media (max-width: 420px) {
+    text-align: left;
+  }
 `;
 
 const TableIcon = styled.div`
   position: absolute;
   right: 20px;
   top: 20px;
+  @media (max-width: 420px) {
+    top: unset;
+    bottom: 10px;
+  }
 `;
 
 const TableDelete = styled.div`
   position: absolute;
   bottom: 18px;
   right: 20px;
+  @media (max-width: 420px) {
+    bottom: 5px;
+  }
 `;
 
 const TableText = styled.div`
@@ -31,4 +40,17 @@ const TableText = styled.div`
   margin: 0 20px;
 `;
 
-export { TableText, TableProfile, TableIcon, TableButton, TableDelete };
+const TableListProfile = styled(TableList)`
+  @media (max-width: 420px) {
+    height: 400px;
+  }
+`;
+
+export {
+  TableText,
+  TableProfile,
+  TableIcon,
+  TableButton,
+  TableDelete,
+  TableListProfile,
+};

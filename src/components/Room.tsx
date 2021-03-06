@@ -16,7 +16,7 @@ import { Input } from "../ui/atoms/input";
 import TablePage from "../ui/molecules/TablePages";
 import { TableTagSetUp } from "../ui/molecules/TableSetUp";
 import { TableText } from "../ui/molecules/TableProfile";
-import { TableRoom, TableRoomForm } from "../ui/molecules/TableRoom";
+import { TableRoom, TableForm, TableList } from "../ui/molecules/TableRoom";
 import { MainPage } from "../ui/organisms/MainPages";
 import { PostText } from "../module.TS/Post.module";
 
@@ -78,8 +78,8 @@ const Room: React.FC = () => {
             {isDone ? (
               <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (
-              <TableRoomForm onSubmit={handleFilter}>
-                <SubFont>絞り込み：</SubFont>
+              <TableForm onSubmit={handleFilter}>
+                <SubFont>絞り込み</SubFont>
                 <Input
                   type="text"
                   placeholder="タイトル or ユーザー名"
@@ -89,10 +89,10 @@ const Room: React.FC = () => {
                 <RoomSearchButton>
                   <FontAwesomeIcon icon={faSearch} />
                 </RoomSearchButton>
-              </TableRoomForm>
+              </TableForm>
             )}
           </TableText>
-          <div style={{ overflowY: "scroll", height: "500px" }}>
+          <TableList>
             {postText.map((list, id) => (
               <TableRoom key={id}>
                 <Font>ユーザー：{list.user}</Font>
@@ -104,7 +104,7 @@ const Room: React.FC = () => {
                 </TimeFont>
               </TableRoom>
             ))}
-          </div>
+          </TableList>
           {user && (
             <TableTagSetUp>
               <Link to="/setup">

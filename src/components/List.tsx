@@ -4,9 +4,10 @@ import moment from "moment";
 
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { TimeFont } from "../ui/atoms/font";
+import { TimeFont, Font } from "../ui/atoms/font";
 import { IconButton } from "../ui/atoms/button";
 import { TableIcon } from "../ui/molecules/TableProfile";
+import { TableList } from "../ui/molecules/TableRoom";
 
 interface listProps {
   list: {
@@ -32,9 +33,9 @@ const List: React.FC<listProps> = (props) => {
   return (
     <>
       <div>
-        <p>タイトル：{props.list.title}</p>
-        <p>ページ：{props.list.page}</p>
-        <p>感想：{props.list.text}</p>
+        <Font>タイトル：{props.list.title}</Font>
+        <Font>ページ：{props.list.page}</Font>
+        <Font>感想：{props.list.text}</Font>
       </div>
       <TableIcon>
         <IconButton onClick={handleEditChange}>

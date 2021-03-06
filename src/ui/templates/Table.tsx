@@ -5,8 +5,8 @@ const Table = styled.div`
   height: 100%;
   min-height: 700px;
   @media (max-width: 420px) {
-    min-height: 536px;
-    max-height: 550px;
+    min-height: 560px;
+    max-height: 800px;
   }
 `;
 

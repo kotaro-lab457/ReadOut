@@ -3,6 +3,7 @@ import firebase from "../config/Firebase";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { SubFont, Font } from "../ui/atoms/font";
 import { EditInput, TextArea } from "../ui/atoms/input";
 import { UpdateButton, CancelButton, IconButton } from "../ui/atoms/button";
 import {
@@ -49,32 +50,30 @@ const Editing: React.FC<homeProps> = (props) => {
   console.log("edit", props.list.id);
   return (
     <>
-      <div>
-        <p>
-          タイトル：
-          <EditInput
-            id="title"
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </p>
-        <p>
-          ページ ：
-          <EditInput
-            id="page"
-            type="text"
-            value={page}
-            onChange={(e) => setPage(e.target.value)}
-          />
-        </p>
-        <p>感想</p>
-        <TextArea
-          id="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+      <Font>
+        <SubFont>タイトル </SubFont>
+        <EditInput
+          id="title"
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
-      </div>
+      </Font>
+      <Font>
+        <SubFont>ページ </SubFont>
+        <EditInput
+          id="page"
+          type="text"
+          value={page}
+          onChange={(e) => setPage(e.target.value)}
+        />
+      </Font>
+      <SubFont>感想</SubFont>
+      <TextArea
+        id="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
       <TableDelete>
         <IconButton onClick={handleDelete}>
           <FontAwesomeIcon icon={faTrashAlt} />
