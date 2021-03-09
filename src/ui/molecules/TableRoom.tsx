@@ -7,6 +7,9 @@ const TableRoom = styled.div`
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  @media (max-width: 420px) {
+    margin: 5px;
+  }
 `;
 
 const TableForm = styled.form`
@@ -18,7 +21,8 @@ const TableForm = styled.form`
 const TableList = styled.div`
   @media (max-width: 420px) {
     overflow-y: scroll;
-    height: 460px;
+    min-height: 440px;
+    max-height: 530px;
   }
 `;
 

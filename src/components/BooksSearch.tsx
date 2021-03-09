@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+
+import { Font } from "../ui/atoms/font";
+import Img from "../ui/atoms/image";
 import { Title } from "../ui/atoms/title";
 import { SearchInput } from "../ui/atoms/input";
 import { SearchButton } from "../ui/atoms/button";
@@ -8,6 +11,7 @@ import {
   TableSearch,
   ItemSearch,
   TextSearch,
+  ImageSearch,
 } from "../ui/molecules/TableSearch";
 import { MainPage } from "../ui/organisms/MainPages";
 
@@ -64,25 +68,26 @@ const BooksSearch: React.FC = () => {
           </TableSearch>
           <div>
             {searchResult && (
-              <div>
+              <>
                 {searchResult.items.map((item: any) => {
                   return (
                     <ItemSearch key={item.id}>
-                      <img
-                        src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
-                        alt=""
-                      />
+                      <ImageSearch>
+                        <Img
+                          src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
+                          alt=""
+                        />
+                      </ImageSearch>
                       <TextSearch>
-                        <p>タイトル名：{item.volumeInfo.title}</p>
-                        <p>著者名：{item.volumeInfo.authors}</p>
-                        <p>発行日：{item.volumeInfo.publishedDate}</p>
-                        <p>ページ数：{item.volumeInfo.pageCount}</p>
-                        <a href={`${item.saleInfo.buyLink}`}>リンク</a>
+                        <Font>タイトル名：{item.volumeInfo.title}</Font>
+                        <Font>著者名：{item.volumeInfo.authors}</Font>
+                        <Font>発行日：{item.volumeInfo.publishedDate}</Font>
+                        <Font>ページ数：{item.volumeInfo.pageCount}</Font>
                       </TextSearch>
                     </ItemSearch>
                   );
                 })}
-              </div>
+              </>
             )}
           </div>
         </TablePage>

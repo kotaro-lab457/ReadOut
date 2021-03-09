@@ -118,9 +118,9 @@ const Home: React.FC = () => {
               </TableForm>
             )}
           </TableText>
-          <TableListProfile>
+          <TableList>
             {homeText.map((list, id) => (
-              <div key={id}>
+              <div key={id} style={{ height: "100%" }}>
                 {list.uid === user.uid && (
                   // ドキュメントのuser.uidとuserのuidを
                   // 編集（Edit）タグで囲んであげる
@@ -134,7 +134,7 @@ const Home: React.FC = () => {
                 )}
               </div>
             ))}
-          </TableListProfile>
+          </TableList>
           {user && (
             <TableTagSetUp>
               <Link to="/setup">

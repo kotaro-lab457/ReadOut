@@ -42,7 +42,6 @@ const TableText = styled.div`
 
 const TableListProfile = styled(TableList)`
   @media (max-width: 420px) {
-    height: 400px;
   }
 `;
 
