@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Button = styled.button`
   font-size: 1.2rem;
   padding: 10px;
-  margin: 20px 0;
+  margin: 10px 0;
   border-radius: 20px;
   outline: none;
   background-color: #16c79a;
@@ -43,6 +43,9 @@ const SearchButton = styled(Button)`
   padding: 10px 20px;
   border-radius: 0 20px 20px 0;
   opacity: 1;
+  @media (max-width: 420px) {
+    padding: 4px 10px;
+  }
 `;
 const RoomSearchButton = styled(SearchButton)`
   padding: 1.5px 10px;
@@ -74,6 +77,9 @@ const IconButton = styled(Button)`
   border-radius: 50%;
   border: 1px solid #16c79a;
   margin: 0;
+  @media (max-width: 420px) {
+    padding: 10px;
+  }
 `;
 
 const SetUpButton = styled.div`

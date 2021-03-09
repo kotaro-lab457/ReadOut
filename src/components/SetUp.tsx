@@ -86,7 +86,7 @@ const SetUp: React.FC = (props: any) => {
                   キャンセル
                 </Link>
               </SetUpFont>
-              <Button disabled={!text}>投稿</Button>
+              <Button disabled={!text || !page || !title}>投稿</Button>
             </form>
           </TableSetUp>
         </TablePage>

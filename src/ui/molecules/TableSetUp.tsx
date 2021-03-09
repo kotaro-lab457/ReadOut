@@ -17,8 +17,8 @@ const TableTagSetUp = styled.div`
   bottom: 10%;
   right: 15%;
   @media (max-width: 420px) {
-    top: 22%;
-    right: 9%;
+    top: 20%;
+    right: 6%;
   }
 `;
 

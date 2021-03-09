@@ -27,6 +27,10 @@ const SearchInput = styled(Input)`
   padding: 10px 20px;
   width: 500px;
   margin: 20px 0 10px;
+  @media (max-width: 420px) {
+    width: 250px;
+    padding: 5px 10px;
+  }
 `;
 
 const SetUpInput = styled(Input)`

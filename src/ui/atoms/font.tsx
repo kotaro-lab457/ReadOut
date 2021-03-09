@@ -5,7 +5,7 @@ const Font = styled.p`
   font-size: 1.2rem;
   @media (max-width: 420px) {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
 `;
 
