@@ -10,6 +10,7 @@ const Button = styled.button`
   font-weight: bold;
   opacity: 0.8;
   transition: 0.3s;
+  cursor: pointer;
   &:hover {
     opacity: 1;
   }
@@ -23,7 +24,7 @@ const HeaderButton = styled(Button)`
   height: 50px;
   @media (max-width: 420px) {
     height: 40px;
-    margin-left: 10px;
+    margin: 12px 5px 0 0;
   }
 `;
 
@@ -48,7 +49,8 @@ const SearchButton = styled(Button)`
   }
 `;
 const RoomSearchButton = styled(SearchButton)`
-  padding: 1.5px 10px;
+  padding: 2px 10px;
+  border: 1px solid #000;
   @media (max-width: 420px) {
     padding: 2px 10px;
     font-size: 1rem;
@@ -69,6 +71,8 @@ const CancelButton = styled.button`
   font-size: 0.8rem;
   opacity: 1;
   border: 1px solid #fff;
+  outline: none;
+  cursor: pointer;
 `;
 
 const IconButton = styled(Button)`

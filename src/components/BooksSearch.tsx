@@ -12,6 +12,7 @@ import {
   ItemSearch,
   TextSearch,
   ImageSearch,
+  ListSearch,
 } from "../ui/molecules/TableSearch";
 import { MainPage } from "../ui/organisms/MainPages";
 
@@ -66,7 +67,7 @@ const BooksSearch: React.FC = () => {
               </SearchButton>
             </form>
           </TableSearch>
-          <div>
+          <ListSearch>
             {searchResult && (
               <>
                 {searchResult.items.map((item: any) => {
@@ -89,7 +90,7 @@ const BooksSearch: React.FC = () => {
                 })}
               </>
             )}
-          </div>
+          </ListSearch>
         </TablePage>
       </MainPage>
     </>

@@ -3,6 +3,12 @@ import styled from "styled-components";
 const TableSearch = styled.div`
   text-align: center;
 `;
+const ListSearch = styled.div`
+  @media (max-width: 420px) {
+    overflow-y: scroll;
+    height: 66vh;
+  }
+`;
 
 const ItemSearch = styled.div`
   display: flex;
@@ -33,4 +39,4 @@ const ImageSearch = styled.div`
   }
 `;
 
-export { TableSearch, ItemSearch, TextSearch, ImageSearch };
+export { TableSearch, ItemSearch, TextSearch, ImageSearch, ListSearch };

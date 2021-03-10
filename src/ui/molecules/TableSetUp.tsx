@@ -8,11 +8,11 @@ const TableSetUp = styled.div`
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   @media (max-width: 420px) {
     padding: 20px 10px;
-    margin: 0;
+    margin: 1rem 0 0 0;
   }
 `;
 
-const TableTagSetUp = styled.div`
+const TableSetUpProfile = styled.div`
   position: fixed;
   bottom: 10%;
   right: 15%;
@@ -22,4 +22,10 @@ const TableTagSetUp = styled.div`
   }
 `;
 
-export { TableSetUp, TableTagSetUp };
+const TableSetUpRoom = styled(TableSetUpProfile)`
+  @media (max-width: 420px) {
+    top: 15%;
+  }
+`;
+
+export { TableSetUp, TableSetUpProfile, TableSetUpRoom };

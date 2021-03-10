@@ -13,7 +13,7 @@ const SubFont = styled.p`
   font-size: 1rem;
   margin: 1rem 0 0;
   @media (max-width: 420px) {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin: 0.5rem 0 0;
     display: block;
   }
@@ -21,7 +21,7 @@ const SubFont = styled.p`
 
 const LoginFont = styled(Font)`
   font-weight: bold;
-  padding: 30px 0 10px;
+  padding-top: 10px;
   @media (max-width: 420px) {
     padding: 10px;
     font-size: 1.1rem;
@@ -34,13 +34,20 @@ const TimeFont = styled(Font)`
   display: block;
   @media (max-width: 420px) {
     font-size: 0.6rem;
-    margin-right: 3.5rem;
+    margin-right: 3rem;
+  }
+`;
+
+const RoomTimeFont = styled(TimeFont)`
+  @media (max-width: 420px) {
+    margin-right: 0.5rem;
   }
 `;
 
 const LinkFont = styled.span`
   cursor: pointer;
   color: #fbfad3;
+  text-decoration: underline;
 `;
 
 const SetUpFont = styled(Font)`
@@ -49,4 +56,17 @@ const SetUpFont = styled(Font)`
   display: inline-block;
 `;
 
-export { Font, SubFont, LoginFont, LinkFont, SetUpFont, TimeFont };
+const FooterFont = styled(Font)`
+  text-align: center;
+  margin: 0;
+`;
+export {
+  Font,
+  SubFont,
+  LoginFont,
+  LinkFont,
+  SetUpFont,
+  RoomTimeFont,
+  TimeFont,
+  FooterFont,
+};
