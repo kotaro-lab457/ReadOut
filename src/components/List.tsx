@@ -28,8 +28,6 @@ const List: React.FC<listProps> = (props) => {
   const handleEditChange = () => {
     props.editChange(props.list.id, !props.list.editing);
   };
-
-  console.log("list", props.list.id);
   return (
     <>
       <div>

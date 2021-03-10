@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 import { PostText } from "../module.TS/Post.module";
+import { Bar } from "react-chartjs-2";
 
 import { SubFont } from "../ui/atoms/font";
 import { Input } from "../ui/atoms/input";
@@ -36,7 +37,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     if (user) {
       let isMounted = true;
-      FS.orderBy("date", "desc").onSnapshot((snapshot) => {
+      FS.orderBy("createAt", "desc").onSnapshot((snapshot) => {
         const homes: any = snapshot.docs.map((doc) => {
           // ドキュメント取得
           return doc.data();
@@ -83,6 +84,44 @@ const Home: React.FC = () => {
       })
     );
   };
+  const graphData = {
+    labels: [
+      // 軸ラベル
+      // 各ラベルを配列にすることで軸ラベルが改行されて表示される
+      ["1月"],
+      ["2月"],
+      ["3月"],
+      ["4月"],
+      ["5月"],
+      ["6月"],
+      ["7月"],
+      ["8月"],
+      ["9月"],
+      ["10月"],
+      ["11月"],
+      ["12月"],
+    ],
+    datasets: [
+      // 表示するデータセット
+      {
+        data: [
+          16, // count数（アウトプット量）user毎
+          42,
+          117.5,
+          90.5,
+          120.5,
+          225,
+          193,
+          110,
+          197,
+          529.5,
+          156.5,
+          76.5,
+        ],
+        label: "読書アウトプット量",
+      },
+    ],
+  };
 
   return (
     <>
@@ -114,6 +153,7 @@ const Home: React.FC = () => {
               </TableForm>
             )}
           </TableText>
+          <Bar data={graphData} />
           <TableList>
             {homeText.map((list, id) => (
               <div key={id} style={{ height: "100%" }}>

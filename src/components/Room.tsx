@@ -33,7 +33,7 @@ const Room: React.FC = () => {
 
   useEffect(() => {
     let isMounted = true;
-    FS.orderBy("date", "desc").onSnapshot((snapshot) => {
+    FS.orderBy("createAt", "desc").onSnapshot((snapshot) => {
       const posts: any = snapshot.docs.map((doc) => {
         return doc.data();
       });

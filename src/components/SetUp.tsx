@@ -11,35 +11,37 @@ import TablePage from "../ui/molecules/TablePages";
 import { TableSetUp } from "../ui/molecules/TableSetUp";
 import { MainPage } from "../ui/organisms/MainPages";
 import { Link } from "react-router-dom";
+import shortid from "shortid";
 
 const SetUp: React.FC = (props: any) => {
-  const initialState = Math.random() * 10;
+  const initialState = shortid.generate();
 
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
-  const [count, setCount] = useState<number>(initialState);
-
+  const [textId, setTextId] = useState<string>(initialState);
+  const [count, setCount] = useState<number>(0);
   const user = useContext(AuthContext);
 
   const FS = firebase.firestore().collection("text");
 
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
-    FS.doc(`${count}`).set({
+    FS.doc(`${textId}`).set({
       user: user.displayName,
       title: title,
       text: text,
       page: page,
       date: new Date(),
       uid: user.uid,
-      id: count,
+      id: textId,
       editing: false,
       createAt: new Date().getTime(),
     });
     setText("");
     setTitle("");
     setPage("");
+    setTextId(textId);
     setCount(count + 1);
     props.history.push("/");
     console.log(count);
