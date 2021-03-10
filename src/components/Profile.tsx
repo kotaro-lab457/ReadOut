@@ -15,13 +15,9 @@ import {
   UpdateButton,
 } from "../ui/atoms/button";
 import TablePage from "../ui/molecules/TablePages";
-import { TableTagSetUp } from "../ui/molecules/TableSetUp";
+import { TableSetUpProfile } from "../ui/molecules/TableSetUp";
 import { TableForm, TableList } from "../ui/molecules/TableRoom";
-import {
-  TableProfile,
-  TableText,
-  TableListProfile,
-} from "../ui/molecules/TableProfile";
+import { TableProfile, TableText } from "../ui/molecules/TableProfile";
 import { MainPage } from "../ui/organisms/MainPages";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -136,11 +132,11 @@ const Home: React.FC = () => {
             ))}
           </TableList>
           {user && (
-            <TableTagSetUp>
+            <TableSetUpProfile>
               <Link to="/setup">
                 <SetUpButton />
               </Link>
-            </TableTagSetUp>
+            </TableSetUpProfile>
           )}
         </TablePage>
       </MainPage>

@@ -44,10 +44,7 @@ const ResetPassword: React.FC = () => {
             </form>
             <br />
             <span>
-              <Link
-                to="/login"
-                style={{ textDecoration: "none", color: " #fbfad3" }}
-              >
+              <Link to="/login" style={{ color: " #fbfad3" }}>
                 Login
               </Link>
               へ

@@ -94,10 +94,7 @@ const Login: React.FC = (props: any) => {
             <br />
             <Font>
               パスワードを忘れてしまった場合は
-              <Link
-                to="/reset"
-                style={{ textDecoration: "none", color: "#fbfad3" }}
-              >
+              <Link to="/reset" style={{ color: "#fbfad3" }}>
                 こちら
               </Link>
               へ

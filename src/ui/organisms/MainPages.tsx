@@ -12,7 +12,7 @@ const MainLogin = styled(MainPage)`
   background-size: cover;
   background-position: center;
   position: relative;
-  min-height: 700px;
+  min-height: 80vh;
   &:before {
     content: "";
     background-color: rgba(0, 0, 0, 0.4);
@@ -23,7 +23,7 @@ const MainLogin = styled(MainPage)`
     width: 100%;
   }
   @media (max-width: 420px) {
-    min-height: 570px;
+    min-height: 90vh;
   }
 `;
 export { MainLogin, MainPage };

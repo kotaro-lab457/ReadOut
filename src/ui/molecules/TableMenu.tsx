@@ -1,11 +1,8 @@
 import styled from "styled-components";
 
-const TableHeader = styled.div`
+const TableMenu = styled.div`
   display: flex;
-  @media (max-width: 820px) {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  @media (max-width: 420px) {
     z-index: 1;
     background-color: #c6e377;
     width: 100%;
@@ -14,4 +11,4 @@ const TableHeader = styled.div`
   }
 `;
 
-export default TableHeader;
+export default TableMenu;

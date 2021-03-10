@@ -3,10 +3,12 @@ import styled from "styled-components";
 const Table = styled.div`
   background-color: #fbfad3;
   height: 100%;
-  min-height: 700px;
+  min-height: 80vh;
+  padding-top: 7rem;
   @media (max-width: 420px) {
+    min-height: 84vh;
     max-height: 800px;
-    min-height: 560px;
+    padding-top: 4rem;
   }
 `;
 

@@ -7,12 +7,11 @@ import Profile from "./components/Profile";
 import BooksSearch from "./components/BooksSearch";
 import ResetPassword from "./components/ResetPassword";
 import EditProfile from "./components/EditProfile";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { AuthService } from "./AuthService";
 
 import Table from "./ui/templates/Table";
-
-import Header from "./components/Header";
-
-import { AuthService } from "./AuthService";
 
 const App: React.FC = () => {
   return (
@@ -34,8 +33,10 @@ const App: React.FC = () => {
             </AuthService>
           </Switch>
         </Table>
+        <AuthService>
+          <Footer />
+        </AuthService>
       </BrowserRouter>
-      <footer></footer>
     </>
   );
 };

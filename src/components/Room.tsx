@@ -6,7 +6,7 @@ import moment from "moment";
 
 import { Title } from "../ui/atoms/title";
 import { Font } from "../ui/atoms/font";
-import { TimeFont, SubFont } from "../ui/atoms/font";
+import { RoomTimeFont, SubFont } from "../ui/atoms/font";
 import {
   SetUpButton,
   RoomSearchButton,
@@ -14,7 +14,7 @@ import {
 } from "../ui/atoms/button";
 import { Input } from "../ui/atoms/input";
 import TablePage from "../ui/molecules/TablePages";
-import { TableTagSetUp } from "../ui/molecules/TableSetUp";
+import { TableSetUpRoom } from "../ui/molecules/TableSetUp";
 import { TableText } from "../ui/molecules/TableProfile";
 import { TableRoom, TableForm, TableList } from "../ui/molecules/TableRoom";
 import { MainPage } from "../ui/organisms/MainPages";
@@ -99,18 +99,18 @@ const Room: React.FC = () => {
                 <Font>タイトル：{list.title}</Font>
                 <Font>ページ：{list.page}</Font>
                 <Font>感想：{list.text}</Font>
-                <TimeFont>
+                <RoomTimeFont>
                   {moment(list.createAt).format("A HH:mm YYYY/MM/DD")}
-                </TimeFont>
+                </RoomTimeFont>
               </TableRoom>
             ))}
           </TableList>
           {user && (
-            <TableTagSetUp>
+            <TableSetUpRoom>
               <Link to="/setup">
                 <SetUpButton></SetUpButton>
               </Link>
-            </TableTagSetUp>
+            </TableSetUpRoom>
           )}
         </TablePage>
       </MainPage>

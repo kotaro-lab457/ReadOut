@@ -4,7 +4,9 @@ const TableLogin = styled.div`
   position: absolute;
   right: 39%;
   @media (max-width: 420px) {
-    right: 10%;
+    right: 0;
+    left: 0;
+    padding: 1rem;
   }
 `;
 

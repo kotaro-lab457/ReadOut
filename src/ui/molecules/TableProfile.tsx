@@ -40,16 +40,4 @@ const TableText = styled.div`
   margin: 0 20px;
 `;
 
-const TableListProfile = styled(TableList)`
-  @media (max-width: 420px) {
-  }
-`;
-
-export {
-  TableText,
-  TableProfile,
-  TableIcon,
-  TableButton,
-  TableDelete,
-  TableListProfile,
-};
+export { TableText, TableProfile, TableIcon, TableButton, TableDelete };
