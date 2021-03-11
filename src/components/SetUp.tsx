@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import firebase from "../config/Firebase";
 
 import { AuthContext } from "../AuthService";
@@ -20,31 +20,49 @@ const SetUp: React.FC = (props: any) => {
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
   const [textId, setTextId] = useState<string>(initialState);
-  const [count, setCount] = useState<number>(0);
+
   const user = useContext(AuthContext);
 
   const FS = firebase.firestore().collection("text");
+  const db = firebase.firestore().collection("counters");
+  const docId = db.doc().get();
+
+  console.log(user?.uid);
 
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
-    FS.doc(`${textId}`).set({
-      user: user.displayName,
-      title: title,
-      text: text,
-      page: page,
-      date: new Date(),
-      uid: user.uid,
-      id: textId,
-      editing: false,
-      createAt: new Date().getTime(),
-    });
+    FS.doc(`${textId}`)
+      .set({
+        user: user.displayName,
+        title: title,
+        text: text,
+        page: page,
+        date: new Date(),
+        uid: user.uid,
+        id: textId,
+        editing: false,
+        createAt: new Date().getTime(),
+      })
+      .then(() => {
+        if (docId === undefined) {
+          db.doc(`${user.uid}`).set({
+            user: user.displayName,
+            date: new Date(),
+            count: 0,
+            bool: false,
+          });
+        } else {
+          db.doc(`${user.uid}`).update({
+            date: new Date(),
+            count: firebase.firestore.FieldValue.increment(1),
+          });
+        }
+      });
     setText("");
     setTitle("");
     setPage("");
     setTextId(textId);
-    setCount(count + 1);
     props.history.push("/");
-    console.log(count);
   };
   return (
     <>
