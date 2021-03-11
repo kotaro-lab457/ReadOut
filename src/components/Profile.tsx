@@ -3,9 +3,9 @@ import Editing from "./Editing";
 import List from "./List";
 import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
+import Chart from "./Chart";
 import { AuthContext } from "../AuthService";
 import { PostText } from "../module.TS/Post.module";
-import { Bar } from "react-chartjs-2";
 
 import { SubFont } from "../ui/atoms/font";
 import { Input } from "../ui/atoms/input";
@@ -31,7 +31,7 @@ const Home: React.FC = () => {
 
   const user = useContext(AuthContext);
   // ユーザー名の取得
-  const userName = firebase.auth().currentUser;
+  //const userName = firebase.auth().currentUser;
   const FS = firebase.firestore().collection("text");
 
   useEffect(() => {
@@ -84,44 +84,6 @@ const Home: React.FC = () => {
       })
     );
   };
-  const graphData = {
-    labels: [
-      // 軸ラベル
-      // 各ラベルを配列にすることで軸ラベルが改行されて表示される
-      ["1月"],
-      ["2月"],
-      ["3月"],
-      ["4月"],
-      ["5月"],
-      ["6月"],
-      ["7月"],
-      ["8月"],
-      ["9月"],
-      ["10月"],
-      ["11月"],
-      ["12月"],
-    ],
-    datasets: [
-      // 表示するデータセット
-      {
-        data: [
-          16, // count数（アウトプット量）user毎
-          42,
-          117.5,
-          90.5,
-          120.5,
-          225,
-          193,
-          110,
-          197,
-          529.5,
-          156.5,
-          76.5,
-        ],
-        label: "読書アウトプット量",
-      },
-    ],
-  };
 
   return (
     <>
@@ -135,7 +97,8 @@ const Home: React.FC = () => {
               {/* 本登録する場合は、
             <Link to="/editProfile">こちらへ。</Link> */}
             </SubFont>
-            <SubFont>ユーザー名：{userName?.displayName}</SubFont>
+            <SubFont>ユーザー名：{user?.displayName}</SubFont>
+            <Chart />
             {isDone ? (
               <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (
@@ -153,7 +116,6 @@ const Home: React.FC = () => {
               </TableForm>
             )}
           </TableText>
-          <Bar data={graphData} />
           <TableList>
             {homeText.map((list, id) => (
               <div key={id} style={{ height: "100%" }}>

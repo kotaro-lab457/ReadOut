@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import firebase from "../config/Firebase";
+import { AuthContext } from "../AuthService";
+
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { SubFont, Font } from "../ui/atoms/font";
 import { EditInput, TextArea } from "../ui/atoms/input";
 import { UpdateButton, CancelButton, IconButton } from "../ui/atoms/button";
-import {
-  TableButton,
-  TableIcon,
-  TableDelete,
-} from "../ui/molecules/TableProfile";
+import { TableButton, TableDelete } from "../ui/molecules/TableProfile";
 
 interface homeProps {
   list: {
@@ -28,7 +26,10 @@ const Editing: React.FC<homeProps> = (props) => {
   const [text, setText] = useState<string>(props.list.text);
   const [page, setPage] = useState<string>(props.list.page);
 
+  const user = useContext(AuthContext);
   const FS = firebase.firestore().collection("text");
+  const db = firebase.firestore().collection("counters");
+
   // キャンセル = editing を true から false へ（Listへ切り替え）
   const editTextCancel = () => {
     props.editChange(props.list.id, !props.list.editing);
@@ -41,10 +42,21 @@ const Editing: React.FC<homeProps> = (props) => {
       text: text,
     });
   };
+  console.log(user.uid);
 
   // FireStoreのTextコレクションの各々の doc.id を取得し、削除
   const handleDelete = () => {
-    FS.doc(`${props.list.id}`).delete();
+    FS.doc(`${props.list.id}`)
+      .delete()
+      .then(() => {
+        console.log("成功");
+        if (db.doc(`${user.uid}`).id === user.uid) {
+          db.doc(`${user.uid}`).update({
+            date: new Date(),
+            count: firebase.firestore.FieldValue.increment(-1),
+          });
+        }
+      });
   };
 
   console.log("edit", props.list.id);
