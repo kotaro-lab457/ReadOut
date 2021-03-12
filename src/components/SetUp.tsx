@@ -25,9 +25,11 @@ const SetUp: React.FC = (props: any) => {
 
   const FS = firebase.firestore().collection("text");
   const db = firebase.firestore().collection("counters");
-  const docId = db.doc().get();
-
-  console.log(user?.uid);
+  const upDateDay =
+    new Date().getFullYear() +
+    new Date().getMonth() +
+    new Date().getDate() +
+    29;
 
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,26 +39,19 @@ const SetUp: React.FC = (props: any) => {
         title: title,
         text: text,
         page: page,
-        date: new Date(),
+        date: upDateDay,
         uid: user.uid,
         id: textId,
         editing: false,
         createAt: new Date().getTime(),
       })
       .then(() => {
-        if (docId === undefined) {
-          db.doc(`${user.uid}`).set({
-            user: user.displayName,
-            date: new Date(),
-            count: 0,
-            bool: false,
-          });
-        } else {
-          db.doc(`${user.uid}`).update({
-            date: new Date(),
-            count: firebase.firestore.FieldValue.increment(1),
-          });
-        }
+        db.doc(`${user.uid}`).update({
+          user: user.displayName,
+          date: new Date(),
+          count: firebase.firestore.FieldValue.increment(1),
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        });
       });
     setText("");
     setTitle("");

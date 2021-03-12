@@ -60,7 +60,7 @@ const Room: React.FC = () => {
 
   const handleRender = (e: React.FormEvent) => {
     e.preventDefault();
-    FS.orderBy("date", "desc").onSnapshot((snapshot) => {
+    FS.orderBy("createAt", "desc").onSnapshot((snapshot) => {
       const posts: any = snapshot.docs.map((doc) => {
         return doc.data();
       });
