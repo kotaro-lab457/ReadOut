@@ -17,7 +17,6 @@ const Login: React.FC = (props: any) => {
   const [inLogin, setInLogin] = useState<boolean>(true);
 
   const user = useContext(AuthContext);
-  const db = firebase.firestore().collection("counters");
 
   if (user) {
     return <Redirect to="/" />;
@@ -81,14 +80,6 @@ const Login: React.FC = (props: any) => {
                           .then(({ user }) => {
                             user?.updateProfile({
                               displayName: name,
-                            });
-                            const db = firebase
-                              .firestore()
-                              .collection("counters");
-                            db.doc(`${user?.uid}`).set({
-                              user: user?.displayName,
-                              date: new Date(),
-                              count: 0,
                             });
                           });
                         props.history.push("/");

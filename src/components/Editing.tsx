@@ -46,17 +46,7 @@ const Editing: React.FC<homeProps> = (props) => {
 
   // FireStoreのTextコレクションの各々の doc.id を取得し、削除
   const handleDelete = () => {
-    FS.doc(`${props.list.id}`)
-      .delete()
-      .then(() => {
-        console.log("成功");
-        if (db.doc(`${user.uid}`).id === user.uid) {
-          db.doc(`${user.uid}`).update({
-            date: new Date(),
-            count: firebase.firestore.FieldValue.increment(-1),
-          });
-        }
-      });
+    FS.doc(`${props.list.id}`).delete();
   };
 
   console.log("edit", props.list.id);
