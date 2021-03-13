@@ -24,7 +24,6 @@ const SetUp: React.FC = (props: any) => {
   const user = useContext(AuthContext);
 
   const FS = firebase.firestore().collection("text");
-  const db = firebase.firestore().collection("counters");
   const upDateDay =
     new Date().getFullYear() +
     new Date().getMonth() +
@@ -33,26 +32,17 @@ const SetUp: React.FC = (props: any) => {
 
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
-    FS.doc(`${textId}`)
-      .set({
-        user: user.displayName,
-        title: title,
-        text: text,
-        page: page,
-        date: upDateDay,
-        uid: user.uid,
-        id: textId,
-        editing: false,
-        createAt: new Date().getTime(),
-      })
-      .then(() => {
-        db.doc(`${user.uid}`).update({
-          user: user.displayName,
-          date: new Date(),
-          count: firebase.firestore.FieldValue.increment(1),
-          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        });
-      });
+    FS.doc(`${textId}`).set({
+      user: user.displayName,
+      title: title,
+      text: text,
+      page: page,
+      date: upDateDay,
+      uid: user.uid,
+      id: textId,
+      editing: false,
+      createAt: new Date().getTime(),
+    });
     setText("");
     setTitle("");
     setPage("");

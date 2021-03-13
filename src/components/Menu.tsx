@@ -24,12 +24,6 @@ const Menu: React.FC = (props: any) => {
         user?.updateProfile({
           displayName: "ゲストユーザー",
         });
-        const db = firebase.firestore().collection("counters");
-        db.doc(`${user?.uid}`).set({
-          user: user?.displayName,
-          date: new Date(),
-          count: 0,
-        });
       });
   };
 
