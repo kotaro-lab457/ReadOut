@@ -20,18 +20,15 @@ const Chart: React.FC = () => {
 
   const days =
     new Date().getFullYear() + new Date().getMonth() + new Date().getDate();
-  // 足してはダメ。
-
-  console.log(days + 28);
 
   useEffect(() => {
     if (user) {
       FS.where("uid", "==", `${user.uid}`)
-        .where("date", "<=", days + 20) // その日まで、投稿した数。。 // データの日にち > 現在の日にち
+        .where("date", "<=", days + 20)
         .get()
         .then((doc) => {
-          setCount1(doc.size); // リアルタイムの投稿の数！
-        }); // 前日の数をどうするか date (それぞれの投稿した日にち) >= days + 28 = 前日の日にち以下
+          setCount1(doc.size);
+        });
       FS.where("uid", "==", `${user.uid}`)
         .where("date", "<=", days + 21)
         .get()
@@ -88,8 +85,6 @@ const Chart: React.FC = () => {
         });
     }
   }, [user]);
-
-  console.log(count1, count2, count3, count4, count5, count6, count7);
 
   const daysPlus = [
     count1,

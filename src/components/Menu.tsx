@@ -16,8 +16,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Menu: React.FC = (props: any) => {
   const user = useContext(AuthContext);
-  const handleGuestLogin = () => {
-    firebase
+  const GuestLogin = async () => {
+    await firebase
       .auth()
       .signInAnonymously()
       .then(({ user }) => {
@@ -27,8 +27,8 @@ const Menu: React.FC = (props: any) => {
       });
   };
 
-  const handleSignOut = () => {
-    firebase.auth().signOut();
+  const signOut = async () => {
+    await firebase.auth().signOut();
     props.history.push("/");
   };
 
@@ -77,13 +77,29 @@ const Menu: React.FC = (props: any) => {
         </LinkTag>
       )}
       {!user && (
-        <HeaderButton onClick={handleGuestLogin}>
+        <HeaderButton
+          onClick={async () => {
+            try {
+              await GuestLogin();
+            } catch (err) {
+              alert(err.message);
+            }
+          }}
+        >
           <FontAwesomeIcon icon={faUser} />
           Guest
         </HeaderButton>
       )}
       {user && (
-        <HeaderButton onClick={handleSignOut}>
+        <HeaderButton
+          onClick={async () => {
+            try {
+              await signOut();
+            } catch (err) {
+              alert(err.message);
+            }
+          }}
+        >
           <FontAwesomeIcon icon={faSignOutAlt} />
           Log out
         </HeaderButton>

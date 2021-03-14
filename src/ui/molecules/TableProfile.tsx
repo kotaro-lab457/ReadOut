@@ -5,7 +5,7 @@ const TableProfile = styled(TableRoom)`
   padding: 20px 90px;
   position: relative;
   @media (max-width: 420px) {
-    padding: 20px;
+    padding: 15px 10px;
   }
 `;
 
@@ -22,7 +22,8 @@ const TableIcon = styled.div`
   top: 20px;
   @media (max-width: 420px) {
     top: unset;
-    bottom: 10px;
+    right: 15px;
+    bottom: 5px;
   }
 `;
 

@@ -4,8 +4,7 @@ import { AuthContext } from "../AuthService";
 
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { SubFont, Font } from "../ui/atoms/font";
+import { SubFont } from "../ui/atoms/font";
 import { EditInput, TextArea } from "../ui/atoms/input";
 import { UpdateButton, CancelButton, IconButton } from "../ui/atoms/button";
 import { TableButton, TableDelete } from "../ui/molecules/TableProfile";
@@ -42,7 +41,6 @@ const Editing: React.FC<homeProps> = (props) => {
       text: text,
     });
   };
-  console.log(user.uid);
 
   // FireStoreのTextコレクションの各々の doc.id を取得し、削除
   const handleDelete = () => {
@@ -52,7 +50,7 @@ const Editing: React.FC<homeProps> = (props) => {
   console.log("edit", props.list.id);
   return (
     <>
-      <Font>
+      <div>
         <SubFont>タイトル </SubFont>
         <EditInput
           id="title"
@@ -60,8 +58,8 @@ const Editing: React.FC<homeProps> = (props) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-      </Font>
-      <Font>
+      </div>
+      <div>
         <SubFont>ページ </SubFont>
         <EditInput
           id="page"
@@ -69,7 +67,7 @@ const Editing: React.FC<homeProps> = (props) => {
           value={page}
           onChange={(e) => setPage(e.target.value)}
         />
-      </Font>
+      </div>
       <SubFont>感想</SubFont>
       <TextArea
         id="text"

@@ -52,7 +52,7 @@ const Home: React.FC = () => {
     }
   }, [user]);
 
-  const handleFilter = (e: React.FormEvent) => {
+  const handleFilter = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setHomeText(homeText.filter((list) => list.title === value));
     setIsDone(!isDone);
