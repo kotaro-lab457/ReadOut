@@ -30,7 +30,7 @@ const SetUp: React.FC = (props: any) => {
     new Date().getDate() +
     29;
 
-  const handleComment = (e: React.FormEvent) => {
+  const handleComment = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     FS.doc(`${textId}`).set({
       user: user.displayName,

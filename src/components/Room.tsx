@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../AuthService";
 import moment from "moment";
+import { PostText } from "../module.TS/Post.module";
 
 import { Title } from "../ui/atoms/title";
 import { Font } from "../ui/atoms/font";
@@ -18,8 +19,6 @@ import { TableSetUpRoom } from "../ui/molecules/TableSetUp";
 import { TableText } from "../ui/molecules/TableProfile";
 import { TableRoom, TableForm, TableList } from "../ui/molecules/TableRoom";
 import { MainPage } from "../ui/organisms/MainPages";
-import { PostText } from "../module.TS/Post.module";
-
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -75,6 +74,7 @@ const Room: React.FC = () => {
         <TablePage>
           <Title>Home</Title>
           <TableText>
+            ※投稿する時は、プラスボタンへ
             {isDone ? (
               <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (

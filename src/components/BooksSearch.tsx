@@ -15,7 +15,6 @@ import {
   ListSearch,
 } from "../ui/molecules/TableSearch";
 import { MainPage } from "../ui/organisms/MainPages";
-
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -26,7 +25,6 @@ const BooksSearch: React.FC = () => {
   //async await（非同期処理）
   const searchGoogleBooks = async (searchString: string) => {
     const url = "https://www.googleapis.com/books/v1/volumes";
-
     // q: 全文文字列
     const params = { q: searchString, maxResults: 20 };
     console.log(params);
@@ -41,8 +39,8 @@ const BooksSearch: React.FC = () => {
     }
   };
 
-  const handleSearchSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     const result = await searchGoogleBooks(searchString);
     if (result.isSuccess) {
       setSearchResult(result.data);
@@ -56,11 +54,12 @@ const BooksSearch: React.FC = () => {
         <TablePage>
           <TableSearch>
             <Title>Books Search</Title>
+            ※さまざまな書籍を検索できます。
             <form onSubmit={handleSearchSubmit}>
               <SearchInput
                 type="text"
                 placeholder="キーワードを入力"
-                onChange={(event) => setSearchString(event.target.value)}
+                onChange={(e) => setSearchString(e.target.value)}
               />
               <SearchButton>
                 <FontAwesomeIcon icon={faSearch} />

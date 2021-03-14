@@ -68,8 +68,8 @@ const Login: React.FC = (props: any) => {
                           .auth()
                           .signInWithEmailAndPassword(email, password);
                         props.history.push("/");
-                      } catch (error) {
-                        alert(error.message);
+                      } catch (err) {
+                        alert(err.message);
                       }
                     }
                   : async () => {
@@ -83,8 +83,8 @@ const Login: React.FC = (props: any) => {
                             });
                           });
                         props.history.push("/");
-                      } catch (error) {
-                        alert(error.message);
+                      } catch (err) {
+                        alert(err.message);
                       }
                     }
               }

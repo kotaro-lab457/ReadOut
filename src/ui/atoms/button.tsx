@@ -24,7 +24,7 @@ const HeaderButton = styled(Button)`
   height: 50px;
   @media (max-width: 420px) {
     height: 40px;
-    margin: 12px 5px 0 0;
+    margin: 10px 5px 0 0;
   }
 `;
 

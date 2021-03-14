@@ -18,8 +18,8 @@ const ItemSearch = styled.div`
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   @media (max-width: 420px) {
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 10px;
+    margin: 5px;
   }
 `;
 
