@@ -30,8 +30,18 @@ const SetUp: React.FC = (props: any) => {
     new Date().getDate() +
     29;
 
-  const handleComment = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleComment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const url = "https://www.googleapis.com/books/v1/volumes";
+    const params = {
+      q: title,
+      maxResults: 1,
+    };
+    const response = await axios.get(url, { params: params });
+    const item = response.data.items[0].id;
+    const imageUrl = `http://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
+    console.log("画像ID", item);
+
     FS.doc(`${textId}`).set({
       user: user.displayName,
       title: title,
@@ -42,12 +52,15 @@ const SetUp: React.FC = (props: any) => {
       id: textId,
       editing: false,
       createAt: new Date().getTime(),
+      image: imageUrl,
     });
+
     setText("");
     setTitle("");
     setPage("");
     setTextId(textId);
-    props.history.push("/");
+
+    //props.history.push("/");
   };
   return (
     <>

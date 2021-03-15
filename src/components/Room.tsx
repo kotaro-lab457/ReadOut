@@ -95,13 +95,18 @@ const Room: React.FC = () => {
           <TableList>
             {postText.map((list, id) => (
               <TableRoom key={id}>
-                <Font>ユーザー：{list.user}</Font>
-                <Font>タイトル：{list.title}</Font>
-                <Font>ページ：{list.page}</Font>
-                <Font>感想：{list.text}</Font>
-                <RoomTimeFont>
-                  {moment(list.createAt).format("A HH:mm YYYY/MM/DD")}
-                </RoomTimeFont>
+                <div>
+                  <img src={list.image} alt="" />
+                </div>
+                <div>
+                  <Font>ユーザー：{list.user}</Font>
+                  <Font>タイトル：{list.title}</Font>
+                  <Font>ページ：{list.page}</Font>
+                  <Font>感想：{list.text}</Font>
+                  <RoomTimeFont>
+                    {moment(list.createAt).format("A HH:mm YYYY/MM/DD")}
+                  </RoomTimeFont>
+                </div>
               </TableRoom>
             ))}
           </TableList>
