@@ -27,7 +27,6 @@ const BooksSearch: React.FC = () => {
     const url = "https://www.googleapis.com/books/v1/volumes";
     // q: 全文文字列
     const params = { q: searchString, maxResults: 20 };
-    console.log(params);
     // 例外が発生することを考慮（try〜catch構文）
     try {
       // axios.get()でHTTPリクエストを送ることができる。
