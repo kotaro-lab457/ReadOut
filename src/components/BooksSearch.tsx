@@ -22,7 +22,7 @@ const BooksSearch: React.FC = () => {
   const [searchString, setSearchString] = useState("");
   const [searchResult, setSearchResult] = useState<any>(null);
 
-  //async await（非同期処理）
+  //Google Books API通信
   const searchGoogleBooks = async (searchString: string) => {
     const url = "https://www.googleapis.com/books/v1/volumes";
     // q: 全文文字列

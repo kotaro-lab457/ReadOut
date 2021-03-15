@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import firebase from "../config/Firebase";
 import { Link, Redirect } from "react-router-dom";
-import { AuthContext } from "../AuthService";
+import { AuthContext } from "./AuthService";
 
 import { Font, LoginFont, LinkFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
