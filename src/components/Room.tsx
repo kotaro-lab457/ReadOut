@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../AuthService";
+import { AuthContext } from "../Auth/AuthService";
 import moment from "moment";
 import { PostText } from "../module.TS/Post.module";
 

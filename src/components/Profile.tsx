@@ -4,7 +4,7 @@ import List from "./List";
 import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
 import Chart from "./Chart";
-import { AuthContext } from "../AuthService";
+import { AuthContext } from "../Auth/AuthService";
 import { PostText } from "../module.TS/Post.module";
 
 import { SubFont } from "../ui/atoms/font";

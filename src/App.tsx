@@ -1,15 +1,15 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import SetUp from "./components/SetUp";
-import Login from "./components/Login";
+import Login from "./Auth/Login";
 import Room from "./components/Room";
 import Profile from "./components/Profile";
 import BooksSearch from "./components/BooksSearch";
-import ResetPassword from "./components/ResetPassword";
+import ResetPassword from "./Auth/ResetPassword";
 import EditProfile from "./components/EditProfile";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { AuthService } from "./AuthService";
+import { AuthService } from "./Auth/AuthService";
 
 import Table from "./ui/templates/Table";
 

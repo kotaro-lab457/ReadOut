@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import firebase from "../config/Firebase";
-
-import { AuthContext } from "../AuthService";
+import { AuthContext } from "../Auth/AuthService";
+import axios from "axios";
 
 import { Title } from "../ui/atoms/title";
 import { Button } from "../ui/atoms/button";

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import firebase from "../config/Firebase";
 import { Line } from "react-chartjs-2";
-import { AuthContext } from "../AuthService";
+import { AuthContext } from "../Auth/AuthService";
 
 const Chart: React.FC = () => {
   const [count1, setCount1] = useState(0);
@@ -133,7 +133,7 @@ const Chart: React.FC = () => {
             // 軸ラベル設定
             display: true,
             labelString: `${new Date().getFullYear()}年${
-              new Date().getDay() - 3
+              new Date().getMonth() + 1
             }月${new Date().getDate() - 9}日 〜 ${new Date().getDate()}日 `,
           },
         },

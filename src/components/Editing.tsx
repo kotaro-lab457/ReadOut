@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../AuthService";
+import { AuthContext } from "../Auth/AuthService";
 
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
