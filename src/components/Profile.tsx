@@ -15,7 +15,7 @@ import {
   RoomSearchButton,
   UpdateButton,
 } from "../ui/atoms/button";
-import TablePage from "../ui/molecules/TablePages";
+import { TablePage } from "../ui/molecules/TablePages";
 import { TableSetUpProfile } from "../ui/molecules/TableSetUp";
 import { TableForm, TableList } from "../ui/molecules/TableRoom";
 import { TableProfile, TableText } from "../ui/molecules/TableProfile";

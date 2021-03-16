@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { TableRoom, TableList } from "../molecules/TableRoom";
+import { TableRoom } from "../molecules/TableRoom";
 
 const TableProfile = styled(TableRoom)`
-  padding: 20px 90px;
+  padding: 20px 40px;
   position: relative;
   @media (max-width: 420px) {
     padding: 15px 10px;
@@ -41,4 +41,16 @@ const TableText = styled.div`
   margin: 0 20px;
 `;
 
-export { TableText, TableProfile, TableIcon, TableButton, TableDelete };
+const TableEdit = styled.div`
+  margin: 0 auto;
+  width: 90%;
+`;
+
+export {
+  TableText,
+  TableProfile,
+  TableIcon,
+  TableButton,
+  TableDelete,
+  TableEdit,
+};

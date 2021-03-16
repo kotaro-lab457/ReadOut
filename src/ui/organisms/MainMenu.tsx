@@ -23,9 +23,12 @@ const MainHeader = styled.div`
 const MainFooter = styled.footer`
   background-color: #c6e377;
   padding: 10px 0;
+  @media (max-width: 420px) {
+    display: none;
+  }
 `;
 
-const SubFooter = styled.div`
+const SubFooter = styled.footer`
   display: none;
   @media (max-width: 420px) {
     width: 100%;

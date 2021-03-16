@@ -5,4 +5,12 @@ const Img = styled.img`
   width: 100%;
 `;
 
-export default Img;
+const ImageTag = styled.div`
+  height: 200px;
+  @media (max-width: 420px) {
+    height: 100px;
+    width: 80px;
+  }
+`;
+
+export { Img, ImageTag };

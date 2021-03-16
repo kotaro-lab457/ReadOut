@@ -11,5 +11,20 @@ const TablePage = styled.div`
     padding: 10px 0;
   }
 `;
+const TablePagesText = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+`;
 
-export default TablePage;
+const TablePageList = styled.div`
+  width: 40vw;
+  text-align: left;
+  margin-left: 3rem;
+  @media (max-width: 420px) {
+    width: 70vw;
+    margin-left: 1rem;
+  }
+`;
+
+export { TablePage, TablePagesText, TablePageList };

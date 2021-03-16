@@ -31,12 +31,4 @@ const TextSearch = styled.div`
   }
 `;
 
-const ImageSearch = styled.div`
-  height: 200px;
-  @media (max-width: 420px) {
-    height: 100px;
-    width: 80px;
-  }
-`;
-
-export { TableSearch, ItemSearch, TextSearch, ImageSearch, ListSearch };
+export { TableSearch, ItemSearch, TextSearch, ListSearch };
