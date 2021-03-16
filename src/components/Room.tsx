@@ -6,15 +6,19 @@ import moment from "moment";
 import { PostText } from "../module.TS/Post.module";
 
 import { Title } from "../ui/atoms/title";
-import { Font } from "../ui/atoms/font";
-import { RoomTimeFont, SubFont } from "../ui/atoms/font";
+import { RoomTimeFont, SubFont, Font } from "../ui/atoms/font";
+import { Img, ImageTag } from "../ui/atoms/image";
 import {
   SetUpButton,
   RoomSearchButton,
   UpdateButton,
 } from "../ui/atoms/button";
 import { Input } from "../ui/atoms/input";
-import TablePage from "../ui/molecules/TablePages";
+import {
+  TablePage,
+  TablePagesText,
+  TablePageList,
+} from "../ui/molecules/TablePages";
 import { TableSetUpRoom } from "../ui/molecules/TableSetUp";
 import { TableText } from "../ui/molecules/TableProfile";
 import { TableRoom, TableForm, TableList } from "../ui/molecules/TableRoom";
@@ -74,7 +78,7 @@ const Room: React.FC = () => {
         <TablePage>
           <Title>Home</Title>
           <TableText>
-            ※投稿する時は、プラスボタンへ
+            <SubFont>※投稿する時は、プラスボタンへ</SubFont>
             {isDone ? (
               <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (
@@ -95,18 +99,20 @@ const Room: React.FC = () => {
           <TableList>
             {postText.map((list, id) => (
               <TableRoom key={id}>
-                <div>
-                  <img src={list.image} alt="" />
-                </div>
-                <div>
-                  <Font>ユーザー：{list.user}</Font>
-                  <Font>タイトル：{list.title}</Font>
-                  <Font>ページ：{list.page}</Font>
-                  <Font>感想：{list.text}</Font>
+                <ImageTag>
+                  <Img src={list.image} alt="" />
+                </ImageTag>
+                <TablePagesText>
+                  <TablePageList>
+                    <Font>ユーザー：{list.user}</Font>
+                    <Font>タイトル：{list.title}</Font>
+                    <Font>ページ：{list.page}</Font>
+                    <Font>感想：{list.text}</Font>
+                  </TablePageList>
                   <RoomTimeFont>
                     {moment(list.createAt).format("A HH:mm YYYY/MM/DD")}
                   </RoomTimeFont>
-                </div>
+                </TablePagesText>
               </TableRoom>
             ))}
           </TableList>

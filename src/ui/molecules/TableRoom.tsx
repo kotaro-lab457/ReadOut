@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const TableRoom = styled.div`
-  text-align: left;
+  display: flex;
   padding: 20px;
   margin: 20px;
   background-color: #fff;
@@ -24,7 +24,7 @@ const TableList = styled.div`
     overflow-y: scroll;
     min-height: 440px;
     max-height: 70vh;
+    margin-bottom: 2.5rem;
   }
 `;
-
 export { TableList, TableRoom, TableForm };

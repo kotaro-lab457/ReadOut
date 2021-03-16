@@ -10,10 +10,10 @@ const Footer: React.FC = () => {
     <>
       <MainFooter>
         <FooterFont>@portfolio</FooterFont>
-        <SubFooter>
-          <Menu />
-        </SubFooter>
       </MainFooter>
+      <SubFooter>
+        <Menu />
+      </SubFooter>
     </>
   );
 };

@@ -91,15 +91,7 @@ const Menu: React.FC = (props: any) => {
         </HeaderButton>
       )}
       {user && (
-        <HeaderButton
-          onClick={async () => {
-            try {
-              await signOut();
-            } catch (err) {
-              alert(err.message);
-            }
-          }}
-        >
+        <HeaderButton onClick={signOut}>
           <FontAwesomeIcon icon={faSignOutAlt} />
           Log out
         </HeaderButton>

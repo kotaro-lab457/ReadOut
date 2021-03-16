@@ -12,7 +12,7 @@ const MainLogin = styled(MainPage)`
   background-size: cover;
   background-position: center;
   position: relative;
-  min-height: 80vh;
+  min-height: 83.5vh;
   &:before {
     content: "";
     background-color: rgba(0, 0, 0, 0.4);

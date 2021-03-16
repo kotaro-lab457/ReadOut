@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import { Font } from "../ui/atoms/font";
-import Img from "../ui/atoms/image";
+import { Img, ImageTag } from "../ui/atoms/image";
 import { Title } from "../ui/atoms/title";
 import { SearchInput } from "../ui/atoms/input";
 import { SearchButton } from "../ui/atoms/button";
-import TablePage from "../ui/molecules/TablePages";
+import { TablePage } from "../ui/molecules/TablePages";
 import {
   TableSearch,
   ItemSearch,
   TextSearch,
-  ImageSearch,
   ListSearch,
 } from "../ui/molecules/TableSearch";
 import { MainPage } from "../ui/organisms/MainPages";
@@ -71,12 +70,12 @@ const BooksSearch: React.FC = () => {
                 {searchResult.items.map((item: any) => {
                   return (
                     <ItemSearch key={item.id}>
-                      <ImageSearch>
+                      <ImageTag>
                         <Img
                           src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
                           alt=""
                         />
-                      </ImageSearch>
+                      </ImageTag>
                       <TextSearch>
                         <Font>タイトル名：{item.volumeInfo.title}</Font>
                         <Font>著者名：{item.volumeInfo.authors}</Font>

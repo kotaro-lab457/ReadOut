@@ -7,7 +7,7 @@ import { Title } from "../ui/atoms/title";
 import { Button } from "../ui/atoms/button";
 import { SetUpFont } from "../ui/atoms/font";
 import { SetUpInput, TextArea } from "../ui/atoms/input";
-import TablePage from "../ui/molecules/TablePages";
+import { TablePage } from "../ui/molecules/TablePages";
 import { TableSetUp } from "../ui/molecules/TableSetUp";
 import { MainPage } from "../ui/organisms/MainPages";
 import { Link } from "react-router-dom";
@@ -59,8 +59,7 @@ const SetUp: React.FC = (props: any) => {
     setTitle("");
     setPage("");
     setTextId(textId);
-
-    //props.history.push("/");
+    props.history.push("/");
   };
   return (
     <>

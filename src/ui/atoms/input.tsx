@@ -41,6 +41,7 @@ const SetUpInput = styled(Input)`
 const EditInput = styled(Input)`
   font-size: 1rem;
   width: 70%;
+  text-align: center;
   @media (max-width: 420px) {
     font-size: 0.8rem;
     width: 100%;
