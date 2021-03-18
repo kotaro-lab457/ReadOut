@@ -142,6 +142,7 @@ const Chart: React.FC = () => {
         {
           ticks: {
             stepSize: 1,
+            beginAtZero: true,
           },
         },
       ],

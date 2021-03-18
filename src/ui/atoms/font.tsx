@@ -27,6 +27,12 @@ const LoginFont = styled(Font)`
     font-size: 1.1rem;
   }
 `;
+const ErrorFont = styled(Font)`
+  font-size: 0.9rem;
+  text-align: left;
+  color: #ff4646;
+  padding: 0.5rem 0 0 2rem;
+`;
 
 const TimeFont = styled(Font)`
   font-size: 0.8rem;
@@ -45,6 +51,7 @@ const RoomTimeFont = styled(TimeFont)`
 `;
 
 const LinkFont = styled.span`
+  font-size: 1rem;
   cursor: pointer;
   color: #fbfad3;
   text-decoration: underline;
@@ -64,6 +71,7 @@ export {
   Font,
   SubFont,
   LoginFont,
+  ErrorFont,
   LinkFont,
   SetUpFont,
   RoomTimeFont,

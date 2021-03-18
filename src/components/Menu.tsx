@@ -27,8 +27,8 @@ const Menu: React.FC = (props: any) => {
       });
   };
 
-  const signOut = async () => {
-    await firebase.auth().signOut();
+  const signOut = () => {
+    firebase.auth().signOut();
     props.history.push("/");
   };
 

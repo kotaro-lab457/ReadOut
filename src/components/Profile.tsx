@@ -118,7 +118,7 @@ const Home: React.FC = () => {
           </TableText>
           <TableList>
             {homeText.map((list, id) => (
-              <div key={id} style={{ height: "100%" }}>
+              <div key={id}>
                 {list.uid === user.uid && (
                   // ドキュメントのuser.uidとuserのuidを
                   // 編集（Edit）タグで囲んであげる

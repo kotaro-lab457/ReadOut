@@ -6,7 +6,7 @@ const TableLogin = styled.div`
   @media (max-width: 420px) {
     right: 0;
     left: 0;
-    padding: 1rem;
+    padding: 1rem 2rem;
   }
 `;
 

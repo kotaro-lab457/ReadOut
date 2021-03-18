@@ -15,6 +15,7 @@ const Main = styled.header`
 `;
 
 const MainHeader = styled.div`
+  margin-right: 2rem;
   @media (max-width: 420px) {
     display: none;
   }
