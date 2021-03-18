@@ -1,14 +1,21 @@
 import React, { useState, useContext } from "react";
+import { useForm } from "react-hook-form";
 import firebase from "../config/Firebase";
 import { Link, Redirect } from "react-router-dom";
 import { AuthContext } from "./AuthService";
 
-import { Font, LoginFont, LinkFont } from "../ui/atoms/font";
+import { Font, LoginFont, LinkFont, ErrorFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
 import { LoginButton } from "../ui/atoms/button";
 import { LoginInput } from "../ui/atoms/input";
 import { TableLogin, SubTableLogin } from "../ui/molecules/TableLogin";
 import { MainLogin } from "../ui/organisms/MainPages";
+
+type Post = {
+  name: string;
+  email: string;
+  password: string;
+};
 
 const Login: React.FC = (props: any) => {
   const [password, setPassword] = useState<string>("");
@@ -16,11 +23,37 @@ const Login: React.FC = (props: any) => {
   const [name, setName] = useState<string>("");
   const [inLogin, setInLogin] = useState<boolean>(true);
 
+  const { register, handleSubmit, errors } = useForm<Post>();
   const user = useContext(AuthContext);
 
   if (user) {
     return <Redirect to="/" />;
   }
+
+  const handleSignIn = async () => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+    } catch (err) {
+      alert(err.message);
+    }
+    props.history.push("/");
+  };
+
+  const handleCreateUser = async () => {
+    try {
+      await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(({ user }) => {
+          user?.updateProfile({
+            displayName: name,
+          });
+        });
+    } catch (err) {
+      alert(err.message);
+    }
+    props.history.push("/");
+  };
 
   return (
     <>
@@ -31,6 +64,7 @@ const Login: React.FC = (props: any) => {
             <div style={{ display: inLogin ? "none" : "block" }}>
               <LoginFont>UserName</LoginFont>
               <LoginInput
+                name="name"
                 placeholder="name"
                 value={name}
                 type="name"
@@ -42,56 +76,37 @@ const Login: React.FC = (props: any) => {
             <LoginFont>E-mail</LoginFont>
             <LoginInput
               name="email"
-              placeholder="email"
+              placeholder="example@gmail.com"
               value={email}
               type="email"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setEmail(e.target.value);
               }}
+              ref={register({ required: true, minLength: 9 })}
             />
+            {errors.email && <ErrorFont>※メールは必須です。</ErrorFont>}
             <LoginFont>Password</LoginFont>
             <LoginInput
+              name="password"
               placeholder="８文字以上の入力"
               value={password}
               type="password"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 setPassword(e.target.value);
               }}
+              ref={register({ required: true, minLength: 8 })}
             />
+            {errors.password && <ErrorFont>※パスワードは必須です。</ErrorFont>}
             <br />
             <LoginButton
               onClick={
                 inLogin
-                  ? async () => {
-                      try {
-                        await firebase
-                          .auth()
-                          .signInWithEmailAndPassword(email, password);
-                        props.history.push("/");
-                      } catch (err) {
-                        alert(err.message);
-                      }
-                    }
-                  : async () => {
-                      try {
-                        await firebase
-                          .auth()
-                          .createUserWithEmailAndPassword(email, password)
-                          .then(({ user }) => {
-                            user?.updateProfile({
-                              displayName: name,
-                            });
-                          });
-                        props.history.push("/");
-                      } catch (err) {
-                        alert(err.message);
-                      }
-                    }
+                  ? handleSubmit(handleSignIn)
+                  : handleSubmit(handleCreateUser)
               }
             >
               {inLogin ? "Login" : "Sign In"}
             </LoginButton>
-            <br />
             <Font>
               パスワードを忘れてしまった場合は
               <Link to="/reset" style={{ color: "#fbfad3" }}>
@@ -99,7 +114,6 @@ const Login: React.FC = (props: any) => {
               </Link>
               へ
             </Font>
-            <br />
             <LinkFont
               onClick={() => {
                 setInLogin(!inLogin);
