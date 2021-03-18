@@ -6,6 +6,7 @@ const Img = styled.img`
 `;
 
 const ImageTag = styled.div`
+  margin-top: 0.5rem;
   height: 200px;
   @media (max-width: 420px) {
     height: 100px;

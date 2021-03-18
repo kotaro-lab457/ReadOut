@@ -29,12 +29,12 @@ const HeaderButton = styled(Button)`
 `;
 
 const LoginButton = styled(Button)`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   width: 445px;
-  padding: 15px 20px;
-  margin: 2rem 0;
+  padding: 14px 20px;
+  margin: 1.5rem 0 0;
   @media (max-width: 420px) {
-    width: 325px;
+    width: 280px;
     padding: 10px;
     margin: 1.5rem 0 1rem;
   }
@@ -94,6 +94,7 @@ const SetUpButton = styled.div`
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   opacity: 0.8;
+  transition: 0.3s;
   &:hover {
     opacity: 1;
   }

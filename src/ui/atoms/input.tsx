@@ -17,7 +17,7 @@ const LoginInput = styled(Input)`
   width: 400px;
   position: relative;
   @media (max-width: 420px) {
-    width: 300px;
+    width: 250px;
     padding: 10px;
   }
 `;

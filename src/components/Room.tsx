@@ -32,8 +32,8 @@ const Room: React.FC = () => {
   const [isDone, setIsDone] = useState<boolean>(false);
 
   const FS = firebase.firestore().collection("text");
-  const user = useContext(AuthContext);
 
+  const user = useContext(AuthContext);
   useEffect(() => {
     let isMounted = true;
     FS.orderBy("createAt", "desc").onSnapshot((snapshot) => {
@@ -78,7 +78,7 @@ const Room: React.FC = () => {
         <TablePage>
           <Title>Home</Title>
           <TableText>
-            <SubFont>※投稿する時は、プラスボタンへ</SubFont>
+            {user && <SubFont>※投稿する時は、プラスボタンへ</SubFont>}
             {isDone ? (
               <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (

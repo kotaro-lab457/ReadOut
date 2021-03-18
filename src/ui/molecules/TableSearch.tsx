@@ -27,7 +27,7 @@ const TextSearch = styled.div`
   text-align: left;
   margin-left: 3rem;
   @media (max-width: 420px) {
-    margin-left: 1rem;
+    margin: 0.5rem 0 0 1rem;
   }
 `;
 

@@ -65,7 +65,7 @@ const SetUp: React.FC = (props: any) => {
     <>
       <MainPage>
         <TablePage>
-          <Title>Set UP</Title>
+          <Title>Set Up</Title>
           <TableSetUp>
             <form onSubmit={handleComment}>
               <div>
