@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
   return (
     <>
       <MainFooter>
-        <FooterFont>@portfolio</FooterFont>
+        <FooterFont>@2021 suzuki.k / portfolio</FooterFont>
       </MainFooter>
       <SubFooter>
         <Menu />
