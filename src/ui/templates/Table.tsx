@@ -6,7 +6,7 @@ const Table = styled.div`
   min-height: 83.5vh;
   padding-top: 7rem;
   @media (max-width: 420px) {
-    min-height: 84vh;
+    min-height: 84.5vh;
     max-height: 800px;
     padding-top: 4rem;
   }

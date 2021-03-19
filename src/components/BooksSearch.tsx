@@ -64,8 +64,8 @@ const BooksSearch: React.FC = () => {
               </SearchButton>
             </form>
           </TableSearch>
-          <ListSearch>
-            {searchResult && (
+          {searchResult && (
+            <ListSearch>
               <>
                 {searchResult.items.map((item: any) => {
                   return (
@@ -80,14 +80,13 @@ const BooksSearch: React.FC = () => {
                         <Font>タイトル名：{item.volumeInfo.title}</Font>
                         <Font>著者名：{item.volumeInfo.authors}</Font>
                         <Font>発行日：{item.volumeInfo.publishedDate}</Font>
-                        <Font>ページ数：{item.volumeInfo.pageCount}</Font>
                       </TextSearch>
                     </ItemSearch>
                   );
                 })}
               </>
-            )}
-          </ListSearch>
+            </ListSearch>
+          )}
         </TablePage>
       </MainPage>
     </>
