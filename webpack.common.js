@@ -1,8 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
-// const dotenv = require("dotenv-webpack");
-// const { webpack } = require("webpack");
-//const env = dotenv.config().parsed;
 
 module.exports = () => {
   return {
@@ -16,6 +13,7 @@ module.exports = () => {
     resolve: {
       extensions: [".ts", ".js", ".tsx", ".jsx"],
     },
+
     module: {
       rules: [
         {
@@ -36,17 +34,21 @@ module.exports = () => {
         {
           test: /\.(jpg|png)$/,
           // 画像（jpg or png）を出力するローダー
-          loader: "file-loader",
-          options: {
-            name: "[name].[contenthash].[ext]",
-            outputPath: "images",
-            publicPath: "/images",
-          },
+          use: [
+            {
+              loader: "file-loader",
+              options: {
+                name: "[name].[contenthash].[ext]",
+                outputPath: "images",
+                publicPath: "/images",
+              },
+            },
+            "image-webpack-loader",
+          ],
         },
       ],
     },
     devtool: "source-map",
     plugins: [new HtmlWebpackPlugin({ template: "./src/index.html" })],
-    //plugins: [new webpack.DefinePlugin({ "process.env": JSON.stringify(env) })],
   };
 };
