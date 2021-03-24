@@ -9,6 +9,7 @@ module.exports = merge(common(), {
     open: true,
     contentBase: path.resolve(__dirname, "public"),
     port: "9000",
+    historyApiFallback: true,
   },
-  devtool: "source-map",
+  devtool: "cheap-module-eval-source-map",
 });
