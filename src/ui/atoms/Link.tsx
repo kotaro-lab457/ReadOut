@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const LinkTag = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin: 30px 20px 20px 0;
   @media (max-width: 420px) {
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin: 10px 25px;
   }
 `;

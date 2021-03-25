@@ -7,8 +7,6 @@ import { LoginFont } from "../ui/atoms/font";
 import { LoginInput } from "../ui/atoms/input";
 import { TableReset, SubTableReset } from "../ui/molecules/TableReset";
 import { MainLogin } from "../ui/organisms/MainPages";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ResetPassword: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -37,10 +35,7 @@ const ResetPassword: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <br />
-              <ResetButton>
-                <FontAwesomeIcon icon={faPaperPlane} />
-                Submit
-              </ResetButton>
+              <ResetButton>送信</ResetButton>
             </form>
             <br />
             <span>

@@ -20,9 +20,9 @@ const TablePagesText = styled.div`
 const TablePageList = styled.div`
   width: 40vw;
   text-align: left;
-  margin-left: 3rem;
+  margin-left: 2rem;
   @media (max-width: 420px) {
-    width: 70vw;
+    width: 65vw;
     margin-left: 1rem;
   }
 `;

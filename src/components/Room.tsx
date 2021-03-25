@@ -49,7 +49,6 @@ const Room: React.FC = () => {
       isMounted = false;
     };
   }, []);
-  // setPostTextが受け取る配列の中身を絞り込みする
 
   const handleFilter = (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,7 +66,7 @@ const Room: React.FC = () => {
       const posts: any = snapshot.docs.map((doc) => {
         return doc.data();
       });
-      setPostText(posts); //collectionのデータを取得してる
+      setPostText(posts);
       setIsDone(!isDone);
     });
   };
@@ -78,12 +77,11 @@ const Room: React.FC = () => {
         <TablePage>
           <Title>Home</Title>
           <TableText>
-            {user && <SubFont>※投稿する時は、プラスボタンへ</SubFont>}
             {isDone ? (
               <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (
               <TableForm onSubmit={handleFilter}>
-                <SubFont>絞り込み</SubFont>
+                <SubFont>検索</SubFont>
                 <Input
                   type="text"
                   placeholder="タイトル or ユーザー名"
@@ -118,8 +116,11 @@ const Room: React.FC = () => {
           </TableList>
           {user && (
             <TableSetUpRoom>
-              <Link to="/setup">
-                <SetUpButton></SetUpButton>
+              <Link
+                to="/setup"
+                style={{ textDecoration: "none", color: "#000" }}
+              >
+                <SetUpButton>投稿</SetUpButton>
               </Link>
             </TableSetUpRoom>
           )}

@@ -105,7 +105,7 @@ const Login: React.FC = (props: any) => {
                   : handleSubmit(handleCreateUser)
               }
             >
-              {inLogin ? "Login" : "Sign In"}
+              {inLogin ? "Login" : "Sign Up"}
             </LoginButton>
             <Font>
               パスワードを忘れてしまった場合は

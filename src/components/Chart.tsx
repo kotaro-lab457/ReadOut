@@ -132,9 +132,9 @@ const Chart: React.FC = () => {
           scaleLabel: {
             // 軸ラベル設定
             display: true,
-            labelString: `${new Date().getFullYear()}年${
-              new Date().getMonth() + 1
-            }月${new Date().getDate() - 9}日 〜 ${new Date().getDate()}日 `,
+            labelString: `${new Date().getMonth() + 1}月${
+              new Date().getDate() - 9
+            }日 〜 ${new Date().getMonth() + 1}月${new Date().getDate()}日 `,
           },
         },
       ],

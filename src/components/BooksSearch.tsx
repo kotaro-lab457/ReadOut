@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import { Font } from "../ui/atoms/font";
-import { Img, ImageTag } from "../ui/atoms/image";
+import { ImageTag } from "../ui/atoms/image";
 import { Title } from "../ui/atoms/title";
 import { SearchInput } from "../ui/atoms/input";
 import { SearchButton } from "../ui/atoms/button";
@@ -71,7 +71,7 @@ const BooksSearch: React.FC = () => {
                   return (
                     <ItemSearch key={item.id}>
                       <ImageTag>
-                        <Img
+                        <img
                           src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
                           alt=""
                         />

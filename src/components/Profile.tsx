@@ -94,8 +94,6 @@ const Home: React.FC = () => {
             <SubFont>
               ※ゲストユーザーの場合は、投稿の履歴が残りません
               <br />
-              {/* 本登録する場合は、
-            <Link to="/editProfile">こちらへ。</Link> */}
             </SubFont>
             <SubFont>ユーザー名：{user?.displayName}</SubFont>
             <Chart />
@@ -103,7 +101,7 @@ const Home: React.FC = () => {
               <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (
               <TableForm onSubmit={handleFilter}>
-                <SubFont>絞り込み</SubFont>
+                <SubFont>検索</SubFont>
                 <Input
                   type="text"
                   placeholder="タイトル名"
@@ -120,8 +118,6 @@ const Home: React.FC = () => {
             {homeText.map((list, id) => (
               <div key={id}>
                 {list.uid === user.uid && (
-                  // ドキュメントのuser.uidとuserのuidを
-                  // 編集（Edit）タグで囲んであげる
                   <TableProfile>
                     {list.editing ? (
                       <Editing key={id} list={list} editChange={editChange} />
@@ -135,8 +131,11 @@ const Home: React.FC = () => {
           </TableList>
           {user && (
             <TableSetUpProfile>
-              <Link to="/setup">
-                <SetUpButton />
+              <Link
+                to="/setup"
+                style={{ textDecoration: "none", color: "#000" }}
+              >
+                <SetUpButton>投稿</SetUpButton>
               </Link>
             </TableSetUpProfile>
           )}
