@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 10px;
   margin: 10px 0;
   border-radius: 20px;
@@ -15,7 +15,7 @@ const Button = styled.button`
     opacity: 1;
   }
   @media (max-width: 420px) {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0 10px;
   }
 `;
@@ -31,7 +31,7 @@ const HeaderButton = styled(Button)`
 const LoginButton = styled(Button)`
   font-size: 1.4rem;
   width: 445px;
-  padding: 14px 20px;
+  padding: 15px;
   margin: 1.5rem 0 0;
   @media (max-width: 420px) {
     width: 280px;
@@ -53,7 +53,6 @@ const RoomSearchButton = styled(SearchButton)`
   border: 1px solid #000;
   @media (max-width: 420px) {
     padding: 2px 10px;
-    font-size: 1rem;
     margin: 0;
   }
 `;
@@ -87,9 +86,12 @@ const IconButton = styled(Button)`
 `;
 
 const SetUpButton = styled.div`
+  color: #000;
+  font-weight: bold;
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 65px;
+  padding-top: 5px;
   background-color: #16c79a;
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -98,52 +100,52 @@ const SetUpButton = styled.div`
   &:hover {
     opacity: 1;
   }
-  &::after {
-    position: absolute;
-    top: 26px;
-    left: 50%;
-    content: "";
-    display: inline-block;
-    width: 25px;
-    height: 13px;
-    border-top: 5px solid;
-    transform: translateX(-50%);
-  }
   &::before {
     position: absolute;
     content: "";
-    top: 20px;
-    left: 11px;
+    top: 32px;
+    left: 16px;
     display: inline-block;
     width: 25px;
     height: 13px;
     border-top: 5px solid;
     transform: rotate(90deg);
-    &::hover {
-      border-top: 4px solid #fff;
-    }
+  }
+  &::after {
+    position: absolute;
+    top: 38px;
+    left: 50%;
+    content: "";
+    display: inline-block;
+    width: 26px;
+    height: 13px;
+    border-top: 5px solid;
+    transform: translateX(-50%);
   }
   &:active {
     color: #000;
   }
   @media (max-width: 420px) {
     opacity: 0.5;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 55px;
     &:hover {
       opacity: 1;
     }
     &::after {
-      top: 22px;
+      top: 36px;
+      width: 23px;
     }
     &::before {
-      top: 16px;
-      left: 6px;
+      width: 22px;
+      top: 30px;
+      left: 12px;
     }
   }
 `;
 
 const ResetButton = styled(Button)`
+  padding: 10px 15px;
   opacity: 0.9;
   &:hover {
     opacity: 1;

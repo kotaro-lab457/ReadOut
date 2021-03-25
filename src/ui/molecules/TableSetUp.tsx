@@ -17,14 +17,14 @@ const TableSetUpProfile = styled.div`
   bottom: 10%;
   right: 15%;
   @media (max-width: 420px) {
-    top: 17%;
+    top: 80%;
     right: 6%;
   }
 `;
 
 const TableSetUpRoom = styled(TableSetUpProfile)`
   @media (max-width: 420px) {
-    top: 15%;
+    top: 80%;
   }
 `;
 

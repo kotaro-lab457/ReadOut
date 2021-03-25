@@ -87,7 +87,7 @@ const SetUp: React.FC = (props: any) => {
                     onChange={(e) => setPage(e.target.value)}
                   />
                 </label>
-                <p>感想＆要約</p>
+                <p>感想</p>
                 <TextArea
                   id="text"
                   placeholder="コメント入力"

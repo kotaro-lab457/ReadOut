@@ -23,8 +23,8 @@ const TableList = styled.div`
   @media (max-width: 420px) {
     overflow-y: scroll;
     min-height: 440px;
-    max-height: 70vh;
-    margin-bottom: 2.5rem;
+    max-height: 65vh;
+    margin-bottom: 3.5rem;
   }
 `;
 export { TableList, TableRoom, TableForm };

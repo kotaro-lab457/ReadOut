@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Input = styled.input`
-  font-size: 1.2rem;
+  font-size: 1rem;
   outline: none;
   width: 300px;
   @media (max-width: 420px) {
@@ -12,7 +12,7 @@ const Input = styled.input`
 
 const LoginInput = styled(Input)`
   border-radius: 20px;
-  padding: 20px;
+  padding: 15px;
   background-color: rgba(255, 255, 255, 0.8);
   width: 400px;
   position: relative;
@@ -39,8 +39,6 @@ const SetUpInput = styled(Input)`
 `;
 
 const EditInput = styled(Input)`
-  font-size: 1rem;
-  width: 70%;
   text-align: center;
   @media (max-width: 420px) {
     font-size: 0.8rem;
@@ -49,7 +47,7 @@ const EditInput = styled(Input)`
 `;
 
 const TextArea = styled.textarea`
-  font-size: 1.2rem;
+  font-size: 1rem;
   height: 100px;
   width: 100%;
   @media (max-width: 420px) {
