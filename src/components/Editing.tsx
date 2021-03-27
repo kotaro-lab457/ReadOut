@@ -34,6 +34,7 @@ const Editing: React.FC<homeProps> = (props) => {
   const FS = firebase.firestore().collection("text");
   const db = firebase.firestore().collection("counters");
 
+  //グラフの日付別番号作成
   const upDateDay =
     new Date().getFullYear() +
     new Date().getMonth() +

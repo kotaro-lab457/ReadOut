@@ -4,6 +4,7 @@ import List from "./List";
 import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
 import Chart from "./Chart";
+import TotalPosts from "./Posts";
 import { AuthContext } from "../Auth/AuthService";
 import { PostText } from "../module.TS/Post.module";
 
@@ -18,7 +19,12 @@ import {
 import { TablePage } from "../ui/molecules/TablePages";
 import { TableSetUpProfile } from "../ui/molecules/TableSetUp";
 import { TableForm, TableList } from "../ui/molecules/TableRoom";
-import { TableProfile, TableText } from "../ui/molecules/TableProfile";
+import {
+  TableProfile,
+  TableText,
+  TableTotal,
+  TablePosts,
+} from "../ui/molecules/TableProfile";
 import { MainPage } from "../ui/organisms/MainPages";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -96,7 +102,12 @@ const Home: React.FC = () => {
               <br />
             </SubFont>
             <SubFont>ユーザー名：{user?.displayName}</SubFont>
-            <Chart />
+            <TablePosts>
+              <Chart />
+              <TableTotal>
+                <TotalPosts />
+              </TableTotal>
+            </TablePosts>
             {isDone ? (
               <UpdateButton onClick={handleRender}>再表示</UpdateButton>
             ) : (

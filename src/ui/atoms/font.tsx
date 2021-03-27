@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Font = styled.p`
   margin: 1rem 0;
   font-size: 1rem;
+  font-weight: bold;
   @media (max-width: 420px) {
     margin: 0;
     font-size: 0.7rem;
@@ -18,7 +19,6 @@ const SubFont = styled(Font)`
 `;
 
 const LoginFont = styled(Font)`
-  font-weight: bold;
   padding-top: 10px;
   @media (max-width: 420px) {
     padding: 10px;
@@ -34,6 +34,7 @@ const ErrorFont = styled(Font)`
 const TimeFont = styled(Font)`
   text-align: right;
   display: block;
+  font-weight: 300;
   @media (max-width: 420px) {
     margin-right: 3rem;
   }
@@ -60,6 +61,27 @@ const SetUpFont = styled(Font)`
 const FooterFont = styled(Font)`
   text-align: center;
   margin: 0;
+  font-weight: 300;
+`;
+
+const PostsFont = styled(Font)`
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 1rem 0 0;
+  color: #4fc3f7;
+  font-size: 2rem;
+  @media (max-width: 420px) {
+    font-size: 1rem;
+    margin: 0;
+  }
+`;
+
+const TotalFont = styled(Font)`
+  font-size: 4rem;
+  margin: 0;
+  @media (max-width: 420px) {
+    font-size: 2rem;
+  }
 `;
 export {
   Font,
@@ -71,4 +93,6 @@ export {
   RoomTimeFont,
   TimeFont,
   FooterFont,
+  PostsFont,
+  TotalFont,
 };
