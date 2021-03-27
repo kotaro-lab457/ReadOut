@@ -46,6 +46,33 @@ const TableEdit = styled.div`
   width: 90%;
 `;
 
+const TableChart = styled.div`
+  width: 50vw;
+  @media (max-width: 420px) {
+    width: 70vw;
+  }
+`;
+
+const TableTotal = styled.div`
+  margin: auto 0 auto 2rem;
+  text-align: center;
+  border: 1px solid #000;
+  padding: 10px 30px;
+  border-radius: 50%;
+  @media (max-width: 420px) {
+    display: none;
+  }
+`;
+
+const TablePosts = styled.div`
+  display: flex;
+  width: 80%;
+  @media (max-width: 420px) {
+    display: block;
+    width: 100%;
+  }
+`;
+
 export {
   TableText,
   TableProfile,
@@ -53,4 +80,7 @@ export {
   TableButton,
   TableDelete,
   TableEdit,
+  TableChart,
+  TableTotal,
+  TablePosts,
 };

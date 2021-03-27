@@ -3,7 +3,7 @@ import styled from "styled-components";
 const TablePage = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  width: 60%;
+  width: 60vw;
   text-align: center;
   position: relative;
   @media (max-width: 420px) {
@@ -18,7 +18,7 @@ const TablePagesText = styled.div`
 `;
 
 const TablePageList = styled.div`
-  width: 40vw;
+  width: 45vw;
   text-align: left;
   margin-left: 2rem;
   @media (max-width: 420px) {

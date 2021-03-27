@@ -4,7 +4,6 @@ const path = require("path");
 
 module.exports = merge(common(), {
   mode: "development",
-  watch: true,
   devServer: {
     open: true,
     contentBase: path.resolve(__dirname, "public"),

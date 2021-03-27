@@ -6,7 +6,7 @@ const Button = styled.button`
   margin: 10px 0;
   border-radius: 20px;
   outline: none;
-  background-color: #16c79a;
+  background-color: #ffd740;
   font-weight: bold;
   opacity: 0.8;
   transition: 0.3s;
@@ -41,7 +41,7 @@ const LoginButton = styled(Button)`
 `;
 
 const SearchButton = styled(Button)`
-  padding: 10px 20px;
+  padding: 10px 20px 10px;
   border-radius: 0 20px 20px 0;
   opacity: 1;
   @media (max-width: 420px) {
@@ -62,7 +62,7 @@ const UpdateButton = styled(Button)`
   border-radius: 0px;
   padding: 5px 30px;
   margin: 0;
-  border: 1px solid #16c79a;
+  border: 1px solid #ffd740;
 `;
 
 const CancelButton = styled.button`
@@ -78,7 +78,7 @@ const IconButton = styled(Button)`
   font-size: 0.8rem;
   padding: 15px;
   border-radius: 50%;
-  border: 1px solid #16c79a;
+  border: 1px solid #ffd740;
   margin: 0;
   @media (max-width: 420px) {
     padding: 10px;
@@ -92,7 +92,7 @@ const SetUpButton = styled.div`
   width: 70px;
   height: 65px;
   padding-top: 5px;
-  background-color: #16c79a;
+  background-color: #ffd740;
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   opacity: 0.8;

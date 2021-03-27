@@ -117,7 +117,7 @@ const Chart: React.FC = () => {
     datasets: [
       // 表示するデータセット
       {
-        borderColor: "rgba(35,200,153,1)",
+        borderColor: "#4fc3f7",
         lineTension: 0,
         data: daysPlus,
         label: "読書アウトプット量",
@@ -146,6 +146,9 @@ const Chart: React.FC = () => {
           },
         },
       ],
+    },
+    option: {
+      responsive: true,
     },
   };
   return (

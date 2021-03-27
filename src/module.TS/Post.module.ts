@@ -9,4 +9,5 @@ export interface PostText {
   createAt: number;
   count: number;
   image: string;
+  total: number;
 }

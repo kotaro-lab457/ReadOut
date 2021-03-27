@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Main = styled.header`
-  background-color: #c6e377;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   padding: 20px 30px;
@@ -22,7 +22,7 @@ const MainHeader = styled.div`
 `;
 
 const MainFooter = styled.footer`
-  background-color: #c6e377;
+  background-color: #fff;
   padding: 10px 0;
   @media (max-width: 420px) {
     display: none;
