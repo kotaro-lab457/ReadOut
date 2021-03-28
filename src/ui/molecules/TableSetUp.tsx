@@ -14,17 +14,19 @@ const TableSetUp = styled.div`
 
 const TableSetUpProfile = styled.div`
   position: fixed;
-  bottom: 10%;
-  right: 15%;
+  bottom: 20%;
+  right: 25%;
   @media (max-width: 420px) {
-    top: 80%;
-    right: 6%;
+    bottom: 40%;
+    right: 5%;
   }
 `;
 
 const TableSetUpHome = styled(TableSetUpProfile)`
+  bottom: 10%;
+  right: 15%;
   @media (max-width: 420px) {
-    top: 80%;
+    top: 83%;
   }
 `;
 

@@ -6,16 +6,23 @@ const Font = styled.p`
   font-weight: bold;
   @media (max-width: 420px) {
     margin: 0;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 `;
 
 const SubFont = styled(Font)`
   margin: 1rem 0 0;
+  text-align: left;
   @media (max-width: 420px) {
-    margin: 0.5rem 0 0;
+    margin: 10px 0 0 10px;
     display: block;
   }
+`;
+
+const TextFont = styled.p`
+  margin: 1rem 0 0 0;
+  font-size: 1rem;
+  font-weight: bold;
 `;
 
 const LoginFont = styled(Font)`
@@ -48,8 +55,9 @@ const HomeTimeFont = styled(TimeFont)`
 
 const LinkFont = styled.span`
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  color: #fbfad3;
+  color: #ffd740;
   text-decoration: underline;
 `;
 
@@ -86,6 +94,7 @@ const TotalFont = styled(Font)`
 export {
   Font,
   SubFont,
+  TextFont,
   LoginFont,
   ErrorFont,
   LinkFont,

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import firebase from "firebase";
 
 import { ResetButton } from "../ui/atoms/button";
-import { LoginFont } from "../ui/atoms/font";
+import { LoginFont, TextFont } from "../ui/atoms/font";
 import { LoginInput } from "../ui/atoms/input";
 import { TableReset, SubTableReset } from "../ui/molecules/TableReset";
 import { MainLogin } from "../ui/organisms/MainPages";
@@ -38,12 +38,12 @@ const ResetPassword: React.FC = () => {
               <ResetButton>送信</ResetButton>
             </form>
             <br />
-            <span>
-              <Link to="/login" style={{ color: " #fbfad3" }}>
+            <TextFont>
+              <Link to="/login" style={{ color: "#ffd740" }}>
                 Login
               </Link>
               へ
-            </span>
+            </TextFont>
           </SubTableReset>
         </TableReset>
       </MainLogin>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import Editing from "./Editing";
-import List from "./List";
+import Editing from "../components/Editing";
+import List from "../components/List";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../Auth/AuthService";
 
@@ -64,7 +64,6 @@ const History: React.FC = () => {
       console.log("反転");
     });
   };
-  // 配列で管理されたhomeTextのそれぞれのIDとEdit（編集）を結びつけ、LISTとEditを反転させる
   const editChange = (id: number, editing: boolean) => {
     setHomeText(
       homeText.map((texts) => {
@@ -85,10 +84,8 @@ const History: React.FC = () => {
           <TableText>
             <Title>投稿履歴</Title>
             <SubFont>
-              <Link
-                to="/profile"
-                style={{ textDecoration: "none", color: "#000" }}
-              >
+              ・
+              <Link to="/profile" style={{ color: "#000" }}>
                 Profile
               </Link>
               へ
@@ -113,7 +110,7 @@ const History: React.FC = () => {
           <TableList>
             {homeText.map((list, id) => (
               <div key={id}>
-                {list.uid === user.uid && (
+                {list.user === user.displayName && (
                   <TableProfile>
                     {list.editing ? (
                       <Editing key={id} list={list} editChange={editChange} />
