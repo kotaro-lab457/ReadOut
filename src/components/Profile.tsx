@@ -1,145 +1,45 @@
-import React, { useState, useContext, useEffect } from "react";
-import Editing from "./Editing";
-import List from "./List";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import firebase from "../config/Firebase";
 import Chart from "./Chart";
 import TotalPosts from "./Posts";
 import { AuthContext } from "../Auth/AuthService";
-import { PostText } from "../module.TS/Post.module";
 
 import { SubFont } from "../ui/atoms/font";
-import { Input } from "../ui/atoms/input";
 import { Title } from "../ui/atoms/title";
-import {
-  SetUpButton,
-  RoomSearchButton,
-  UpdateButton,
-} from "../ui/atoms/button";
+import { SetUpButton } from "../ui/atoms/button";
 import { TablePage } from "../ui/molecules/TablePages";
 import { TableSetUpProfile } from "../ui/molecules/TableSetUp";
-import { TableForm, TableList } from "../ui/molecules/TableRoom";
-import {
-  TableProfile,
-  TableText,
-  TableTotal,
-  TablePosts,
-} from "../ui/molecules/TableProfile";
+
+import { TableTotal, TablePosts } from "../ui/molecules/TableProfile";
 import { MainPage } from "../ui/organisms/MainPages";
 
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const Home: React.FC = () => {
-  const [homeText, setHomeText] = useState<PostText[]>([]);
-  const [isDone, setIsDone] = useState<boolean>(false);
-  const [value, setValue] = useState<string>("");
-
   const user = useContext(AuthContext);
-  // ユーザー名の取得
-  //const userName = firebase.auth().currentUser;
-  const FS = firebase.firestore().collection("text");
-
-  useEffect(() => {
-    if (user) {
-      let isMounted = true;
-      FS.orderBy("createAt", "desc").onSnapshot((snapshot) => {
-        const homes: any = snapshot.docs.map((doc) => {
-          // ドキュメント取得
-          return doc.data();
-        });
-        if (isMounted) {
-          setHomeText(homes);
-        }
-      });
-      return (): void => {
-        isMounted = false;
-      };
-    }
-  }, [user]);
-
-  const handleFilter = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setHomeText(homeText.filter((list) => list.title === value));
-    setIsDone(!isDone);
-    setValue("");
-  };
-
-  const handleRender = (e: React.FormEvent) => {
-    e.preventDefault();
-    FS.orderBy("date", "desc").onSnapshot((snapshot) => {
-      const posts: any = snapshot.docs.map((doc) => {
-        return doc.data();
-      });
-      setHomeText(posts); //collectionのデータを取得してる
-      setIsDone(!isDone);
-      console.log("反転");
-    });
-  };
-  // 配列で管理されたhomeTextのそれぞれのIDとEdit（編集）を結びつけ、LISTとEditを反転させる
-  const editChange = (id: number, editing: boolean) => {
-    setHomeText(
-      homeText.map((texts) => {
-        if (texts.id === id) {
-          return {
-            ...texts,
-            editing,
-          };
-        }
-        return texts;
-      })
-    );
-  };
 
   return (
     <>
       <MainPage>
         <TablePage>
           <Title>Profile</Title>
-          <TableText>
-            <SubFont>
-              ※ゲストユーザーの場合は、投稿の履歴が残りません
-              <br />
-            </SubFont>
-            <SubFont>ユーザー名：{user?.displayName}</SubFont>
-            <TablePosts>
-              <Chart />
-              <TableTotal>
-                <TotalPosts />
-              </TableTotal>
-            </TablePosts>
-            {isDone ? (
-              <UpdateButton onClick={handleRender}>再表示</UpdateButton>
-            ) : (
-              <TableForm onSubmit={handleFilter}>
-                <SubFont>検索</SubFont>
-                <Input
-                  type="text"
-                  placeholder="タイトル名"
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                />
-                <RoomSearchButton>
-                  <FontAwesomeIcon icon={faSearch} />
-                </RoomSearchButton>
-              </TableForm>
-            )}
-          </TableText>
-          <TableList>
-            {homeText.map((list, id) => (
-              <div key={id}>
-                {list.uid === user.uid && (
-                  <TableProfile>
-                    {list.editing ? (
-                      <Editing key={id} list={list} editChange={editChange} />
-                    ) : (
-                      <List key={id} list={list} editChange={editChange} />
-                    )}
-                  </TableProfile>
-                )}
-              </div>
-            ))}
-          </TableList>
+          <SubFont>
+            ※ゲストユーザーの場合は、投稿の履歴が残りません
+            <br />
+          </SubFont>
+          <SubFont>ユーザー名：{user?.displayName}</SubFont>
+          <TablePosts>
+            <Chart />
+            <TableTotal>
+              <TotalPosts />
+            </TableTotal>
+          </TablePosts>
+          <SubFont>
+            <Link
+              to="/history"
+              style={{ textDecoration: "none", color: "#000" }}
+            >
+              投稿履歴
+            </Link>
+          </SubFont>
           {user && (
             <TableSetUpProfile>
               <Link

@@ -6,11 +6,11 @@ import moment from "moment";
 import { PostText } from "../module.TS/Post.module";
 
 import { Title } from "../ui/atoms/title";
-import { RoomTimeFont, SubFont, Font } from "../ui/atoms/font";
+import { HomeTimeFont, SubFont, Font } from "../ui/atoms/font";
 import { Img, ImageTag } from "../ui/atoms/image";
 import {
   SetUpButton,
-  RoomSearchButton,
+  HomeSearchButton,
   UpdateButton,
 } from "../ui/atoms/button";
 import { Input } from "../ui/atoms/input";
@@ -19,9 +19,9 @@ import {
   TablePagesText,
   TablePageList,
 } from "../ui/molecules/TablePages";
-import { TableSetUpRoom } from "../ui/molecules/TableSetUp";
+import { TableSetUpHome } from "../ui/molecules/TableSetUp";
 import { TableText } from "../ui/molecules/TableProfile";
-import { TableRoom, TableForm, TableList } from "../ui/molecules/TableRoom";
+import { TableHome, TableForm, TableList } from "../ui/molecules/TableHome";
 import { MainPage } from "../ui/organisms/MainPages";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -88,15 +88,15 @@ const Room: React.FC = () => {
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
                 />
-                <RoomSearchButton>
+                <HomeSearchButton>
                   <FontAwesomeIcon icon={faSearch} />
-                </RoomSearchButton>
+                </HomeSearchButton>
               </TableForm>
             )}
           </TableText>
           <TableList>
             {postText.map((list, id) => (
-              <TableRoom key={id}>
+              <TableHome key={id}>
                 <ImageTag>
                   <Img src={list.image} alt="" />
                 </ImageTag>
@@ -107,22 +107,22 @@ const Room: React.FC = () => {
                     <Font>ページ：{list.page}</Font>
                     <Font>感想：{list.text}</Font>
                   </TablePageList>
-                  <RoomTimeFont>
+                  <HomeTimeFont>
                     {moment(list.createAt).format("A HH:mm YYYY/MM/DD")}
-                  </RoomTimeFont>
+                  </HomeTimeFont>
                 </TablePagesText>
-              </TableRoom>
+              </TableHome>
             ))}
           </TableList>
           {user && (
-            <TableSetUpRoom>
+            <TableSetUpHome>
               <Link
                 to="/setup"
                 style={{ textDecoration: "none", color: "#000" }}
               >
                 <SetUpButton>投稿</SetUpButton>
               </Link>
-            </TableSetUpRoom>
+            </TableSetUpHome>
           )}
         </TablePage>
       </MainPage>

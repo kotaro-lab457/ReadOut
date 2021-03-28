@@ -22,10 +22,10 @@ const TableSetUpProfile = styled.div`
   }
 `;
 
-const TableSetUpRoom = styled(TableSetUpProfile)`
+const TableSetUpHome = styled(TableSetUpProfile)`
   @media (max-width: 420px) {
     top: 80%;
   }
 `;
 
-export { TableSetUp, TableSetUpProfile, TableSetUpRoom };
+export { TableSetUp, TableSetUpProfile, TableSetUpHome };

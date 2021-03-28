@@ -48,7 +48,7 @@ const SearchButton = styled(Button)`
     padding: 4px 10px;
   }
 `;
-const RoomSearchButton = styled(SearchButton)`
+const HomeSearchButton = styled(SearchButton)`
   padding: 2px 10px;
   border: 1px solid #000;
   @media (max-width: 420px) {
@@ -162,5 +162,5 @@ export {
   UpdateButton,
   CancelButton,
   IconButton,
-  RoomSearchButton,
+  HomeSearchButton,
 };

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { TableRoom } from "../molecules/TableRoom";
+import { TableHome } from "./TableHome";
 
-const TableProfile = styled(TableRoom)`
+const TableProfile = styled(TableHome)`
   padding: 20px 40px;
   position: relative;
   @media (max-width: 420px) {

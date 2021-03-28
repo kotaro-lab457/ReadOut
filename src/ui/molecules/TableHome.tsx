@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const TableRoom = styled.div`
+const TableHome = styled.div`
   display: flex;
   padding: 20px;
   margin: 20px;
@@ -27,4 +27,4 @@ const TableList = styled.div`
     margin-bottom: 3.5rem;
   }
 `;
-export { TableList, TableRoom, TableForm };
+export { TableList, TableHome, TableForm };
