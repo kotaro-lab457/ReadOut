@@ -40,7 +40,7 @@ const TimeFont = styled(Font)`
   }
 `;
 
-const RoomTimeFont = styled(TimeFont)`
+const HomeTimeFont = styled(TimeFont)`
   @media (max-width: 420px) {
     margin-right: 0.5rem;
   }
@@ -90,7 +90,7 @@ export {
   ErrorFont,
   LinkFont,
   SetUpFont,
-  RoomTimeFont,
+  HomeTimeFont,
   TimeFont,
   FooterFont,
   PostsFont,
