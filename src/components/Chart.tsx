@@ -23,61 +23,61 @@ const Chart: React.FC = () => {
 
   useEffect(() => {
     if (user) {
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 20)
         .get()
         .then((doc) => {
           setCount1(doc.size);
         });
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 21)
         .get()
         .then((doc) => {
           setCount2(doc.size);
         });
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 22)
         .get()
         .then((doc) => {
           setCount3(doc.size);
         });
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 23)
         .get()
         .then((doc) => {
           setCount4(doc.size);
         });
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 24)
         .get()
         .then((doc) => {
           setCount5(doc.size);
         });
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 25)
         .get()
         .then((doc) => {
           setCount6(doc.size);
         });
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 26)
         .get()
         .then((doc) => {
           setCount7(doc.size);
         });
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 27)
         .get()
         .then((doc) => {
           setCount8(doc.size);
         });
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 28)
         .get()
         .then((doc) => {
           setCount9(doc.size);
         });
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 29)
         .get()
         .then((doc) => {
@@ -142,7 +142,6 @@ const Chart: React.FC = () => {
         {
           ticks: {
             stepSize: 1,
-            beginAtZero: true,
           },
         },
       ],

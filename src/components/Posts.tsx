@@ -11,7 +11,7 @@ const TotalDays = () => {
 
   useEffect(() => {
     if (user) {
-      FS.where("uid", "==", `${user.uid}`)
+      FS.where("user", "==", `${user.displayName}`)
         .get()
         .then((doc) => {
           setCount(doc.size);

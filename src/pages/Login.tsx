@@ -2,9 +2,9 @@ import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import firebase from "../config/Firebase";
 import { Link, Redirect } from "react-router-dom";
-import { AuthContext } from "./AuthService";
+import { AuthContext } from "../Auth/AuthService";
 
-import { Font, LoginFont, LinkFont, ErrorFont } from "../ui/atoms/font";
+import { TextFont, LoginFont, LinkFont, ErrorFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
 import { LoginButton } from "../ui/atoms/button";
 import { LoginInput } from "../ui/atoms/input";
@@ -107,13 +107,13 @@ const Login: React.FC = (props: any) => {
             >
               {inLogin ? "Login" : "Sign Up"}
             </LoginButton>
-            <Font>
+            <TextFont>
               パスワードを忘れてしまった場合は
-              <Link to="/reset" style={{ color: "#fbfad3" }}>
+              <Link to="/reset" style={{ color: "#ffd740" }}>
                 こちら
               </Link>
               へ
-            </Font>
+            </TextFont>
             <LinkFont
               onClick={() => {
                 setInLogin(!inLogin);

@@ -55,12 +55,13 @@ const TableChart = styled.div`
 
 const TableTotal = styled.div`
   margin: auto 0 auto 2rem;
-  text-align: center;
   border: 1px solid #000;
   padding: 10px 30px;
   border-radius: 50%;
   @media (max-width: 420px) {
-    display: none;
+    width: 70px;
+    padding: 10px;
+    margin: 0 0 0 18rem;
   }
 `;
 
@@ -68,7 +69,7 @@ const TablePosts = styled.div`
   display: flex;
   width: 80%;
   @media (max-width: 420px) {
-    display: block;
+    flex-direction: column-reverse;
     width: 100%;
   }
 `;

@@ -98,7 +98,7 @@ const Room: React.FC = () => {
             {postText.map((list, id) => (
               <TableHome key={id}>
                 <ImageTag>
-                  <Img src={list.image} alt="" />
+                  <Img src={list.image} />
                 </ImageTag>
                 <TablePagesText>
                   <TablePageList>

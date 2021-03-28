@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import img from "../images/Book_Img.jpg";
+import img from "../../img/Book_Img.jpg";
 
 const MainPage = styled.div`
   height: 100%;

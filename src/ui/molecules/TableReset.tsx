@@ -5,7 +5,7 @@ const TableReset = styled.div`
   right: 39%;
   @media (max-width: 420px) {
     top: 10%;
-    right: 10%;
+    right: 15%;
   }
 `;
 

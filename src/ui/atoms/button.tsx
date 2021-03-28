@@ -45,7 +45,7 @@ const SearchButton = styled(Button)`
   border-radius: 0 20px 20px 0;
   opacity: 1;
   @media (max-width: 420px) {
-    padding: 4px 10px;
+    padding: 5px 10px;
   }
 `;
 const HomeSearchButton = styled(SearchButton)`
@@ -144,6 +144,12 @@ const SetUpButton = styled.div`
   }
 `;
 
+const ProfileSetUpButton = styled(SetUpButton)`
+  @media (max-width: 420px) {
+    opacity: 0.8;
+  }
+`;
+
 const ResetButton = styled(Button)`
   padding: 10px 15px;
   opacity: 0.9;
@@ -158,6 +164,7 @@ export {
   LoginButton,
   SearchButton,
   SetUpButton,
+  ProfileSetUpButton,
   ResetButton,
   UpdateButton,
   CancelButton,
