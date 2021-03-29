@@ -17,7 +17,7 @@ const TableSetUpProfile = styled.div`
   bottom: 20%;
   right: 25%;
   @media (max-width: 420px) {
-    bottom: 40%;
+    bottom: 35%;
     right: 5%;
   }
 `;

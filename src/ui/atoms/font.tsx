@@ -15,6 +15,7 @@ const SubFont = styled(Font)`
   text-align: left;
   @media (max-width: 420px) {
     margin: 10px 0 0 10px;
+    font-size: 1rem;
     display: block;
   }
 `;
@@ -43,13 +44,13 @@ const TimeFont = styled(Font)`
   display: block;
   font-weight: 300;
   @media (max-width: 420px) {
-    margin-right: 3rem;
+    margin: 0.5rem 3rem 0 0;
   }
 `;
 
 const HomeTimeFont = styled(TimeFont)`
   @media (max-width: 420px) {
-    margin-right: 0.5rem;
+    margin: 0.5rem 0.5rem 0 0;
   }
 `;
 
@@ -79,7 +80,7 @@ const PostsFont = styled(Font)`
   color: #4fc3f7;
   font-size: 2rem;
   @media (max-width: 420px) {
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin: 0;
   }
 `;
@@ -88,7 +89,7 @@ const TotalFont = styled(Font)`
   font-size: 4rem;
   margin: 0;
   @media (max-width: 420px) {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 `;
 export {

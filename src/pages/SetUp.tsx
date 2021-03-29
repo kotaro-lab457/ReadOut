@@ -59,7 +59,7 @@ const SetUp: React.FC = (props: any) => {
     setTitle("");
     setPage("");
     setTextId(textId);
-    props.history.push("/");
+    props.history.push("/home");
   };
   return (
     <>

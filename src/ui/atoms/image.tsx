@@ -16,4 +16,10 @@ const ImageTag = styled.div`
   }
 `;
 
-export { Img, ImageTag };
+const ImageSp = styled.img`
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+`;
+
+export { Img, ImageTag, ImageSp };

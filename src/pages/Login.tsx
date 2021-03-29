@@ -7,8 +7,8 @@ import { TextFont, LoginFont, LinkFont, ErrorFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
 import { LoginButton } from "../ui/atoms/button";
 import { LoginInput } from "../ui/atoms/input";
-import { TableLogin, SubTableLogin } from "../ui/molecules/TableLogin";
-import { MainLogin } from "../ui/organisms/MainPages";
+import { TableLogin, SubTableLogin } from "../ui/molecules/TablePages";
+import { MainImage } from "../ui/organisms/MainPages";
 
 type Post = {
   name: string;
@@ -30,7 +30,7 @@ const Login: React.FC = (props: any) => {
     } catch (err) {
       alert(err.message);
     }
-    props.history.push("/");
+    props.history.push("/home");
   };
 
   const handleCreateUser = async () => {
@@ -46,12 +46,12 @@ const Login: React.FC = (props: any) => {
     } catch (err) {
       alert(err.message);
     }
-    props.history.push("/");
+    props.history.push("/home");
   };
 
   return (
     <>
-      <MainLogin>
+      <MainImage>
         <TableLogin>
           <SubTableLogin>
             <LoginTitle>{inLogin ? "Login" : "Sign In"}</LoginTitle>
@@ -118,7 +118,7 @@ const Login: React.FC = (props: any) => {
             へ
           </SubTableLogin>
         </TableLogin>
-      </MainLogin>
+      </MainImage>
     </>
   );
 };

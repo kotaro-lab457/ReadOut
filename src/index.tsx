@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
+import Top from "./pages/Top";
 import SetUp from "./pages/SetUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -24,10 +25,11 @@ ReactDOM.render(
     <Table>
       <Switch>
         <AuthService>
+          <Route exact path="/" component={Top} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/setup" component={SetUp} />
           <Route exact path="/books" component={BooksSearch} />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/reset" component={ResetPassword} />
           <Route exact path="/history" component={History} />

@@ -20,8 +20,12 @@ const Button = styled.button`
   }
 `;
 
-const HeaderButton = styled(Button)`
+const GuestButton = styled(Button)`
   height: 50px;
+  padding: 10px 15px;
+  margin: 10px 20px 10px 0;
+
+  background-color: #ff5252;
   @media (max-width: 420px) {
     height: 40px;
     margin: 10px 5px 0 0;
@@ -29,7 +33,7 @@ const HeaderButton = styled(Button)`
 `;
 
 const LoginButton = styled(Button)`
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   width: 445px;
   padding: 15px;
   margin: 1.5rem 0 0;
@@ -38,6 +42,10 @@ const LoginButton = styled(Button)`
     padding: 10px;
     margin: 1.5rem 0 1rem;
   }
+`;
+
+const SubLoginButton = styled(GuestButton)`
+  background-color: #ffd740;
 `;
 
 const SearchButton = styled(Button)`
@@ -160,8 +168,9 @@ const ResetButton = styled(Button)`
 
 export {
   Button,
-  HeaderButton,
+  GuestButton,
   LoginButton,
+  SubLoginButton,
   SearchButton,
   SetUpButton,
   ProfileSetUpButton,

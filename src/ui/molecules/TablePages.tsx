@@ -27,4 +27,65 @@ const TablePageList = styled.div`
   }
 `;
 
-export { TablePage, TablePagesText, TablePageList };
+const TableLogin = styled.div`
+  position: absolute;
+  right: 37%;
+  @media (max-width: 420px) {
+    right: 0;
+    left: 0;
+    padding: 1rem;
+  }
+`;
+
+const TableTop = styled(TableLogin)`
+  top: 20%;
+  right: 10%;
+  width: 75vw;
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 420px) {
+    right: 0;
+    width: 90%;
+  }
+`;
+
+const SubTableLogin = styled.div`
+  text-align: center;
+`;
+
+const SubTableTop = styled.div`
+  text-align: left;
+  @media (max-width: 420px) {
+    text-align: center;
+  }
+`;
+
+const TableTopImages = styled.div`
+  width: 35vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  @media (max-width: 420px) {
+    display: none;
+  }
+`;
+const TableTopImage = styled.div`
+  width: 200px;
+`;
+const SubTableTopImage = styled.div`
+  height: 220px;
+  width: 350px;
+`;
+
+export {
+  TablePage,
+  TablePagesText,
+  TablePageList,
+  TableLogin,
+  TableTop,
+  SubTableLogin,
+  SubTableTop,
+  TableTopImages,
+  TableTopImage,
+  SubTableTopImage,
+};

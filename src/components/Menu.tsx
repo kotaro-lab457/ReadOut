@@ -3,7 +3,7 @@ import { AuthContext } from "../Auth/AuthService";
 import { Link, withRouter } from "react-router-dom";
 import firebase from "firebase";
 
-import { HeaderButton } from "../ui/atoms/button";
+import { GuestButton, SubLoginButton } from "../ui/atoms/button";
 import { LinkTag, IconLinkTag } from "../ui/atoms/Link";
 import TableMenu from "../ui/molecules/TableMenu";
 import {
@@ -29,13 +29,13 @@ const Menu: React.FC = (props: any) => {
 
   const signOut = () => {
     firebase.auth().signOut();
-    props.history.push("/");
+    props.history.push("/home");
   };
 
   return (
     <TableMenu>
       <LinkTag>
-        <Link to="/" style={{ textDecoration: "none", color: "#000" }}>
+        <Link to="/home" style={{ textDecoration: "none", color: "#000" }}>
           <IconLinkTag>
             <FontAwesomeIcon icon={faHome} />
           </IconLinkTag>
@@ -71,7 +71,7 @@ const Menu: React.FC = (props: any) => {
         </LinkTag>
       )}
       {!user && (
-        <HeaderButton
+        <GuestButton
           onClick={async () => {
             try {
               await GuestLogin();
@@ -82,13 +82,13 @@ const Menu: React.FC = (props: any) => {
         >
           <FontAwesomeIcon icon={faUser} />
           Guest
-        </HeaderButton>
+        </GuestButton>
       )}
       {user && (
-        <HeaderButton onClick={signOut}>
+        <SubLoginButton onClick={signOut}>
           <FontAwesomeIcon icon={faSignOutAlt} />
           Log out
-        </HeaderButton>
+        </SubLoginButton>
       )}
     </TableMenu>
   );
