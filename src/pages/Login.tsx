@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import firebase from "../config/Firebase";
-import { Link, Redirect } from "react-router-dom";
-import { AuthContext } from "../Auth/AuthService";
+import { Link } from "react-router-dom";
 
 import { TextFont, LoginFont, LinkFont, ErrorFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
@@ -24,11 +23,6 @@ const Login: React.FC = (props: any) => {
   const [inLogin, setInLogin] = useState<boolean>(true);
 
   const { register, handleSubmit, errors } = useForm<Post>();
-  const user = useContext(AuthContext);
-
-  if (user) {
-    return <Redirect to="/" />;
-  }
 
   const handleSignIn = async () => {
     try {
