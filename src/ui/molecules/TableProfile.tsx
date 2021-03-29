@@ -59,9 +59,9 @@ const TableTotal = styled.div`
   padding: 10px 30px;
   border-radius: 50%;
   @media (max-width: 420px) {
-    width: 70px;
+    width: 90px;
     padding: 10px;
-    margin: 0 0 0 18rem;
+    margin: 0 0 0 15rem;
   }
 `;
 

@@ -6,7 +6,7 @@ import { ResetButton } from "../ui/atoms/button";
 import { LoginFont, TextFont } from "../ui/atoms/font";
 import { LoginInput } from "../ui/atoms/input";
 import { TableReset, SubTableReset } from "../ui/molecules/TableReset";
-import { MainLogin } from "../ui/organisms/MainPages";
+import { MainImage } from "../ui/organisms/MainPages";
 
 const ResetPassword: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +22,7 @@ const ResetPassword: React.FC = () => {
   };
   return (
     <>
-      <MainLogin>
+      <MainImage>
         <TableReset>
           <SubTableReset>
             <LoginFont>メールアドレスを入力してください</LoginFont>
@@ -46,7 +46,7 @@ const ResetPassword: React.FC = () => {
             </TextFont>
           </SubTableReset>
         </TableReset>
-      </MainLogin>
+      </MainImage>
     </>
   );
 };

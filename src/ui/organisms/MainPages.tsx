@@ -6,7 +6,7 @@ const MainPage = styled.div`
   width: 100%;
 `;
 
-const MainLogin = styled(MainPage)`
+const MainImage = styled(MainPage)`
   color: #fff;
   background-image: url(${img});
   background-size: cover;
@@ -26,4 +26,4 @@ const MainLogin = styled(MainPage)`
     min-height: 90vh;
   }
 `;
-export { MainLogin, MainPage };
+export { MainImage, MainPage };
