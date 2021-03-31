@@ -8,24 +8,19 @@
 ・読みたい書籍を検索できる検索機能
 
 下記のページにて、公開中です。
-・　URL:[https://my-portfolio-986db.web.app/](https://my-portfolio-986db.web.app/)
+
+URL:[https://my-portfolio-986db.web.app/](https://my-portfolio-986db.web.app/)
 
 
 
-使用技術
 
-## フロント
+
+## 使用技術
+
 ・JavaScript
 ・TypeScript
 ・HTML5
 ・CSS3
-
-## フレームワーク
 ・React
-
-## バックエンド
 ・Firebase
 
-## インフラ
-
-・ER図
