@@ -5,7 +5,7 @@ import axios from "axios";
 
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { SubFont } from "../ui/atoms/font";
+import { EditFont } from "../ui/atoms/font";
 import { EditInput, TextArea } from "../ui/atoms/input";
 import { UpdateButton, CancelButton, IconButton } from "../ui/atoms/button";
 import {
@@ -76,7 +76,7 @@ const Editing: React.FC<homeProps> = (props) => {
     <>
       <TableEdit>
         <div>
-          <SubFont>タイトル </SubFont>
+          <EditFont>タイトル </EditFont>
           <EditInput
             id="title"
             type="text"
@@ -85,7 +85,7 @@ const Editing: React.FC<homeProps> = (props) => {
           />
         </div>
         <div>
-          <SubFont>ページ </SubFont>
+          <EditFont>ページ </EditFont>
           <EditInput
             id="page"
             type="text"
@@ -93,7 +93,7 @@ const Editing: React.FC<homeProps> = (props) => {
             onChange={(e) => setPage(e.target.value)}
           />
         </div>
-        <SubFont>感想</SubFont>
+        <EditFont>感想</EditFont>
         <TextArea
           id="text"
           value={text}

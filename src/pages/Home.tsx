@@ -41,10 +41,9 @@ const Room: React.FC = () => {
         return doc.data();
       });
       if (isMounted) {
-        setPostText(posts); //collectionのデータを取得してる
+        setPostText(posts);
       }
     });
-    console.log(postText);
     return (): void => {
       isMounted = false;
     };

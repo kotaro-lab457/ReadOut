@@ -33,6 +33,10 @@ const LoginFont = styled(Font)`
     font-size: 1rem;
   }
 `;
+
+const EditFont = styled(SubFont)`
+  text-align: center;
+`;
 const ErrorFont = styled(Font)`
   text-align: left;
   color: #ff4646;
@@ -96,6 +100,7 @@ export {
   Font,
   SubFont,
   TextFont,
+  EditFont,
   LoginFont,
   ErrorFont,
   LinkFont,
