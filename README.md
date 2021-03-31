@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Read Out
 
 読書をしたあと、記憶の定着化を図るため読書した本をアウトプットする読書アプリを作成しました。
@@ -21,11 +20,15 @@
 
 ### 投稿ページ
 
-"![demo](https://user-images.githubusercontent.com/69884513/113140633-a43fe300-9263-11eb-92ae-962f5af1b6f2.mov)"
+![demo](https://s23.aconvert.com/convert/p3r68-cdx67/ywb1d-wbccu.gif)
 
 ### 検索ページ
 
+![demo2](https://s23.aconvert.com/convert/p3r68-cdx67/iub9q-dnqmz.gif)
+
 ### プロフィールページ
+
+![demo3](https://s23.aconvert.com/convert/p3r68-cdx67/n3puk-43w8f.gif)
 
 ## 機能一覧
 
@@ -57,5 +60,3 @@
 ## 著者
 
 こたろー
-=======
->>>>>>> 2bb0248be1f6511f45e70d41f0f388a8c23dbd1b
