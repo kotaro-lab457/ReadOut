@@ -11,7 +11,7 @@
 
 URL:[https://my-portfolio-986db.web.app/](https://my-portfolio-986db.web.app/)
 
-![Uploading portfolio_top_page.png…]()
+<img src="./src/img/portfolio_top_page.png" />
 
 
 
