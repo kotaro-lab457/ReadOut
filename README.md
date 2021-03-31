@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+# Read Out
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+読書をしたあと、記憶の定着化を図るため読書した本をアウトプットする読書アプリを作成しました。
 
-## Available Scripts
+- 読んだ本、ページ、感想をアウトプットできる
+- 日々の読書量をグラフ、数値化させ成長を促す
+- 読みたい書籍を検索できる検索機能
 
-In the project directory, you can run:
+## URL
 
-### `npm start`
+下記のページにて、公開中です。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- URL:[https://my-portfolio-986db.web.app/](https://my-portfolio-986db.web.app/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+ゲストボタンでログインができます。
 
-### `npm test`
+<img width="520px" src="./src/img/portfolio_top_page.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## デモ
 
-### `npm run build`
+### 投稿ページ
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+"![demo](https://user-images.githubusercontent.com/69884513/113140633-a43fe300-9263-11eb-92ae-962f5af1b6f2.mov)"
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 検索ページ
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### プロフィールページ
 
-### `npm run eject`
+## 機能一覧
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- ログイン、ユーザー作成機能
+  - バリデーション機能
+- ゲストログイン機能
+- 投稿機能
+  - 画像追加
+  - 削除機能
+  - 編集機能
+- プロフィール管理機能
+- 検索機能
+- グラフ機能
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 使用技術
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- HTML5
+- CSS3
+- JavaScript
+- TypeScript
+  - Atomic Design
+- React
+- webpack
+  - development
+  - production
+- Firebase
+- Google Books API
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 著者
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+こたろー
