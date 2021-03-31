@@ -1,7 +1,7 @@
 # Read Out
 読書をしたあと、記憶の定着化を図るため読書した本をアウトプットする読書アプリを作成しました。
 
-・読んだ本、ページ、感想をアウトプットできる。
+・読んだ本、ページ、感想をアウトプットできる
 
 ・日々の読書量をグラフ、数値化させ成長を促す
 
@@ -11,6 +11,7 @@
 
 URL:[https://my-portfolio-986db.web.app/](https://my-portfolio-986db.web.app/)
 
+![Uploading portfolio_top_page.png…]()
 
 
 
