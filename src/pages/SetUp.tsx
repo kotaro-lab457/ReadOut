@@ -1,17 +1,16 @@
 import React, { useState, useContext } from "react";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../Auth/AuthService";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import shortid from "shortid";
 
 import { Title } from "../ui/atoms/title";
 import { Button } from "../ui/atoms/button";
 import { SetUpFont } from "../ui/atoms/font";
 import { SetUpInput, TextArea } from "../ui/atoms/input";
-import { TablePage } from "../ui/molecules/TablePages";
 import { TableSetUp } from "../ui/molecules/TableSetUp";
-import { MainPage } from "../ui/organisms/MainPages";
-import { Link } from "react-router-dom";
-import shortid from "shortid";
+import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
 
 const SetUp: React.FC = (props: any) => {
   const initialState = shortid.generate();
@@ -64,7 +63,7 @@ const SetUp: React.FC = (props: any) => {
   return (
     <>
       <MainPage>
-        <TablePage>
+        <MainTablePages>
           <Title>Set Up</Title>
           <TableSetUp>
             <form onSubmit={handleComment}>
@@ -106,7 +105,7 @@ const SetUp: React.FC = (props: any) => {
               <Button disabled={!text || !page || !title}>投稿</Button>
             </form>
           </TableSetUp>
-        </TablePage>
+        </MainTablePages>
       </MainPage>
     </>
   );

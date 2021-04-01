@@ -3,7 +3,7 @@ import Menu from "./Menu";
 import { withRouter } from "react-router-dom";
 
 import { FooterFont } from "../ui/atoms/font";
-import { SubFooter, MainFooter } from "../ui/organisms/MainMenu";
+import { SubFooter, MainFooter } from "../ui/organisms/MainTable";
 
 const Footer: React.FC = () => {
   return (

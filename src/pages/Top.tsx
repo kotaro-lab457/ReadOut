@@ -14,7 +14,7 @@ import {
   TableTopImages,
   TableTopImage,
   SubTableTopImage,
-} from "../ui/molecules/TablePages";
+} from "../ui/molecules/TableTop";
 import { MainImage } from "../ui/organisms/MainPages";
 
 import { faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";

@@ -13,8 +13,7 @@ import { SubFont } from "../ui/atoms/font";
 import { TableForm, TableList } from "../ui/molecules/TableHome";
 import { HomeSearchButton, UpdateButton } from "../ui/atoms/button";
 import { TableProfile, TableText } from "../ui/molecules/TableProfile";
-import { TablePage } from "../ui/molecules/TablePages";
-import { MainPage } from "../ui/organisms/MainPages";
+import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -80,7 +79,7 @@ const History: React.FC = () => {
   return (
     <>
       <MainPage>
-        <TablePage>
+        <MainTablePages>
           <TableText>
             <Title>投稿履歴</Title>
             <SubFont>
@@ -122,7 +121,7 @@ const History: React.FC = () => {
               </div>
             ))}
           </TableList>
-        </TablePage>
+        </MainTablePages>
       </MainPage>
     </>
   );

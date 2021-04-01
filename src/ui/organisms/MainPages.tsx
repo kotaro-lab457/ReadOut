@@ -6,6 +6,18 @@ const MainPage = styled.div`
   width: 100%;
 `;
 
+const MainTablePages = styled.div`
+  margin: 0 auto;
+  padding: 2rem;
+  width: 60vw;
+  text-align: center;
+  position: relative;
+  @media (max-width: 420px) {
+    width: 100%;
+    padding: 10px 0;
+  }
+`;
+
 const MainImage = styled(MainPage)`
   color: #fff;
   background-image: url(${img});
@@ -26,4 +38,4 @@ const MainImage = styled(MainPage)`
     min-height: 90vh;
   }
 `;
-export { MainImage, MainPage };
+export { MainImage, MainPage, MainTablePages };

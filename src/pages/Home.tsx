@@ -14,15 +14,16 @@ import {
   UpdateButton,
 } from "../ui/atoms/button";
 import { Input } from "../ui/atoms/input";
-import {
-  TablePage,
-  TablePagesText,
-  TablePageList,
-} from "../ui/molecules/TablePages";
 import { TableSetUpHome } from "../ui/molecules/TableSetUp";
 import { TableText } from "../ui/molecules/TableProfile";
-import { TableHome, TableForm, TableList } from "../ui/molecules/TableHome";
-import { MainPage } from "../ui/organisms/MainPages";
+import {
+  TableHome,
+  TableForm,
+  TableList,
+  TableItem,
+  TableTexts,
+} from "../ui/molecules/TableHome";
+import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -73,7 +74,7 @@ const Room: React.FC = () => {
   return (
     <>
       <MainPage>
-        <TablePage>
+        <MainTablePages>
           <Title>Home</Title>
           <TableText>
             {isDone ? (
@@ -99,17 +100,17 @@ const Room: React.FC = () => {
                 <ImageTag>
                   <Img src={list.image} />
                 </ImageTag>
-                <TablePagesText>
-                  <TablePageList>
+                <TableTexts>
+                  <TableItem>
                     <Font>ユーザー：{list.user}</Font>
                     <Font>タイトル：{list.title}</Font>
                     <Font>ページ：{list.page}</Font>
                     <Font>感想：{list.text}</Font>
-                  </TablePageList>
+                  </TableItem>
                   <HomeTimeFont>
                     {moment(list.createAt).format("A HH:mm YYYY/MM/DD")}
                   </HomeTimeFont>
-                </TablePagesText>
+                </TableTexts>
               </TableHome>
             ))}
           </TableList>
@@ -123,7 +124,7 @@ const Room: React.FC = () => {
               </Link>
             </TableSetUpHome>
           )}
-        </TablePage>
+        </MainTablePages>
       </MainPage>
     </>
   );

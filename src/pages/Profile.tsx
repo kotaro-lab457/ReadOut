@@ -7,11 +7,10 @@ import { AuthContext } from "../Auth/AuthService";
 import { SubFont } from "../ui/atoms/font";
 import { Title } from "../ui/atoms/title";
 import { ProfileSetUpButton } from "../ui/atoms/button";
-import { TablePage } from "../ui/molecules/TablePages";
 import { TableSetUpProfile } from "../ui/molecules/TableSetUp";
 
 import { TableTotal, TablePosts } from "../ui/molecules/TableProfile";
-import { MainPage } from "../ui/organisms/MainPages";
+import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
 
 const Home: React.FC = () => {
   const user = useContext(AuthContext);
@@ -19,7 +18,7 @@ const Home: React.FC = () => {
   return (
     <>
       <MainPage>
-        <TablePage>
+        <MainTablePages>
           <Title>Profile</Title>
           <SubFont>ユーザー名：{user?.displayName}</SubFont>
           <TablePosts>
@@ -45,7 +44,7 @@ const Home: React.FC = () => {
               </Link>
             </TableSetUpProfile>
           )}
-        </TablePage>
+        </MainTablePages>
       </MainPage>
     </>
   );
