@@ -14,21 +14,21 @@
 
 ゲストボタンでログインができます。
 
-<img width="520px" src="./src/img/portfolio_top_page.png">
+<img width="620px" src="./src/img/portfolio_top_page.png">
 
 ## デモ
 
 ### 投稿ページ
 
-![demo](https://s23.aconvert.com/convert/p3r68-cdx67/ywb1d-wbccu.gif)
+<img width="520px" src="https://user-images.githubusercontent.com/69884513/113231190-a80c4d80-92d5-11eb-8c80-75406a5ee090.gif">
 
 ### 検索ページ
 
-![demo2](https://s23.aconvert.com/convert/p3r68-cdx67/iub9q-dnqmz.gif)
+<img width="520px" src="https://user-images.githubusercontent.com/69884513/113231047-5368d280-92d5-11eb-8599-7d65600f935b.gif">
 
 ### プロフィールページ
 
-![demo3](https://s23.aconvert.com/convert/p3r68-cdx67/n3puk-43w8f.gif)
+<img width="520px" src="https://user-images.githubusercontent.com/69884513/113230789-c0c83380-92d4-11eb-98e7-3098e9e9b22a.gif">
 
 ## 機能一覧
 
@@ -56,6 +56,12 @@
   - production
 - Firebase
 - Google Books API
+
+## 工夫した点
+
+- `Firebase` を使用して、データの保存・取得・編集・削除機能の作成
+- `Chart.js` を使用し、日付に応じて投稿した数をグラフ化
+- 投稿時に `Google Books API` を使用し、読んだ本のタイトルに合わせた画像の取得
 
 ## 著者
 
