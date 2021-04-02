@@ -4,6 +4,8 @@ import { Line } from "react-chartjs-2";
 import { AuthContext } from "../Auth/AuthService";
 
 const Chart: React.FC = () => {
+  const [date, setDate] = useState(null);
+  const [totalDays, setTotalDays] = useState("");
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
@@ -18,11 +20,14 @@ const Chart: React.FC = () => {
   const user = useContext(AuthContext);
   const FS = firebase.firestore().collection("text");
 
-  const days =
-    new Date().getFullYear() + new Date().getMonth() + new Date().getDate();
+  console.log("time", new Date().getTime());
+  console.log("time", new Date(2000).getTime() - 1);
 
   useEffect(() => {
     if (user) {
+      const days =
+        new Date().getFullYear() + new Date().getMonth() + new Date().getDate();
+      console.log(days, "2021 , 4 , 2 ");
       FS.where("user", "==", `${user.displayName}`)
         .where("date", "<=", days + 20)
         .get()
@@ -78,12 +83,34 @@ const Chart: React.FC = () => {
           setCount9(doc.size);
         });
       FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days + 29)
         .get()
         .then((doc) => {
           setCount10(doc.size);
         });
     }
+
+    // 10日分の日付作成(x軸)
+    let day = new Date();
+    let dateDays: any = [[new Date().getDate() + "日"]];
+    for (let i = 0; i < 9; i++) {
+      day.setDate(day.getDate() - 1);
+      let days = [day.getDate() + "日"];
+      dateDays.unshift(days);
+    }
+    setDate(dateDays);
+
+    // 10日分の日付（9日前〜翌日）
+    let days = new Date();
+    let previous = new Date();
+    previous.setDate(days.getDate() - 9);
+    let lastMonth = previous.getMonth() + 1;
+    let lastWeek = previous.getDate();
+    console.log(lastWeek);
+
+    const longDay = `${lastMonth}月${lastWeek}日 〜 ${
+      day.getMonth() + 1
+    }月${day.getDate()}日 `;
+    setTotalDays(longDay);
   }, [user]);
 
   const daysPlus = [
@@ -100,20 +127,10 @@ const Chart: React.FC = () => {
   ];
 
   const graphData = {
-    labels: [
+    labels:
       // 軸ラベル
       // 各ラベルを配列にすることで軸ラベルが改行されて表示される
-      [`${new Date().getDate() - 9}日`],
-      [`${new Date().getDate() - 8}日`],
-      [`${new Date().getDate() - 7}日`],
-      [`${new Date().getDate() - 6}日`],
-      [`${new Date().getDate() - 5}日`],
-      [`${new Date().getDate() - 4}日`],
-      [`${new Date().getDate() - 3}日`],
-      [`${new Date().getDate() - 2}日`],
-      [`${new Date().getDate() - 1}日`],
-      [`${new Date().getDate()}日`],
-    ],
+      date,
     datasets: [
       // 表示するデータセット
       {
@@ -132,9 +149,7 @@ const Chart: React.FC = () => {
           scaleLabel: {
             // 軸ラベル設定
             display: true,
-            labelString: `${new Date().getMonth() + 1}月${
-              new Date().getDate() - 9
-            }日 〜 ${new Date().getMonth() + 1}月${new Date().getDate()}日 `,
+            labelString: totalDays,
           },
         },
       ],
