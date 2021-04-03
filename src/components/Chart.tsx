@@ -20,64 +20,92 @@ const Chart: React.FC = () => {
   const user = useContext(AuthContext);
   const FS = firebase.firestore().collection("text");
 
-  console.log("time", new Date().getTime());
-  console.log("time", new Date(2000).getTime() - 1);
-
   useEffect(() => {
     if (user) {
+      let date = new Date();
+      let dateMonth = date.getMonth() + 1;
+      const getDate = (dt: any) => {
+        return dt <= 1
+          ? 30
+          : dt <= 2
+          ? 60
+          : dt <= 3
+          ? 87
+          : dt <= 4
+          ? 117
+          : dt <= 5
+          ? 146
+          : dt <= 6
+          ? 177
+          : dt <= 7
+          ? 206
+          : dt <= 8
+          ? 236
+          : dt <= 9
+          ? 266
+          : dt <= 10
+          ? 295
+          : dt <= 11
+          ? 325
+          : 354;
+      };
       const days =
-        new Date().getFullYear() + new Date().getMonth() + new Date().getDate();
-      console.log(days, "2021 , 4 , 2 ");
+        date.getFullYear() +
+        date.getMonth() +
+        date.getDate() +
+        getDate(dateMonth);
+      console.log("当月の値", days);
+
       FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days + 20)
+        .where("date", "<=", days - 9)
         .get()
         .then((doc) => {
           setCount1(doc.size);
         });
       FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days + 21)
+        .where("date", "<=", days - 8)
         .get()
         .then((doc) => {
           setCount2(doc.size);
         });
       FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days + 22)
+        .where("date", "<=", days - 7)
         .get()
         .then((doc) => {
           setCount3(doc.size);
         });
       FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days + 23)
+        .where("date", "<=", days - 6)
         .get()
         .then((doc) => {
           setCount4(doc.size);
         });
       FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days + 24)
+        .where("date", "<=", days - 5)
         .get()
         .then((doc) => {
           setCount5(doc.size);
         });
       FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days + 25)
+        .where("date", "<=", days - 4)
         .get()
         .then((doc) => {
           setCount6(doc.size);
         });
       FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days + 26)
+        .where("date", "<=", days - 3)
         .get()
         .then((doc) => {
           setCount7(doc.size);
         });
       FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days + 27)
+        .where("date", "<=", days - 2)
         .get()
         .then((doc) => {
           setCount8(doc.size);
         });
       FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days + 28)
+        .where("date", "<=", days - 1)
         .get()
         .then((doc) => {
           setCount9(doc.size);
@@ -105,11 +133,11 @@ const Chart: React.FC = () => {
     previous.setDate(days.getDate() - 9);
     let lastMonth = previous.getMonth() + 1;
     let lastWeek = previous.getDate();
-    console.log(lastWeek);
+    console.log("9日前", lastWeek);
 
     const longDay = `${lastMonth}月${lastWeek}日 〜 ${
-      day.getMonth() + 1
-    }月${day.getDate()}日 `;
+      days.getMonth() + 1
+    }月${days.getDate()}日 `;
     setTotalDays(longDay);
   }, [user]);
 

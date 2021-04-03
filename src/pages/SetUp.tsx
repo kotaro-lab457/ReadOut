@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../Auth/AuthService";
 import { Link } from "react-router-dom";
@@ -18,16 +18,46 @@ const SetUp: React.FC = (props: any) => {
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
+  const [dates, setDates] = useState<number>(0);
   const [textId, setTextId] = useState<string>(initialState);
 
   const user = useContext(AuthContext);
 
   const FS = firebase.firestore().collection("text");
-  const upDateDay =
-    new Date().getFullYear() +
-    new Date().getMonth() +
-    new Date().getDate() +
-    29;
+  useEffect(() => {
+    let date = new Date();
+    let date2 = date.getMonth() + 1;
+    function getDate(dt: any) {
+      return dt <= 1
+        ? 30
+        : dt <= 2
+        ? 60
+        : dt <= 3
+        ? 87
+        : dt <= 4
+        ? 117
+        : dt <= 5
+        ? 146
+        : dt <= 6
+        ? 177
+        : dt <= 7
+        ? 206
+        : dt <= 8
+        ? 236
+        : dt <= 9
+        ? 266
+        : dt <= 10
+        ? 295
+        : dt <= 11
+        ? 325
+        : 354;
+    }
+    console.log("月々の値", getDate(3));
+    const upDateDay =
+      date.getFullYear() + date.getMonth() + date.getDate() + getDate(date2);
+    console.log("データの値", upDateDay);
+    setDates(upDateDay);
+  }, []);
 
   const handleComment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,7 +76,7 @@ const SetUp: React.FC = (props: any) => {
       title: title,
       text: text,
       page: page,
-      date: upDateDay,
+      date: dates,
       uid: user.uid,
       id: textId,
       editing: false,
