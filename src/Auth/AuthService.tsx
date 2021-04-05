@@ -8,8 +8,6 @@ interface userContext {
   email: string;
   password: string;
   updateProfile: any;
-  updateEmail: any;
-  updatePassword: any;
 }
 
 const AuthContext = React.createContext<userContext>({
@@ -19,8 +17,6 @@ const AuthContext = React.createContext<userContext>({
   email: "",
   password: "",
   updateProfile: "",
-  updateEmail: "",
-  updatePassword: "",
 });
 
 const AuthService: React.FC = ({ children }) => {
