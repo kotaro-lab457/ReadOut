@@ -45,17 +45,24 @@
 
 ## 使用技術
 
-- HTML5
-- CSS3
-- JavaScript
-- TypeScript
+- HTML5/CSS3/JavaScript
+- TypeScript v4.1.3
+- styled-components v5.2.1
   - Atomic Design
-- React
-- webpack
-  - development
-  - production
-- Firebase
+- React v17.0.1
+  - react-hook-form v6.15.4
+  - react-router-dom v5.2.0 
+- webpack v4.44.2
+  - webpack-cli v3.3.12
+  - webpack-dev-server v3.11.0
+  - webpack-merge v5.7.3
+- Firebase v8.2.6
+  - Authentication
+  - firestore
 - Google Books API
+- axios v0.21.1
+- shortid v2.2.16
+- moment v2.29.1
 
 ## 工夫した点
 
