@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../Auth/AuthService";
+
 import profileImage from "../img/PR2_Img.png";
 import homeImage from "../img/PR_Img.png";
-
 import { TextFont } from "../ui/atoms/font";
 import { ImageSp } from "../ui/atoms/image";
 import { GuestButton, SubLoginButton } from "../ui/atoms/button";
@@ -21,8 +20,6 @@ import { faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Top: React.FC = (props: any) => {
-  const user = useContext(AuthContext);
-
   const GuestLogin = async () => {
     await firebase
       .auth()

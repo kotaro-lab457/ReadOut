@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
 import { AuthContext } from "../Auth/AuthService";
 import moment from "moment";
-import { PostText } from "../module.TS/Post.module";
+import { Text } from "../module/Text.module";
 
 import { Title } from "../ui/atoms/title";
 import { HomeTimeFont, SubFont, Font } from "../ui/atoms/font";
@@ -28,7 +28,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Room: React.FC = () => {
-  const [postText, setPostText] = useState<PostText[]>([]);
+  const [postText, setPostText] = useState<Text[]>([]);
   const [value, setValue] = useState<string>("");
   const [isDone, setIsDone] = useState<boolean>(false);
 

@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import BooksSearch from "./pages/BooksSearch";
-import ResetPassword from "./pages/ResetPassword";
+import ResetPassword from "./pages/ResetPass";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { AuthService } from "./Auth/AuthService";
@@ -15,7 +15,6 @@ import History from "./pages/History";
 
 import Table from "./ui/templates/Table";
 import "./index.css";
-const App = document.getElementById("root");
 
 ReactDOM.render(
   <BrowserRouter>
@@ -40,5 +39,5 @@ ReactDOM.render(
       <Footer />
     </AuthService>
   </BrowserRouter>,
-  App
+  document.getElementById("root")
 );

@@ -5,7 +5,7 @@ import firebase from "../config/Firebase";
 import { AuthContext } from "../Auth/AuthService";
 
 import { Link } from "react-router-dom";
-import { PostText } from "../module.TS/Post.module";
+import { Text } from "../module/Text.module";
 
 import { Title } from "../ui/atoms/title";
 import { Input } from "../ui/atoms/input";
@@ -19,7 +19,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const History: React.FC = () => {
-  const [homeText, setHomeText] = useState<PostText[]>([]);
+  const [homeText, setHomeText] = useState<Text[]>([]);
   const [isDone, setIsDone] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
 

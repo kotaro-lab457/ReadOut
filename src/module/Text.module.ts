@@ -1,4 +1,4 @@
-export interface PostText {
+export interface Text {
   user: string;
   title: string;
   text: string;
