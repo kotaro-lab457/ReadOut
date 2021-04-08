@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./Reducer";
+import userReducer from "./Reducer";
 
 //rootReducerの登録
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    user: userReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;

@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./stores/store";
 import Top from "./pages/Top";
 import SetUp from "./pages/SetUp";
 import Login from "./pages/Login";
