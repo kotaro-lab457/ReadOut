@@ -1,17 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../stores/userSlice";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../Auth/AuthService";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import shortid from "shortid";
 
 import { Title } from "../ui/atoms/title";
 import { Button } from "../ui/atoms/button";
 import { SetUpFont } from "../ui/atoms/font";
 import { SetUpInput, TextArea } from "../ui/atoms/input";
-import { TablePage } from "../ui/molecules/TablePages";
 import { TableSetUp } from "../ui/molecules/TableSetUp";
-import { MainPage } from "../ui/organisms/MainPages";
-import { Link } from "react-router-dom";
-import shortid from "shortid";
+import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
 
 const SetUp: React.FC = (props: any) => {
   const initialState = shortid.generate();
@@ -19,16 +19,46 @@ const SetUp: React.FC = (props: any) => {
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
+  const [dates, setDates] = useState<number>(0);
   const [textId, setTextId] = useState<string>(initialState);
 
-  const user = useContext(AuthContext);
+  const user = useSelector(selectUser);
 
   const FS = firebase.firestore().collection("text");
-  const upDateDay =
-    new Date().getFullYear() +
-    new Date().getMonth() +
-    new Date().getDate() +
-    29;
+  useEffect(() => {
+    let date = new Date();
+    let date2 = date.getMonth() + 1;
+    function getDate(dt: any) {
+      return dt <= 1
+        ? 30
+        : dt <= 2
+        ? 60
+        : dt <= 3
+        ? 87
+        : dt <= 4
+        ? 117
+        : dt <= 5
+        ? 146
+        : dt <= 6
+        ? 177
+        : dt <= 7
+        ? 206
+        : dt <= 8
+        ? 236
+        : dt <= 9
+        ? 266
+        : dt <= 10
+        ? 295
+        : dt <= 11
+        ? 325
+        : 354;
+    }
+    console.log("月々の値", getDate(3));
+    const upDateDay =
+      date.getFullYear() + date.getMonth() + date.getDate() + getDate(date2);
+    console.log("データの値", upDateDay);
+    setDates(upDateDay);
+  }, []);
 
   const handleComment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,7 +77,7 @@ const SetUp: React.FC = (props: any) => {
       title: title,
       text: text,
       page: page,
-      date: upDateDay,
+      date: dates,
       uid: user.uid,
       id: textId,
       editing: false,
@@ -64,7 +94,7 @@ const SetUp: React.FC = (props: any) => {
   return (
     <>
       <MainPage>
-        <TablePage>
+        <MainTablePages>
           <Title>Set Up</Title>
           <TableSetUp>
             <form onSubmit={handleComment}>
@@ -106,7 +136,7 @@ const SetUp: React.FC = (props: any) => {
               <Button disabled={!text || !page || !title}>投稿</Button>
             </form>
           </TableSetUp>
-        </TablePage>
+        </MainTablePages>
       </MainPage>
     </>
   );

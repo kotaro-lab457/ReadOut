@@ -1,36 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import firebase from "../config/Firebase";
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser, login, logout } from "../stores/userSlice";
 
 interface userContext {
-  user: any;
   displayName: string;
   uid: string;
-  email: string;
-  password: string;
-  updateProfile: any;
-  updateEmail: any;
-  updatePassword: any;
 }
 
 const AuthContext = React.createContext<userContext>({
-  user: "",
   displayName: "",
   uid: "",
-  email: "",
-  password: "",
-  updateProfile: "",
-  updateEmail: "",
-  updatePassword: "",
 });
 
+// children は親コンポーネントのタグの間に入った要素を表示する
+// つまり、<AuthService>というタグの間にブラウザに表示しているリンク
+
 const AuthService: React.FC = ({ children }) => {
-  const [user, setUser] = useState<any>(null);
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      setUser(user);
+    const unSub = firebase.auth().onAuthStateChanged((authUser) => {
+      if (authUser) {
+        dispatch(
+          login({
+            uid: authUser.uid,
+            displayName: authUser.displayName,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
     });
-  }, []);
+    return () => {
+      unSub();
+    };
+  }, [dispatch]);
   return (
     <>
       <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
@@ -38,4 +44,4 @@ const AuthService: React.FC = ({ children }) => {
   );
 };
 
-export { AuthContext, AuthService };
+export { AuthService };

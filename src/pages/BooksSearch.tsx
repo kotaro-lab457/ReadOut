@@ -6,14 +6,13 @@ import { ImageTag } from "../ui/atoms/image";
 import { Title } from "../ui/atoms/title";
 import { SearchInput } from "../ui/atoms/input";
 import { SearchButton } from "../ui/atoms/button";
-import { TablePage } from "../ui/molecules/TablePages";
 import {
   TableSearch,
   ItemSearch,
   TextSearch,
   ListSearch,
 } from "../ui/molecules/TableSearch";
-import { MainPage } from "../ui/organisms/MainPages";
+import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -49,7 +48,7 @@ const BooksSearch: React.FC = () => {
   return (
     <>
       <MainPage>
-        <TablePage>
+        <MainTablePages>
           <TableSearch>
             <Title>Books Search</Title>
             ※さまざまな書籍を検索できます。
@@ -87,7 +86,7 @@ const BooksSearch: React.FC = () => {
               </>
             </ListSearch>
           )}
-        </TablePage>
+        </MainTablePages>
       </MainPage>
     </>
   );

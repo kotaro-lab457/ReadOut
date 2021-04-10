@@ -27,4 +27,20 @@ const TableList = styled.div`
     margin-bottom: 3.5rem;
   }
 `;
-export { TableList, TableHome, TableForm };
+
+const TableTexts = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+`;
+
+const TableItem = styled.div`
+  width: 45vw;
+  text-align: left;
+  margin-left: 2rem;
+  @media (max-width: 420px) {
+    width: 65vw;
+    margin-left: 1rem;
+  }
+`;
+export { TableList, TableHome, TableForm, TableTexts, TableItem };

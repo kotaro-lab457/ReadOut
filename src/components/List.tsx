@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Img, ImageTag } from "../ui/atoms/image";
 import { TimeFont, Font } from "../ui/atoms/font";
 import { IconButton } from "../ui/atoms/button";
-import { TablePagesText, TablePageList } from "../ui/molecules/TablePages";
+import { TableItem, TableTexts } from "../ui/molecules/TableHome";
 import { TableIcon } from "../ui/molecules/TableProfile";
 
 interface listProps {
@@ -35,16 +35,16 @@ const List: React.FC<listProps> = (props) => {
       <ImageTag>
         <Img src={props.list.image} alt="" />
       </ImageTag>
-      <TablePagesText>
-        <TablePageList>
+      <TableTexts>
+        <TableItem>
           <Font>タイトル：{props.list.title}</Font>
           <Font>ページ：{props.list.page}</Font>
           <Font>感想：{props.list.text}</Font>
-        </TablePageList>
+        </TableItem>
         <TimeFont>
           {moment(props.list.createAt).format("A HH:mm YYYY/MM/DD")}
         </TimeFont>
-      </TablePagesText>
+      </TableTexts>
       <TableIcon>
         <IconButton onClick={handleEditChange}>
           <FontAwesomeIcon icon={faPen} />

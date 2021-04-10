@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import firebase from "../config/Firebase";
+import { useDispatch } from "react-redux";
+import { updateUserProfile } from "../stores/userSlice";
 import { Link } from "react-router-dom";
 
 import { TextFont, LoginFont, LinkFont, ErrorFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
 import { LoginButton } from "../ui/atoms/button";
 import { LoginInput } from "../ui/atoms/input";
-import { TableLogin, SubTableLogin } from "../ui/molecules/TablePages";
+import { TableLogin, SubTableLogin } from "../ui/molecules/TableLogin";
 import { MainImage } from "../ui/organisms/MainPages";
 
 type Post = {
@@ -23,6 +25,7 @@ const Login: React.FC = (props: any) => {
   const [inLogin, setInLogin] = useState<boolean>(true);
 
   const { register, handleSubmit, errors } = useForm<Post>();
+  const dispatch = useDispatch();
 
   const handleSignIn = async () => {
     try {
@@ -43,6 +46,11 @@ const Login: React.FC = (props: any) => {
             displayName: name,
           });
         });
+      dispatch(
+        updateUserProfile({
+          displayName: name,
+        })
+      );
     } catch (err) {
       alert(err.message);
     }

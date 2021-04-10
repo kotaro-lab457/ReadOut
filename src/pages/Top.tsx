@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../Auth/AuthService";
+import { useDispatch } from "react-redux";
+import { updateUserProfile } from "../stores/userSlice";
+
 import profileImage from "../img/PR2_Img.png";
 import homeImage from "../img/PR_Img.png";
-
 import { TextFont } from "../ui/atoms/font";
 import { ImageSp } from "../ui/atoms/image";
 import { GuestButton, SubLoginButton } from "../ui/atoms/button";
@@ -14,15 +15,14 @@ import {
   TableTopImages,
   TableTopImage,
   SubTableTopImage,
-} from "../ui/molecules/TablePages";
+} from "../ui/molecules/TableTop";
 import { MainImage } from "../ui/organisms/MainPages";
 
 import { faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Top: React.FC = (props: any) => {
-  const user = useContext(AuthContext);
-
+  const dispatch = useDispatch();
   const GuestLogin = async () => {
     await firebase
       .auth()
@@ -32,6 +32,11 @@ const Top: React.FC = (props: any) => {
           displayName: "ゲストユーザー",
         });
       });
+    dispatch(
+      updateUserProfile({
+        displayName: "ゲストユーザー",
+      })
+    );
     props.history.push("/home");
   };
 

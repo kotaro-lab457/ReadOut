@@ -1,6 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../Auth/AuthService";
 import axios from "axios";
 
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -30,16 +29,7 @@ const Editing: React.FC<homeProps> = (props) => {
   const [text, setText] = useState<string>(props.list.text);
   const [page, setPage] = useState<string>(props.list.page);
 
-  const user = useContext(AuthContext);
   const FS = firebase.firestore().collection("text");
-  const db = firebase.firestore().collection("counters");
-
-  //グラフの日付別番号作成
-  const upDateDay =
-    new Date().getFullYear() +
-    new Date().getMonth() +
-    new Date().getDate() +
-    29;
 
   // キャンセル = editing を true から false へ（Listへ切り替え）
   const editTextCancel = () => {
@@ -61,8 +51,6 @@ const Editing: React.FC<homeProps> = (props) => {
       page: page,
       text: text,
       image: imageUrl,
-      date: upDateDay,
-      createAt: new Date().getTime(),
     });
   };
 

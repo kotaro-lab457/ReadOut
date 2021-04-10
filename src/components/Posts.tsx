@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../Auth/AuthService";
+import { useSelector } from "react-redux";
+import { selectUser } from "../stores/userSlice";
 
 import { PostsFont, TotalFont } from "../ui/atoms/font";
 
 const TotalDays = () => {
   const [count, setCount] = useState<number>(0);
-  const user = useContext(AuthContext);
+  const user = useSelector(selectUser);
   const FS = firebase.firestore().collection("text");
 
   useEffect(() => {

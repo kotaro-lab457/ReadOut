@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../stores/userSlice";
 import Editing from "../components/Editing";
 import List from "../components/List";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../Auth/AuthService";
 
 import { Link } from "react-router-dom";
-import { PostText } from "../module.TS/Post.module";
+import { Text } from "../module/Text.module";
 
 import { Title } from "../ui/atoms/title";
 import { Input } from "../ui/atoms/input";
@@ -13,18 +14,17 @@ import { SubFont } from "../ui/atoms/font";
 import { TableForm, TableList } from "../ui/molecules/TableHome";
 import { HomeSearchButton, UpdateButton } from "../ui/atoms/button";
 import { TableProfile, TableText } from "../ui/molecules/TableProfile";
-import { TablePage } from "../ui/molecules/TablePages";
-import { MainPage } from "../ui/organisms/MainPages";
+import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const History: React.FC = () => {
-  const [homeText, setHomeText] = useState<PostText[]>([]);
+  const [homeText, setHomeText] = useState<Text[]>([]);
   const [isDone, setIsDone] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
 
-  const user = useContext(AuthContext);
+  const user = useSelector(selectUser);
 
   const FS = firebase.firestore().collection("text");
 
@@ -59,9 +59,7 @@ const History: React.FC = () => {
       const posts: any = snapshot.docs.map((doc) => {
         return doc.data();
       });
-      setHomeText(posts); //collectionのデータを取得してる
-      setIsDone(!isDone);
-      console.log("反転");
+      setHomeText(posts);
     });
   };
   const editChange = (id: number, editing: boolean) => {
@@ -80,7 +78,7 @@ const History: React.FC = () => {
   return (
     <>
       <MainPage>
-        <TablePage>
+        <MainTablePages>
           <TableText>
             <Title>投稿履歴</Title>
             <SubFont>
@@ -122,7 +120,7 @@ const History: React.FC = () => {
               </div>
             ))}
           </TableList>
-        </TablePage>
+        </MainTablePages>
       </MainPage>
     </>
   );

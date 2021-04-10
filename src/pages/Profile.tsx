@@ -1,25 +1,25 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../stores/userSlice";
 import { Link } from "react-router-dom";
 import Chart from "../components/Chart";
 import TotalPosts from "../components/Posts";
-import { AuthContext } from "../Auth/AuthService";
 
 import { SubFont } from "../ui/atoms/font";
 import { Title } from "../ui/atoms/title";
 import { ProfileSetUpButton } from "../ui/atoms/button";
-import { TablePage } from "../ui/molecules/TablePages";
 import { TableSetUpProfile } from "../ui/molecules/TableSetUp";
 
 import { TableTotal, TablePosts } from "../ui/molecules/TableProfile";
-import { MainPage } from "../ui/organisms/MainPages";
+import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
 
-const Home: React.FC = () => {
-  const user = useContext(AuthContext);
+const Profile: React.FC = () => {
+  const user = useSelector(selectUser);
 
   return (
     <>
       <MainPage>
-        <TablePage>
+        <MainTablePages>
           <Title>Profile</Title>
           <SubFont>ユーザー名：{user?.displayName}</SubFont>
           <TablePosts>
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
             </Link>
             へ
           </SubFont>
-          {user && (
+          {user.uid && (
             <TableSetUpProfile>
               <Link
                 to="/setup"
@@ -45,10 +45,10 @@ const Home: React.FC = () => {
               </Link>
             </TableSetUpProfile>
           )}
-        </TablePage>
+        </MainTablePages>
       </MainPage>
     </>
   );
 };
 
-export default Home;
+export default Profile;
