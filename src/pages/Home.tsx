@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../Auth/AuthService";
+import { useSelector } from "react-redux";
+import { selectUser } from "../stores/userSlice";
 import moment from "moment";
 import { Text } from "../module/Text.module";
 
@@ -34,7 +35,7 @@ const Room: React.FC = () => {
 
   const FS = firebase.firestore().collection("text");
 
-  const user = useContext(AuthContext);
+  const user = useSelector(selectUser);
   useEffect(() => {
     let isMounted = true;
     FS.orderBy("createAt", "desc").onSnapshot((snapshot) => {
@@ -114,7 +115,7 @@ const Room: React.FC = () => {
               </TableHome>
             ))}
           </TableList>
-          {user && (
+          {user.uid && (
             <TableSetUpHome>
               <Link
                 to="/setup"

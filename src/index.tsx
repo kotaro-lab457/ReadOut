@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./stores/store";
+import { store } from "./stores/store";
 import Top from "./pages/Top";
 import SetUp from "./pages/SetUp";
 import Login from "./pages/Login";
@@ -19,27 +19,29 @@ import Table from "./ui/templates/Table";
 import "./index.css";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <AuthService>
-      <Header />
-    </AuthService>
-    <Table>
-      <Switch>
-        <AuthService>
-          <Route exact path="/" component={Top} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/setup" component={SetUp} />
-          <Route exact path="/books" component={BooksSearch} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/reset" component={ResetPassword} />
-          <Route exact path="/history" component={History} />
-        </AuthService>
-      </Switch>
-    </Table>
-    <AuthService>
-      <Footer />
-    </AuthService>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <AuthService>
+        <Header />
+      </AuthService>
+      <Table>
+        <Switch>
+          <AuthService>
+            <Route exact path="/" component={Top} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/setup" component={SetUp} />
+            <Route exact path="/books" component={BooksSearch} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/reset" component={ResetPassword} />
+            <Route exact path="/history" component={History} />
+          </AuthService>
+        </Switch>
+      </Table>
+      <AuthService>
+        <Footer />
+      </AuthService>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );

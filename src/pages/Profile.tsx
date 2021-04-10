@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../stores/userSlice";
 import { Link } from "react-router-dom";
 import Chart from "../components/Chart";
 import TotalPosts from "../components/Posts";
-import { AuthContext } from "../Auth/AuthService";
 
 import { SubFont } from "../ui/atoms/font";
 import { Title } from "../ui/atoms/title";
@@ -12,8 +13,8 @@ import { TableSetUpProfile } from "../ui/molecules/TableSetUp";
 import { TableTotal, TablePosts } from "../ui/molecules/TableProfile";
 import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
 
-const Home: React.FC = () => {
-  const user = useContext(AuthContext);
+const Profile: React.FC = () => {
+  const user = useSelector(selectUser);
 
   return (
     <>
@@ -34,7 +35,7 @@ const Home: React.FC = () => {
             </Link>
             へ
           </SubFont>
-          {user && (
+          {user.uid && (
             <TableSetUpProfile>
               <Link
                 to="/setup"
@@ -50,4 +51,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Profile;

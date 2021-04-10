@@ -1,6 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../stores/userSlice";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../Auth/AuthService";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import shortid from "shortid";
@@ -21,7 +22,7 @@ const SetUp: React.FC = (props: any) => {
   const [dates, setDates] = useState<number>(0);
   const [textId, setTextId] = useState<string>(initialState);
 
-  const user = useContext(AuthContext);
+  const user = useSelector(selectUser);
 
   const FS = firebase.firestore().collection("text");
   useEffect(() => {

@@ -1,5 +1,7 @@
 import React from "react";
 import firebase from "../config/Firebase";
+import { useDispatch } from "react-redux";
+import { updateUserProfile } from "../stores/userSlice";
 
 import profileImage from "../img/PR2_Img.png";
 import homeImage from "../img/PR_Img.png";
@@ -20,6 +22,7 @@ import { faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Top: React.FC = (props: any) => {
+  const dispatch = useDispatch();
   const GuestLogin = async () => {
     await firebase
       .auth()
@@ -29,6 +32,11 @@ const Top: React.FC = (props: any) => {
           displayName: "ゲストユーザー",
         });
       });
+    dispatch(
+      updateUserProfile({
+        displayName: "ゲストユーザー",
+      })
+    );
     props.history.push("/home");
   };
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import firebase from "../config/Firebase";
+import { useDispatch } from "react-redux";
+import { updateUserProfile } from "../stores/userSlice";
 import { Link } from "react-router-dom";
 
 import { TextFont, LoginFont, LinkFont, ErrorFont } from "../ui/atoms/font";
@@ -23,6 +25,7 @@ const Login: React.FC = (props: any) => {
   const [inLogin, setInLogin] = useState<boolean>(true);
 
   const { register, handleSubmit, errors } = useForm<Post>();
+  const dispatch = useDispatch();
 
   const handleSignIn = async () => {
     try {
@@ -43,6 +46,11 @@ const Login: React.FC = (props: any) => {
             displayName: name,
           });
         });
+      dispatch(
+        updateUserProfile({
+          displayName: name,
+        })
+      );
     } catch (err) {
       alert(err.message);
     }

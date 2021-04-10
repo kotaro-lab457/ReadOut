@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "../config/Firebase";
+import { useSelector } from "react-redux";
+import { selectUser } from "../stores/userSlice";
 import { Line } from "react-chartjs-2";
-import { AuthContext } from "../Auth/AuthService";
 
 const Chart: React.FC = () => {
   const [date, setDate] = useState(null);
@@ -17,7 +18,7 @@ const Chart: React.FC = () => {
   const [count9, setCount9] = useState(0);
   const [count10, setCount10] = useState(0);
 
-  const user = useContext(AuthContext);
+  const user = useSelector(selectUser);
   const FS = firebase.firestore().collection("text");
 
   useEffect(() => {

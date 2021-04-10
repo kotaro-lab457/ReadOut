@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../stores/userSlice";
 import Editing from "../components/Editing";
 import List from "../components/List";
 import firebase from "../config/Firebase";
-import { AuthContext } from "../Auth/AuthService";
 
 import { Link } from "react-router-dom";
 import { Text } from "../module/Text.module";
@@ -23,7 +24,7 @@ const History: React.FC = () => {
   const [isDone, setIsDone] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
 
-  const user = useContext(AuthContext);
+  const user = useSelector(selectUser);
 
   const FS = firebase.firestore().collection("text");
 
@@ -58,9 +59,7 @@ const History: React.FC = () => {
       const posts: any = snapshot.docs.map((doc) => {
         return doc.data();
       });
-      setHomeText(posts); //collectionのデータを取得してる
-      setIsDone(!isDone);
-      console.log("反転");
+      setHomeText(posts);
     });
   };
   const editChange = (id: number, editing: boolean) => {

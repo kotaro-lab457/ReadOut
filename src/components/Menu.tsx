@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../Auth/AuthService";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser, updateUserProfile } from "../stores/userSlice";
 import { Link, withRouter } from "react-router-dom";
 import firebase from "firebase";
 
@@ -15,7 +16,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Menu: React.FC = (props: any) => {
-  const user = useContext(AuthContext);
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
   const GuestLogin = async () => {
     await firebase
       .auth()
@@ -25,6 +27,11 @@ const Menu: React.FC = (props: any) => {
           displayName: "ゲストユーザー",
         });
       });
+    dispatch(
+      updateUserProfile({
+        displayName: "ゲストユーザー",
+      })
+    );
   };
 
   const signOut = () => {
@@ -50,7 +57,7 @@ const Menu: React.FC = (props: any) => {
           Books
         </Link>
       </LinkTag>
-      {user && (
+      {user.uid ? (
         <LinkTag>
           <Link to="/profile" style={{ textDecoration: "none", color: "#000" }}>
             <IconLinkTag>
@@ -59,8 +66,7 @@ const Menu: React.FC = (props: any) => {
             Profile
           </Link>
         </LinkTag>
-      )}
-      {!user && (
+      ) : (
         <LinkTag>
           <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
             <IconLinkTag>
@@ -70,7 +76,12 @@ const Menu: React.FC = (props: any) => {
           </Link>
         </LinkTag>
       )}
-      {!user && (
+      {user.uid ? (
+        <SubLoginButton onClick={signOut}>
+          <FontAwesomeIcon icon={faSignOutAlt} />
+          Log out
+        </SubLoginButton>
+      ) : (
         <GuestButton
           onClick={async () => {
             try {
@@ -83,12 +94,6 @@ const Menu: React.FC = (props: any) => {
           <FontAwesomeIcon icon={faUser} />
           Guest
         </GuestButton>
-      )}
-      {user && (
-        <SubLoginButton onClick={signOut}>
-          <FontAwesomeIcon icon={faSignOutAlt} />
-          Log out
-        </SubLoginButton>
       )}
     </TableMenu>
   );
