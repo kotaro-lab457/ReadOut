@@ -24,7 +24,6 @@ const GuestButton = styled(Button)`
   height: 50px;
   padding: 10px 15px;
   margin: 10px 20px 10px 0;
-
   background-color: #ff5252;
   @media (max-width: 420px) {
     height: 40px;
@@ -152,6 +151,13 @@ const SetUpButton = styled.div`
   }
 `;
 
+const GoogleButton = styled(LoginButton)`
+  font-size: 1rem;
+  padding: 10px;
+  background-color: #ff3d00;
+  color: #fff;
+`;
+
 const ProfileSetUpButton = styled(SetUpButton)`
   @media (max-width: 420px) {
     opacity: 0.8;
@@ -179,4 +185,5 @@ export {
   CancelButton,
   IconButton,
   HomeSearchButton,
+  GoogleButton,
 };
