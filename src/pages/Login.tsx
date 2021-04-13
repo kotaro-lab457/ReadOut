@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import { TextFont, LoginFont, LinkFont, ErrorFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
-import { LoginButton } from "../ui/atoms/button";
+import { LoginButton, GoogleButton } from "../ui/atoms/button";
 import { LoginInput } from "../ui/atoms/input";
 import { TableLogin, SubTableLogin } from "../ui/molecules/TableLogin";
 import { MainImage } from "../ui/organisms/MainPages";
@@ -26,6 +26,8 @@ const Login: React.FC = (props: any) => {
 
   const { register, handleSubmit, errors } = useForm<Post>();
   const dispatch = useDispatch();
+
+  const provider = new firebase.auth.GoogleAuthProvider();
 
   const handleSignIn = async () => {
     try {
@@ -55,6 +57,16 @@ const Login: React.FC = (props: any) => {
       alert(err.message);
     }
     props.history.push("/home");
+  };
+
+  const signInGoogle = async () => {
+    await firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then(() => {
+        props.history.push("/home");
+      })
+      .catch((err) => alert(err.message));
   };
 
   return (
@@ -109,6 +121,10 @@ const Login: React.FC = (props: any) => {
             >
               {inLogin ? "Login" : "Sign Up"}
             </LoginButton>
+            <br />
+            <GoogleButton onClick={signInGoogle}>
+              Sign In with Google
+            </GoogleButton>
             <TextFont>
               パスワードを忘れてしまった場合は
               <Link to="/reset" style={{ color: "#ffd740" }}>
@@ -116,14 +132,16 @@ const Login: React.FC = (props: any) => {
               </Link>
               へ
             </TextFont>
-            <LinkFont
-              onClick={() => {
-                setInLogin(!inLogin);
-              }}
-            >
-              {inLogin ? "Sign In" : "Login"}
-            </LinkFont>
-            へ
+            <TextFont>
+              <LinkFont
+                onClick={() => {
+                  setInLogin(!inLogin);
+                }}
+              >
+                {inLogin ? "Sign In" : "Login"}
+              </LinkFont>
+              へ
+            </TextFont>
           </SubTableLogin>
         </TableLogin>
       </MainImage>

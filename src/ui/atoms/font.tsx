@@ -41,6 +41,9 @@ const ErrorFont = styled(Font)`
   text-align: left;
   color: #ff4646;
   padding: 0.5rem 0 0 2rem;
+  margin: 0;
+  @media (max-width: 420px) {
+  padding: 0.5rem 0 0 3rem;
 `;
 
 const TimeFont = styled(Font)`
