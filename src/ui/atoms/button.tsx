@@ -156,6 +156,16 @@ const GoogleButton = styled(LoginButton)`
   padding: 10px;
   background-color: #ff3d00;
   color: #fff;
+  width: 220px;
+  border-radius: 5px;
+  @media (max-width: 420px) {
+    margin: 1rem 0;
+  }
+`;
+
+const TwitterButton = styled(GoogleButton)`
+  background-color: #33bfff;
+  margin-left: 5px;
 `;
 
 const ProfileSetUpButton = styled(SetUpButton)`
@@ -186,4 +196,5 @@ export {
   IconButton,
   HomeSearchButton,
   GoogleButton,
+  TwitterButton,
 };
