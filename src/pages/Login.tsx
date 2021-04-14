@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 import { TextFont, LoginFont, LinkFont, ErrorFont } from "../ui/atoms/font";
 import { LoginTitle } from "../ui/atoms/title";
-import { LoginButton, GoogleButton } from "../ui/atoms/button";
+import { LoginButton, GoogleButton, TwitterButton } from "../ui/atoms/button";
 import { LoginInput } from "../ui/atoms/input";
 import { TableLogin, SubTableLogin } from "../ui/molecules/TableLogin";
 import { MainImage } from "../ui/organisms/MainPages";
@@ -28,6 +28,7 @@ const Login: React.FC = (props: any) => {
   const dispatch = useDispatch();
 
   const provider = new firebase.auth.GoogleAuthProvider();
+  const twitterProvider = new firebase.auth.TwitterAuthProvider();
 
   const handleSignIn = async () => {
     try {
@@ -67,6 +68,18 @@ const Login: React.FC = (props: any) => {
         props.history.push("/home");
       })
       .catch((err) => alert(err.message));
+  };
+
+  const signInTwitter = async () => {
+    await firebase
+      .auth()
+      .signInWithPopup(twitterProvider)
+      .then(() => {
+        props.history.push("/home");
+      })
+      .catch((err) => {
+        err.message;
+      });
   };
 
   return (
@@ -125,6 +138,9 @@ const Login: React.FC = (props: any) => {
             <GoogleButton onClick={signInGoogle}>
               Sign In with Google
             </GoogleButton>
+            <TwitterButton onClick={signInTwitter}>
+              sign ing with Twitter
+            </TwitterButton>
             <TextFont>
               パスワードを忘れてしまった場合は
               <Link to="/reset" style={{ color: "#ffd740" }}>
