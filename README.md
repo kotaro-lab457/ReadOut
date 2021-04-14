@@ -43,6 +43,8 @@
 - 検索機能
 - グラフ機能
 
+## 使用した技術
+
 - HTML5/CSS3/JavaScript
 - TypeScript v4.1.3
 - styled-components v5.2.1
