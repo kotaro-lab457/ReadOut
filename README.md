@@ -12,7 +12,13 @@
 
 ゲストボタンでログインができます。
 
+メインページ
+
 <img width="620px" src="./src/img/portfolio_top_page.png">
+
+ログインページ
+
+<img width="230px" alt="portfolio_login" src="https://user-images.githubusercontent.com/69884513/114831059-e6daf100-9e07-11eb-8b29-57813ce23b6c.png">
 
 ## デモ
 
