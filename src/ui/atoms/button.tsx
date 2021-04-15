@@ -159,13 +159,16 @@ const GoogleButton = styled(LoginButton)`
   width: 220px;
   border-radius: 5px;
   @media (max-width: 420px) {
-    margin: 1rem 0;
+    margin: 5px 0 0;
   }
 `;
 
 const TwitterButton = styled(GoogleButton)`
   background-color: #33bfff;
   margin-left: 5px;
+  @media (max-width: 420px) {
+    margin: 5px 0 0;
+  }
 `;
 
 const ProfileSetUpButton = styled(SetUpButton)`

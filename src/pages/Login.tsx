@@ -139,7 +139,7 @@ const Login: React.FC = (props: any) => {
               Sign In with Google
             </GoogleButton>
             <TwitterButton onClick={signInTwitter}>
-              sign ing with Twitter
+              Sign In with Twitter
             </TwitterButton>
             <TextFont>
               パスワードを忘れてしまった場合は
