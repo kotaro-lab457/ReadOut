@@ -3,10 +3,13 @@ import BooksSearch from "../src/pages/BooksSearch";
 import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-test("イベント処理のレンダリング", () => {
-  const { getByText, debug } = render(<BooksSearch />);
-  debug();
+describe("検索ページ", () => {
+  it("should render all the elements タイピング", () => {
+    render(<BooksSearch />);
+    expect(screen.getByText("Books Search")).toBeTruthy();
 
-  const submitButton = getByText(/submit/i);
-  debug(submitButton);
+    // expect(screen.getByPlaceholderText("キーワードを入力")).toBeTruthy();
+    userEvent.type(screen.getByPlaceholderText("Enter"), "test");
+    //expect(screen.getByPlaceholderText("Enter")).toHaveValue("test");
+  });
 });
