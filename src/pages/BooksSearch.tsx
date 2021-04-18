@@ -55,7 +55,7 @@ const BooksSearch: React.FC = () => {
             <form onSubmit={handleSearchSubmit}>
               <SearchInput
                 type="text"
-                placeholder="キーワードを入力"
+                placeholder="Enter"
                 onChange={(e) => setSearchString(e.target.value)}
               />
               <SearchButton>
