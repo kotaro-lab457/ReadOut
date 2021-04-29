@@ -5,7 +5,7 @@ const LinkTag = styled.p`
   margin: 30px 20px 20px 0;
   @media (max-width: 420px) {
     font-size: 1rem;
-    margin: 10px 25px;
+    margin: 10px 20px;
   }
 `;
 

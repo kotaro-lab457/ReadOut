@@ -23,11 +23,10 @@ const BooksSearch: React.FC = () => {
   //Google Books API通信
   const searchGoogleBooks = async (searchString: string) => {
     const url = "https://www.googleapis.com/books/v1/volumes";
-    // q: 全文文字列
+
     const params = { q: searchString, maxResults: 20 };
     // 例外が発生することを考慮（try〜catch構文）
     try {
-      // axios.get()でHTTPリクエストを送ることができる。
       const response = await axios.get(url, { params });
       console.log(response);
       return { isSuccess: true, data: response.data, error: null };
