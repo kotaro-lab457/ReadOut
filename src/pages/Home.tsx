@@ -105,7 +105,7 @@ const Room: React.FC = () => {
                   <TableItem>
                     <Font>ユーザー：{list.user}</Font>
                     <Font>タイトル：{list.title}</Font>
-                    <Font>ページ：{list.page}</Font>
+                    <Font>読んだページ数：{list.page}</Font>
                     <Font>感想：{list.text}</Font>
                   </TableItem>
                   <HomeTimeFont>

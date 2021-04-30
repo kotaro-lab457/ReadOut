@@ -38,7 +38,7 @@ const List: React.FC<listProps> = (props) => {
       <TableTexts>
         <TableItem>
           <Font>タイトル：{props.list.title}</Font>
-          <Font>ページ：{props.list.page}</Font>
+          <Font>読んだページ数：{props.list.page}</Font>
           <Font>感想：{props.list.text}</Font>
         </TableItem>
         <TimeFont>
