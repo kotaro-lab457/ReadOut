@@ -6,14 +6,29 @@ import userEvent from "@testing-library/user-event";
 import axios from "axios";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
+import { data } from "msw/lib/types/context";
 
-const server = setupServer(
-  rest.get("https://www.googleapis.com/books/v1/volumes",(res.ctx) => {
-    return rest(ctx.status(200),ctx.json({}))
-  })
-)
+// モックサーバーに擬似的にクエリを返す
+// const server = setupServer(
+//   rest.get("https://www.googleapis.com/books/v1/volumes", (req, res, ctx) => {
+//     return res(
+//       ctx.status(200),
+//       ctx.json([
+//         { id: "1", title: "Webの技術" },
+//         { id: "2", title: "CSSの設計書" },
+//       ])
+//     );
+//   })
+// );
 
-afterEach(cleanup);
+// beforeAll(() => server.listen());
+// afterEach(() => {
+//   server.resetHandlers();
+//   cleanup();
+// });
+// afterAll(() => server.close());
+
+// afterEach(() => server.close());
 
 describe("検索ページ", () => {
   it("検索フォームテスト", () => {
@@ -29,7 +44,10 @@ describe("検索ページ", () => {
     expect(screen.queryByText("リーダブルコード")).toBeNull();
   });
   it("非同期処理テスト", async () => {
-    const searchResult = [{ isSuccess: true, data: "Webの技術" }];
-    //mockedAxios.get.mockResolvedValueOnce(searchResult);
+    render(<BooksSearch />);
+    userEvent.click(screen.getByRole("button"));
+    // const items = await screen.findAllByRole("img");
+
+    //expect(items).toHaveValue(2);
   });
 });
