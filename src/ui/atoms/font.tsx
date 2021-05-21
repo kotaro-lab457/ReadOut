@@ -47,9 +47,12 @@ const ErrorFont = styled(Font)`
 `;
 
 const TimeFont = styled(Font)`
+  font-size: 14px;
   text-align: right;
-  display: block;
+  display: inline-block;
   font-weight: 300;
+  color: #808080;
+  padding-left: 1rem;
   @media (max-width: 420px) {
     margin: 0.5rem 3rem 0 0;
   }
@@ -99,6 +102,27 @@ const TotalFont = styled(Font)`
     font-size: 3rem;
   }
 `;
+
+const CommentFont = styled.span`
+  font-size: 1rem;
+  display: block;
+  text-align: left;
+  cursor: pointer;
+  color: #0070f3;
+`;
+
+const CommentUserFont = styled.span`
+  font-weight: 300;
+  font-size: 1rem;
+  @media (max-width: 420px) {
+    font-size: 0.8rem;
+  }
+`;
+
+const CommentsFont = styled(CommentUserFont)`
+  font-size: 0.8rem;
+`;
+
 export {
   Font,
   SubFont,
@@ -113,4 +137,7 @@ export {
   FooterFont,
   PostsFont,
   TotalFont,
+  CommentFont,
+  CommentUserFont,
+  CommentsFont,
 };

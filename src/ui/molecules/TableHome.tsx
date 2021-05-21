@@ -19,6 +19,16 @@ const TableForm = styled.form`
   }
 `;
 
+const TableFormComment = styled.form`
+  width: 100%;
+  text-align: right;
+`;
+
+const TableCommentsText = styled.div`
+  text-align: left;
+  padding-left: 2rem;
+`;
+
 const TableList = styled.div`
   @media (max-width: 420px) {
     overflow-y: scroll;
@@ -43,4 +53,12 @@ const TableItem = styled.div`
     margin-left: 1rem;
   }
 `;
-export { TableList, TableHome, TableForm, TableTexts, TableItem };
+export {
+  TableList,
+  TableHome,
+  TableForm,
+  TableTexts,
+  TableItem,
+  TableFormComment,
+  TableCommentsText,
+};

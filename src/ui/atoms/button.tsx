@@ -72,11 +72,15 @@ const UpdateButton = styled(Button)`
   border: 1px solid #ffd740;
 `;
 
-const CancelButton = styled.button`
+const CommentButton = styled(UpdateButton)`
+  background-color: #0070f3;
+  border: 1px solid #0070f3;
+  color: #fff;
+`;
+
+const CancelButton = styled.span`
   padding: 5px 17px;
   font-size: 0.8rem;
-  opacity: 1;
-  border: 1px solid #fff;
   outline: none;
   cursor: pointer;
 `;
@@ -200,4 +204,5 @@ export {
   HomeSearchButton,
   GoogleButton,
   TwitterButton,
+  CommentButton,
 };
