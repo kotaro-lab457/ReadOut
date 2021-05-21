@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
 import { Link } from "react-router-dom";
 import Chart from "../components/Chart";
-import TotalPosts from "../components/Posts";
+import TotalPosts from "../components/Count";
 
 import { SubFont } from "../ui/atoms/font";
 import { Title } from "../ui/atoms/title";
