@@ -56,4 +56,26 @@ const TextArea = styled.textarea`
   }
 `;
 
-export { Input, SetUpInput, LoginInput, SearchInput, EditInput, TextArea };
+const CommentInput = styled(Input)`
+  border: none;
+  box-sizing: border-box;
+  padding: 10px 10px 5px 10px;
+  width: 100%;
+`;
+
+const CommentLine = styled.div`
+  position: relative;
+  border-top: 1px solid #c2c2c2;
+  margin-bottom: 5px;
+`;
+
+export {
+  Input,
+  SetUpInput,
+  LoginInput,
+  SearchInput,
+  EditInput,
+  TextArea,
+  CommentInput,
+  CommentLine,
+};
