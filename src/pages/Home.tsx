@@ -6,6 +6,8 @@ import { selectUser } from "../stores/userSlice";
 import moment from "moment";
 import { Text } from "../module/Text.module";
 
+import Comments from "../components/Comments";
+
 import { Title } from "../ui/atoms/title";
 import { HomeTimeFont, SubFont, Font } from "../ui/atoms/font";
 import { Img, ImageTag } from "../ui/atoms/image";
@@ -111,6 +113,7 @@ const Room: React.FC = () => {
                   <HomeTimeFont>
                     {moment(list.createAt).format("A HH:mm YYYY/MM/DD")}
                   </HomeTimeFont>
+                  <Comments list={list} />
                 </TableTexts>
               </TableHome>
             ))}
