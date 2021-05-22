@@ -57,19 +57,21 @@ const TextArea = styled.textarea`
 `;
 
 const CommentInput = styled(Input)`
-  border: none;
+  border-bottom: 1px solid #a9a9a9;
+  border-top: none;
+  border-right: none;
+  border-left: none;
   box-sizing: border-box;
   padding: 10px 10px 5px 10px;
   width: 100%;
+  margin-bottom: 10px;
+  &:focus {
+    border-bottom: 1px solid #0070f3;
+    transition: all 0.8s;
+  }
   @media (max-width: 420px) {
     font-size: 0.8rem;
   }
-`;
-
-const CommentLine = styled.div`
-  position: relative;
-  border-top: 1px solid #c2c2c2;
-  margin-bottom: 5px;
 `;
 
 export {
@@ -80,5 +82,4 @@ export {
   EditInput,
   TextArea,
   CommentInput,
-  CommentLine,
 };
