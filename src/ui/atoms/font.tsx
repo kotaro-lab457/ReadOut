@@ -109,6 +109,9 @@ const CommentFont = styled.span`
   text-align: left;
   cursor: pointer;
   color: #0070f3;
+  @media (max-width: 420px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const CommentUserFont = styled.span`

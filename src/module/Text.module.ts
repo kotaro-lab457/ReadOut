@@ -11,3 +11,10 @@ export interface Text {
   image: string;
   total: number;
 }
+
+export interface COMMENT {
+  id: number;
+  user: string;
+  text: string;
+  createAt: number;
+}

@@ -61,6 +61,9 @@ const CommentInput = styled(Input)`
   box-sizing: border-box;
   padding: 10px 10px 5px 10px;
   width: 100%;
+  @media (max-width: 420px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const CommentLine = styled.div`

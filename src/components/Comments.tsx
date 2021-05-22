@@ -5,6 +5,7 @@ import moment from "moment";
 import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
 
+import { COMMENT } from "../module/Text.module";
 import {
   CommentFont,
   TimeFont,
@@ -21,30 +22,30 @@ interface PROPS {
   };
 }
 
-interface COMMENT {
-  id: number;
-  user: string;
-  text: string;
-  createAt: number;
-}
-
 const Comments: React.FC<PROPS> = (props) => {
   const [comment, setComment] = useState<string>("");
   const [comments, setComments] = useState<COMMENT[]>([]);
   const [openComments, setOpenComments] = useState(false);
+  const [count, setCount] = useState<number>(0);
+
   const user = useSelector(selectUser);
-  const FS = firebase.firestore().collection("text");
+
+  const FS = firebase
+    .firestore()
+    .collection("text")
+    .doc(`${props.list.id}`)
+    .collection("comments");
 
   useEffect(() => {
-    const unSub = FS.doc(`${props.list.id}`)
-      .collection("comments")
-      .orderBy("createAt", "asc")
-      .onSnapshot((snapshot) => {
-        const posts: any = snapshot.docs.map((doc) => {
-          return doc.data();
-        });
-        setComments(posts);
+    const unSub = FS.orderBy("createAt", "asc").onSnapshot((snapshot) => {
+      const posts: any = snapshot.docs.map((doc) => {
+        return doc.data();
       });
+      setComments(posts);
+    });
+    FS.get().then((doc) => {
+      setCount(doc.size);
+    });
     return () => {
       unSub();
     };
@@ -52,22 +53,21 @@ const Comments: React.FC<PROPS> = (props) => {
 
   const newComment = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    FS.doc(`${props.list.id}`).collection("comments").add({
+    FS.add({
       user: user.displayName,
       text: comment,
       createAt: new Date().getTime(),
     });
     setComment("");
+    setCount(count + 1);
   };
-
-  console.log(comment);
 
   return (
     <>
       <div>
         <div>
           <CommentFont onClick={() => setOpenComments(!openComments)}>
-            コメント{openComments ? "非表示" : "表示"}
+            コメント（{count}）{openComments ? "非表示" : "表示"}
           </CommentFont>
         </div>
         <TableFormComment onSubmit={newComment}>
