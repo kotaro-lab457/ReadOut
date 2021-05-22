@@ -13,7 +13,7 @@ import {
   CommentsFont,
 } from "../ui/atoms/font";
 import { CancelButton, CommentButton } from "../ui/atoms/button";
-import { CommentInput, CommentLine } from "../ui/atoms/input";
+import { CommentInput } from "../ui/atoms/input";
 import { TableFormComment, TableCommentsText } from "../ui/molecules/TableHome";
 
 interface PROPS {
@@ -77,7 +77,6 @@ const Comments: React.FC<PROPS> = (props) => {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
-          <CommentLine />
           <CancelButton onClick={() => setComment("")}>キャンセル</CancelButton>
           <CommentButton disabled={!comment}>送信</CommentButton>
         </TableFormComment>

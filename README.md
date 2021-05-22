@@ -45,6 +45,7 @@
   - 画像追加
   - 削除機能
   - 編集機能
+- コメント追加機能/閲覧
 - プロフィール管理機能
 - 検索機能
 - グラフ機能
@@ -58,6 +59,7 @@
 - React v17.0.1
   - react-hook-form v6.15.4
   - react-router-dom v5.2.0
+- react-redux: v7.2.3
 - webpack v4.44.2
   - webpack-cli v3.3.12
   - webpack-dev-server v3.11.0
