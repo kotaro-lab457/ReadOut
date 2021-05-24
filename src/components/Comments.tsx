@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../config/Firebase";
 import moment from "moment";
+import shortid from "shortid";
 
 import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
@@ -12,9 +13,22 @@ import {
   CommentUserFont,
   CommentsFont,
 } from "../ui/atoms/font";
-import { CancelButton, CommentButton } from "../ui/atoms/button";
+import {
+  CancelButton,
+  CommentButton,
+  CommentsMenuButton,
+  CommentsDeleteButton,
+} from "../ui/atoms/button";
 import { CommentInput } from "../ui/atoms/input";
-import { TableFormComment, TableCommentsText } from "../ui/molecules/TableHome";
+import {
+  TableFormComment,
+  TableCommentsText,
+  TableCommentsMenu,
+  TableCommentsDelete,
+} from "../ui/molecules/TableHome";
+
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface PROPS {
   list: {
@@ -23,10 +37,14 @@ interface PROPS {
 }
 
 const Comments: React.FC<PROPS> = (props) => {
+  const initialState = shortid.generate();
+
   const [comment, setComment] = useState<string>("");
   const [comments, setComments] = useState<COMMENT[]>([]);
-  const [openComments, setOpenComments] = useState(false);
+  const [openComments, setOpenComments] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [textId, setTextId] = useState<string>(initialState);
 
   const user = useSelector(selectUser);
 
@@ -53,13 +71,16 @@ const Comments: React.FC<PROPS> = (props) => {
 
   const newComment = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    FS.add({
+    FS.doc(`${textId}`).set({
       user: user.displayName,
+      uid: user.uid,
       text: comment,
       createAt: new Date().getTime(),
+      id: textId,
     });
     setComment("");
     setCount(count + 1);
+    setTextId(textId);
   };
 
   return (
@@ -87,6 +108,33 @@ const Comments: React.FC<PROPS> = (props) => {
                 <div>
                   <CommentUserFont>@{list.user}</CommentUserFont>
                   <TimeFont>{moment(list.createAt).fromNow()}</TimeFont>
+                  <TableCommentsMenu>
+                    {list.uid === user.uid && (
+                      <CommentsMenuButton
+                        onClick={() => setOpenMenu(!openMenu)}
+                      >
+                        <FontAwesomeIcon icon={faEllipsisV} />
+                      </CommentsMenuButton>
+                    )}
+                    {list.uid === user.uid && (
+                      <>
+                        {openMenu && (
+                          <TableCommentsDelete>
+                            <CommentsDeleteButton
+                              onClick={() =>
+                                FS.doc(`${list.id}`)
+                                  .delete()
+                                  .then(() => setCount(count - 1))
+                                  .then(() => setOpenMenu(!openMenu))
+                              }
+                            >
+                              削除
+                            </CommentsDeleteButton>
+                          </TableCommentsDelete>
+                        )}
+                      </>
+                    )}
+                  </TableCommentsMenu>
                 </div>
                 <CommentsFont>{list.text}</CommentsFont>
               </TableCommentsText>

@@ -27,6 +27,22 @@ const TableFormComment = styled.form`
 const TableCommentsText = styled.div`
   text-align: left;
   padding-left: 2rem;
+  @media (max-width: 420px) {
+    padding: 0 2rem 0 0;
+  }
+`;
+
+const TableCommentsMenu = styled.div`
+  position: relative;
+  margin-left: 1rem;
+  display: inline-block;
+`;
+
+const TableCommentsDelete = styled.div`
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 50px;
 `;
 
 const TableList = styled.div`
@@ -61,4 +77,6 @@ export {
   TableItem,
   TableFormComment,
   TableCommentsText,
+  TableCommentsMenu,
+  TableCommentsDelete,
 };
