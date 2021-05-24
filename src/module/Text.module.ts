@@ -17,4 +17,5 @@ export interface COMMENT {
   user: string;
   text: string;
   createAt: number;
+  uid: string;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import firebase from "../config/Firebase";
 import moment from "moment";
+import shortid from "shortid";
 
 import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
@@ -16,6 +17,9 @@ import { CancelButton, CommentButton } from "../ui/atoms/button";
 import { CommentInput } from "../ui/atoms/input";
 import { TableFormComment, TableCommentsText } from "../ui/molecules/TableHome";
 
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 interface PROPS {
   list: {
     id: number;
@@ -23,10 +27,14 @@ interface PROPS {
 }
 
 const Comments: React.FC<PROPS> = (props) => {
+  const initialState = shortid.generate();
+
   const [comment, setComment] = useState<string>("");
   const [comments, setComments] = useState<COMMENT[]>([]);
-  const [openComments, setOpenComments] = useState(false);
+  const [openComments, setOpenComments] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [textId, setTextId] = useState<string>(initialState);
 
   const user = useSelector(selectUser);
 
@@ -53,13 +61,16 @@ const Comments: React.FC<PROPS> = (props) => {
 
   const newComment = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    FS.add({
+    FS.doc(`${textId}`).set({
       user: user.displayName,
+      uid: user.uid,
       text: comment,
       createAt: new Date().getTime(),
+      id: textId,
     });
     setComment("");
     setCount(count + 1);
+    setTextId(textId);
   };
 
   return (
@@ -86,7 +97,32 @@ const Comments: React.FC<PROPS> = (props) => {
               <TableCommentsText key={id}>
                 <div>
                   <CommentUserFont>@{list.user}</CommentUserFont>
-                  <TimeFont>{moment(list.createAt).fromNow()}</TimeFont>
+                  <TimeFont>
+                    {moment(list.createAt).fromNow()}
+                    {list.uid === user.uid && (
+                      <span onClick={() => setOpenMenu(!openMenu)}>
+                        <FontAwesomeIcon icon={faEllipsisV} />
+                      </span>
+                    )}
+                    {list.uid === user.uid && (
+                      <>
+                        {openMenu && (
+                          <div>
+                            <button
+                              onClick={() =>
+                                FS.doc(`${list.id}`)
+                                  .delete()
+                                  .then(() => setCount(count - 1))
+                                  .then(() => setOpenMenu(!openMenu))
+                              }
+                            >
+                              削除
+                            </button>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </TimeFont>
                 </div>
                 <CommentsFont>{list.text}</CommentsFont>
               </TableCommentsText>
