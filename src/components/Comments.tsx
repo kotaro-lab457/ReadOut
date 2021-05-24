@@ -13,9 +13,19 @@ import {
   CommentUserFont,
   CommentsFont,
 } from "../ui/atoms/font";
-import { CancelButton, CommentButton } from "../ui/atoms/button";
+import {
+  CancelButton,
+  CommentButton,
+  CommentsMenuButton,
+  CommentsDeleteButton,
+} from "../ui/atoms/button";
 import { CommentInput } from "../ui/atoms/input";
-import { TableFormComment, TableCommentsText } from "../ui/molecules/TableHome";
+import {
+  TableFormComment,
+  TableCommentsText,
+  TableCommentsMenu,
+  TableCommentsDelete,
+} from "../ui/molecules/TableHome";
 
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -97,18 +107,20 @@ const Comments: React.FC<PROPS> = (props) => {
               <TableCommentsText key={id}>
                 <div>
                   <CommentUserFont>@{list.user}</CommentUserFont>
-                  <TimeFont>
-                    {moment(list.createAt).fromNow()}
+                  <TimeFont>{moment(list.createAt).fromNow()}</TimeFont>
+                  <TableCommentsMenu>
                     {list.uid === user.uid && (
-                      <span onClick={() => setOpenMenu(!openMenu)}>
+                      <CommentsMenuButton
+                        onClick={() => setOpenMenu(!openMenu)}
+                      >
                         <FontAwesomeIcon icon={faEllipsisV} />
-                      </span>
+                      </CommentsMenuButton>
                     )}
                     {list.uid === user.uid && (
                       <>
                         {openMenu && (
-                          <div>
-                            <button
+                          <TableCommentsDelete>
+                            <CommentsDeleteButton
                               onClick={() =>
                                 FS.doc(`${list.id}`)
                                   .delete()
@@ -117,12 +129,12 @@ const Comments: React.FC<PROPS> = (props) => {
                               }
                             >
                               削除
-                            </button>
-                          </div>
+                            </CommentsDeleteButton>
+                          </TableCommentsDelete>
                         )}
                       </>
                     )}
-                  </TimeFont>
+                  </TableCommentsMenu>
                 </div>
                 <CommentsFont>{list.text}</CommentsFont>
               </TableCommentsText>

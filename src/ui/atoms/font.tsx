@@ -43,7 +43,6 @@ const ErrorFont = styled(Font)`
   padding: 0.5rem 0 0 2rem;
   margin: 0;
   @media (max-width: 420px) {
-  padding: 0.5rem 0 0 3rem;
 `;
 
 const TimeFont = styled(Font)`
@@ -124,6 +123,9 @@ const CommentUserFont = styled.span`
 
 const CommentsFont = styled(CommentUserFont)`
   font-size: 0.8rem;
+  @media (max-width: 420px) {
+    font-size: 11px;
+  }
 `;
 
 export {
