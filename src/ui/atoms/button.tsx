@@ -78,6 +78,18 @@ const CommentButton = styled(UpdateButton)`
   color: #fff;
 `;
 
+const CommentsMenuButton = styled.span`
+  cursor: pointer;
+  color: #a9a9a9;
+`;
+
+const CommentsDeleteButton = styled(UpdateButton)`
+  background-color: #fff;
+  border: 1px solid #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+`;
+
 const CancelButton = styled.span`
   padding: 5px 17px;
   font-size: 0.8rem;
@@ -183,10 +195,6 @@ const ProfileSetUpButton = styled(SetUpButton)`
 
 const ResetButton = styled(Button)`
   padding: 10px 15px;
-  opacity: 0.9;
-  &:hover {
-    opacity: 1;
-  }
 `;
 
 export {
@@ -205,4 +213,6 @@ export {
   GoogleButton,
   TwitterButton,
   CommentButton,
+  CommentsMenuButton,
+  CommentsDeleteButton,
 };
