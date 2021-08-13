@@ -19,17 +19,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const BooksSearch: React.FC = () => {
   const [searchString, setSearchString] = useState<string>("");
   const [searchResult, setSearchResult] = useState<any>(null);
+  const [toggleMessage, setToggleMessage] = useState<string>("");
 
   //Google Books API通信
   const searchGoogleBooks = async (searchString: string) => {
+    setToggleMessage("...loading")
     const url = "https://www.googleapis.com/books/v1/volumes";
 
     const params = { q: searchString, maxResults: 20 };
     // 例外が発生することを考慮（try〜catch構文）
     try {
       const response = await axios.get(url, { params });
+      setToggleMessage("");
       return { isSuccess: true, data: response.data, error: null };
     } catch (error) {
+      setToggleMessage("");
       return { isSuccess: false, date: null, error };
     }
   };
@@ -49,18 +53,20 @@ const BooksSearch: React.FC = () => {
         <MainTablePages>
           <TableSearch>
             <Title>Books Search</Title>
-            ※さまざまな書籍を検索できます。
+            <span>※さまざまな書籍を検索できます。</span>
             <form onSubmit={handleSearchSubmit}>
               <SearchInput
                 type="text"
-                placeholder="Enter"
+                placeholder="キーワードを入力してください"
                 onChange={(e) => setSearchString(e.target.value)}
+                required
               />
               <SearchButton>
                 <FontAwesomeIcon icon={faSearch} />
               </SearchButton>
             </form>
           </TableSearch>
+          <Font>{toggleMessage}</Font>
           {searchResult && (
             <ListSearch>
               <>

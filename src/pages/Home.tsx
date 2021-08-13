@@ -34,11 +34,13 @@ const Room: React.FC = () => {
   const [postText, setPostText] = useState<Text[]>([]);
   const [value, setValue] = useState<string>("");
   const [isDone, setIsDone] = useState<boolean>(false);
+  const [toggleMessage, setToggleMessage] = useState<string>("");
 
   const FS = firebase.firestore().collection("text");
 
   const user = useSelector(selectUser);
   useEffect(() => {
+    setToggleMessage("...loading");
     let isMounted = true;
     FS.orderBy("createAt", "desc").onSnapshot((snapshot) => {
       const posts: any = snapshot.docs.map((doc) => {
@@ -46,6 +48,7 @@ const Room: React.FC = () => {
       });
       if (isMounted) {
         setPostText(posts);
+        setToggleMessage("");
       }
     });
     return (): void => {
@@ -98,6 +101,7 @@ const Room: React.FC = () => {
             )}
           </TableText>
           <TableList>
+            <span>{toggleMessage}</span>
             {postText.map((list, id) => (
               <TableHome key={id}>
                 <ImageTag>
