@@ -23,6 +23,7 @@ const Login: React.FC = (props: any) => {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [inLogin, setInLogin] = useState<boolean>(true);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const { register, handleSubmit, errors } = useForm<Post>();
   const dispatch = useDispatch();
@@ -33,10 +34,10 @@ const Login: React.FC = (props: any) => {
   const handleSignIn = async () => {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
+      props.history.push("/home");
     } catch (err) {
-      alert(err.message);
+      setErrorMessage(err.message);
     }
-    props.history.push("/home");
   };
 
   const handleCreateUser = async () => {
@@ -54,10 +55,11 @@ const Login: React.FC = (props: any) => {
           displayName: name,
         })
       );
+      props.history.push("/home");
     } catch (err) {
-      alert(err.message);
+      setErrorMessage(err.message);
+      return;
     }
-    props.history.push("/home");
   };
 
   const signInGoogle = async () => {
@@ -88,7 +90,12 @@ const Login: React.FC = (props: any) => {
         <TableLogin>
           <SubTableLogin>
             <LoginTitle>{inLogin ? "Login" : "Sign In"}</LoginTitle>
-            <form onSubmit={ inLogin ? handleSubmit(handleSignIn) : handleSubmit(handleCreateUser)}>
+            <form
+              onSubmit={
+                inLogin ?
+                  handleSubmit(handleSignIn) : handleSubmit(handleCreateUser)
+              }
+            >
               <div style={{ display: inLogin ? "none" : "block" }}>
                 <LoginFont>UserName</LoginFont>
                 <LoginInput
@@ -130,6 +137,7 @@ const Login: React.FC = (props: any) => {
                 {inLogin ? "Login" : "Sign Up"}
               </LoginButton>
             </form>
+            <ErrorFont>{errorMessage}</ErrorFont>
             <br />
             <GoogleButton onClick={signInGoogle}>
               Sign In with Google
