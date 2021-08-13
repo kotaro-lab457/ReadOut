@@ -114,22 +114,22 @@ const Login: React.FC = (props: any) => {
                 />
               {errors.email && <ErrorFont>※メールは必須です。</ErrorFont>}
               <LoginFont>Password</LoginFont>
-            <LoginInput
-              name="password"
-              placeholder="８文字以上の入力"
-              value={password}
-              type="password"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setPassword(e.target.value);
-              }}
-              ref={register({ required: true, minLength: 8 })}
-              />
-            {errors.password && <ErrorFont>※パスワードは必須です。</ErrorFont>}
-            <br />
-            <LoginButton>
-              {inLogin ? "Login" : "Sign Up"}
+              <LoginInput
+                name="password"
+                placeholder="８文字以上の入力"
+                value={password}
+                type="password"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setPassword(e.target.value);
+                }}
+                ref={register({ required: true, minLength: 8 })}
+                />
+              {errors.password && <ErrorFont>※パスワードは必須です。</ErrorFont>}
+              <br />
+              <LoginButton>
+                {inLogin ? "Login" : "Sign Up"}
               </LoginButton>
-              </form>
+            </form>
             <br />
             <GoogleButton onClick={signInGoogle}>
               Sign In with Google
