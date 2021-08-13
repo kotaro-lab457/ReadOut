@@ -9,7 +9,7 @@ import { TableReset, SubTableReset } from "../ui/molecules/TableReset";
 import { MainImage } from "../ui/organisms/MainPages";
 
 const ResetPassword: React.FC = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
   const handleResetPassword = (e: React.FormEvent) => {
     e.preventDefault();
     firebase

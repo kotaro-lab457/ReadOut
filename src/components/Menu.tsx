@@ -5,7 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 import firebase from "firebase";
 
 import { GuestButton, SubLoginButton } from "../ui/atoms/button";
-import { LinkTag, IconLinkTag } from "../ui/atoms/Link";
+import { LinkTag, IconLinkTag } from "../ui/atoms/link";
 import TableMenu from "../ui/molecules/TableMenu";
 import {
   faHome,

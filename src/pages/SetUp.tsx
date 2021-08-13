@@ -14,12 +14,12 @@ import { TableSetUp } from "../ui/molecules/TableSetUp";
 import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
 
 const SetUp: React.FC = (props: any) => {
-  const initialState = shortid.generate();
+  const initialState:string = shortid.generate();
 
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
-  const [dates, setDates] = useState<number>(0);
+  const [dates, setDates] = useState(0);
   const [textId, setTextId] = useState<string>(initialState);
 
   const user = useSelector(selectUser);
@@ -27,7 +27,7 @@ const SetUp: React.FC = (props: any) => {
   const FS = firebase.firestore().collection("text");
   useEffect(() => {
     let date = new Date();
-    let date2 = date.getMonth() + 1;
+    let dateMonth = date.getMonth() + 1;
     function getDate(dt: any) {
       return dt <= 1
         ? 30
@@ -53,11 +53,9 @@ const SetUp: React.FC = (props: any) => {
         ? 325
         : 354;
     }
-    console.log("月々の値", getDate(3));
-    const upDateDay =
-      date.getFullYear() + date.getMonth() + date.getDate() + getDate(date2);
-    console.log("データの値", upDateDay);
-    setDates(upDateDay);
+    const updateDay =
+      date.getFullYear() + date.getMonth() + date.getDate() + getDate(dateMonth);
+    setDates(updateDay);
   }, []);
 
   const handleComment = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -70,7 +68,6 @@ const SetUp: React.FC = (props: any) => {
     const response = await axios.get(url, { params: params });
     const item = response.data.items[0].id;
     const imageUrl = `http://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
-    console.log("画像ID", item);
 
     FS.doc(`${textId}`).set({
       user: user.displayName,

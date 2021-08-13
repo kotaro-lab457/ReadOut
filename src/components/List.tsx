@@ -37,7 +37,7 @@ interface listProps {
 const List: React.FC<listProps> = (props) => {
   const [count, setCount] = useState<number>(0);
   const [comments, setComments] = useState<COMMENT[]>([]);
-  const [openComments, setOpenComments] = useState(false);
+  const [openComments, setOpenComments] = useState<boolean>(false);
 
   const FS = firebase
     .firestore()

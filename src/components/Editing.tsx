@@ -59,7 +59,6 @@ const Editing: React.FC<homeProps> = (props) => {
     FS.doc(`${props.list.id}`).delete();
   };
 
-  console.log("edit", props.list.id);
   return (
     <>
       <TableEdit>
