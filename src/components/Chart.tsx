@@ -23,8 +23,8 @@ const Chart: React.FC = () => {
 
   useEffect(() => {
     if (user) {
-      let date:Date = new Date();
-      let dateMonth:number = date.getMonth() + 1;
+      let date = new Date();
+      let dateMonth = date.getMonth() + 1;
       const getDate = (dt: any) => {
         return dt <= 1
           ? 30
@@ -50,7 +50,7 @@ const Chart: React.FC = () => {
           ? 325
           : 354;
       };
-      const days:number =
+      const days =
         date.getFullYear() +
         date.getMonth() +
         date.getDate() +
@@ -128,13 +128,13 @@ const Chart: React.FC = () => {
     setDate(dateDays);
 
     // 10日分の日付（9日前〜翌日）
-    let days:Date = new Date();
-    let previous:Date = new Date();
+    let days = new Date();
+    let previous = new Date();
     previous.setDate(days.getDate() - 9);
-    let lastMonth:number = previous.getMonth() + 1;
-    let lastWeek:number = previous.getDate();
+    let lastMonth = previous.getMonth() + 1;
+    let lastWeek = previous.getDate();
 
-    const longDay:string = `${lastMonth}月${lastWeek}日 〜 ${
+    const longDay = `${lastMonth}月${lastWeek}日 〜 ${
       days.getMonth() + 1
     }月${days.getDate()}日 `;
     setTotalDays(longDay);

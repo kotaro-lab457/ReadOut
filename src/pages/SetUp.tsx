@@ -19,15 +19,15 @@ const SetUp: React.FC = (props: any) => {
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
   const [page, setPage] = useState<string>("");
-  const [dates, setDates] = useState<number>(0);
+  const [dates, setDates] = useState(0);
   const [textId, setTextId] = useState<string>(initialState);
 
   const user = useSelector(selectUser);
 
   const FS = firebase.firestore().collection("text");
   useEffect(() => {
-    let date:Date = new Date();
-    let date2:number = date.getMonth() + 1;
+    let date = new Date();
+    let dateMonth = date.getMonth() + 1;
     function getDate(dt: any) {
       return dt <= 1
         ? 30
@@ -53,9 +53,9 @@ const SetUp: React.FC = (props: any) => {
         ? 325
         : 354;
     }
-    const upDateDay:number =
-      date.getFullYear() + date.getMonth() + date.getDate() + getDate(date2);
-    setDates(upDateDay);
+    const updateDay =
+      date.getFullYear() + date.getMonth() + date.getDate() + getDate(dateMonth);
+    setDates(updateDay);
   }, []);
 
   const handleComment = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -67,7 +67,7 @@ const SetUp: React.FC = (props: any) => {
     };
     const response = await axios.get(url, { params: params });
     const item = response.data.items[0].id;
-    const imageUrl:string = `http://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
+    const imageUrl = `http://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
 
     FS.doc(`${textId}`).set({
       user: user.displayName,

@@ -22,7 +22,7 @@ const BooksSearch: React.FC = () => {
 
   //Google Books API通信
   const searchGoogleBooks = async (searchString: string) => {
-    const url: string = "https://www.googleapis.com/books/v1/volumes";
+    const url = "https://www.googleapis.com/books/v1/volumes";
 
     const params = { q: searchString, maxResults: 20 };
     // 例外が発生することを考慮（try〜catch構文）
