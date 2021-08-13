@@ -6,12 +6,10 @@
 
 ## URL
 
-下記のページにて、公開中です。
+下記のページにて、公開中です。ゲストボタン「Guset」でログインができます。
 
 - URL:[https://my-portfolio-986db.web.app/](https://my-portfolio-986db.web.app/)
-
-ゲストボタンでログインができます。
-
+  
 メインページ
 
 <img width="620px" src="./src/img/portfolio_top_page.png">
@@ -33,6 +31,19 @@
 ### プロフィールページ
 
 <img width="520px" src="https://user-images.githubusercontent.com/69884513/113230789-c0c83380-92d4-11eb-98e7-3098e9e9b22a.gif">
+
+## 画面
+
+| ページ             | URL        |
+| ------------------ | ---------- |
+| トップ             | `/`        |
+| ログイン           | `/login`   |
+| パスワードリセット | `/reset`   |
+| 書籍検索           | `/books`   |
+| ホーム             | `/home`    |
+| 投稿作成           | `/setup`   |
+| プロフィール       | `/profile` |
+| 個人履歴リスト     | `/history` |
 
 ## 機能一覧
 
