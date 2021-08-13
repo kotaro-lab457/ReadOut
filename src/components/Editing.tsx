@@ -37,14 +37,14 @@ const Editing: React.FC<homeProps> = (props) => {
   };
 
   const editTextChange = async () => {
-    const url = "https://www.googleapis.com/books/v1/volumes";
+    const url:string = "https://www.googleapis.com/books/v1/volumes";
     const params = {
       q: title,
       maxResults: 1,
     };
-    const response = await axios.get(url, { params: params });
-    const item = response.data.items[0].id;
-    const imageUrl = `http://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
+    const response:any = await axios.get(url, { params: params });
+    const item:any = response.data.items[0].id;
+    const imageUrl:string = `http://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
 
     FS.doc(`${props.list.id}`).update({
       title: title,
@@ -59,7 +59,6 @@ const Editing: React.FC<homeProps> = (props) => {
     FS.doc(`${props.list.id}`).delete();
   };
 
-  console.log("edit", props.list.id);
   return (
     <>
       <TableEdit>

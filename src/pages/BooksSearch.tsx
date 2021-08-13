@@ -17,18 +17,17 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const BooksSearch: React.FC = () => {
-  const [searchString, setSearchString] = useState("");
+  const [searchString, setSearchString] = useState<string>("");
   const [searchResult, setSearchResult] = useState<any>(null);
 
   //Google Books API通信
   const searchGoogleBooks = async (searchString: string) => {
-    const url = "https://www.googleapis.com/books/v1/volumes";
+    const url: string = "https://www.googleapis.com/books/v1/volumes";
 
     const params = { q: searchString, maxResults: 20 };
     // 例外が発生することを考慮（try〜catch構文）
     try {
       const response = await axios.get(url, { params });
-      console.log(response);
       return { isSuccess: true, data: response.data, error: null };
     } catch (error) {
       return { isSuccess: false, date: null, error };
