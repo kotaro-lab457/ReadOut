@@ -88,31 +88,32 @@ const Login: React.FC = (props: any) => {
         <TableLogin>
           <SubTableLogin>
             <LoginTitle>{inLogin ? "Login" : "Sign In"}</LoginTitle>
-            <div style={{ display: inLogin ? "none" : "block" }}>
-              <LoginFont>UserName</LoginFont>
+            <form onSubmit={ inLogin ? handleSubmit(handleSignIn) : handleSubmit(handleCreateUser)}>
+              <div style={{ display: inLogin ? "none" : "block" }}>
+                <LoginFont>UserName</LoginFont>
+                <LoginInput
+                  name="name"
+                  placeholder="name"
+                  value={name}
+                  type="name"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setName(e.target.value);
+                  }}
+                />
+              </div>
+              <LoginFont>E-mail</LoginFont>
               <LoginInput
-                name="name"
-                placeholder="name"
-                value={name}
-                type="name"
+                name="email"
+                placeholder="example@gmail.com"
+                value={email}
+                type="email"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  setName(e.target.value);
+                  setEmail(e.target.value);
                 }}
-              />
-            </div>
-            <LoginFont>E-mail</LoginFont>
-            <LoginInput
-              name="email"
-              placeholder="example@gmail.com"
-              value={email}
-              type="email"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setEmail(e.target.value);
-              }}
-              ref={register({ required: true, minLength: 9 })}
-            />
-            {errors.email && <ErrorFont>※メールは必須です。</ErrorFont>}
-            <LoginFont>Password</LoginFont>
+                ref={register({ required: true, minLength: 9 })}
+                />
+              {errors.email && <ErrorFont>※メールは必須です。</ErrorFont>}
+              <LoginFont>Password</LoginFont>
             <LoginInput
               name="password"
               placeholder="８文字以上の入力"
@@ -122,18 +123,13 @@ const Login: React.FC = (props: any) => {
                 setPassword(e.target.value);
               }}
               ref={register({ required: true, minLength: 8 })}
-            />
+              />
             {errors.password && <ErrorFont>※パスワードは必須です。</ErrorFont>}
             <br />
-            <LoginButton
-              onClick={
-                inLogin
-                  ? handleSubmit(handleSignIn)
-                  : handleSubmit(handleCreateUser)
-              }
-            >
+            <LoginButton>
               {inLogin ? "Login" : "Sign Up"}
-            </LoginButton>
+              </LoginButton>
+              </form>
             <br />
             <GoogleButton onClick={signInGoogle}>
               Sign In with Google
