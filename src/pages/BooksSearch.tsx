@@ -70,7 +70,7 @@ const BooksSearch: React.FC = () => {
                     <ItemSearch key={item.id}>
                       <ImageTag>
                         <img
-                          src={`http://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
+                          src={`https://books.google.com/books/content?id=${item.id}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`}
                           alt=""
                         />
                       </ImageTag>
