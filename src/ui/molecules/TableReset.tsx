@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
 const TableReset = styled.div`
+  width: 100%;
   position: absolute;
-  right: 39%;
-  @media (max-width: 420px) {
-    top: 10%;
-    right: 15%;
-  }
-`;
-
+  top: 10%;
+  right: 0;
+  `;
+  
 const SubTableReset = styled.div`
-  text-aline: left;
+  max-width: 570px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
 `;
 
 export { TableReset, SubTableReset };

@@ -38,11 +38,17 @@ const EditFont = styled(SubFont)`
   text-align: center;
 `;
 const ErrorFont = styled(Font)`
-  text-align: left;
   color: #ff4646;
-  padding: 0.5rem 0 0 2rem;
+  padding: 0.5rem 0 0 0;
   margin: 0;
-  @media (max-width: 420px) {
+`;
+
+const SuccessFont = styled(Font)`
+  background-color: #fff;
+  color: #33bfff;
+  border: 5px solid #33bfff;
+  width: 40%;
+  padding: .3rem;
 `;
 
 const TimeFont = styled(Font)`
@@ -135,6 +141,7 @@ export {
   EditFont,
   LoginFont,
   ErrorFont,
+  SuccessFont,
   LinkFont,
   SetUpFont,
   HomeTimeFont,

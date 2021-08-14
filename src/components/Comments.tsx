@@ -9,7 +9,7 @@ import { selectUser } from "../stores/userSlice";
 import { COMMENT } from "../module/Text.module";
 import {
   CommentFont,
-  TimeFont,
+  HomeTimeFont,
   CommentUserFont,
   CommentsFont,
 } from "../ui/atoms/font";
@@ -86,62 +86,60 @@ const Comments: React.FC<PROPS> = (props) => {
   return (
     <>
       <div>
-        <div>
-          <CommentFont onClick={() => setOpenComments(!openComments)}>
-            コメント（{count}）{openComments ? "非表示" : "表示"}
-          </CommentFont>
-        </div>
-        <TableFormComment onSubmit={newComment}>
-          <CommentInput
-            type="text"
-            placeholder="コメントの追加..."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <CancelButton onClick={() => setComment("")}>キャンセル</CancelButton>
-          <CommentButton disabled={!comment}>送信</CommentButton>
-        </TableFormComment>
-        {openComments && (
-          <div>
-            {comments.map((list, id) => (
-              <TableCommentsText key={id}>
-                <div>
-                  <CommentUserFont>@{list.user}</CommentUserFont>
-                  <TimeFont>{moment(list.createAt).fromNow()}</TimeFont>
-                  <TableCommentsMenu>
-                    {list.uid === user.uid && (
-                      <CommentsMenuButton
-                        onClick={() => setOpenMenu(!openMenu)}
-                      >
-                        <FontAwesomeIcon icon={faEllipsisV} />
-                      </CommentsMenuButton>
-                    )}
-                    {list.uid === user.uid && (
-                      <>
-                        {openMenu && (
-                          <TableCommentsDelete>
-                            <CommentsDeleteButton
-                              onClick={() =>
-                                FS.doc(`${list.id}`)
-                                  .delete()
-                                  .then(() => setCount(count - 1))
-                                  .then(() => setOpenMenu(!openMenu))
-                              }
-                            >
-                              削除
-                            </CommentsDeleteButton>
-                          </TableCommentsDelete>
-                        )}
-                      </>
-                    )}
-                  </TableCommentsMenu>
-                </div>
-                <CommentsFont>{list.text}</CommentsFont>
-              </TableCommentsText>
-            ))}
-          </div>
-        )}
+        <CommentFont onClick={() => setOpenComments(!openComments)}>
+          コメント（{count}）<span>{openComments ? "非表示" : "表示"}</span>
+        </CommentFont>
       </div>
+      <TableFormComment onSubmit={newComment}>
+        <CommentInput
+          type="text"
+          placeholder="コメントの追加..."
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+        />
+        <CancelButton onClick={() => setComment("")}>キャンセル</CancelButton>
+        <CommentButton disabled={!comment}>送信</CommentButton>
+      </TableFormComment>
+      {openComments && (
+        <div>
+          {comments.map((list, id) => (
+            <TableCommentsText key={id}>
+              <div>
+                <CommentUserFont>@{list.user}</CommentUserFont>
+                <HomeTimeFont>{moment(list.createAt).fromNow()}</HomeTimeFont>
+                <TableCommentsMenu>
+                  {list.uid === user.uid && (
+                    <CommentsMenuButton
+                      onClick={() => setOpenMenu(!openMenu)}
+                    >
+                      <FontAwesomeIcon icon={faEllipsisV} />
+                    </CommentsMenuButton>
+                  )}
+                  {list.uid === user.uid && (
+                    <>
+                      {openMenu && (
+                        <TableCommentsDelete>
+                          <CommentsDeleteButton
+                            onClick={() =>
+                              FS.doc(`${list.id}`)
+                                .delete()
+                                .then(() => setCount(count - 1))
+                                .then(() => setOpenMenu(!openMenu))
+                            }
+                          >
+                            削除
+                          </CommentsDeleteButton>
+                        </TableCommentsDelete>
+                      )}
+                    </>
+                  )}
+                </TableCommentsMenu>
+              </div>
+              <CommentsFont>{list.text}</CommentsFont>
+            </TableCommentsText>
+          ))}
+        </div>
+      )}
     </>
   );
 };

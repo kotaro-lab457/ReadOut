@@ -3,22 +3,30 @@ import { Link } from "react-router-dom";
 import firebase from "firebase";
 
 import { ResetButton } from "../ui/atoms/button";
-import { LoginFont, TextFont } from "../ui/atoms/font";
+import { LoginFont, TextFont, ErrorFont, SuccessFont } from "../ui/atoms/font";
 import { LoginInput } from "../ui/atoms/input";
 import { TableReset, SubTableReset } from "../ui/molecules/TableReset";
 import { MainImage } from "../ui/organisms/MainPages";
 
 const ResetPassword: React.FC = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [sendMessage, setSendMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const handleResetPassword = (e: React.FormEvent) => {
     e.preventDefault();
+    setSendMessage("");
+    setErrorMessage("");
     firebase
       .auth()
       .sendPasswordResetEmail(email)
       .then(() => {
-        alert("メールが送信されました");
-      });
-    setEmail("");
+        setSendMessage("メールが送信されました！");
+        setEmail("");
+      })
+      .catch(() => {
+        setErrorMessage("※送信に失敗ました。メールアドレスをご確認し、再度入力してください。")
+        setEmail("");
+      })
   };
   return (
     <>
@@ -37,9 +45,11 @@ const ResetPassword: React.FC = () => {
               <br />
               <ResetButton>送信</ResetButton>
             </form>
+            {errorMessage && <ErrorFont>{errorMessage}</ErrorFont>}
+            {sendMessage && <SuccessFont>{sendMessage}</SuccessFont>}
             <br />
             <TextFont>
-              <Link to="/login" style={{ color: "#ffd740" }}>
+              <Link to="/login" style={{ color: "#ffd740", textDecoration: "underline" }}>
                 Login
               </Link>
               へ

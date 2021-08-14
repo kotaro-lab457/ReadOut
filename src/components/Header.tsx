@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   return (
     <Main>
       <HeaderTitle>
-        <Link to="/home" style={{ textDecoration: "none", color: "#000" }}>
+        <Link to="/home">
           Read Out
         </Link>
       </HeaderTitle>

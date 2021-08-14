@@ -23,6 +23,7 @@ const Login: React.FC = (props: any) => {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [inLogin, setInLogin] = useState<boolean>(true);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const { register, handleSubmit, errors } = useForm<Post>();
   const dispatch = useDispatch();
@@ -33,10 +34,10 @@ const Login: React.FC = (props: any) => {
   const handleSignIn = async () => {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
+      props.history.push("/home");
     } catch (err) {
-      alert(err.message);
+      setErrorMessage("※ログインに失敗しました。メールアドレスとパスワードを確認してログインしていください。");
     }
-    props.history.push("/home");
   };
 
   const handleCreateUser = async () => {
@@ -54,10 +55,11 @@ const Login: React.FC = (props: any) => {
           displayName: name,
         })
       );
+      props.history.push("/home");
     } catch (err) {
-      alert(err.message);
+      setErrorMessage("※新規作成に失敗しました。ネットワーク環境をご確認ください。");
+      return;
     }
-    props.history.push("/home");
   };
 
   const signInGoogle = async () => {
@@ -77,9 +79,7 @@ const Login: React.FC = (props: any) => {
       .then(() => {
         props.history.push("/home");
       })
-      .catch((err) => {
-        err.message;
-      });
+      .catch((err) => alert(err.message));
   };
 
   return (
@@ -88,52 +88,54 @@ const Login: React.FC = (props: any) => {
         <TableLogin>
           <SubTableLogin>
             <LoginTitle>{inLogin ? "Login" : "Sign In"}</LoginTitle>
-            <div style={{ display: inLogin ? "none" : "block" }}>
-              <LoginFont>UserName</LoginFont>
-              <LoginInput
-                name="name"
-                placeholder="name"
-                value={name}
-                type="name"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  setName(e.target.value);
-                }}
-              />
-            </div>
-            <LoginFont>E-mail</LoginFont>
-            <LoginInput
-              name="email"
-              placeholder="example@gmail.com"
-              value={email}
-              type="email"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setEmail(e.target.value);
-              }}
-              ref={register({ required: true, minLength: 9 })}
-            />
-            {errors.email && <ErrorFont>※メールは必須です。</ErrorFont>}
-            <LoginFont>Password</LoginFont>
-            <LoginInput
-              name="password"
-              placeholder="８文字以上の入力"
-              value={password}
-              type="password"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                setPassword(e.target.value);
-              }}
-              ref={register({ required: true, minLength: 8 })}
-            />
-            {errors.password && <ErrorFont>※パスワードは必須です。</ErrorFont>}
-            <br />
-            <LoginButton
-              onClick={
-                inLogin
-                  ? handleSubmit(handleSignIn)
-                  : handleSubmit(handleCreateUser)
+            <form
+              onSubmit={
+                inLogin ?
+                  handleSubmit(handleSignIn) : handleSubmit(handleCreateUser)
               }
             >
-              {inLogin ? "Login" : "Sign Up"}
-            </LoginButton>
+              <div style={{ display: inLogin ? "none" : "block" }}>
+                <LoginFont>UserName</LoginFont>
+                <LoginInput
+                  name="name"
+                  placeholder="name"
+                  value={name}
+                  type="name"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setName(e.target.value);
+                  }}
+                />
+              </div>
+              <LoginFont>E-mail</LoginFont>
+              <LoginInput
+                name="email"
+                placeholder="example@gmail.com"
+                value={email}
+                type="email"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setEmail(e.target.value);
+                }}
+                ref={register({ required: true, minLength: 9 })}
+                />
+              {errors.email && <ErrorFont>※メールは必須です。</ErrorFont>}
+              <LoginFont>Password</LoginFont>
+              <LoginInput
+                name="password"
+                placeholder="８文字以上の入力"
+                value={password}
+                type="password"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setPassword(e.target.value);
+                }}
+                ref={register({ required: true, minLength: 8 })}
+                />
+              {errors.password && <ErrorFont>※パスワードは必須です。</ErrorFont>}
+              <br />
+              <LoginButton>
+                {inLogin ? "Login" : "Sign Up"}
+              </LoginButton>
+            </form>
+            <ErrorFont>{errorMessage}</ErrorFont>
             <br />
             <GoogleButton onClick={signInGoogle}>
               Sign In with Google
@@ -143,7 +145,7 @@ const Login: React.FC = (props: any) => {
             </TwitterButton>
             <TextFont>
               パスワードを忘れてしまった場合は
-              <Link to="/reset" style={{ color: "#ffd740" }}>
+              <Link to="/reset" style={{ color: "#ffd740", textDecoration: "underline" }}>
                 こちら
               </Link>
               へ
