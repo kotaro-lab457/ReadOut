@@ -66,27 +66,31 @@ const SetUp: React.FC = (props: any) => {
       maxResults: 1,
     };
     const response = await axios.get(url, { params: params });
-    const item = response.data.items[0].id;
-    const imageUrl = `http://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
-
-    FS.doc(`${textId}`).set({
-      user: user.displayName,
-      title: title,
-      text: text,
-      page: page,
-      date: dates,
-      uid: user.uid,
-      id: textId,
-      editing: false,
-      createAt: new Date().getTime(),
-      image: imageUrl,
-    });
-
-    setText("");
-    setTitle("");
-    setPage("");
-    setTextId(textId);
-    props.history.push("/home");
+    try {
+      const item = response.data.items[0].id;
+      const imageUrl = `https://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
+      
+      FS.doc(`${textId}`).set({
+        user: user.displayName,
+        title: title,
+        text: text,
+        page: page,
+        date: dates,
+        uid: user.uid,
+        id: textId,
+        editing: false,
+        createAt: new Date().getTime(),
+        image: imageUrl,
+      });
+      
+      setText("");
+      setTitle("");
+      setPage("");
+      setTextId(textId);
+      props.history.push("/home");
+    } catch (err) {
+      alert(err.message);
+    }
   };
   return (
     <>
