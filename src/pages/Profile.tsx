@@ -30,17 +30,14 @@ const Profile: React.FC = () => {
           </TablePosts>
           <SubFont>
             ・
-            <Link to="/history" style={{ color: "#000" }}>
+            <Link to="/history" style={{ textDecoration: "underline" }}>
               投稿履歴
             </Link>
             へ
           </SubFont>
           {user.uid && (
             <TableSetUpProfile>
-              <Link
-                to="/setup"
-                style={{ textDecoration: "none", color: "#000" }}
-              >
+              <Link to="/setup" >
                 <ProfileSetUpButton>投稿</ProfileSetUpButton>
               </Link>
             </TableSetUpProfile>

@@ -83,7 +83,7 @@ const History: React.FC = () => {
             <Title>投稿履歴</Title>
             <SubFont>
               ・
-              <Link to="/profile" style={{ color: "#000" }}>
+              <Link to="/profile" style={{ textDecoration: "underline" }}>
                 Profile
               </Link>
               へ

@@ -147,7 +147,7 @@ const Login: React.FC = (props: any) => {
             </TwitterButton>
             <TextFont>
               パスワードを忘れてしまった場合は
-              <Link to="/reset" style={{ color: "#ffd740" }}>
+              <Link to="/reset" style={{ color: "#ffd740", textDecoration: "underline" }}>
                 こちら
               </Link>
               へ
