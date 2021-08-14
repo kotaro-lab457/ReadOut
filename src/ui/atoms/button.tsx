@@ -178,20 +178,21 @@ const SetUpButton = styled.div`
 const GoogleButton = styled(LoginButton)`
   font-size: 1rem;
   padding: 10px;
+  margin: 0;
   background-color: #ff3d00;
   color: #fff;
   width: 220px;
   border-radius: 5px;
   @media (max-width: 420px) {
-    margin: 5px 0 0;
+    margin: 0.5rem 0 0;
   }
 `;
 
 const TwitterButton = styled(GoogleButton)`
   background-color: #33bfff;
-  margin-left: 5px;
+  margin: 0 0 0 0.5rem;
   @media (max-width: 420px) {
-    margin: 5px 0 0;
+    margin: 0.5rem 0 0;
   }
 `;
 
