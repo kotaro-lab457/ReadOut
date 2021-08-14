@@ -63,7 +63,7 @@ const Editing: React.FC<homeProps> = (props) => {
     <>
       <TableEdit>
         <div>
-          <EditFont>タイトル </EditFont>
+          <EditFont>タイトル</EditFont>
           <EditInput
             id="title"
             type="text"
@@ -72,7 +72,7 @@ const Editing: React.FC<homeProps> = (props) => {
           />
         </div>
         <div>
-          <EditFont>ページ </EditFont>
+          <EditFont>読んだページ</EditFont>
           <EditInput
             id="page"
             type="text"

@@ -38,7 +38,6 @@ const EditFont = styled(SubFont)`
   text-align: center;
 `;
 const ErrorFont = styled(Font)`
-  text-align: left;
   color: #ff4646;
   padding: 0.5rem 0 0 2rem;
   margin: 0;

@@ -109,7 +109,7 @@ const SetUp: React.FC = (props: any) => {
                   <SetUpInput
                     id="page"
                     type="text"
-                    placeholder="ページ数"
+                    placeholder="読んだページ数"
                     value={page}
                     onChange={(e) => setPage(e.target.value)}
                   />
@@ -125,7 +125,7 @@ const SetUp: React.FC = (props: any) => {
               <SetUpFont>
                 <Link
                   to="/profile"
-                  style={{ textDecoration: "none", color: "#36622b" }}
+                  style={{ color: "#36622b" }}
                 >
                   キャンセル
                 </Link>

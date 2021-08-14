@@ -101,7 +101,7 @@ const Room: React.FC = () => {
             )}
           </TableText>
           <TableList>
-            <span>{toggleMessage}</span>
+            <Font>{toggleMessage}</Font>
             {postText.map((list, id) => (
               <TableHome key={id}>
                 <ImageTag>
