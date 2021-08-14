@@ -66,27 +66,31 @@ const SetUp: React.FC = (props: any) => {
       maxResults: 1,
     };
     const response = await axios.get(url, { params: params });
-    const item = response.data.items[0].id;
-    const imageUrl = `http://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
-
-    FS.doc(`${textId}`).set({
-      user: user.displayName,
-      title: title,
-      text: text,
-      page: page,
-      date: dates,
-      uid: user.uid,
-      id: textId,
-      editing: false,
-      createAt: new Date().getTime(),
-      image: imageUrl,
-    });
-
-    setText("");
-    setTitle("");
-    setPage("");
-    setTextId(textId);
-    props.history.push("/home");
+    try {
+      const item = response.data.items[0].id;
+      const imageUrl = `https://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
+      
+      FS.doc(`${textId}`).set({
+        user: user.displayName,
+        title: title,
+        text: text,
+        page: page,
+        date: dates,
+        uid: user.uid,
+        id: textId,
+        editing: false,
+        createAt: new Date().getTime(),
+        image: imageUrl,
+      });
+      
+      setText("");
+      setTitle("");
+      setPage("");
+      setTextId(textId);
+      props.history.push("/home");
+    } catch (err) {
+      alert(err.message);
+    }
   };
   return (
     <>
@@ -109,7 +113,7 @@ const SetUp: React.FC = (props: any) => {
                   <SetUpInput
                     id="page"
                     type="text"
-                    placeholder="ページ数"
+                    placeholder="読んだページ数"
                     value={page}
                     onChange={(e) => setPage(e.target.value)}
                   />
@@ -125,7 +129,7 @@ const SetUp: React.FC = (props: any) => {
               <SetUpFont>
                 <Link
                   to="/profile"
-                  style={{ textDecoration: "none", color: "#36622b" }}
+                  style={{ color: "#36622b" }}
                 >
                   キャンセル
                 </Link>

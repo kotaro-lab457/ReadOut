@@ -42,16 +42,20 @@ const Editing: React.FC<homeProps> = (props) => {
       q: title,
       maxResults: 1,
     };
-    const response = await axios.get(url, { params: params });
-    const item = response.data.items[0].id;
-    const imageUrl = `http://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
-
-    FS.doc(`${props.list.id}`).update({
-      title: title,
-      page: page,
-      text: text,
-      image: imageUrl,
-    });
+    try {
+      const response = await axios.get(url, { params: params });
+      const item = response.data.items[0].id;
+      const imageUrl = `https://books.google.com/books/content?id=${item}&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api`;
+      
+      FS.doc(`${props.list.id}`).update({
+        title: title,
+        page: page,
+        text: text,
+        image: imageUrl,
+      });
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   // FireStoreのTextコレクションの各々の doc.id を取得し、削除
@@ -63,7 +67,7 @@ const Editing: React.FC<homeProps> = (props) => {
     <>
       <TableEdit>
         <div>
-          <EditFont>タイトル </EditFont>
+          <EditFont>タイトル</EditFont>
           <EditInput
             id="title"
             type="text"
@@ -72,7 +76,7 @@ const Editing: React.FC<homeProps> = (props) => {
           />
         </div>
         <div>
-          <EditFont>ページ </EditFont>
+          <EditFont>読んだページ</EditFont>
           <EditInput
             id="page"
             type="text"

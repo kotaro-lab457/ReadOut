@@ -76,6 +76,10 @@ const CommentButton = styled(UpdateButton)`
   background-color: #0070f3;
   border: 1px solid #0070f3;
   color: #fff;
+  @media (max-width: 420px) {
+    font-size: .7rem;
+    padding: 0 1rem;
+  }
 `;
 
 const CommentsMenuButton = styled.span`
@@ -95,6 +99,10 @@ const CancelButton = styled.span`
   font-size: 0.8rem;
   outline: none;
   cursor: pointer;
+  @media (max-width: 420px) {
+    font-size: .7rem;
+    padding: 0 10px;
+  }
 `;
 
 const IconButton = styled(Button)`
@@ -170,20 +178,21 @@ const SetUpButton = styled.div`
 const GoogleButton = styled(LoginButton)`
   font-size: 1rem;
   padding: 10px;
+  margin: 0;
   background-color: #ff3d00;
   color: #fff;
   width: 220px;
   border-radius: 5px;
   @media (max-width: 420px) {
-    margin: 5px 0 0;
+    margin: 0.5rem 0 0;
   }
 `;
 
 const TwitterButton = styled(GoogleButton)`
   background-color: #33bfff;
-  margin-left: 5px;
+  margin: 0 0 0 0.5rem;
   @media (max-width: 420px) {
-    margin: 5px 0 0;
+    margin: 0.5rem 0 0;
   }
 `;
 

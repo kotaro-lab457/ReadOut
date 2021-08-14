@@ -82,15 +82,7 @@ const Menu: React.FC = (props: any) => {
           Log out
         </SubLoginButton>
       ) : (
-        <GuestButton
-          onClick={async () => {
-            try {
-              await GuestLogin();
-            } catch (err) {
-              alert(err.message);
-            }
-          }}
-        >
+        <GuestButton onClick={GuestLogin}>
           <FontAwesomeIcon icon={faUser} />
           Guest
         </GuestButton>

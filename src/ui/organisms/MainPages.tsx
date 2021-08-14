@@ -9,7 +9,7 @@ const MainPage = styled.div`
 const MainTablePages = styled.div`
   margin: 0 auto;
   padding: 2rem;
-  max-width: 1200px;
+  max-width: 1000px;
   width: 100%;
   text-align: center;
   position: relative;

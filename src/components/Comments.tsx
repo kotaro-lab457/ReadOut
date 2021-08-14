@@ -9,7 +9,7 @@ import { selectUser } from "../stores/userSlice";
 import { COMMENT } from "../module/Text.module";
 import {
   CommentFont,
-  TimeFont,
+  HomeTimeFont,
   CommentUserFont,
   CommentsFont,
 } from "../ui/atoms/font";
@@ -87,7 +87,7 @@ const Comments: React.FC<PROPS> = (props) => {
     <>
       <div>
         <CommentFont onClick={() => setOpenComments(!openComments)}>
-          コメント（{count}）{openComments ? "非表示" : "表示"}
+          コメント（{count}）<span>{openComments ? "非表示" : "表示"}</span>
         </CommentFont>
       </div>
       <TableFormComment onSubmit={newComment}>
@@ -106,7 +106,7 @@ const Comments: React.FC<PROPS> = (props) => {
             <TableCommentsText key={id}>
               <div>
                 <CommentUserFont>@{list.user}</CommentUserFont>
-                <TimeFont>{moment(list.createAt).fromNow()}</TimeFont>
+                <HomeTimeFont>{moment(list.createAt).fromNow()}</HomeTimeFont>
                 <TableCommentsMenu>
                   {list.uid === user.uid && (
                     <CommentsMenuButton
