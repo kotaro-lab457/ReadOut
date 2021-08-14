@@ -124,10 +124,7 @@ const Room: React.FC = () => {
           </TableList>
           {user.uid && (
             <TableSetUpHome>
-              <Link
-                to="/setup"
-                style={{ textDecoration: "none", color: "#000" }}
-              >
+              <Link to="/setup" >
                 <SetUpButton>投稿</SetUpButton>
               </Link>
             </TableSetUpHome>

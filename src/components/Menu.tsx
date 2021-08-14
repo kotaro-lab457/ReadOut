@@ -42,7 +42,7 @@ const Menu: React.FC = (props: any) => {
   return (
     <TableMenu>
       <LinkTag>
-        <Link to="/home" style={{ textDecoration: "none", color: "#000" }}>
+        <Link to="/home">
           <IconLinkTag>
             <FontAwesomeIcon icon={faHome} />
           </IconLinkTag>
@@ -50,7 +50,7 @@ const Menu: React.FC = (props: any) => {
         </Link>
       </LinkTag>
       <LinkTag>
-        <Link to="/books" style={{ textDecoration: "none", color: "#000" }}>
+        <Link to="/books">
           <IconLinkTag>
             <FontAwesomeIcon icon={faBook} />
           </IconLinkTag>
@@ -59,7 +59,7 @@ const Menu: React.FC = (props: any) => {
       </LinkTag>
       {user.uid ? (
         <LinkTag>
-          <Link to="/profile" style={{ textDecoration: "none", color: "#000" }}>
+          <Link to="/profile">
             <IconLinkTag>
               <FontAwesomeIcon icon={faUser} />
             </IconLinkTag>
@@ -68,7 +68,7 @@ const Menu: React.FC = (props: any) => {
         </LinkTag>
       ) : (
         <LinkTag>
-          <Link to="/login" style={{ textDecoration: "none", color: "#000" }}>
+          <Link to="/login">
             <IconLinkTag>
               <FontAwesomeIcon icon={faSignOutAlt} />
             </IconLinkTag>

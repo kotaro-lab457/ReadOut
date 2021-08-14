@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
 const TableLogin = styled.div`
+  width: 100%;
   position: absolute;
-  right: 37%;
-  @media (max-width: 420px) {
-    right: 0;
-    left: 0;
-    padding: 1rem;
-  }
+  right: 0;
 `;
 
 const SubTableLogin = styled.div`

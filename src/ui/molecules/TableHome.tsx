@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const TableHome = styled.div`
   display: flex;
+  justify-content: center;
   padding: 20px;
   margin: 20px;
   background-color: #fff;
