@@ -87,7 +87,7 @@ const Comments: React.FC<PROPS> = (props) => {
     <>
       <div>
         <CommentFont onClick={() => setOpenComments(!openComments)}>
-          コメント（{count}）{openComments ? "非表示" : "表示"}
+          コメント（{count}）<span>{openComments ? "非表示" : "表示"}</span>
         </CommentFont>
       </div>
       <TableFormComment onSubmit={newComment}>
