@@ -26,7 +26,7 @@ const TableSetUpHome = styled(TableSetUpProfile)`
   bottom: 10%;
   right: 15%;
   @media (max-width: 420px) {
-    top: 83%;
+    top: 15%;
   }
 `;
 

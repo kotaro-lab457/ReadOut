@@ -9,7 +9,7 @@ import { selectUser } from "../stores/userSlice";
 import { COMMENT } from "../module/Text.module";
 import {
   CommentFont,
-  TimeFont,
+  HomeTimeFont,
   CommentUserFont,
   CommentsFont,
 } from "../ui/atoms/font";
@@ -106,7 +106,7 @@ const Comments: React.FC<PROPS> = (props) => {
             <TableCommentsText key={id}>
               <div>
                 <CommentUserFont>@{list.user}</CommentUserFont>
-                <TimeFont>{moment(list.createAt).fromNow()}</TimeFont>
+                <HomeTimeFont>{moment(list.createAt).fromNow()}</HomeTimeFont>
                 <TableCommentsMenu>
                   {list.uid === user.uid && (
                     <CommentsMenuButton

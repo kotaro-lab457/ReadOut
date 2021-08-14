@@ -76,6 +76,10 @@ const CommentButton = styled(UpdateButton)`
   background-color: #0070f3;
   border: 1px solid #0070f3;
   color: #fff;
+  @media (max-width: 420px) {
+    font-size: .7rem;
+    padding: 0 1rem;
+  }
 `;
 
 const CommentsMenuButton = styled.span`
@@ -95,6 +99,10 @@ const CancelButton = styled.span`
   font-size: 0.8rem;
   outline: none;
   cursor: pointer;
+  @media (max-width: 420px) {
+    font-size: .7rem;
+    padding: 0 10px;
+  }
 `;
 
 const IconButton = styled(Button)`

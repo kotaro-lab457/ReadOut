@@ -29,7 +29,7 @@ const TableCommentsText = styled.div`
   text-align: left;
   padding-left: 2rem;
   @media (max-width: 420px) {
-    padding: 0 2rem 0 0;
+    padding: 0 1rem 0 0;
   }
 `;
 
