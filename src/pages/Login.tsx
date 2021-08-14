@@ -36,7 +36,7 @@ const Login: React.FC = (props: any) => {
       await firebase.auth().signInWithEmailAndPassword(email, password);
       props.history.push("/home");
     } catch (err) {
-      setErrorMessage(err.message);
+      setErrorMessage("※ログインに失敗しました。メールアドレスとパスワードを確認してログインしていください。");
     }
   };
 
@@ -57,7 +57,7 @@ const Login: React.FC = (props: any) => {
       );
       props.history.push("/home");
     } catch (err) {
-      setErrorMessage(err.message);
+      setErrorMessage("※新規作成に失敗しました。ネットワーク環境をご確認ください。");
       return;
     }
   };
@@ -79,9 +79,7 @@ const Login: React.FC = (props: any) => {
       .then(() => {
         props.history.push("/home");
       })
-      .catch((err) => {
-        err.message;
-      });
+      .catch((err) => alert(err.message));
   };
 
   return (
