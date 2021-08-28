@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import { Font } from "../ui/atoms/font";
-import { Img, ImageTag } from "../ui/atoms/image";
-import { Title } from "../ui/atoms/title";
-import { SearchInput } from "../ui/atoms/input";
-import { SearchButton } from "../ui/atoms/button";
+import { Font } from "@Atoms/font";
+import { Img, ImageTag } from "@Atoms/image";
+import { Title } from "@Atoms/title";
+import { SearchInput } from "@Atoms/input";
+import { SearchButton } from "@Atoms/button";
 import {
   TableSearch,
   ItemSearch,
   TextSearch,
   ListSearch,
-} from "../ui/molecules/TableSearch";
-import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
+} from "@Molecules/TableSearch";
+import { MainPage, MainTablePages } from "@Organisms/MainPages";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

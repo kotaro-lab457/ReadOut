@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import shortid from "shortid";
 
-import { Title } from "../ui/atoms/title";
-import { Button } from "../ui/atoms/button";
-import { SetUpFont } from "../ui/atoms/font";
-import { SetUpInput, TextArea } from "../ui/atoms/input";
-import { TableSetUp } from "../ui/molecules/TableSetUp";
-import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
+import { Title } from "@Atoms/title";
+import { Button } from "@Atoms/button";
+import { SetUpFont } from "@Atoms/font";
+import { SetUpInput, TextArea } from "@Atoms/input";
+import { TableSetUp } from "@Molecules/TableSetUp";
+import { MainPage, MainTablePages } from "@Organisms/MainPages";
 
 const SetUp: React.FC = (props: any) => {
   const initialState:string = shortid.generate();
