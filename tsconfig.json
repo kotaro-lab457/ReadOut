@@ -22,7 +22,7 @@
       "@Organisms/*": [
         "src/ui/organisms/*",
       ],
-      "@Template/*": [
+      "@Templates/*": [
         "src/ui/templates/*",
       ],
     },
