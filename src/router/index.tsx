@@ -15,7 +15,7 @@ import History from "@Pages/History";
 import Header from "@Components/Header";
 import Footer from "@Components/Footer";
 
-import Table from "../ui/templates/Table";
+import Table from "@Templates/Table";
 
 const Router: React.FC = () => {
   return (
