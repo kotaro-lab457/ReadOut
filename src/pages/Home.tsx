@@ -6,27 +6,27 @@ import { selectUser } from "../stores/userSlice";
 import moment from "moment";
 import { Text } from "../module/Text.module";
 
-import Comments from "../components/Comments";
+import Comments from "@Components/Comments";
 
-import { Title } from "../ui/atoms/title";
-import { HomeTimeFont, SubFont, Font } from "../ui/atoms/font";
-import { Img, ImageTag } from "../ui/atoms/image";
+import { Title } from "@Atoms/title";
+import { HomeTimeFont, SubFont, Font } from "@Atoms/font";
+import { Img, ImageTag } from "@Atoms/image";
 import {
   SetUpButton,
   HomeSearchButton,
   UpdateButton,
-} from "../ui/atoms/button";
-import { Input } from "../ui/atoms/input";
-import { TableSetUpHome } from "../ui/molecules/TableSetUp";
-import { TableText } from "../ui/molecules/TableProfile";
+} from "@Atoms/button";
+import { Input } from "@Atoms/input";
+import { TableSetUpHome } from "@Molecules/TableSetUp";
+import { TableText } from "@Molecules/TableProfile";
 import {
   TableHome,
   TableForm,
   TableList,
   TableItem,
   TableTexts,
-} from "../ui/molecules/TableHome";
-import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
+} from "@Molecules/TableHome";
+import { MainPage, MainTablePages } from "@Organisms/MainPages";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

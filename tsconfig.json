@@ -6,6 +6,26 @@
       "dom.iterable",
       "esnext"
     ],
+    "paths": {
+      "@Components/*": [
+        "src/components/*",
+      ],
+      "@Pages/*": [
+        "src/pages/*",
+      ],
+      "@Atoms/*": [
+        "src/ui/atoms/*",
+      ],
+      "@Molecules/*": [
+        "src/ui/molecules/*",
+      ],
+      "@Organisms/*": [
+        "src/ui/organisms/*",
+      ],
+      "@Template/*": [
+        "src/ui/templates/*",
+      ],
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -24,6 +44,7 @@
   },
   "include": [
     "src/**/*",
-    "types/**/*"
-, "jest.config.js"  ]
+    "types/**/*",
+    "jest.config.js"
+  ]
 }

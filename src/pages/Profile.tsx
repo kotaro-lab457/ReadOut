@@ -2,16 +2,16 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
 import { Link } from "react-router-dom";
-import Chart from "../components/Chart";
-import TotalPosts from "../components/Count";
+import Chart from "@Components/Chart";
+import TotalPosts from "@Components/Count";
 
-import { SubFont } from "../ui/atoms/font";
-import { Title } from "../ui/atoms/title";
-import { ProfileSetUpButton } from "../ui/atoms/button";
-import { TableSetUpProfile } from "../ui/molecules/TableSetUp";
+import { SubFont } from "@Atoms/font";
+import { Title } from "@Atoms/title";
+import { ProfileSetUpButton } from "@Atoms/button";
+import { TableSetUpProfile } from "@Molecules/TableSetUp";
 
-import { TableTotal, TablePosts } from "../ui/molecules/TableProfile";
-import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
+import { TableTotal, TablePosts } from "@Molecules/TableProfile";
+import { MainPage, MainTablePages } from "@Organisms/MainPages";
 
 const Profile: React.FC = () => {
   const user = useSelector(selectUser);
