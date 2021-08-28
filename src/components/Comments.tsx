@@ -12,20 +12,20 @@ import {
   HomeTimeFont,
   CommentUserFont,
   CommentsFont,
-} from "../ui/atoms/font";
+} from "@Atoms/font";
 import {
   CancelButton,
   CommentButton,
   CommentsMenuButton,
   CommentsDeleteButton,
-} from "../ui/atoms/button";
-import { CommentInput } from "../ui/atoms/input";
+} from "@Atoms/button";
+import { CommentInput } from "@Atoms/input";
 import {
   TableFormComment,
   TableCommentsText,
   TableCommentsMenu,
   TableCommentsDelete,
-} from "../ui/molecules/TableHome";
+} from "@Molecules/TableHome";
 
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

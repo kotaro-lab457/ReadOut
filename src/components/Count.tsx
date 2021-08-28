@@ -3,7 +3,7 @@ import firebase from "../config/Firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
 
-import { PostsFont, TotalFont } from "../ui/atoms/font";
+import { PostsFont, TotalFont } from "@Atoms/font";
 
 const TotalDays = () => {
   const [count, setCount] = useState<number>(0);

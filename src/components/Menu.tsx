@@ -4,9 +4,9 @@ import { selectUser, updateUserProfile } from "../stores/userSlice";
 import { Link, withRouter } from "react-router-dom";
 import firebase from "firebase";
 
-import { GuestButton, SubLoginButton } from "../ui/atoms/button";
-import { LinkTag, IconLinkTag } from "../ui/atoms/link";
-import TableMenu from "../ui/molecules/TableMenu";
+import { GuestButton, SubLoginButton } from "@Atoms/button";
+import { LinkTag, IconLinkTag } from "@Atoms/link";
+import TableMenu from "@Molecules/TableMenu";
 import {
   faHome,
   faUser,

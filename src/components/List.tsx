@@ -5,21 +5,21 @@ import moment from "moment";
 import { COMMENT } from "../module/Text.module";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Img, ImageTag } from "../ui/atoms/image";
+import { Img, ImageTag } from "@Atoms/image";
 import {
   Font,
   CommentFont,
   TimeFont,
   CommentUserFont,
   CommentsFont,
-} from "../ui/atoms/font";
-import { IconButton } from "../ui/atoms/button";
+} from "@Atoms/font";
+import { IconButton } from "@Atoms/button";
 import {
   TableItem,
   TableTexts,
   TableCommentsText,
-} from "../ui/molecules/TableHome";
-import { TableIcon } from "../ui/molecules/TableProfile";
+} from "@Molecules/TableHome";
+import { TableIcon } from "@Molecules/TableProfile";
 
 interface listProps {
   list: {
