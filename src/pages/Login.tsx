@@ -5,12 +5,12 @@ import { useDispatch } from "react-redux";
 import { updateUserProfile } from "../stores/userSlice";
 import { Link } from "react-router-dom";
 
-import { TextFont, LoginFont, LinkFont, ErrorFont } from "../ui/atoms/font";
-import { LoginTitle } from "../ui/atoms/title";
-import { LoginButton, GoogleButton, TwitterButton } from "../ui/atoms/button";
-import { LoginInput } from "../ui/atoms/input";
-import { TableLogin, SubTableLogin } from "../ui/molecules/TableLogin";
-import { MainImage } from "../ui/organisms/MainPages";
+import { TextFont, LoginFont, LinkFont, ErrorFont } from "@Atoms/font";
+import { LoginTitle } from "@Atoms/title";
+import { LoginButton, GoogleButton, TwitterButton } from "@Atoms/button";
+import { LoginInput } from "@Atoms/input";
+import { TableLogin, SubTableLogin } from "@Molecules/TableLogin";
+import { MainImage } from "@Organisms/MainPages";
 
 type Post = {
   name: string;

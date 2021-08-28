@@ -4,14 +4,14 @@ import axios from "axios";
 
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { EditFont } from "../ui/atoms/font";
-import { EditInput, TextArea } from "../ui/atoms/input";
-import { UpdateButton, CancelButton, IconButton } from "../ui/atoms/button";
+import { EditFont } from "@Atoms/font";
+import { EditInput, TextArea } from "@Atoms/input";
+import { UpdateButton, CancelButton, IconButton } from "@Atoms/button";
 import {
   TableButton,
   TableDelete,
   TableEdit,
-} from "../ui/molecules/TableProfile";
+} from "@Molecules/TableProfile";
 
 interface homeProps {
   list: {

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
 
-import { ResetButton } from "../ui/atoms/button";
-import { LoginFont, TextFont, ErrorFont, SuccessFont } from "../ui/atoms/font";
-import { LoginInput } from "../ui/atoms/input";
-import { TableReset, SubTableReset } from "../ui/molecules/TableReset";
-import { MainImage } from "../ui/organisms/MainPages";
+import { ResetButton } from "@Atoms/button";
+import { LoginFont, TextFont, ErrorFont, SuccessFont } from "@Atoms/font";
+import { LoginInput } from "@Atoms/input";
+import { TableReset, SubTableReset } from "@Molecules/TableReset";
+import { MainImage } from "@Organisms/MainPages";
 
 const ResetPassword: React.FC = () => {
   const [email, setEmail] = useState<string>("");

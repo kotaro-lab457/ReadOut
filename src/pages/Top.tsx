@@ -5,18 +5,18 @@ import { updateUserProfile } from "../stores/userSlice";
 
 import profileImage from "../img/PR2_Img.png";
 import homeImage from "../img/PR_Img.png";
-import { TextFont } from "../ui/atoms/font";
-import { ImageSp } from "../ui/atoms/image";
-import { GuestButton, SubLoginButton } from "../ui/atoms/button";
-import { MainTitle } from "../ui/atoms/title";
+import { TextFont } from "@Atoms/font";
+import { ImageSp } from "@Atoms/image";
+import { GuestButton, SubLoginButton } from "@Atoms/button";
+import { MainTitle } from "@Atoms/title";
 import {
   TableTop,
   SubTableTop,
   TableTopImages,
   TableTopImage,
   SubTableTopImage,
-} from "../ui/molecules/TableTop";
-import { MainImage } from "../ui/organisms/MainPages";
+} from "@Molecules/TableTop";
+import { MainImage } from "@Organisms/MainPages";
 
 import { faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

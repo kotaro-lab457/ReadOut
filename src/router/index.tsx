@@ -1,20 +1,21 @@
 import React from 'react';
 
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import Top from "../pages/Top";
-import SetUp from "../pages/SetUp";
-import Login from "../pages/Login";
-import Home from "../pages/Home";
-import Profile from "../pages/Profile";
-import BooksSearch from "../pages/BooksSearch";
-import ResetPassword from "../pages/ResetPass";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { AuthService } from "../Auth/AuthService";
-import History from "../pages/History";
 
-import Table from "../ui/templates/Table";
+import Top from "@Pages/Top";
+import SetUp from "@Pages/SetUp";
+import Login from "@Pages/Login";
+import Home from "@Pages/Home";
+import Profile from "@Pages/Profile";
+import BooksSearch from "@Pages/BooksSearch";
+import ResetPassword from "@Pages/ResetPass";
+import History from "@Pages/History";
 
+import Header from "@Components/Header";
+import Footer from "@Components/Footer";
+
+import Table from "@Templates/Table";
 
 const Router: React.FC = () => {
   return (
@@ -44,6 +45,5 @@ const Router: React.FC = () => {
     </>
   )
 }
-
 
 export default Router;

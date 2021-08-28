@@ -1,9 +1,9 @@
 import React from "react";
-import Menu from "./Menu";
+import Menu from "@Components/Menu";
 import { withRouter, Link } from "react-router-dom";
 
-import { HeaderTitle } from "../ui/atoms/title";
-import { Main, MainHeader } from "../ui/organisms/MainTable";
+import { HeaderTitle } from "@Atoms/title";
+import { Main, MainHeader } from "@Organisms/MainTable";
 
 const Header: React.FC = () => {
   return (

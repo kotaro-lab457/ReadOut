@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
-import Editing from "../components/Editing";
-import List from "../components/List";
+import Editing from "@Components/Editing";
+import List from "@Components/List";
 import firebase from "../config/Firebase";
 
 import { Link } from "react-router-dom";
 import { Text } from "../module/Text.module";
 
-import { Title } from "../ui/atoms/title";
-import { Input } from "../ui/atoms/input";
-import { SubFont } from "../ui/atoms/font";
-import { TableForm, TableList } from "../ui/molecules/TableHome";
-import { HomeSearchButton, UpdateButton } from "../ui/atoms/button";
-import { TableProfile, TableText } from "../ui/molecules/TableProfile";
-import { MainPage, MainTablePages } from "../ui/organisms/MainPages";
+import { Title } from "@Atoms/title";
+import { Input } from "@Atoms/input";
+import { SubFont } from "@Atoms/font";
+import { HomeSearchButton, UpdateButton } from "@Atoms/button";
+import { TableForm, TableList } from "@Molecules/TableHome";
+import { TableProfile, TableText } from "@Molecules/TableProfile";
+import { MainPage, MainTablePages } from "@Organisms/MainPages";
 
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
