@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import firebase from "../config/Firebase";
 import { useDispatch } from "react-redux";
 import { updateUserProfile } from "../stores/userSlice";
-import { Link } from "react-router-dom";
-
+import { Link, RouteComponentProps } from "react-router-dom";
+import { required } from "@Modules"
 import { TextFont, LoginFont, LinkFont, ErrorFont } from "@Atoms/font";
 import { LoginTitle } from "@Atoms/title";
 import { LoginButton, GoogleButton, TwitterButton } from "@Atoms/button";
@@ -12,20 +12,14 @@ import { LoginInput } from "@Atoms/input";
 import { TableLogin, SubTableLogin } from "@Molecules/TableLogin";
 import { MainImage } from "@Organisms/MainPages";
 
-type Post = {
-  name: string;
-  email: string;
-  password: string;
-};
-
-const Login: React.FC = (props: any) => {
+const Login: React.FC<RouteComponentProps> = (props) => {
   const [password, setPassword] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [inLogin, setInLogin] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const { register, handleSubmit, errors } = useForm<Post>();
+  const { register, handleSubmit, errors } = useForm<required>();
   const dispatch = useDispatch();
 
   const provider = new firebase.auth.GoogleAuthProvider();

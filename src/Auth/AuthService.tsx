@@ -2,11 +2,7 @@ import React, { useEffect } from "react";
 import firebase from "../config/Firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, login, logout } from "../stores/userSlice";
-
-interface userContext {
-  displayName: string;
-  uid: string;
-}
+import { userContext } from "@Modules"
 
 const AuthContext = React.createContext<userContext>({
   displayName: "",

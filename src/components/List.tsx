@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import firebase from "../config/Firebase";
 import moment from "moment";
 
-import { COMMENT } from "../module/Text.module";
+import { listComments, listProps } from "@Modules";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Img, ImageTag } from "@Atoms/image";
@@ -21,22 +21,9 @@ import {
 } from "@Molecules/TableHome";
 import { TableIcon } from "@Molecules/TableProfile";
 
-interface listProps {
-  list: {
-    id: number;
-    title: string;
-    page: string;
-    text: string;
-    editing: boolean;
-    createAt: number;
-    image: string;
-  };
-  editChange: (id: number, editing: boolean) => void;
-}
-
 const List: React.FC<listProps> = (props) => {
   const [count, setCount] = useState<number>(0);
-  const [comments, setComments] = useState<COMMENT[]>([]);
+  const [comments, setComments] = useState<listComments[]>([]);
   const [openComments, setOpenComments] = useState<boolean>(false);
 
   const FS = firebase

@@ -13,6 +13,9 @@
       "@Pages/*": [
         "src/pages/*",
       ],
+      "@Modules": [
+        "src/modules/index.ts",
+      ],
       "@Atoms/*": [
         "src/ui/atoms/*",
       ],
