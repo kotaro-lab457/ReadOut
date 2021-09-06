@@ -2,6 +2,7 @@ import React from "react";
 import firebase from "../config/Firebase";
 import { useDispatch } from "react-redux";
 import { updateUserProfile } from "../stores/userSlice";
+import { RouteComponentProps } from "react-router";
 
 import profileImage from "../img/PR2_Img.png";
 import homeImage from "../img/PR_Img.png";
@@ -21,7 +22,7 @@ import { MainImage } from "@Organisms/MainPages";
 import { faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Top: React.FC = (props: any) => {
+const Top: React.FC<RouteComponentProps> = (props) => {
   const dispatch = useDispatch();
   const GuestLogin = async () => {
     await firebase
@@ -59,11 +60,7 @@ const Top: React.FC = (props: any) => {
             </SubLoginButton>
             <GuestButton
               onClick={async () => {
-                try {
                   await GuestLogin();
-                } catch (err) {
-                  alert(err.message);
-                }
               }}
             >
               <FontAwesomeIcon icon={faUser} />

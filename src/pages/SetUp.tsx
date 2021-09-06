@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
 import firebase from "../config/Firebase";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import axios from "axios";
 import shortid from "shortid";
 
@@ -13,7 +13,7 @@ import { SetUpInput, TextArea } from "@Atoms/input";
 import { TableSetUp } from "@Molecules/TableSetUp";
 import { MainPage, MainTablePages } from "@Organisms/MainPages";
 
-const SetUp: React.FC = (props: any) => {
+const SetUp: React.FC<RouteComponentProps> = (props) => {
   const initialState:string = shortid.generate();
 
   const [title, setTitle] = useState<string>("");
@@ -28,7 +28,7 @@ const SetUp: React.FC = (props: any) => {
   useEffect(() => {
     let date = new Date();
     let dateMonth = date.getMonth() + 1;
-    function getDate(dt: any) {
+    function getDate(dt: number) {
       return dt <= 1
         ? 30
         : dt <= 2
@@ -88,7 +88,7 @@ const SetUp: React.FC = (props: any) => {
       setPage("");
       setTextId(textId);
       props.history.push("/home");
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
   };
