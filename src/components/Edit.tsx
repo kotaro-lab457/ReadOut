@@ -14,7 +14,7 @@ import {
   TableEdit,
 } from "@Molecules/TableProfile";
 
-const Editing: React.FC<homeProps> = (props) => {
+const Edit: React.FC<homeProps> = (props) => {
   const [title, setTitle] = useState<string>(props.list.title);
   const [text, setText] = useState<string>(props.list.text);
   const [page, setPage] = useState<string>(props.list.page);
@@ -94,4 +94,4 @@ const Editing: React.FC<homeProps> = (props) => {
   );
 };
 
-export default Editing;
+export default Edit;

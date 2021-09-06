@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
-import Editing from "@Components/Editing";
+import Edit from "@Components/Edit";
 import List from "@Components/List";
 import firebase from "../config/Firebase";
 
 import { Link } from "react-router-dom";
-import { Text } from "../module/Text.module";
+import { Text } from "@Modules";
 
 import { Title } from "@Atoms/title";
 import { Input } from "@Atoms/input";
@@ -32,7 +32,7 @@ const History: React.FC = () => {
     if (user) {
       let isMounted = true;
       FS.orderBy("createAt", "desc").onSnapshot((snapshot) => {
-        const homes: any = snapshot.docs.map((doc) => {
+        const homes:any = snapshot.docs.map((doc) => {
           // ドキュメント取得
           return doc.data();
         });
@@ -111,7 +111,7 @@ const History: React.FC = () => {
                 {list.user === user.displayName && (
                   <TableProfile>
                     {list.editing ? (
-                      <Editing key={id} list={list} editChange={editChange} />
+                      <Edit key={id} list={list} editChange={editChange} />
                     ) : (
                       <List key={id} list={list} editChange={editChange} />
                     )}

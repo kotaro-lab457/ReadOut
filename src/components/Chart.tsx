@@ -25,7 +25,7 @@ const Chart: React.FC = () => {
     if (user) {
       let date = new Date();
       let dateMonth = date.getMonth() + 1;
-      const getDate = (dt: any) => {
+      const getDate = (dt: number) => {
         return dt <= 1
           ? 30
           : dt <= 2
@@ -119,7 +119,7 @@ const Chart: React.FC = () => {
 
     // 10日分の日付作成(x軸)
     let day = new Date();
-    let dateDays:any = [[new Date().getDate() + "日"]];
+    let dateDays: any = [[new Date().getDate() + "日"]];
     for (let i = 0; i < 9; i++) {
       day.setDate(day.getDate() - 1);
       let days = [day.getDate() + "日"];

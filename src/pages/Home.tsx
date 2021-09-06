@@ -4,7 +4,7 @@ import firebase from "../config/Firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
 import moment from "moment";
-import { Text } from "../module/Text.module";
+import { Text } from "@Modules";
 
 import Comments from "@Components/Comments";
 
