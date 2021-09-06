@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, updateUserProfile } from "../stores/userSlice";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, RouteComponentProps } from "react-router-dom";
 import firebase from "firebase";
 
 import { GuestButton, SubLoginButton } from "@Atoms/button";
@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Menu: React.FC = (props: any) => {
+const Menu: React.FC<RouteComponentProps> = (props) => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const GuestLogin = async () => {

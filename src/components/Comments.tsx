@@ -6,7 +6,7 @@ import shortid from "shortid";
 import { useSelector } from "react-redux";
 import { selectUser } from "../stores/userSlice";
 
-import { COMMENT } from "../module/Text.module";
+import { comments } from "@Modules";
 import {
   CommentFont,
   HomeTimeFont,
@@ -40,7 +40,7 @@ const Comments: React.FC<PROPS> = (props) => {
   const initialState = shortid.generate();
 
   const [comment, setComment] = useState<string>("");
-  const [comments, setComments] = useState<COMMENT[]>([]);
+  const [comments, setComments] = useState<comments[]>([]);
   const [openComments, setOpenComments] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
   const [openMenu, setOpenMenu] = useState<boolean>(false);

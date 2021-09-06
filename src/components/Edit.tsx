@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import firebase from "../config/Firebase";
 import axios from "axios";
+import { homeProps } from "@Modules";
 
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,18 +14,7 @@ import {
   TableEdit,
 } from "@Molecules/TableProfile";
 
-interface homeProps {
-  list: {
-    id: number;
-    title: string;
-    page: string;
-    text: string;
-    editing: boolean;
-  };
-  editChange: (id: number, editing: boolean) => void;
-}
-
-const Editing: React.FC<homeProps> = (props) => {
+const Edit: React.FC<homeProps> = (props) => {
   const [title, setTitle] = useState<string>(props.list.title);
   const [text, setText] = useState<string>(props.list.text);
   const [page, setPage] = useState<string>(props.list.page);
@@ -53,7 +43,7 @@ const Editing: React.FC<homeProps> = (props) => {
         text: text,
         image: imageUrl,
       });
-    } catch (err) {
+    } catch (err: any) {
       alert(err.message);
     }
   };
@@ -104,4 +94,4 @@ const Editing: React.FC<homeProps> = (props) => {
   );
 };
 
-export default Editing;
+export default Edit;
