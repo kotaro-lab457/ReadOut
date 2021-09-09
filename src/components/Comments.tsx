@@ -27,16 +27,12 @@ import {
   TableCommentsDelete,
 } from "@Molecules/TableHome";
 
+import { commentProps } from "@Modules"
+
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-interface PROPS {
-  list: {
-    id: number;
-  };
-}
-
-const Comments: React.FC<PROPS> = (props) => {
+const Comments: React.FC<commentProps> = (props) => {
   const initialState = shortid.generate();
 
   const [comment, setComment] = useState<string>("");
