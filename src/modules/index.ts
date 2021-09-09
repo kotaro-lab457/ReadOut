@@ -62,3 +62,18 @@ export type required = {
   email: string;
   password: string;
 };
+
+export interface commentProps {
+  list: {
+    id: number;
+  };
+}
+
+export interface bookList {
+  id: string;
+  volumeInfo: {
+    title: string,
+    authors: string,
+    publishedDate: string,
+  }
+}

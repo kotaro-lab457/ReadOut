@@ -40,9 +40,6 @@ const History: React.FC = () => {
           setHomeText(homes);
         }
       });
-      return (): void => {
-        isMounted = false;
-      };
     }
   }, [user]);
 
