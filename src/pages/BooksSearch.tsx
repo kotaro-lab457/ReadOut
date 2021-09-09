@@ -13,6 +13,8 @@ import {
   ListSearch,
 } from "@Molecules/TableSearch";
 import { MainPage, MainTablePages } from "@Organisms/MainPages";
+
+import { bookList } from "@Modules"
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -70,7 +72,7 @@ const BooksSearch: React.FC = () => {
           {searchResult && (
             <ListSearch>
               <>
-                {searchResult.items.map((item: any) => {
+                {searchResult.items.map((item: bookList) => {
                   return (
                     <ItemSearch key={item.id}>
                       <ImageTag>
