@@ -18,19 +18,6 @@
 
 <img width="230px" alt="portfolio_login" src="https://user-images.githubusercontent.com/69884513/114831059-e6daf100-9e07-11eb-8b29-57813ce23b6c.png">
 
-## デモ
-
-### 投稿ページ
-
-<img width="520px" src="https://user-images.githubusercontent.com/69884513/113231190-a80c4d80-92d5-11eb-8c80-75406a5ee090.gif">
-
-### 検索ページ
-
-<img width="520px" src="https://user-images.githubusercontent.com/69884513/113231047-5368d280-92d5-11eb-8599-7d65600f935b.gif">
-
-### プロフィールページ
-
-<img width="520px" src="https://user-images.githubusercontent.com/69884513/113230789-c0c83380-92d4-11eb-98e7-3098e9e9b22a.gif">
 
 ## 画面
 
