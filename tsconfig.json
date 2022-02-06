@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
@@ -48,6 +48,7 @@
   "include": [
     "src/**/*",
     "types/**/*",
-    "jest.config.js"
+    "jest.config.js",
+    "index.tsx"
   ]
 }
