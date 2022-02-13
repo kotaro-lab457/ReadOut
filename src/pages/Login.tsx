@@ -31,6 +31,7 @@ const Login: React.FC<RouteComponentProps> = (props) => {
       props.history.push("/home");
     } catch (err) {
       setErrorMessage("※ログインに失敗しました。メールアドレスとパスワードを確認してログインしていください。");
+      throw err;
     }
   };
 
@@ -52,7 +53,7 @@ const Login: React.FC<RouteComponentProps> = (props) => {
       props.history.push("/home");
     } catch (err) {
       setErrorMessage("※新規作成に失敗しました。ネットワーク環境をご確認ください。");
-      return;
+      throw err;
     }
   };
 

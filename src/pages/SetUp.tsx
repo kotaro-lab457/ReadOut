@@ -88,8 +88,9 @@ const SetUp: React.FC<RouteComponentProps> = (props) => {
       setPage("");
       setTextId(textId);
       props.history.push("/home");
-    } catch (err: any) {
-      alert(err.message);
+    } catch (err) {
+      console.log(err);
+      throw err;
     }
   };
   return (
