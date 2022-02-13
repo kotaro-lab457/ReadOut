@@ -7,17 +7,7 @@ import { Line } from "react-chartjs-2";
 const Chart: React.FC = () => {
   const [date, setDate] = useState(null);
   const [totalDays, setTotalDays] = useState<string>("");
-  const [count1, setCount1] = useState<number>(0);
-  const [count2, setCount2] = useState<number>(0);
-  const [count3, setCount3] = useState<number>(0);
-  const [count4, setCount4] = useState<number>(0);
-  const [count5, setCount5] = useState<number>(0);
-  const [count6, setCount6] = useState<number>(0);
-  const [count7, setCount7] = useState<number>(0);
-  const [count8, setCount8] = useState<number>(0);
-  const [count9, setCount9] = useState<number>(0);
-  const [count10, setCount10] = useState<number>(0);
-
+  const [count, setCount] = useState<number[]>([]);
   const user = useSelector(selectUser);
   const FS = firebase.firestore().collection("text");
 
@@ -55,66 +45,15 @@ const Chart: React.FC = () => {
         date.getMonth() +
         date.getDate() +
         getDate(dateMonth);
-
-      FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days - 9)
-        .get()
-        .then((doc) => {
-          setCount1(doc.size);
-        });
-      FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days - 8)
-        .get()
-        .then((doc) => {
-          setCount2(doc.size);
-        });
-      FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days - 7)
-        .get()
-        .then((doc) => {
-          setCount3(doc.size);
-        });
-      FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days - 6)
-        .get()
-        .then((doc) => {
-          setCount4(doc.size);
-        });
-      FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days - 5)
-        .get()
-        .then((doc) => {
-          setCount5(doc.size);
-        });
-      FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days - 4)
-        .get()
-        .then((doc) => {
-          setCount6(doc.size);
-        });
-      FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days - 3)
-        .get()
-        .then((doc) => {
-          setCount7(doc.size);
-        });
-      FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days - 2)
-        .get()
-        .then((doc) => {
-          setCount8(doc.size);
-        });
-      FS.where("user", "==", `${user.displayName}`)
-        .where("date", "<=", days - 1)
-        .get()
-        .then((doc) => {
-          setCount9(doc.size);
-        });
-      FS.where("user", "==", `${user.displayName}`)
-        .get()
-        .then((doc) => {
-          setCount10(doc.size);
-        });
+      
+      for (let i = 9; i > 0; i--) {
+        FS.where("user", "==", `${user.displayName}`)
+          .where("date", "<=", days - i)
+          .get()
+          .then((doc) => {
+            setCount([...count, doc.size]);
+          });
+        }
     }
 
     // 10日分の日付作成(x軸)
@@ -140,19 +79,6 @@ const Chart: React.FC = () => {
     setTotalDays(longDay);
   }, [user]);
 
-  const daysPlus:number[] = [
-    count1,
-    count2,
-    count3,
-    count4,
-    count5,
-    count6,
-    count7,
-    count8,
-    count9,
-    count10,
-  ];
-
   const graphData = {
     labels:
       // 軸ラベル
@@ -163,7 +89,7 @@ const Chart: React.FC = () => {
       {
         borderColor: "#4fc3f7",
         lineTension: 0,
-        data: daysPlus,
+        data: count,
         label: "読書アウトプット量",
       },
     ],
